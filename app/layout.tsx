@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Newsreader, Public_Sans, IBM_Plex_Mono } from "next/font/google";
+import { SITE_URL, SITE_DESCRIPTION } from "@/lib/site";
 import "./globals.css";
 
 // Display — Newsreader (variable, optical sizing). Display only (§3.3).
@@ -26,13 +27,18 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://northport.security"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Northport Security — evidence-led security consulting",
     template: "%s — Northport Security",
   },
-  description:
-    "Northport Security is a security consultancy and managed security services provider. We map your controls to NIST CSF, ISO 27001, and CIS, then close the gaps.",
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    type: "website",
+    siteName: "Northport Security",
+    url: SITE_URL,
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({

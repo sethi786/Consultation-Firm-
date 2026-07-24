@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { SERVICE_SLUGS, type ServiceSlug } from "@/content/services";
 import { getServiceDetail } from "@/content/services/details";
 import { ServiceTemplate } from "@/components/marketing/ServiceTemplate";
+import { ServiceJsonLd, FaqJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export function generateStaticParams() {
   return SERVICE_SLUGS.map((slug) => ({ slug }));
@@ -35,5 +36,18 @@ export default async function ServicePage({
   const { slug } = await params;
   if (!isServiceSlug(slug)) notFound();
   const service = getServiceDetail(slug);
-  return <ServiceTemplate service={service} />;
+  return (
+    <>
+      <ServiceJsonLd service={service} />
+      <FaqJsonLd service={service} />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+          { name: service.name, path: `/services/${slug}` },
+        ]}
+      />
+      <ServiceTemplate service={service} />
+    </>
+  );
 }
