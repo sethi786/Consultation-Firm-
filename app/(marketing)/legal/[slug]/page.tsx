@@ -24,6 +24,8 @@ const LEGAL = {
 
 type LegalSlug = keyof typeof LEGAL;
 
+export const dynamic = "force-dynamic";
+
 export function generateStaticParams() {
   return (Object.keys(LEGAL) as LegalSlug[]).map((slug) => ({ slug }));
 }

@@ -11,6 +11,8 @@ const INDUSTRIES: Record<string, { name: string }> = {
   saas: { name: "SaaS" },
 };
 
+export const dynamic = "force-dynamic";
+
 export function generateStaticParams() {
   return Object.keys(INDUSTRIES).map((slug) => ({ slug }));
 }

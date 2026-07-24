@@ -5,6 +5,10 @@ import { getServiceDetail } from "@/content/services/details";
 import { ServiceTemplate } from "@/components/marketing/ServiceTemplate";
 import { ServiceJsonLd, FaqJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
+// Dynamic rendering is required for the nonce-based CSP (middleware.ts) to reach
+// this route's scripts. generateStaticParams still enumerates valid slugs.
+export const dynamic = "force-dynamic";
+
 export function generateStaticParams() {
   return SERVICE_SLUGS.map((slug) => ({ slug }));
 }

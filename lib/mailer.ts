@@ -14,7 +14,9 @@ export async function deliverContact(
   const to = process.env.CONTACT_TO ?? "assessments@northport.security";
   const from = process.env.CONTACT_FROM ?? "Northport Security <no-reply@northport.security>";
 
-  const subject = `Assessment request — ${input.company} (${input.service})`;
+  // Strip CR/LF from anything used in the subject line (NPT-W05).
+  const safe = (v: string) => v.replace(/[\r\n]+/g, " ").trim();
+  const subject = `Assessment request — ${safe(input.company)} (${safe(input.service)})`;
   const text = [
     `Name:     ${input.name}`,
     `Email:    ${input.email}`,

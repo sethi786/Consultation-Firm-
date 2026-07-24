@@ -26,6 +26,10 @@ const plexMono = IBM_Plex_Mono({
   weight: ["400", "500", "600"],
 });
 
+// The nonce-based CSP (middleware.ts) requires per-request rendering so Next can
+// stamp the request nonce onto its bootstrap scripts. Opt the whole app in.
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
