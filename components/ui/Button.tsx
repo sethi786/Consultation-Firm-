@@ -22,6 +22,7 @@ type ButtonAsButton = CommonProps &
 type ButtonAsLink = CommonProps & {
   href: string;
   prefetch?: boolean;
+  onClick?: () => void;
 };
 
 type ButtonProps = ButtonAsButton | ButtonAsLink;
@@ -55,9 +56,9 @@ export function Button(props: ButtonProps) {
   );
 
   if ("href" in props && props.href !== undefined) {
-    const { href, prefetch } = props;
+    const { href, prefetch, onClick } = props;
     return (
-      <Link href={href} prefetch={prefetch} className={classes}>
+      <Link href={href} prefetch={prefetch} onClick={onClick} className={classes}>
         {content}
       </Link>
     );
