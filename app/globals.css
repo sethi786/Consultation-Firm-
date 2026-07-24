@@ -1,26 +1,181 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ------------------------------------------------------------------ *
+ * Northport Security — token layer (CLAUDE.md §3.2)
+ * Tailwind v4 @theme. No tailwind.config. Never hardcode a hex elsewhere.
+ * ------------------------------------------------------------------ */
+
+@theme {
+  /* Fonts — bound to next/font CSS variables in app/layout.tsx */
+  --font-display: var(--font-newsreader), Georgia, "Times New Roman", serif;
+  --font-body: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", monospace;
+
+  /* Color — institutional, not cyberpunk (§3.2) */
+  --color-ink: #12181a;
+  --color-pine: #1b3a31;
+  --color-pine-lift: #265045;
+  --color-slate: #5a6b66;
+  --color-rule: #dde0da;
+  --color-paper: #f4f5f2;
+  --color-paper-sunk: #eceee8; /* subtle sunken fill for register/thead */
+  --color-brass: #b08d45;
+  --color-brass-lift: #8f7231; /* accessible brass for text on paper (AA) */
+
+  /* Severity — only ever inside data chips, never decoration */
+  --color-sev-crit: #8c2f1b;
+  --color-sev-crit-tint: #f2e2dd;
+  --color-sev-high: #a8632a;
+  --color-sev-high-tint: #f1e6da;
+  --color-sev-med: #7a6a2e;
+  --color-sev-med-tint: #eeead9;
+  --color-sev-low: #4a6357;
+  --color-sev-low-tint: #e2e8e4;
+
+  /* Status (portal findings) */
+  --color-status-remediated: #2f6e4f;
+  --color-status-remediated-tint: #e0ebe4;
+
+  /* Portal dark surface (§7) */
+  --color-portal-bg: #0e1416;
+  --color-portal-panel: #141c1e;
+  --color-portal-line: #26312f;
+  --color-portal-ink: #eef1ec;
+  --color-portal-ink-2: #9aa8a2;
+  --color-portal-brass: #c9a85e;
+
+  /* Type scale (§3.3): 0.6875 / 0.8125 / 0.9375 / 1.125 / 1.5 / 2.25 / 3.5 / 5
+     Named semantic tokens; big steps clamp for small screens. */
+  --text-mono-xs: 0.6875rem;
+  --text-mono-xs--line-height: 1.3;
+  --text-mono-xs--letter-spacing: 0.08em;
+
+  --text-caption: 0.8125rem;
+  --text-caption--line-height: 1.45;
+
+  --text-small: 0.9375rem;
+  --text-small--line-height: 1.55;
+
+  --text-body: 1.125rem;
+  --text-body--line-height: 1.65;
+
+  --text-lede: 1.5rem;
+  --text-lede--line-height: 1.4;
+  --text-lede--letter-spacing: -0.01em;
+
+  --text-h3: 1.5rem;
+  --text-h3--line-height: 1.2;
+  --text-h3--letter-spacing: -0.015em;
+  --text-h3--font-weight: 500;
+
+  --text-h2: clamp(1.75rem, 3vw, 2.25rem);
+  --text-h2--line-height: 1.1;
+  --text-h2--letter-spacing: -0.02em;
+  --text-h2--font-weight: 460;
+
+  --text-h1: clamp(2.25rem, 4.6vw, 3.5rem);
+  --text-h1--line-height: 1.04;
+  --text-h1--letter-spacing: -0.03em;
+  --text-h1--font-weight: 440;
+
+  --text-display: clamp(2.75rem, 6.5vw, 5rem);
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.035em;
+  --text-display--font-weight: 420;
+
+  /* Radius — small; nothing pill-shaped except chips */
+  --radius: 3px;
+  --radius-lg: 6px;
+
+  /* Elevation — menus/dialogs only */
+  --shadow-1: 0 1px 2px rgba(18, 24, 26, 0.06), 0 10px 30px rgba(18, 24, 26, 0.1);
+
+  /* Layout: 1280px max, 24px gutters (§3.5) */
+  --container-page: 1280px;
+  --container-measure: 68ch;
+
+  /* Motion — the two approved motions (§3.6) */
+  --ease-doc: cubic-bezier(0.2, 0, 0, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* Base ------------------------------------------------------------- */
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+    font-weight: 460;
+  }
+
+  /* Visible keyboard focus — brass ring, never outline:none (§8) */
+  :focus-visible {
+    outline: 2px solid var(--color-brass);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-brass) 22%, transparent);
+    color: var(--color-ink);
+  }
+
+  /* Honour reduced motion globally (§3.6) */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Utilities -------------------------------------------------------- */
+
+@layer utilities {
+  /* Register row cascade — 40ms stagger, gated by reduced-motion (§3.6) */
+  @keyframes register-row-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Maturity bar fill on scroll-into-view (§3.6, motion #2) */
+  @keyframes meter-fill {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  .tracking-mono {
+    letter-spacing: 0.08em;
+  }
 }
