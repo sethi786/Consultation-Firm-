@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ControlRegister } from "@/components/marketing/ControlRegister";
 import {
   Button,
   Chip,
@@ -89,6 +90,18 @@ export default function StyleGuidePage() {
             one view before we build pages. Evidence, not theatre.
           </p>
         </header>
+
+        <Section index={0} title="Control register — signature element" reference="§3.4">
+          <p className="mb-8 max-w-measure text-small text-slate">
+            The homepage hero. Every framework reference is verified against the
+            published framework. Hover or focus a service to filter; click to pin,
+            Escape to clear. Rows populate in a cascade on load (under 900ms), gated
+            by reduced-motion.
+          </p>
+          <ControlRegister />
+        </Section>
+
+        <Rule />
 
         <Section index={1} title="Type scale" reference="§3.3">
           <div className="divide-y divide-rule">
