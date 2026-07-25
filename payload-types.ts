@@ -73,6 +73,13 @@ export interface Config {
     pages: Page;
     authors: Author;
     media: Media;
+    organisations: Organisation;
+    'portal-users': PortalUser;
+    memberships: Membership;
+    engagements: Engagement;
+    findings: Finding;
+    'portal-documents': PortalDocument;
+    'audit-log': AuditLog;
     users: User;
     'payload-kv': PayloadKv;
     'payload-jobs': PayloadJob;
@@ -88,6 +95,13 @@ export interface Config {
     pages: PagesSelect<false> | PagesSelect<true>;
     authors: AuthorsSelect<false> | AuthorsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    organisations: OrganisationsSelect<false> | OrganisationsSelect<true>;
+    'portal-users': PortalUsersSelect<false> | PortalUsersSelect<true>;
+    memberships: MembershipsSelect<false> | MembershipsSelect<true>;
+    engagements: EngagementsSelect<false> | EngagementsSelect<true>;
+    findings: FindingsSelect<false> | FindingsSelect<true>;
+    'portal-documents': PortalDocumentsSelect<false> | PortalDocumentsSelect<true>;
+    'audit-log': AuditLogSelect<false> | AuditLogSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>;
@@ -384,6 +398,131 @@ export interface Page {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "organisations".
+ */
+export interface Organisation {
+  id: number;
+  name: string;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portal-users".
+ */
+export interface PortalUser {
+  id: number;
+  email: string;
+  name?: string | null;
+  passwordHash?: string | null;
+  authProvider?: ('password' | 'entra-id') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "memberships".
+ */
+export interface Membership {
+  id: number;
+  user: number | PortalUser;
+  organisation: number | Organisation;
+  role: 'owner' | 'admin' | 'member' | 'viewer';
+  status?: ('invited' | 'active' | 'suspended') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "engagements".
+ */
+export interface Engagement {
+  id: number;
+  organisation: number | Organisation;
+  name: string;
+  service?: ('ai-security' | 'cloud-security' | 'identity' | 'zero-trust' | 'managed-soc' | 'compliance') | null;
+  status?: ('scoping' | 'active' | 'reporting' | 'closed') | null;
+  startDate?: string | null;
+  /**
+   * Scope → Assess → Report → Remediate → Verify
+   */
+  phases?:
+    | {
+        name: string;
+        status?: ('upcoming' | 'in_progress' | 'done') | null;
+        date?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "findings".
+ */
+export interface Finding {
+  id: number;
+  organisation: number | Organisation;
+  engagement?: (number | null) | Engagement;
+  /**
+   * e.g. NPT-014
+   */
+  ref: string;
+  title: string;
+  severity: 'critical' | 'high' | 'medium' | 'low' | 'info';
+  status: 'open' | 'in_progress' | 'pending_verification' | 'remediated' | 'closed';
+  affectedAsset?: string | null;
+  owner?: string | null;
+  dueDate?: string | null;
+  description?: string | null;
+  comments?:
+    | {
+        authorEmail?: string | null;
+        body: string;
+        createdAt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portal-documents".
+ */
+export interface PortalDocument {
+  id: number;
+  organisation: number | Organisation;
+  engagement?: (number | null) | Engagement;
+  title: string;
+  type?: ('report' | 'attestation' | 'runbook') | null;
+  version?: string | null;
+  file?: (number | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "audit-log".
+ */
+export interface AuditLog {
+  id: number;
+  organisation: number | Organisation;
+  actorEmail: string;
+  /**
+   * e.g. document.download
+   */
+  action: string;
+  targetType?: string | null;
+  targetId?: string | null;
+  ip?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
@@ -548,6 +687,34 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'organisations';
+        value: number | Organisation;
+      } | null)
+    | ({
+        relationTo: 'portal-users';
+        value: number | PortalUser;
+      } | null)
+    | ({
+        relationTo: 'memberships';
+        value: number | Membership;
+      } | null)
+    | ({
+        relationTo: 'engagements';
+        value: number | Engagement;
+      } | null)
+    | ({
+        relationTo: 'findings';
+        value: number | Finding;
+      } | null)
+    | ({
+        relationTo: 'portal-documents';
+        value: number | PortalDocument;
+      } | null)
+    | ({
+        relationTo: 'audit-log';
+        value: number | AuditLog;
       } | null)
     | ({
         relationTo: 'users';
@@ -750,6 +917,115 @@ export interface MediaSelect<T extends boolean = true> {
               filename?: T;
             };
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "organisations_select".
+ */
+export interface OrganisationsSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portal-users_select".
+ */
+export interface PortalUsersSelect<T extends boolean = true> {
+  email?: T;
+  name?: T;
+  passwordHash?: T;
+  authProvider?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "memberships_select".
+ */
+export interface MembershipsSelect<T extends boolean = true> {
+  user?: T;
+  organisation?: T;
+  role?: T;
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "engagements_select".
+ */
+export interface EngagementsSelect<T extends boolean = true> {
+  organisation?: T;
+  name?: T;
+  service?: T;
+  status?: T;
+  startDate?: T;
+  phases?:
+    | T
+    | {
+        name?: T;
+        status?: T;
+        date?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "findings_select".
+ */
+export interface FindingsSelect<T extends boolean = true> {
+  organisation?: T;
+  engagement?: T;
+  ref?: T;
+  title?: T;
+  severity?: T;
+  status?: T;
+  affectedAsset?: T;
+  owner?: T;
+  dueDate?: T;
+  description?: T;
+  comments?:
+    | T
+    | {
+        authorEmail?: T;
+        body?: T;
+        createdAt?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portal-documents_select".
+ */
+export interface PortalDocumentsSelect<T extends boolean = true> {
+  organisation?: T;
+  engagement?: T;
+  title?: T;
+  type?: T;
+  version?: T;
+  file?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "audit-log_select".
+ */
+export interface AuditLogSelect<T extends boolean = true> {
+  organisation?: T;
+  actorEmail?: T;
+  action?: T;
+  targetType?: T;
+  targetId?: T;
+  ip?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

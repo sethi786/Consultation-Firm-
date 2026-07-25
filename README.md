@@ -141,11 +141,24 @@ The build follows `BUILDPLAN.md`. Status:
 | 1 | Design system + styleguide | ✅ Done |
 | 2 | Control Register (verified data) | ✅ Done |
 | 3 | Marketing pages + contact | ✅ Done |
-| 4 | Payload CMS (Neon Postgres) | ⛔ Blocked — needs a Neon connection string |
-| 5 | Portal auth + tenancy (Auth.js/Entra) | ⛔ Blocked — needs an Entra ID app registration |
-| 6 | Portal features | ⛔ Blocked — depends on Phases 4–5 |
+| 4 | Payload CMS (Postgres) | ✅ Done — collections, admin, insights/case-studies/industries wired |
+| 5 | Portal auth + tenancy | 🟡 Backend done (collections, Auth.js config, tenancy data layer); sign-in UI, gating switch-on, and Vitest tenancy tests remain |
+| 6 | Portal features | ⬜ Not started — dashboard, findings, documents, timeline, users |
 | 7 | Security headers & CSP | ✅ Done |
 | 8 | SEO (robots, sitemap, JSON-LD, OG) | ✅ Done · perf/Playwright/Plausible pending |
+
+**Local database:** Phase 4 runs against a Postgres in the dev container
+(`postgresql://northport:northport_dev@127.0.0.1:5432/northport`). It is
+ephemeral — set `DATABASE_URI` to a Neon connection string for anything durable.
+The admin studio is at `/admin`; create the first user there (or via
+`POST /api/users/first-register`).
+
+**Phase 5 remaining:** `auth.ts` / `auth.config.ts` (Auth.js v5, email/password +
+Entra ID drop-in) and `lib/portal/data.ts` (the tenancy-scoped data layer) are in
+place and build clean, but the portal sign-in page, middleware gating switch-on,
+and the Vitest cross-tenant tests are not yet done. To finish: build
+`app/(portal)/portal/sign-in`, re-enable the auth gate in `middleware.ts`, and add
+`lib/portal/data.test.ts` seeding two orgs and asserting cross-tenant reads fail.
 
 ### What Phases 4–6 need from you
 

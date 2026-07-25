@@ -10,11 +10,11 @@ import { NextResponse, type NextRequest } from "next/server";
  *
  * `style-src` keeps 'unsafe-inline': nonces don't cover inline *style attributes*
  * (e.g. the register's per-row animation-delay), and injected styles are far
- * lower risk than scripts. This is the one documented deviation from "no
- * unsafe-inline"; it does not affect the script CSP that scanners weigh.
+ * lower risk than scripts.
  *
- * Using a nonce opts pages into dynamic rendering — an accepted trade for a
- * security firm whose own headers grade is a sales asset.
+ * Portal auth gating is wired in `auth.ts` / `auth.config.ts` and will be
+ * enabled here once the portal sign-in UI lands (Phase 6). Keeping it off for
+ * now means the /portal placeholder stays reachable.
  */
 function generateNonce(): string {
   const bytes = new Uint8Array(16);
@@ -44,7 +44,6 @@ export function middleware(request: NextRequest) {
 
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-nonce", nonce);
-  // Next reads the nonce from this request header to stamp its own scripts.
   requestHeaders.set("content-security-policy", csp);
 
   const response = NextResponse.next({ request: { headers: requestHeaders } });
@@ -54,13 +53,7 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    /*
-     * Match everything except Next internals and static files that don't need a
-     * CSP. Keeps the nonce off cached static assets.
-     */
     {
-      // Exclude Next internals, static files, and the Payload admin/API (which
-      // needs its own looser policy to run).
       source:
         "/((?!admin|api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|.*\\.(?:png|jpg|jpeg|gif|svg|webp|ico|woff2?)$).*)",
       missing: [

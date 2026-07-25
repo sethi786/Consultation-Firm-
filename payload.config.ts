@@ -12,6 +12,13 @@ import { Posts } from "./payload/collections/Posts";
 import { CaseStudies } from "./payload/collections/CaseStudies";
 import { Industries } from "./payload/collections/Industries";
 import { Pages } from "./payload/collections/Pages";
+import { Organisations } from "./payload/collections/portal/Organisations";
+import { PortalUsers } from "./payload/collections/portal/PortalUsers";
+import { Memberships } from "./payload/collections/portal/Memberships";
+import { Engagements } from "./payload/collections/portal/Engagements";
+import { Findings } from "./payload/collections/portal/Findings";
+import { PortalDocuments } from "./payload/collections/portal/Documents";
+import { AuditLog } from "./payload/collections/portal/AuditLog";
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -31,6 +38,14 @@ export default buildConfig({
     Pages,
     Authors,
     Media,
+    // Portal (tenant data — scoped by lib/portal/data.ts)
+    Organisations,
+    PortalUsers,
+    Memberships,
+    Engagements,
+    Findings,
+    PortalDocuments,
+    AuditLog,
     // System
     Users,
   ],
