@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { Container, Eyebrow, Chip } from "@/components/ui";
+import Link from "next/link";
+import { Container, Eyebrow } from "@/components/ui";
 import { ContactCTA } from "@/components/marketing/ContactCTA";
+import { getPayloadClient } from "@/lib/payload";
 
 export const metadata: Metadata = {
   title: "Case studies",
@@ -9,28 +11,67 @@ export const metadata: Metadata = {
   alternates: { canonical: "/case-studies" },
 };
 
-export default function CaseStudiesPage() {
+export default async function CaseStudiesPage() {
+  const payload = await getPayloadClient();
+  const { docs } = await payload.find({
+    collection: "case-studies",
+    overrideAccess: false,
+    limit: 50,
+    depth: 0,
+  });
+
   return (
     <>
       <Container className="pt-14 pb-8 md:pt-20">
-        <div className="mb-5 flex items-center gap-3">
-          <Eyebrow>Case studies</Eyebrow>
-          <Chip>CMS — Phase 4</Chip>
-        </div>
-        <h1 className="max-w-measure text-display text-ink">
-          Outcomes, with the numbers.
-        </h1>
+        <Eyebrow className="mb-5">Case studies</Eyebrow>
+        <h1 className="max-w-measure text-display text-ink">Outcomes, with the numbers.</h1>
         <p className="mt-4 max-w-measure text-lede text-slate">
-          One case study per closed engagement, anonymised where needed (“a 900-seat
-          Ontario credit union”), with the client&apos;s written approval on every
-          figure. Structured metrics — before, after, timeframe — so buyers can
-          compare.
-        </p>
-        <p className="mt-8 max-w-measure text-body text-slate">
-          {"{{TODO: wire to Payload CMS (CaseStudies collection) with structured "}
-          outcome fields — metric label, before, after, timeframe.{"}}"}
+          One case study per closed engagement, anonymised where needed, with the
+          client&apos;s written approval on every figure.
         </p>
       </Container>
+
+      <Container as="section" className="pb-16 md:pb-24">
+        {docs.length === 0 ? (
+          <p className="border-t border-rule pt-8 text-body text-slate">
+            No case studies published yet.
+          </p>
+        ) : (
+          <div className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-rule bg-rule md:grid-cols-2">
+            {docs.map((cs) => (
+              <Link
+                key={cs.id}
+                href={`/case-studies/${cs.slug}`}
+                className="group flex flex-col gap-4 bg-paper p-6 transition-colors hover:bg-paper-sunk/50 md:p-8"
+              >
+                <span className="font-mono text-mono-xs uppercase text-brass-lift">
+                  {cs.clientDescriptor}
+                </span>
+                <h2 className="text-h3 text-ink group-hover:text-pine">{cs.title}</h2>
+                {Array.isArray(cs.outcomes) && cs.outcomes.length > 0 && (
+                  <dl className="flex flex-wrap gap-x-8 gap-y-3">
+                    {cs.outcomes.slice(0, 2).map((o, i) => (
+                      <div key={i}>
+                        <dd className="flex items-baseline gap-2 font-mono text-ink">
+                          <span className="text-slate line-through decoration-slate/40">
+                            {o.before}
+                          </span>
+                          <span aria-hidden="true" className="text-brass-lift">→</span>
+                          <span className="text-h3">{o.after}</span>
+                        </dd>
+                        <dt className="mt-1 font-mono text-mono-xs uppercase text-slate">
+                          {o.metricLabel}
+                        </dt>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+              </Link>
+            ))}
+          </div>
+        )}
+      </Container>
+
       <ContactCTA />
     </>
   );

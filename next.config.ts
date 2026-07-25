@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { withPayload } from "@payloadcms/next/withPayload";
 
 /**
  * Static security headers (CLAUDE.md §8). The Content-Security-Policy is set
@@ -40,11 +41,14 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/:path*",
+        // Marketing/site routes get the strict header set. The Payload admin
+        // (/admin) and its API are excluded here and handled by middleware,
+        // which relaxes the CSP just enough for the admin app to run.
+        source: "/((?!admin|api/).*)",
         headers: securityHeaders,
       },
     ];
   },
 };
 
-export default nextConfig;
+export default withPayload(nextConfig);

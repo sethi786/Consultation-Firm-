@@ -1,20 +1,22 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Container, Eyebrow, Chip } from "@/components/ui";
+import { RichText } from "@payloadcms/richtext-lexical/react";
+import { Container, Eyebrow } from "@/components/ui";
 import { ContactCTA } from "@/components/marketing/ContactCTA";
-
-const INDUSTRIES: Record<string, { name: string }> = {
-  "financial-services": { name: "Financial services" },
-  healthcare: { name: "Healthcare" },
-  manufacturing: { name: "Manufacturing" },
-  "public-sector": { name: "Public sector" },
-  saas: { name: "SaaS" },
-};
+import { getPayloadClient } from "@/lib/payload";
 
 export const dynamic = "force-dynamic";
 
-export function generateStaticParams() {
-  return Object.keys(INDUSTRIES).map((slug) => ({ slug }));
+async function getIndustry(slug: string) {
+  const payload = await getPayloadClient();
+  const { docs } = await payload.find({
+    collection: "industries",
+    where: { slug: { equals: slug } },
+    overrideAccess: false,
+    limit: 1,
+    depth: 1,
+  });
+  return docs[0] ?? null;
 }
 
 export async function generateMetadata({
@@ -23,11 +25,11 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const industry = INDUSTRIES[slug];
+  const industry = await getIndustry(slug);
   if (!industry) return {};
   return {
-    title: `${industry.name} security`,
-    description: `Security consulting and managed detection for ${industry.name.toLowerCase()} organisations.`,
+    title: industry.seo?.title || `${industry.name} security`,
+    description: industry.seo?.description || industry.lede,
     alternates: { canonical: `/industries/${slug}` },
   };
 }
@@ -38,21 +40,25 @@ export default async function IndustryPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const industry = INDUSTRIES[slug];
+  const industry = await getIndustry(slug);
   if (!industry) notFound();
 
   return (
     <>
       <Container className="pt-14 pb-8 md:pt-20">
-        <div className="mb-5 flex items-center gap-3">
-          <Eyebrow>Industries</Eyebrow>
-          <Chip>CMS — Phase 4</Chip>
-        </div>
+        <Eyebrow className="mb-5">Industries</Eyebrow>
         <h1 className="max-w-measure text-display text-ink">{industry.name}</h1>
-        <p className="mt-4 max-w-measure text-lede text-slate">
-          {`{{TODO: sector-specific content for ${industry.name.toLowerCase()} — the regulations that apply, the threats that matter, and the engagements that fit. Wire to Payload CMS (Industries collection).}}`}
-        </p>
+        <p className="mt-4 max-w-measure text-lede text-slate">{industry.lede}</p>
       </Container>
+
+      {industry.content && (
+        <Container width="measure" as="section" className="pb-16 md:pb-24">
+          <div className="border-t border-rule pt-10 text-body text-ink [&_h2]:mt-8 [&_h2]:text-h2 [&_p]:mt-4">
+            <RichText data={industry.content} />
+          </div>
+        </Container>
+      )}
+
       <ContactCTA />
     </>
   );

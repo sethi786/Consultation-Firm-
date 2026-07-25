@@ -59,8 +59,10 @@ export const config = {
      * CSP. Keeps the nonce off cached static assets.
      */
     {
+      // Exclude Next internals, static files, and the Payload admin/API (which
+      // needs its own looser policy to run).
       source:
-        "/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|.*\\.(?:png|jpg|jpeg|gif|svg|webp|ico|woff2?)$).*)",
+        "/((?!admin|api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|.*\\.(?:png|jpg|jpeg|gif|svg|webp|ico|woff2?)$).*)",
       missing: [
         { type: "header", key: "next-router-prefetch" },
         { type: "header", key: "purpose", value: "prefetch" },
