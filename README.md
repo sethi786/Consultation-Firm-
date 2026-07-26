@@ -36,6 +36,8 @@ Review the design system in isolation at **`/styleguide`**.
 | `pnpm start` | Serve the production build |
 | `pnpm lint` | ESLint (Next core-web-vitals + TS) |
 | `pnpm typecheck` | `tsc --noEmit` |
+| `pnpm test` | Vitest — includes the row-level tenancy tests |
+| `pnpm test:e2e` | Playwright E2E (marketing + portal critical paths) |
 
 Keep `build`, `lint`, and `typecheck` green before committing (CLAUDE.md §10).
 
@@ -145,7 +147,7 @@ The build follows `BUILDPLAN.md`. Status:
 | 5 | Portal auth + tenancy | ✅ Done — Auth.js v5, gated portal, tenancy data layer, **7/7 Vitest tenancy tests pass** |
 | 6 | Portal features | ✅ Done — dashboard, findings register, documents vault, timeline, settings/users |
 | 7 | Security headers & CSP | ✅ Done |
-| 8 | SEO (robots, sitemap, JSON-LD, OG) | ✅ Done · Lighthouse/Playwright/Plausible + deploy pending |
+| 8 | SEO + launch tail | ✅ SEO, Plausible (cookieless, env-gated), Playwright E2E (5 tests). Lighthouse run + Vercel deploy are manual (below) |
 
 **Local database:** Phase 4 runs against a Postgres in the dev container
 (`postgresql://northport:northport_dev@127.0.0.1:5432/northport`). It is

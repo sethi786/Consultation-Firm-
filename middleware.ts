@@ -20,13 +20,20 @@ function generateNonce(): string {
 
 function withCsp(req: Request): NextResponse {
   const nonce = generateNonce();
+  // Allow Plausible's event endpoint only when analytics is configured. The
+  // script tag itself is authorised by its nonce (strict-dynamic), so no host is
+  // needed in script-src; it just needs connect-src to POST events.
+  const plausible = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN ? " https://plausible.io" : "";
+  // Next's dev server (HMR / react-refresh) needs eval. Allow it in development
+  // only; production stays strict with no unsafe-* in script-src.
+  const devEval = process.env.NODE_ENV !== "production" ? " 'unsafe-eval'" : "";
   const csp = [
     `default-src 'self'`,
-    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,
+    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${devEval}`,
     `style-src 'self' 'unsafe-inline'`,
     `img-src 'self' data: blob:`,
     `font-src 'self'`,
-    `connect-src 'self'`,
+    `connect-src 'self'${plausible}`,
     `object-src 'none'`,
     `base-uri 'self'`,
     `form-action 'self'`,

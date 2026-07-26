@@ -1,6 +1,7 @@
 import { SiteHeader } from "@/components/marketing/SiteHeader";
 import { SiteFooter } from "@/components/marketing/SiteFooter";
 import { OrganizationJsonLd } from "@/components/seo/JsonLd";
+import { Plausible } from "@/components/marketing/Plausible";
 
 export default function MarketingLayout({
   children,
@@ -16,6 +17,7 @@ export default function MarketingLayout({
         Skip to content
       </a>
       <OrganizationJsonLd />
+      <Plausible />
       <SiteHeader />
       <main id="main" className="flex-1">
         {children}

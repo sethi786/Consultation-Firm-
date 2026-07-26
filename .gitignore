@@ -42,3 +42,8 @@ next-env.d.ts
 
 # Payload media uploads (local dev)
 /public/media/
+
+# Playwright
+/test-results/
+/playwright-report/
+/e2e/.auth/
