@@ -1,14 +1,8 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 import { SERVICE_SLUGS } from "@/content/services";
+import { INDUSTRY_SLUGS } from "@/content/industries";
 
-const INDUSTRIES = [
-  "financial-services",
-  "healthcare",
-  "manufacturing",
-  "public-sector",
-  "saas",
-];
 const LEGAL = ["security", "privacy", "terms", "dpa"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -43,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     });
   }
-  for (const slug of INDUSTRIES) {
+  for (const slug of INDUSTRY_SLUGS) {
     entries.push({
       url: `${SITE_URL}/industries/${slug}`,
       lastModified: now,

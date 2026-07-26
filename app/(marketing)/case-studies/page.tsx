@@ -40,9 +40,20 @@ export default async function CaseStudiesPage() {
 
       <Container as="section" className="pb-16 md:pb-24">
         {docs.length === 0 ? (
-          <p className="border-t border-rule pt-8 text-body text-slate">
-            No case studies published yet.
-          </p>
+          <div className="border-t border-rule pt-8">
+            <p className="max-w-measure text-body text-slate">
+              Public write-ups land here as engagements close — each with the client&apos;s
+              written sign-off on every figure, which is why we&apos;d rather show none than
+              invent one. Ask us for references relevant to your sector and we&apos;ll share
+              them during scoping.
+            </p>
+            <Link
+              href="/contact"
+              className="mt-5 inline-block font-body text-small text-pine underline decoration-pine/40 underline-offset-4 hover:decoration-pine"
+            >
+              Ask for sector references →
+            </Link>
+          </div>
         ) : (
           <div className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-rule bg-rule md:grid-cols-2">
             {docs.map((cs) => (

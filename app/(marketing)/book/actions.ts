@@ -62,8 +62,9 @@ export async function bookMeetingAction(
     console.error("[meeting] persist failed:", err);
   }
   try {
-    await notifyMeetingRequest(parsed.data);
-    notified = true;
+    // True only when an email was actually sent (no-op returns false), so an
+    // unconfigured deploy can't report success for a lead it also failed to store.
+    notified = await notifyMeetingRequest(parsed.data);
   } catch (err) {
     console.error("[meeting] notify failed:", err);
   }
@@ -71,7 +72,7 @@ export async function bookMeetingAction(
   if (!persisted && !notified) {
     return {
       status: "error",
-      message: "Something went wrong. Please email assessments@northport.security directly.",
+      message: "We couldn't record your request just now. Please try again in a moment.",
     };
   }
 

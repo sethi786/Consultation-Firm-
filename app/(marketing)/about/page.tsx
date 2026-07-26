@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Container, Eyebrow, Chip } from "@/components/ui";
 import { ContactCTA } from "@/components/marketing/ContactCTA";
+import { INDUSTRIES } from "@/content/industries";
 
 export const metadata: Metadata = {
   title: "About",
@@ -8,14 +10,6 @@ export const metadata: Metadata = {
     "Northport Security is an evidence-led security consultancy and managed security services provider for 200–5,000-seat organisations.",
   alternates: { canonical: "/about" },
 };
-
-const INDUSTRIES = [
-  "Financial services",
-  "Healthcare",
-  "Manufacturing",
-  "Public sector",
-  "SaaS",
-];
 
 export default function AboutPage() {
   return (
@@ -86,9 +80,13 @@ export default function AboutPage() {
           Industries we work in
         </Eyebrow>
         <ul className="flex flex-wrap gap-3">
-          {INDUSTRIES.map((label) => (
-            <li key={label}>
-              <Chip>{label}</Chip>
+          {INDUSTRIES.map((industry) => (
+            <li key={industry.slug}>
+              <Link href={`/industries/${industry.slug}`} aria-label={`${industry.name} security`}>
+                <Chip className="transition-colors hover:border-pine hover:text-pine">
+                  {industry.name} →
+                </Chip>
+              </Link>
             </li>
           ))}
         </ul>

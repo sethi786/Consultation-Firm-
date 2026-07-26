@@ -32,14 +32,15 @@ async function send(opts: {
 
 /**
  * Notify the firm of a new assessment request (§2, §8). The API key is
- * server-only and never shipped to the client. If it isn't configured (local
- * dev, previews), we log and succeed rather than throwing — the form still
- * works and the lead is still persisted; nothing is leaked.
+ * server-only and never shipped to the client. Returns `true` only when an
+ * email was actually sent; returns `false` when Resend isn't configured, so the
+ * caller can tell a real notification apart from a silent no-op and never report
+ * success for a lead that was neither stored nor sent.
  */
 export async function deliverContact(
   input: ContactInput,
   meta: { ip: string; receivedAt: string },
-): Promise<void> {
+): Promise<boolean> {
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.CONTACT_TO ?? TO_DEFAULT;
   const from = process.env.CONTACT_FROM ?? FROM_DEFAULT;
@@ -63,10 +64,11 @@ export async function deliverContact(
       to,
       subject,
     });
-    return;
+    return false;
   }
 
   await send({ from, to, replyTo: input.email, subject, text });
+  return true;
 }
 
 /**
@@ -176,16 +178,18 @@ export async function notifyCallBooking(booking: {
 
 /**
  * Notify the firm of a public "book a meeting" request and confirm to the
- * prospect. No-op until Resend is configured; the lead is stored regardless.
+ * prospect. Returns `true` only when email was actually sent (mirrors
+ * deliverContact); `false` when Resend isn't configured, so the caller never
+ * reports success for a lead that was neither stored nor sent.
  */
-export async function notifyMeetingRequest(input: MeetingInput): Promise<void> {
+export async function notifyMeetingRequest(input: MeetingInput): Promise<boolean> {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     console.info("[meeting] RESEND_API_KEY not set — logging instead of sending.", {
       company: input.company,
       when: input.preferredSlot,
     });
-    return;
+    return false;
   }
   const from = process.env.CONTACT_FROM ?? FROM_DEFAULT;
   const firmTo = process.env.CONTACT_TO ?? TO_DEFAULT;
@@ -226,4 +230,6 @@ export async function notifyMeetingRequest(input: MeetingInput): Promise<void> {
       "— Northport Security",
     ].join("\n"),
   });
+
+  return true;
 }

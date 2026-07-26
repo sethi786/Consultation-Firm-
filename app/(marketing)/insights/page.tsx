@@ -53,9 +53,19 @@ export default async function InsightsPage() {
 
       <Container as="section" className="pb-16 md:pb-24">
         {docs.length === 0 ? (
-          <p className="border-t border-rule pt-8 text-body text-slate">
-            No insights published yet.
-          </p>
+          <div className="border-t border-rule pt-8">
+            <p className="max-w-measure text-body text-slate">
+              The first research notes are in the works — depth over volume, so they take a
+              little longer. Tell us what you&apos;re wrestling with and we&apos;ll point you
+              to the working material we&apos;d normally publish.
+            </p>
+            <Link
+              href="/contact"
+              className="mt-5 inline-block font-body text-small text-pine underline decoration-pine/40 underline-offset-4 hover:decoration-pine"
+            >
+              Ask us a question →
+            </Link>
+          </div>
         ) : (
           <ul className="border-t border-rule">
             {docs.map((post) => (

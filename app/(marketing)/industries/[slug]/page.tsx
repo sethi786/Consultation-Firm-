@@ -1,27 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { RichText } from "@payloadcms/richtext-lexical/react";
+import Link from "next/link";
 import { Container, Eyebrow } from "@/components/ui";
 import { ContactCTA } from "@/components/marketing/ContactCTA";
-import { getPayloadClient } from "@/lib/payload";
+import { INDUSTRIES, getIndustry } from "@/content/industries";
 
-export const dynamic = "force-dynamic";
-
-async function getIndustry(slug: string) {
-  try {
-    const payload = await getPayloadClient();
-    const { docs } = await payload.find({
-      collection: "industries",
-      where: { slug: { equals: slug } },
-      overrideAccess: false,
-      limit: 1,
-      depth: 1,
-    });
-    return docs[0] ?? null;
-  } catch {
-    // Database not configured yet — treat as not found rather than erroring.
-    return null;
-  }
+export function generateStaticParams() {
+  return INDUSTRIES.map((i) => ({ slug: i.slug }));
 }
 
 export async function generateMetadata({
@@ -30,11 +15,11 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const industry = await getIndustry(slug);
+  const industry = getIndustry(slug);
   if (!industry) return {};
   return {
-    title: industry.seo?.title || `${industry.name} security`,
-    description: industry.seo?.description || industry.lede,
+    title: `${industry.name} security`,
+    description: industry.lede,
     alternates: { canonical: `/industries/${slug}` },
   };
 }
@@ -45,7 +30,7 @@ export default async function IndustryPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const industry = await getIndustry(slug);
+  const industry = getIndustry(slug);
   if (!industry) notFound();
 
   return (
@@ -56,13 +41,32 @@ export default async function IndustryPage({
         <p className="mt-4 max-w-measure text-lede text-slate">{industry.lede}</p>
       </Container>
 
-      {industry.content && (
-        <Container width="measure" as="section" className="pb-16 md:pb-24">
-          <div className="border-t border-rule pt-10 text-body text-ink [&_h2]:mt-8 [&_h2]:text-h2 [&_p]:mt-4">
-            <RichText data={industry.content} />
-          </div>
-        </Container>
-      )}
+      <Container width="measure" as="section" className="pb-16 md:pb-24">
+        <div className="flex flex-col gap-8 border-t border-rule pt-10">
+          {industry.sections.map((s) => (
+            <section key={s.heading}>
+              <h2 className="text-h3 text-ink">{s.heading}</h2>
+              <p className="mt-3 text-body text-slate">{s.body}</p>
+            </section>
+          ))}
+        </div>
+
+        <nav aria-label="Other industries" className="mt-12 border-t border-rule pt-6">
+          <p className="mb-3 font-mono text-mono-xs uppercase text-slate">Other industries</p>
+          <ul className="flex flex-wrap gap-x-6 gap-y-2">
+            {INDUSTRIES.filter((i) => i.slug !== slug).map((i) => (
+              <li key={i.slug}>
+                <Link
+                  href={`/industries/${i.slug}`}
+                  className="text-small text-ink transition-colors hover:text-pine"
+                >
+                  {i.name} →
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </Container>
 
       <ContactCTA />
     </>

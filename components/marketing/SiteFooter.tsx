@@ -1,10 +1,15 @@
 import Link from "next/link";
 import { SERVICE_LIST } from "@/content/services";
+import { INDUSTRIES } from "@/content/industries";
 
 const COLUMNS: { heading: string; links: { href: string; label: string }[] }[] = [
   {
     heading: "Services",
     links: SERVICE_LIST.map((s) => ({ href: `/services/${s.slug}`, label: s.name })),
+  },
+  {
+    heading: "Industries",
+    links: INDUSTRIES.map((i) => ({ href: `/industries/${i.slug}`, label: i.name })),
   },
   {
     heading: "Firm",
@@ -32,7 +37,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-rule">
       <div className="mx-auto max-w-page px-6 py-16 md:px-8">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-5">
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-baseline gap-2">
               <span className="font-display text-h3 text-ink">Northport</span>

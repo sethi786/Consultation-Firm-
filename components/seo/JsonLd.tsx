@@ -24,7 +24,10 @@ export function OrganizationJsonLd() {
         name: SITE_NAME,
         url: SITE_URL,
         description: SITE_DESCRIPTION,
-        // {{TODO: add real logo URL, sameAs social profiles, and contactPoint}}
+        logo: absoluteUrl("/opengraph-image"),
+        image: absoluteUrl("/opengraph-image"),
+        // sameAs (social profiles) and contactPoint (phone/email) are added once
+        // those real business facts exist — never fabricated (CLAUDE.md §5).
       }}
     />
   );

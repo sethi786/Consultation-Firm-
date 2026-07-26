@@ -78,8 +78,10 @@ export async function submitContact(
   }
 
   try {
-    await deliverContact(parsed.data, { ip, receivedAt });
-    notified = true;
+    // `notified` is true only when an email was actually sent — a no-op (no
+    // Resend key) returns false, so an unconfigured deploy can't silently
+    // swallow a lead that also failed to persist.
+    notified = await deliverContact(parsed.data, { ip, receivedAt });
   } catch (err) {
     console.error("[contact] notify failed:", err);
   }
@@ -87,7 +89,8 @@ export async function submitContact(
   if (!persisted && !notified) {
     return {
       status: "error",
-      message: "Something went wrong sending your request. Please email assessments@northport.security directly.",
+      message:
+        "We couldn't record your request just now. Please try again in a moment.",
     };
   }
 
