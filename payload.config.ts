@@ -23,6 +23,16 @@ import { AuditLog } from "./payload/collections/portal/AuditLog";
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
+// Accept the connection string under any of the common names. This means a
+// one-click Vercel Postgres (which injects POSTGRES_URL) works with no manual
+// copying, as does a hand-set DATABASE_URI (Neon direct).
+const connectionString =
+  process.env.DATABASE_URI ||
+  process.env.POSTGRES_URL ||
+  process.env.DATABASE_URL ||
+  process.env.POSTGRES_PRISMA_URL ||
+  "";
+
 export default buildConfig({
   serverURL: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   admin: {
@@ -63,7 +73,7 @@ export default buildConfig({
   ],
   secret: process.env.PAYLOAD_SECRET || "",
   db: postgresAdapter({
-    pool: { connectionString: process.env.DATABASE_URI || "" },
+    pool: { connectionString },
     // Dev convenience: sync schema without migration files. Use migrations in prod.
     push: true,
   }),
