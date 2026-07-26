@@ -7,7 +7,7 @@ import { INDUSTRIES } from "@/content/industries";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Northport Security is an evidence-led security consultancy and managed security services provider for 200–5,000-seat organisations.",
+    "Cairn Security is an evidence-led security consultancy and managed security services provider for 200–5,000-seat organisations.",
   alternates: { canonical: "/about" },
 };
 
@@ -20,7 +20,7 @@ export default function AboutPage() {
           A security firm that reads like a report.
         </h1>
         <p className="mt-4 max-w-measure text-lede text-slate">
-          Northport Security is a consultancy and managed security services provider
+          Cairn Security is a consultancy and managed security services provider
           for organisations of 200–5,000 seats. We sell evidence, not fear — and the
           site you’re on is built to the same standard as the work.
         </p>

@@ -40,7 +40,7 @@ export default buildConfig({
   admin: {
     user: Users.slug,
     meta: {
-      titleSuffix: "— Northport Security",
+      titleSuffix: "— Cairn Security",
     },
   },
   collections: [

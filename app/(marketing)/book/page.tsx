@@ -6,7 +6,7 @@ import { CONTACT_SERVICE_VALUES } from "@/lib/contact-schema";
 export const metadata: Metadata = {
   title: "Book a meeting",
   description:
-    "Pick a time and book a meeting with a Northport consultant. Choose what it's about, and we'll confirm the slot and send a calendar invite — no back-and-forth.",
+    "Pick a time and book a meeting with a Cairn consultant. Choose what it's about, and we'll confirm the slot and send a calendar invite — no back-and-forth.",
   alternates: { canonical: "/book" },
 };
 

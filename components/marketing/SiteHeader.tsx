@@ -21,8 +21,8 @@ const NAV = [
 
 function Wordmark() {
   return (
-    <Link href="/" className="group inline-flex items-baseline gap-2" aria-label="Northport Security — home">
-      <span className="font-display text-h3 leading-none text-ink">Northport</span>
+    <Link href="/" className="group inline-flex items-baseline gap-2" aria-label="Cairn Security — home">
+      <span className="font-display text-h3 leading-none text-ink">Cairn</span>
       <span className="font-mono text-mono-xs uppercase text-slate group-hover:text-brass-lift">
         Security
       </span>
@@ -68,10 +68,9 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-4 md:flex">
+          {/* Client portal is built but hidden from public nav until the first
+              client is onboarded — the code and routes remain at /portal. */}
           <ThemeToggle />
-          <Link href="/portal" className="font-body text-small text-slate hover:text-ink">
-            Client portal
-          </Link>
           <Button href="/contact" size="sm">
             Book an assessment
           </Button>
@@ -160,15 +159,7 @@ export function SiteHeader() {
                 </Link>
               </li>
             ))}
-            <li>
-              <Link
-                href="/portal"
-                className="block py-3 font-body text-body text-slate"
-                onClick={() => setOpen(false)}
-              >
-                Client portal
-              </Link>
-            </li>
+            {/* Client portal hidden from public nav until first client onboarded. */}
           </ul>
           <div className="mt-4">
             <Button href="/contact" onClick={() => setOpen(false)}>

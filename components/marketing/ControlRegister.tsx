@@ -193,7 +193,7 @@ export function ControlRegister({
           >
             <table className="w-full border-collapse text-left">
               <caption className="sr-only">
-                Control register: mapping of Northport Security services to NIST CSF
+                Control register: mapping of Cairn Security services to NIST CSF
                 2.0, ISO/IEC 27001:2022, and CIS Controls v8, with current and target
                 maturity for each.
               </caption>

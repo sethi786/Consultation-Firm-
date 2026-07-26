@@ -15,14 +15,14 @@ export default async function SignInPage({
     <div className="flex min-h-dvh items-center justify-center px-6">
       <div className="w-full max-w-sm">
         <div className="mb-8 flex items-baseline gap-2">
-          <span className="font-display text-h3 text-portal-ink">Northport</span>
+          <span className="font-display text-h3 text-portal-ink">Cairn</span>
           <span className="font-mono text-mono-xs uppercase text-portal-ink-2">Security</span>
         </div>
 
         <PortalEyebrow>Client portal</PortalEyebrow>
         <h1 className="mt-2 text-h2 text-portal-ink">Sign in</h1>
         <p className="mt-2 text-small text-portal-ink-2">
-          Access is issued per engagement. Trouble signing in? Contact your Northport
+          Access is issued per engagement. Trouble signing in? Contact your Cairn
           consultant.
         </p>
 

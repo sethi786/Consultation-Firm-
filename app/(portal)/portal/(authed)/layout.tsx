@@ -15,7 +15,7 @@ export default async function AuthedPortalLayout({
       {/* Sidebar */}
       <aside className="shrink-0 border-b border-portal-line px-5 py-5 md:w-56 md:border-b-0 md:border-r md:py-8">
         <Link href="/portal" className="flex items-baseline gap-2">
-          <span className="font-display text-h3 text-portal-ink">Northport</span>
+          <span className="font-display text-h3 text-portal-ink">Cairn</span>
           <span className="font-mono text-mono-xs uppercase text-portal-ink-2">Portal</span>
         </Link>
 

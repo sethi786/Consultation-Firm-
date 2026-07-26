@@ -7,7 +7,7 @@ export default function NotFound() {
       <header className="border-b border-rule">
         <Container className="flex h-16 items-center">
           <Link href="/" className="inline-flex items-baseline gap-2">
-            <span className="font-display text-h3 text-ink">Northport</span>
+            <span className="font-display text-h3 text-ink">Cairn</span>
             <span className="font-mono text-mono-xs uppercase text-slate">Security</span>
           </Link>
         </Container>

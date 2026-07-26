@@ -28,7 +28,6 @@ const COLUMNS: { heading: string; links: { href: string; label: string }[] }[] =
       { href: "/legal/privacy", label: "Privacy" },
       { href: "/legal/terms", label: "Terms" },
       { href: "/legal/dpa", label: "Data processing" },
-      { href: "/portal", label: "Client portal" },
     ],
   },
 ];
@@ -40,7 +39,7 @@ export function SiteFooter() {
         <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-5">
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-baseline gap-2">
-              <span className="font-display text-h3 text-ink">Northport</span>
+              <span className="font-display text-h3 text-ink">Cairn</span>
               <span className="font-mono text-mono-xs uppercase text-slate">Security</span>
             </div>
             <p className="mt-3 max-w-xs text-caption text-slate">
@@ -68,7 +67,7 @@ export function SiteFooter() {
         {/* Colophon */}
         <div className="mt-14 flex flex-col gap-3 border-t border-rule pt-6 md:flex-row md:items-center md:justify-between">
           <p className="font-mono text-mono-xs uppercase text-slate">
-            © {new Date().getFullYear()} Northport Security. All rights reserved.
+            © {new Date().getFullYear()} Cairn Security. All rights reserved.
           </p>
           <p className="font-mono text-mono-xs uppercase text-slate/70">
             Cookieless · No trackers · Self-hosted fonts

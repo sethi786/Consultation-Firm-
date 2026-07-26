@@ -34,13 +34,13 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Northport Security — evidence-led security consulting",
-    template: "%s — Northport Security",
+    default: "Cairn Security — evidence-led security consulting",
+    template: "%s — Cairn Security",
   },
   description: SITE_DESCRIPTION,
   openGraph: {
     type: "website",
-    siteName: "Northport Security",
+    siteName: "Cairn Security",
     url: SITE_URL,
   },
   twitter: { card: "summary_large_image" },

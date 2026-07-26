@@ -8,7 +8,7 @@ import type { Post } from "@/payload-types";
 export const metadata: Metadata = {
   title: "Insights",
   description:
-    "Research and practitioner notes from Northport Security — Entra ID hardening, SOC 2 readiness, prompt injection, and more.",
+    "Research and practitioner notes from Cairn Security — Entra ID hardening, SOC 2 readiness, prompt injection, and more.",
   alternates: { canonical: "/insights" },
 };
 

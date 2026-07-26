@@ -3,8 +3,8 @@ import type { ContactInput } from "./contact-schema";
 import type { MeetingInput } from "./meeting-schema";
 import { SERVICE_LIST } from "@/content/services";
 
-const FROM_DEFAULT = "Northport Security <no-reply@northport.security>";
-const TO_DEFAULT = "assessments@northport.security";
+const FROM_DEFAULT = "Cairn Security <no-reply@cairnsecurity.com>";
+const TO_DEFAULT = "assessments@cairnsecurity.com";
 
 /** Human-readable service name for emails; slugs are never shown to a buyer. */
 function serviceLabel(value: string): string {
@@ -97,7 +97,7 @@ export async function sendAssessmentConfirmation(input: ContactInput): Promise<v
     "  2. You get a fixed-fee proposal — no open-ended retainers to book an assessment.",
     "  3. We schedule and run it, and hand you a findings register with evidence.",
     "",
-    "— Northport Security",
+    "— Cairn Security",
   ].join("\n");
 
   await send({
@@ -110,7 +110,7 @@ export async function sendAssessmentConfirmation(input: ContactInput): Promise<v
 }
 
 /**
- * Notify Northport of a client's call request and confirm to the client. Called
+ * Notify Cairn of a client's call request and confirm to the client. Called
  * from the portal booking action. No-op until Resend is configured, so the
  * on-screen confirmation still works locally without a key.
  */
@@ -164,7 +164,7 @@ export async function notifyCallBooking(booking: {
     "A consultant will confirm the time and send a meeting link shortly. You can",
     "see the status any time in your portal under Calls.",
     "",
-    "— Northport Security",
+    "— Cairn Security",
   ].join("\n");
 
   await send({
@@ -227,7 +227,7 @@ export async function notifyMeetingRequest(input: MeetingInput): Promise<boolean
       "",
       `Requested: ${when} · ${input.durationMins} minutes`,
       "",
-      "— Northport Security",
+      "— Cairn Security",
     ].join("\n"),
   });
 

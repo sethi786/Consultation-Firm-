@@ -1,8 +1,11 @@
-# CLAUDE.md — Northport Security Website
+# CLAUDE.md — Cairn Security Website
 
-> **Firm name is a placeholder.** `Northport Security` (wordmark `Northport`) stands
-> in for the real firm name throughout. To rename, search-and-replace those strings
-> across `content/`, `components/`, and `app/`.
+> **Firm name.** The firm is **Cairn Security** (wordmark `Cairn`) — a cairn is the
+> stack of stones that marks a verified path, which fits the evidence-led brand.
+> Domain `cairnsecurity.com` is the intended home but is **pending registration
+> confirmation**; the owner will confirm before launch. To change the name later,
+> search-and-replace `Cairn` / `cairnsecurity.com` across `content/`,
+> `components/`, `app/`, and `lib/`.
 >
 > Read this file fully before any task. Every decision below is deliberate.
 > If a request conflicts with this file, say so and ask before deviating.
@@ -13,7 +16,7 @@
 
 ## 1. What we're building
 
-A marketing site + headless CMS + authenticated client portal for **Northport
+A marketing site + headless CMS + authenticated client portal for **Cairn
 Security**, a managed security services provider and security consultancy.
 
 **Services (six, equal weight — all are revenue drivers):**

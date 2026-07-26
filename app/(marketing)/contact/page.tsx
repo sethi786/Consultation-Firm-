@@ -6,7 +6,7 @@ import { CONTACT_SERVICE_VALUES } from "@/lib/contact-schema";
 export const metadata: Metadata = {
   title: "Book an assessment",
   description:
-    "Book a paid security assessment with Northport. A scoped engagement with a findings register and a remediation plan — not a sales call.",
+    "Book a paid security assessment with Cairn. A scoped engagement with a findings register and a remediation plan — not a sales call.",
   alternates: { canonical: "/contact" },
 };
 

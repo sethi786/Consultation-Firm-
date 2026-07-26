@@ -15,7 +15,7 @@ import type { ServiceDetail } from "./types";
 const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["ai-security"]>> = {
   "ai-security": {
     situation:
-      "You shipped an LLM feature — a support copilot, a RAG assistant over internal docs, an agent that can call tools — and now someone on the board wants to know what it can leak, who can make it misbehave, and whether a prompt in a customer ticket can reach your database. Northport assesses the AI system the way an attacker will: prompt injection, data exfiltration through the model, over-scoped tool permissions, and the retrieval layer that quietly indexed data the model should never surface.",
+      "You shipped an LLM feature — a support copilot, a RAG assistant over internal docs, an agent that can call tools — and now someone on the board wants to know what it can leak, who can make it misbehave, and whether a prompt in a customer ticket can reach your database. Cairn assesses the AI system the way an attacker will: prompt injection, data exfiltration through the model, over-scoped tool permissions, and the retrieval layer that quietly indexed data the model should never surface.",
     workstreams: [
       {
         title: "Threat model the AI system end to end",
@@ -116,7 +116,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "cloud-security": {
     situation:
-      "Your cloud posture tool shows hundreds of findings and a score you can't explain to the board. The real question isn't \"how do we get to green\" — it's \"which ten of these actually expose us, and in what order do we fix them.\" Northport reviews your Azure and AWS estate against CIS benchmarks and your own architecture, then hands you a remediation plan sequenced by exploitability, not by the tool's alphabetical list.",
+      "Your cloud posture tool shows hundreds of findings and a score you can't explain to the board. The real question isn't \"how do we get to green\" — it's \"which ten of these actually expose us, and in what order do we fix them.\" Cairn reviews your Azure and AWS estate against CIS benchmarks and your own architecture, then hands you a remediation plan sequenced by exploitability, not by the tool's alphabetical list.",
     workstreams: [
       {
         title: "Configuration review against CIS benchmarks",
@@ -217,7 +217,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   identity: {
     situation:
-      "Someone asks who has standing global admin in your tenant, and the honest answer is \"we're not sure.\" Between break-glass accounts, legacy service principals, guest users, and roles granted for a project that ended two years ago, privileged access has sprawled. Northport inventories every identity with elevated rights, shows you the paths from an ordinary account to tenant admin, and moves you to just-in-time, least-privilege access in Entra ID.",
+      "Someone asks who has standing global admin in your tenant, and the honest answer is \"we're not sure.\" Between break-glass accounts, legacy service principals, guest users, and roles granted for a project that ended two years ago, privileged access has sprawled. Cairn inventories every identity with elevated rights, shows you the paths from an ordinary account to tenant admin, and moves you to just-in-time, least-privilege access in Entra ID.",
     workstreams: [
       {
         title: "Privileged-access inventory",
@@ -318,7 +318,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "zero-trust": {
     situation:
-      "The board asked for a zero trust roadmap, and you need one that survives contact with your actual network — not a vendor diagram. Zero trust is a multi-year architecture change across identity, devices, network, and data, and it fails when it's bought as a product instead of sequenced as a programme. Northport assesses where you are against a recognised zero trust maturity model and gives you a staged roadmap with the order that reduces the most risk first.",
+      "The board asked for a zero trust roadmap, and you need one that survives contact with your actual network — not a vendor diagram. Zero trust is a multi-year architecture change across identity, devices, network, and data, and it fails when it's bought as a product instead of sequenced as a programme. Cairn assesses where you are against a recognised zero trust maturity model and gives you a staged roadmap with the order that reduces the most risk first.",
     workstreams: [
       {
         title: "Zero trust maturity assessment",
@@ -419,7 +419,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "managed-soc": {
     situation:
-      "Your tools generate thousands of alerts a week and no one is triaging them at 2am. The question is not whether you have detection — it's whether anything happens when a real one fires. Northport runs detection and response against your existing stack: we tune the noise down, write the detections that matter, and put analysts on the queue around the clock so an alert becomes an investigation, not an unread email.",
+      "Your tools generate thousands of alerts a week and no one is triaging them at 2am. The question is not whether you have detection — it's whether anything happens when a real one fires. Cairn runs detection and response against your existing stack: we tune the noise down, write the detections that matter, and put analysts on the queue around the clock so an alert becomes an investigation, not an unread email.",
     workstreams: [
       {
         title: "Detection engineering & tuning",
@@ -521,7 +521,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   compliance: {
     situation:
-      "You have a SOC 2 or ISO 27001 audit in a few months and a stack of controls you're not sure you can evidence. The failure mode isn't usually the audit itself — it's discovering three weeks out that a control has no owner, no policy, and no logs to prove it ran. Northport runs a readiness assessment against the framework you're certifying to, tells you exactly where the gaps are, and gets the evidence in place before the auditor arrives.",
+      "You have a SOC 2 or ISO 27001 audit in a few months and a stack of controls you're not sure you can evidence. The failure mode isn't usually the audit itself — it's discovering three weeks out that a control has no owner, no policy, and no logs to prove it ran. Cairn runs a readiness assessment against the framework you're certifying to, tells you exactly where the gaps are, and gets the evidence in place before the auditor arrives.",
     workstreams: [
       {
         title: "Readiness gap assessment",
@@ -622,7 +622,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "data-security": {
     situation:
-      "You can't protect data you can't see. Sensitive records — PII, financials, source code, customer contracts — are scattered across SharePoint, OneDrive, Teams, and a dozen SaaS apps, and no one can say with confidence where the crown jewels live or who can reach them. Northport stands up Microsoft Purview to find and classify sensitive data, label it, and stop it from leaving through the channels that actually leak — so data protection becomes a control you can evidence, not a hope.",
+      "You can't protect data you can't see. Sensitive records — PII, financials, source code, customer contracts — are scattered across SharePoint, OneDrive, Teams, and a dozen SaaS apps, and no one can say with confidence where the crown jewels live or who can reach them. Cairn stands up Microsoft Purview to find and classify sensitive data, label it, and stop it from leaving through the channels that actually leak — so data protection becomes a control you can evidence, not a hope.",
     workstreams: [
       {
         title: "Data discovery & classification",
@@ -723,7 +723,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "cloud-foundations": {
     situation:
-      "You're scaling in Azure on foundations that grew by accident — subscriptions spun up ad hoc, inconsistent networking, no guardrails, and security bolted on after each workload ships. Every new project inherits the drift. Northport builds a secure-by-default Azure landing zone to the Microsoft Well-Architected and Cloud Adoption Framework, so governance, identity, network topology, and policy-as-code are in place before the next workload lands — and staying secure becomes the path of least resistance.",
+      "You're scaling in Azure on foundations that grew by accident — subscriptions spun up ad hoc, inconsistent networking, no guardrails, and security bolted on after each workload ships. Every new project inherits the drift. Cairn builds a secure-by-default Azure landing zone to the Microsoft Well-Architected and Cloud Adoption Framework, so governance, identity, network topology, and policy-as-code are in place before the next workload lands — and staying secure becomes the path of least resistance.",
     workstreams: [
       {
         title: "Landing zone architecture",
@@ -824,7 +824,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "network-security": {
     situation:
-      "Your network is flat. Once an attacker lands a single foothold — a phished laptop, an exposed service — nothing stops them moving laterally to the domain controller and the data. Northport designs and delivers segmentation, traffic filtering, and a secure network architecture that turns a breach into a contained incident instead of a company-wide one.",
+      "Your network is flat. Once an attacker lands a single foothold — a phished laptop, an exposed service — nothing stops them moving laterally to the domain controller and the data. Cairn designs and delivers segmentation, traffic filtering, and a secure network architecture that turns a breach into a contained incident instead of a company-wide one.",
     workstreams: [
       {
         title: "Architecture & segmentation review",
@@ -925,7 +925,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "endpoint-security": {
     situation:
-      "Every laptop and phone that touches your data is a way in — and half of them you can't see. Unmanaged devices, inconsistent patching, and endpoint protection that's installed but not tuned mean the endpoint is the softest part of your attack surface. Northport uses Microsoft Intune and Defender for Endpoint to bring every device under management, harden it to a baseline, and make device health a condition of reaching your data.",
+      "Every laptop and phone that touches your data is a way in — and half of them you can't see. Unmanaged devices, inconsistent patching, and endpoint protection that's installed but not tuned mean the endpoint is the softest part of your attack surface. Cairn uses Microsoft Intune and Defender for Endpoint to bring every device under management, harden it to a baseline, and make device health a condition of reaching your data.",
     workstreams: [
       {
         title: "Device inventory & management",
@@ -1026,7 +1026,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "application-security": {
     situation:
-      "You ship weekly, and security can't be a gate bolted on at the end — by then the design decisions are made and the fix is expensive. Northport builds security into your software development lifecycle: security requirements up front, secure-coding standards, automated SAST/DAST and API testing in the pipeline, and a way to prioritise what actually matters — so your teams keep their velocity and stop shipping the same classes of bug.",
+      "You ship weekly, and security can't be a gate bolted on at the end — by then the design decisions are made and the fix is expensive. Cairn builds security into your software development lifecycle: security requirements up front, secure-coding standards, automated SAST/DAST and API testing in the pipeline, and a way to prioritise what actually matters — so your teams keep their velocity and stop shipping the same classes of bug.",
     workstreams: [
       {
         title: "SDLC & threat modelling",
@@ -1127,7 +1127,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "ai-implementation": {
     situation:
-      "You want Copilot and AI in the business — but the last thing you need is a fast rollout that over-shares SharePoint to every user or ships an agent with keys to production. Northport deploys Microsoft 365 Copilot and custom LLM solutions with the data boundaries, guardrails, and adoption plan in place first, so you get the productivity without opening a new front door.",
+      "You want Copilot and AI in the business — but the last thing you need is a fast rollout that over-shares SharePoint to every user or ships an agent with keys to production. Cairn deploys Microsoft 365 Copilot and custom LLM solutions with the data boundaries, guardrails, and adoption plan in place first, so you get the productivity without opening a new front door.",
     workstreams: [
       {
         title: "AI readiness & data-boundary review",
@@ -1202,7 +1202,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "data-privacy": {
     situation:
-      "Between GDPR, CCPA, and whatever your next contract demands, \"are we compliant with privacy law\" has become a question you can't answer with confidence — and can't prove. Northport maps where personal data actually lives, runs the assessments regulators expect, and stands up a privacy program that produces the records-of-processing and DPIAs an auditor or a regulator asks for.",
+      "Between GDPR, CCPA, and whatever your next contract demands, \"are we compliant with privacy law\" has become a question you can't answer with confidence — and can't prove. Cairn maps where personal data actually lives, runs the assessments regulators expect, and stands up a privacy program that produces the records-of-processing and DPIAs an auditor or a regulator asks for.",
     workstreams: [
       {
         title: "Data mapping & records of processing",
@@ -1277,7 +1277,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "cloud-implementation": {
     situation:
-      "You've decided to move to the cloud — or you're already there and it grew faster than anyone planned. The worry is doing it without blowing the budget or leaving security to \"phase two\" that never comes. Northport migrates and modernises workloads to Azure and AWS on a secure-by-default foundation, with cost guardrails and posture controls in place from the first subscription.",
+      "You've decided to move to the cloud — or you're already there and it grew faster than anyone planned. The worry is doing it without blowing the budget or leaving security to \"phase two\" that never comes. Cairn migrates and modernises workloads to Azure and AWS on a secure-by-default foundation, with cost guardrails and posture controls in place from the first subscription.",
     workstreams: [
       {
         title: "Assessment & migration planning",
@@ -1352,7 +1352,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "ot-iot-security": {
     situation:
-      "Your plant floor, building systems, or device fleet were engineered for uptime, not for being on a routable network — and now they are. Northport gives you visibility into what's actually connected, segments OT and IoT away from the paths an attacker would use, and monitors it without touching the availability your operations depend on.",
+      "Your plant floor, building systems, or device fleet were engineered for uptime, not for being on a routable network — and now they are. Cairn gives you visibility into what's actually connected, segments OT and IoT away from the paths an attacker would use, and monitors it without touching the availability your operations depend on.",
     workstreams: [
       {
         title: "Asset discovery & visibility",
@@ -1427,7 +1427,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "iam-onboarding": {
     situation:
-      "Every new hire is a ticket, every leaver is a risk, and access has sprawled to the point where no one can say who can reach what. Northport maps every identity and entitlement, then automates the joiner-mover-leaver lifecycle and access reviews in Entra ID so onboarding is fast, offboarding is instant, and least privilege is the default.",
+      "Every new hire is a ticket, every leaver is a risk, and access has sprawled to the point where no one can say who can reach what. Cairn maps every identity and entitlement, then automates the joiner-mover-leaver lifecycle and access reviews in Entra ID so onboarding is fast, offboarding is instant, and least privilege is the default.",
     workstreams: [
       {
         title: "Identity & entitlement mapping",
@@ -1502,7 +1502,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "vulnerability-management": {
     situation:
-      "Your scanner found 50,000 vulnerabilities and your team can fix maybe 200 a month. Counting them isn't the problem — knowing which ones actually expose you, and getting them fixed before they're used, is. Northport runs risk-based vulnerability management: continuous discovery, prioritisation by real exploitability, and remediation SLAs that hold.",
+      "Your scanner found 50,000 vulnerabilities and your team can fix maybe 200 a month. Counting them isn't the problem — knowing which ones actually expose you, and getting them fixed before they're used, is. Cairn runs risk-based vulnerability management: continuous discovery, prioritisation by real exploitability, and remediation SLAs that hold.",
     workstreams: [
       {
         title: "Discovery & continuous scanning",
@@ -1577,7 +1577,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "siem-soar": {
     situation:
-      "Your SIEM ingests everything, costs a fortune, and floods analysts with alerts no one trusts. The fix isn't more data — it's high-fidelity detections, automation that handles the repetitive response, and an ingestion strategy that stops paying to store noise. Northport engineers Microsoft Sentinel (or your SIEM) and SOAR playbooks so the alerts that fire are worth acting on.",
+      "Your SIEM ingests everything, costs a fortune, and floods analysts with alerts no one trusts. The fix isn't more data — it's high-fidelity detections, automation that handles the repetitive response, and an ingestion strategy that stops paying to store noise. Cairn engineers Microsoft Sentinel (or your SIEM) and SOAR playbooks so the alerts that fire are worth acting on.",
     workstreams: [
       {
         title: "Detection engineering",
@@ -1652,7 +1652,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "threat-intelligence": {
     situation:
-      "Generic threat feeds tell you what's happening to everyone; you need to know what's targeting your industry, your brand, and your exposed assets — and have it actually drive your defences. Northport delivers curated, relevant threat intelligence and attack-surface monitoring, wired into your detections and your decisions rather than sitting in a portal no one opens.",
+      "Generic threat feeds tell you what's happening to everyone; you need to know what's targeting your industry, your brand, and your exposed assets — and have it actually drive your defences. Cairn delivers curated, relevant threat intelligence and attack-surface monitoring, wired into your detections and your decisions rather than sitting in a portal no one opens.",
     workstreams: [
       {
         title: "Intelligence requirements & sourcing",
@@ -1727,7 +1727,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "incident-response": {
     situation:
-      "The question isn't whether you'll have an incident — it's whether, at 2am, you have a plan, the right people on a call, and a tested way to recover. Northport puts an incident-response retainer in place, exercises your team against realistic ransomware and breach scenarios, and builds the recovery runbooks so a bad day stays a bad day instead of becoming an existential one.",
+      "The question isn't whether you'll have an incident — it's whether, at 2am, you have a plan, the right people on a call, and a tested way to recover. Cairn puts an incident-response retainer in place, exercises your team against realistic ransomware and breach scenarios, and builds the recovery runbooks so a bad day stays a bad day instead of becoming an existential one.",
     workstreams: [
       {
         title: "IR readiness & retainer",
@@ -1802,7 +1802,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   grc: {
     situation:
-      "Risk lives in spreadsheets, policies are out of date, and every audit is a surprise. You need governance, risk, and compliance run as a program — one risk register, a current policy framework, and controls mapped once and reused across every standard you're held to. Northport builds and runs that program so compliance becomes routine instead of a recurring emergency.",
+      "Risk lives in spreadsheets, policies are out of date, and every audit is a surprise. You need governance, risk, and compliance run as a program — one risk register, a current policy framework, and controls mapped once and reused across every standard you're held to. Cairn builds and runs that program so compliance becomes routine instead of a recurring emergency.",
     workstreams: [
       {
         title: "Risk register & assessment",
@@ -1877,7 +1877,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "third-party-risk": {
     situation:
-      "Your biggest exposures increasingly sit outside your walls — in the vendors, SaaS platforms, and partners with access to your data. Northport stands up third-party risk management: assess and tier your vendors, track their security posture continuously, and make sure a supplier's bad day doesn't become your breach.",
+      "Your biggest exposures increasingly sit outside your walls — in the vendors, SaaS platforms, and partners with access to your data. Cairn stands up third-party risk management: assess and tier your vendors, track their security posture continuously, and make sure a supplier's bad day doesn't become your breach.",
     workstreams: [
       {
         title: "Vendor inventory & tiering",
@@ -1952,7 +1952,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "business-continuity": {
     situation:
-      "If a core system were down for a week — ransomware, a cloud outage, a failed data centre — could the business keep running, and for how long? Northport runs a business impact analysis, builds continuity and disaster-recovery plans against your real recovery objectives, and then tests them, so resilience is proven rather than assumed.",
+      "If a core system were down for a week — ransomware, a cloud outage, a failed data centre — could the business keep running, and for how long? Cairn runs a business impact analysis, builds continuity and disaster-recovery plans against your real recovery objectives, and then tests them, so resilience is proven rather than assumed.",
     workstreams: [
       {
         title: "Business impact analysis",
@@ -2027,7 +2027,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   vciso: {
     situation:
-      "You need a security leader — strategy, board reporting, program ownership, someone who can sit across from an auditor or a customer's CISO — but not a full-time executive salary. Northport provides a virtual CISO: an experienced security leader who owns your programme at the cadence you need, from a few days a month to a hands-on interim mandate.",
+      "You need a security leader — strategy, board reporting, program ownership, someone who can sit across from an auditor or a customer's CISO — but not a full-time executive salary. Cairn provides a virtual CISO: an experienced security leader who owns your programme at the cadence you need, from a few days a month to a hands-on interim mandate.",
     workstreams: [
       {
         title: "Security strategy & roadmap",
@@ -2102,7 +2102,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "penetration-testing": {
     situation:
-      "You need to know — and prove — that an attacker can't get from the internet to your crown jewels. Northport runs penetration tests and red-team exercises that find the real paths, chain the weaknesses the way an adversary would, and hand you evidence and fixes, not a scanner dump with the severity dialled up.",
+      "You need to know — and prove — that an attacker can't get from the internet to your crown jewels. Cairn runs penetration tests and red-team exercises that find the real paths, chain the weaknesses the way an adversary would, and hand you evidence and fixes, not a scanner dump with the severity dialled up.",
     workstreams: [
       {
         title: "Scoping & threat profiling",
@@ -2177,7 +2177,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "security-architecture": {
     situation:
-      "You're building something significant — a new platform, a cloud migration, a product — and you want to know it's secure by design before it ships, not after a pen test finds out. Northport reviews your reference architecture and designs against zero-trust and secure-by-design principles, and gives you a prioritised set of changes while they're still cheap to make.",
+      "You're building something significant — a new platform, a cloud migration, a product — and you want to know it's secure by design before it ships, not after a pen test finds out. Cairn reviews your reference architecture and designs against zero-trust and secure-by-design principles, and gives you a prioritised set of changes while they're still cheap to make.",
     workstreams: [
       {
         title: "Architecture & design review",
@@ -2252,7 +2252,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "security-awareness": {
     situation:
-      "Your people are the most-targeted part of your attack surface, and annual click-through training treats it like a checkbox. Northport runs role-based awareness training and realistic phishing simulations that change behaviour — and gives you the metrics to prove click rates are actually falling.",
+      "Your people are the most-targeted part of your attack surface, and annual click-through training treats it like a checkbox. Cairn runs role-based awareness training and realistic phishing simulations that change behaviour — and gives you the metrics to prove click rates are actually falling.",
     workstreams: [
       {
         title: "Baseline & program design",
@@ -2327,7 +2327,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "data-platform": {
     situation:
-      "Your data lives in a dozen systems, every team has its own version of the numbers, and leadership doesn't trust the dashboard. Northport builds a governed data platform — on Microsoft Fabric or Azure — with reliable pipelines, a shared semantic model, and security and lineage built in, so analytics and AI run on data people can actually trust.",
+      "Your data lives in a dozen systems, every team has its own version of the numbers, and leadership doesn't trust the dashboard. Cairn builds a governed data platform — on Microsoft Fabric or Azure — with reliable pipelines, a shared semantic model, and security and lineage built in, so analytics and AI run on data people can actually trust.",
     workstreams: [
       { title: "Data assessment & architecture", deliverable: "Data platform architecture & roadmap", detail: "Map sources, quality, and use cases, and design a target platform (lakehouse / warehouse) that fits your stack." },
       { title: "Pipelines & integration", deliverable: "Ingestion & transformation pipelines", detail: "Reliable, monitored pipelines that land and shape data once, so every report starts from the same source of truth." },
@@ -2350,7 +2350,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "workplace-collaboration": {
     situation:
-      "You rolled out Microsoft 365 and Teams, but sprawl set in: guest access no one tracks, sites shared too widely, and features half-adopted. Northport brings governance and security to your collaboration platform and drives the adoption that makes it pay off — so M365 is an asset, not a shadow-IT risk.",
+      "You rolled out Microsoft 365 and Teams, but sprawl set in: guest access no one tracks, sites shared too widely, and features half-adopted. Cairn brings governance and security to your collaboration platform and drives the adoption that makes it pay off — so M365 is an asset, not a shadow-IT risk.",
     workstreams: [
       { title: "Tenant governance & security", deliverable: "M365 governance baseline", detail: "Sharing policies, guest access, and lifecycle for Teams and SharePoint so collaboration doesn't quietly become data exposure." },
       { title: "Secure collaboration design", deliverable: "Collaboration architecture", detail: "How Teams, SharePoint, and OneDrive should be structured, labelled, and protected for the way your people actually work." },
@@ -2373,7 +2373,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "managed-workplace": {
     situation:
-      "Your IT team is buried in tickets and never gets to the projects that matter. Northport runs your digital workplace — endpoints, identity, patching, and support — proactively, so devices stay compliant, users stay productive, and your team is freed to work on what moves the business.",
+      "Your IT team is buried in tickets and never gets to the projects that matter. Cairn runs your digital workplace — endpoints, identity, patching, and support — proactively, so devices stay compliant, users stay productive, and your team is freed to work on what moves the business.",
     workstreams: [
       { title: "Endpoint & patch management", deliverable: "Managed endpoint estate", detail: "Compliant, patched, monitored devices via Intune and Defender — health and hardening maintained, not left to drift." },
       { title: "Identity & access operations", deliverable: "Managed identity operations", detail: "Day-to-day identity, access, and conditional-access operations kept current and least-privilege." },
@@ -2396,7 +2396,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "device-management": {
     situation:
-      "A new hire shouldn't wait days for a working laptop, and a lost device shouldn't mean lost data. Northport stands up zero-touch device provisioning and lifecycle management with Intune and Autopilot, so every device arrives compliant and configured on day one and is secured — or wiped — the moment it needs to be.",
+      "A new hire shouldn't wait days for a working laptop, and a lost device shouldn't mean lost data. Cairn stands up zero-touch device provisioning and lifecycle management with Intune and Autopilot, so every device arrives compliant and configured on day one and is secured — or wiped — the moment it needs to be.",
     workstreams: [
       { title: "Zero-touch provisioning", deliverable: "Autopilot provisioning process", detail: "Devices ship to the user and configure themselves to your compliant baseline out of the box — no manual imaging." },
       { title: "Compliance & hardening baselines", deliverable: "Intune compliance & configuration profiles", detail: "Security baselines, encryption, and compliance policies that gate access to corporate data." },
@@ -2419,7 +2419,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "adoption-change": {
     situation:
-      "You bought the licences, but the tools sit unused and the ROI never lands. Northport runs structured adoption and change management around your technology rollouts — champions, training, and communications tied to real business outcomes — so the change sticks and the value shows up.",
+      "You bought the licences, but the tools sit unused and the ROI never lands. Cairn runs structured adoption and change management around your technology rollouts — champions, training, and communications tied to real business outcomes — so the change sticks and the value shows up.",
     workstreams: [
       { title: "Readiness & stakeholder mapping", deliverable: "Change readiness assessment", detail: "Who's affected, what changes for them, and where resistance will come from — before rollout, not after." },
       { title: "Champion & training program", deliverable: "Champions network & training plan", detail: "A network of champions and role-based training so people learn the tools in the context of their actual work." },
@@ -2442,7 +2442,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "datacenter-modernization": {
     situation:
-      "Your data center is ageing, expensive, and increasingly a liability. Northport assesses what you run, modernises what should stay, and moves the rest to a hybrid or cloud target — cutting cost and risk while keeping availability and security intact.",
+      "Your data center is ageing, expensive, and increasingly a liability. Cairn assesses what you run, modernises what should stay, and moves the rest to a hybrid or cloud target — cutting cost and risk while keeping availability and security intact.",
     workstreams: [
       { title: "Assessment & disposition", deliverable: "Workload disposition plan", detail: "Inventory every workload and decide its fate — modernise, migrate, retire — with cost and risk quantified." },
       { title: "Virtualization & consolidation", deliverable: "Consolidated, virtualized estate", detail: "Consolidate and virtualize to reduce footprint, power, and licensing before anything moves." },
@@ -2465,7 +2465,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "hybrid-cloud": {
     situation:
-      "You're running across on-prem, Azure, and AWS, and no one has a single view of cost, security, or what's actually deployed. Northport brings one operating model to your hybrid and multi-cloud estate — governance, monitoring, and cost control — so you manage it deliberately instead of by surprise.",
+      "You're running across on-prem, Azure, and AWS, and no one has a single view of cost, security, or what's actually deployed. Cairn brings one operating model to your hybrid and multi-cloud estate — governance, monitoring, and cost control — so you manage it deliberately instead of by surprise.",
     workstreams: [
       { title: "Estate discovery & governance", deliverable: "Multi-cloud governance model", detail: "Discover what's deployed where, and establish consistent governance, tagging, and policy across clouds." },
       { title: "Unified monitoring & operations", deliverable: "Cross-cloud monitoring", detail: "One pane for health, security signals, and alerts across on-prem and clouds, feeding your SOC." },
@@ -2488,7 +2488,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "backup-storage": {
     situation:
-      "Your backups are slow, costly, and — the part that matters — you're not certain they'd actually restore after a ransomware hit. Northport modernises backup and storage with immutable, tested recovery, sized to what the business truly needs, so a bad day is recoverable rather than catastrophic.",
+      "Your backups are slow, costly, and — the part that matters — you're not certain they'd actually restore after a ransomware hit. Cairn modernises backup and storage with immutable, tested recovery, sized to what the business truly needs, so a bad day is recoverable rather than catastrophic.",
     workstreams: [
       { title: "Backup & recovery assessment", deliverable: "Backup posture assessment", detail: "Review what's protected, how, and whether recovery objectives are actually met — most gaps are silent until tested." },
       { title: "Immutable, ransomware-resilient backup", deliverable: "Immutable backup architecture", detail: "Air-gapped or immutable copies that ransomware can't encrypt or delete, aligned to a 3-2-1 strategy." },
@@ -2511,7 +2511,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "network-transformation": {
     situation:
-      "Your WAN was built for a data-center world, and it's expensive, slow to change, and fighting your cloud and remote-work reality. Northport modernises the network with SD-WAN and SASE — better performance, lower cost, and security converged into the fabric instead of bolted on.",
+      "Your WAN was built for a data-center world, and it's expensive, slow to change, and fighting your cloud and remote-work reality. Cairn modernises the network with SD-WAN and SASE — better performance, lower cost, and security converged into the fabric instead of bolted on.",
     workstreams: [
       { title: "Network assessment & design", deliverable: "Network transformation design", detail: "Assess traffic, sites, and cloud dependencies, and design an SD-WAN/SASE target that fits how the business now runs." },
       { title: "SD-WAN rollout", deliverable: "SD-WAN deployment", detail: "Application-aware routing across sites and cloud, with resilience and central policy replacing rigid, costly links." },
@@ -2534,7 +2534,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "enterprise-wireless": {
     situation:
-      "Wi-Fi drops in the warehouse, there are dead zones on the third floor, and every complaint lands on IT. Northport designs, surveys, and manages enterprise wireless and campus networking so connectivity is reliable, secure, and no longer a daily distraction.",
+      "Wi-Fi drops in the warehouse, there are dead zones on the third floor, and every complaint lands on IT. Cairn designs, surveys, and manages enterprise wireless and campus networking so connectivity is reliable, secure, and no longer a daily distraction.",
     workstreams: [
       { title: "Site survey & design", deliverable: "Wireless design & heat maps", detail: "Predictive and on-site surveys to design coverage and capacity that actually holds up under real load." },
       { title: "Secure wireless architecture", deliverable: "Secure WLAN architecture", detail: "Segmented SSIDs, strong authentication, and guest isolation so wireless isn't the soft way in." },
@@ -2557,7 +2557,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "software-asset-management": {
     situation:
-      "You're over-licensed on some products, under-licensed (and audit-exposed) on others, and no one can say exactly what you own versus what you use. Northport builds a software asset management baseline that reconciles entitlements against real usage — cutting waste, closing compliance gaps, and giving you the position to survive a vendor audit.",
+      "You're over-licensed on some products, under-licensed (and audit-exposed) on others, and no one can say exactly what you own versus what you use. Cairn builds a software asset management baseline that reconciles entitlements against real usage — cutting waste, closing compliance gaps, and giving you the position to survive a vendor audit.",
     workstreams: [
       { title: "Discovery & inventory", deliverable: "Software inventory & entitlement register", detail: "Reconcile what's deployed and used against what you're entitled to across your major publishers." },
       { title: "Compliance & risk position", deliverable: "License compliance position (ELP)", detail: "An effective licence position per publisher, surfacing both shortfalls (audit risk) and surplus (waste)." },
@@ -2580,7 +2580,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "licensing-optimization": {
     situation:
-      "Your Microsoft, Adobe, and VMware renewals keep climbing, and no one's sure you're using what you pay for. Northport right-sizes and renegotiates your major software agreements against real usage — so you pay for what the business needs, not what a sales rep quoted.",
+      "Your Microsoft, Adobe, and VMware renewals keep climbing, and no one's sure you're using what you pay for. Cairn right-sizes and renegotiates your major software agreements against real usage — so you pay for what the business needs, not what a sales rep quoted.",
     workstreams: [
       { title: "Usage & needs analysis", deliverable: "Usage-based requirements", detail: "What editions and quantities you actually need, based on real usage — the counter to the vendor's upsell." },
       { title: "Agreement & scenario modelling", deliverable: "Licensing scenario models", detail: "Model the renewal options (editions, terms, programs) so you go into negotiation knowing the best structure." },
@@ -2603,7 +2603,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "it-procurement": {
     situation:
-      "Buying IT is slow, fragmented across teams, and you suspect you're leaving money — and security — on the table. Northport runs sourcing and procurement with security built into the process: better pricing, faster cycles, and vendors that are actually vetted before they get access to your environment.",
+      "Buying IT is slow, fragmented across teams, and you suspect you're leaving money — and security — on the table. Cairn runs sourcing and procurement with security built into the process: better pricing, faster cycles, and vendors that are actually vetted before they get access to your environment.",
     workstreams: [
       { title: "Sourcing strategy", deliverable: "Sourcing strategy & standards", detail: "Consolidate demand, standardise what you buy, and set the vendor and security requirements up front." },
       { title: "Vendor selection & security vetting", deliverable: "Vetted vendor shortlist", detail: "Evaluate vendors on price and on security posture, so a supplier's weakness doesn't become your incident." },
@@ -2626,7 +2626,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
 
   "lifecycle-services": {
     situation:
-      "You don't have a clean picture of the hardware you own, and retiring old kit is a security and compliance risk waiting to happen. Northport manages the hardware lifecycle from deployment to secure, certified disposal — with data destruction you can actually prove to an auditor.",
+      "You don't have a clean picture of the hardware you own, and retiring old kit is a security and compliance risk waiting to happen. Cairn manages the hardware lifecycle from deployment to secure, certified disposal — with data destruction you can actually prove to an auditor.",
     workstreams: [
       { title: "Asset inventory & tracking", deliverable: "Hardware asset register", detail: "Know what you have, where it is, and its lifecycle stage — the base for everything else." },
       { title: "Deployment & refresh", deliverable: "Deployment & refresh process", detail: "A repeatable process for rolling out and refreshing hardware on a sensible cadence, tied to provisioning." },

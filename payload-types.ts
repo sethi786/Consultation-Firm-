@@ -684,7 +684,7 @@ export interface CallBooking {
   requestedByName?: string | null;
   notes?: string | null;
   /**
-   * Added by Northport on confirmation.
+   * Added by Cairn on confirmation.
    */
   meetingLink?: string | null;
   updatedAt: string;

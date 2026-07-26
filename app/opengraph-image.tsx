@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "nodejs";
-export const alt = "Northport Security — evidence-led security consulting";
+export const alt = "Cairn Security — evidence-led security consulting";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -30,7 +30,7 @@ export default function OpengraphImage() {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          <div style={{ fontSize: 34, fontWeight: 600, color: INK }}>Northport</div>
+          <div style={{ fontSize: 34, fontWeight: 600, color: INK }}>Cairn</div>
           <div style={{ fontSize: 20, letterSpacing: 4, color: SLATE }}>SECURITY</div>
         </div>
 

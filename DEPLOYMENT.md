@@ -1,4 +1,4 @@
-# Deploying Northport Security — go live for clients
+# Deploying Cairn Security — go live for clients
 
 A start-to-finish guide to host the site publicly and make the client portal
 fully usable. No prior DevOps needed. ~30–45 minutes.
@@ -62,7 +62,7 @@ Add these for the **Production** environment (and Preview if you use it).
 | `DATABASE_URI` | your Neon connection string from step 1 |
 | `PAYLOAD_SECRET` | a long random string (see below) |
 | `AUTH_SECRET` | a different long random string |
-| `NEXT_PUBLIC_SITE_URL` | your production URL, e.g. `https://northport-security.vercel.app` (no trailing slash) |
+| `NEXT_PUBLIC_SITE_URL` | your production URL, e.g. `https://cairn-security.vercel.app` (no trailing slash) |
 
 Generate the two secrets — run this locally twice, or use any password manager:
 
@@ -147,7 +147,7 @@ Then populate their portal:
 
 ## 7. Custom domain (optional)
 
-Vercel → **Settings → Domains** → add `northport.security` (or your domain) and
+Vercel → **Settings → Domains** → add `cairnsecurity.com` (or your domain) and
 follow the DNS instructions. Then update `NEXT_PUBLIC_SITE_URL` to the custom
 domain and redeploy.
 

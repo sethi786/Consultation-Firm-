@@ -91,7 +91,7 @@ export async function addFindingComment(
 
 /**
  * Client "mark remediated" → sets `pending_verification`, never `closed`
- * (CLAUDE.md §7 — only Northport verifies). No-op if already closed/remediated.
+ * (CLAUDE.md §7 — only Cairn verifies). No-op if already closed/remediated.
  */
 export async function requestRemediation(
   ctx: PortalContext,
