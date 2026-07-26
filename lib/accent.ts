@@ -8,7 +8,9 @@ import type { Domain } from "@/content/services";
  * `solid` = strong block with white text; `softBg`/`softText` = tinted panel;
  * `text` = AA-accessible label on paper; `border`/`dot` for accents.
  */
-export type Accent = "coral" | "sky" | "violet" | "mint" | "indigo" | "amber" | "rose";
+export type Accent =
+  | "coral" | "sky" | "violet" | "mint" | "indigo" | "amber" | "rose"
+  | "teal" | "orange" | "lime" | "fuchsia";
 
 export interface AccentClasses {
   solid: string;
@@ -92,6 +94,46 @@ export const ACCENTS: Record<Accent, AccentClasses> = {
     textGroupHover: "group-hover:text-rose-ink",
     dot: "bg-rose",
   },
+  teal: {
+    solid: "bg-teal text-white",
+    softBg: "bg-teal-soft",
+    softText: "text-teal-ink",
+    text: "text-teal-ink",
+    border: "border-teal",
+    borderHover: "hover:border-teal",
+    textGroupHover: "group-hover:text-teal-ink",
+    dot: "bg-teal",
+  },
+  orange: {
+    solid: "bg-orange text-white",
+    softBg: "bg-orange-soft",
+    softText: "text-orange-ink",
+    text: "text-orange-ink",
+    border: "border-orange",
+    borderHover: "hover:border-orange",
+    textGroupHover: "group-hover:text-orange-ink",
+    dot: "bg-orange",
+  },
+  lime: {
+    solid: "bg-lime text-white",
+    softBg: "bg-lime-soft",
+    softText: "text-lime-ink",
+    text: "text-lime-ink",
+    border: "border-lime",
+    borderHover: "hover:border-lime",
+    textGroupHover: "group-hover:text-lime-ink",
+    dot: "bg-lime",
+  },
+  fuchsia: {
+    solid: "bg-fuchsia text-white",
+    softBg: "bg-fuchsia-soft",
+    softText: "text-fuchsia-ink",
+    text: "text-fuchsia-ink",
+    border: "border-fuchsia",
+    borderHover: "hover:border-fuchsia",
+    textGroupHover: "group-hover:text-fuchsia-ink",
+    dot: "bg-fuchsia",
+  },
 };
 
 /** Category → hue. Keeps the whole site's color-coding coherent (7 categories,
@@ -104,6 +146,10 @@ export const DOMAIN_ACCENT: Record<Domain, Accent> = {
   "Detection & Response": "indigo",
   "Governance, Risk & Compliance": "amber",
   "Advisory & Assurance": "rose",
+  "Modern Workplace": "teal",
+  "Data Center & Infrastructure": "orange",
+  "Networking": "lime",
+  "IT Asset Management": "fuchsia",
 };
 
 export function domainAccent(domain: Domain): AccentClasses {

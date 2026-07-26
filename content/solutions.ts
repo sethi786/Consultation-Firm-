@@ -121,4 +121,28 @@ export const CAPABILITY_MATRIX: MatrixRow[] = [
     implement: "Remediation & awareness rollout",
     operate: "Ongoing vCISO & testing cadence",
   },
+  {
+    domain: "Modern Workplace",
+    advise: "Workplace & M365 governance review",
+    implement: "M365, device & adoption rollout",
+    operate: "Managed workplace & support",
+  },
+  {
+    domain: "Data Center & Infrastructure",
+    advise: "Data center & backup assessment",
+    implement: "Modernization, migration & backup",
+    operate: "Managed infrastructure & recovery",
+  },
+  {
+    domain: "Networking",
+    advise: "Network & wireless assessment",
+    implement: "SD-WAN, SASE & wireless rollout",
+    operate: "Managed network & optimisation",
+  },
+  {
+    domain: "IT Asset Management",
+    advise: "SAM baseline & licence position",
+    implement: "SAM tooling & licensing reset",
+    operate: "Managed SAM, procurement & lifecycle",
+  },
 ];

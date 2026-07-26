@@ -35,9 +35,9 @@ export default function SolutionsPage() {
           </div>
           <div className="flex flex-col justify-end lg:col-span-5">
             <p className="max-w-measure text-lede text-slate">
-              The same eleven capabilities, offered in the mode that fits where you
-              are — an independent assessment, hands-on delivery, or your security
-              operations run by us. Most clients start with one and grow into the next.
+              Every capability in our catalogue, offered in the mode that fits where
+              you are — an independent assessment, hands-on delivery, or run by us as
+              a managed service. Most clients start with one and grow into the next.
             </p>
           </div>
         </div>

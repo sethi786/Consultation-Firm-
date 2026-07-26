@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Container, Eyebrow, Reveal } from "@/components/ui";
-import { SERVICES_BY_DOMAIN, SERVICE_LIST } from "@/content/services";
+import { SERVICES_BY_DOMAIN, SERVICE_LIST, DOMAINS } from "@/content/services";
 import { domainAccent } from "@/lib/accent";
 
 /**
@@ -14,7 +14,7 @@ export function ServicesIndex({ index = 2 }: { index?: number }) {
       <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
         <Eyebrow index={index}>Services</Eyebrow>
         <p className="font-mono text-mono-xs uppercase text-slate">
-          {SERVICE_LIST.length} services · 5 domains
+          {SERVICE_LIST.length} services · {DOMAINS.length} categories
         </p>
       </div>
 

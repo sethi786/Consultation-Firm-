@@ -97,7 +97,7 @@ export function SiteHeader() {
         <nav
           id="mobile-nav"
           aria-label="Primary"
-          className="border-t border-rule bg-paper px-6 py-4 md:hidden"
+          className="max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-rule bg-paper px-6 py-4 md:hidden"
         >
           <ul className="flex flex-col divide-y divide-rule">
             {/* Services — expandable categories */}

@@ -2324,6 +2324,328 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
         "Role-based awareness training and realistic phishing simulations that measurably cut click rates — with behaviour metrics and reporting that satisfy ISO 27001 and SOC 2.",
     },
   },
+
+  "data-platform": {
+    situation:
+      "Your data lives in a dozen systems, every team has its own version of the numbers, and leadership doesn't trust the dashboard. Northport builds a governed data platform — on Microsoft Fabric or Azure — with reliable pipelines, a shared semantic model, and security and lineage built in, so analytics and AI run on data people can actually trust.",
+    workstreams: [
+      { title: "Data assessment & architecture", deliverable: "Data platform architecture & roadmap", detail: "Map sources, quality, and use cases, and design a target platform (lakehouse / warehouse) that fits your stack." },
+      { title: "Pipelines & integration", deliverable: "Ingestion & transformation pipelines", detail: "Reliable, monitored pipelines that land and shape data once, so every report starts from the same source of truth." },
+      { title: "Semantic model & analytics", deliverable: "Governed semantic model & reports", detail: "One definition of the metrics that matter, exposed through Power BI so teams stop arguing about whose number is right." },
+      { title: "Governance & security", deliverable: "Data governance & access model", detail: "Classification, lineage, and row-level security so the platform is trusted and compliant, not a new data-leak surface." },
+    ],
+    tiers: [
+      { name: "Assessment", duration: "2–4 weeks", summary: "We assess your data estate and design the platform.", includes: ["Source & quality assessment", "Use-case prioritisation", "Platform architecture", "Governance design"], excludes: ["Build", "Ongoing operation"], price: "" },
+      { name: "Implementation", duration: "6–14 weeks", summary: "We build the platform, pipelines, and analytics.", includes: ["Everything in Assessment", "Pipeline build", "Semantic model & reports", "Security & governance rollout"], excludes: ["24/7 operation"], price: "" },
+      { name: "Managed", duration: "Ongoing", summary: "We run and evolve the platform.", includes: ["Pipeline monitoring", "New source onboarding", "Model & report changes", "Cost & governance reviews"], excludes: ["Business analysis of your data for you"], price: "" },
+    ],
+    deliverables: ["Data platform architecture & roadmap", "Ingestion & transformation pipelines", "Governed semantic model", "Power BI reporting", "Data governance & access model"],
+    faqs: [
+      { q: "Fabric, Databricks, or Snowflake?", a: "We're strongest on Microsoft Fabric and Azure, and we deliver on Databricks and Snowflake where that's your direction. We recommend based on your stack and skills, not a preferred SKU." },
+      { q: "How does this relate to Data Security & Governance?", a: "Tightly — classification, DLP, and access control from that service are how we keep the platform compliant. On regulated data we deliver them together." },
+      { q: "Can this feed our AI initiatives?", a: "Yes — a governed platform is the foundation Copilot and custom AI need to be trustworthy, which is why AI Implementation often follows it." },
+    ],
+    seo: { title: "Data Platform & Analytics (Microsoft Fabric, Azure)", description: "A governed data platform on Microsoft Fabric or Azure — pipelines, a shared semantic model, Power BI analytics, and data governance you can trust for reporting and AI." },
+  },
+
+  "workplace-collaboration": {
+    situation:
+      "You rolled out Microsoft 365 and Teams, but sprawl set in: guest access no one tracks, sites shared too widely, and features half-adopted. Northport brings governance and security to your collaboration platform and drives the adoption that makes it pay off — so M365 is an asset, not a shadow-IT risk.",
+    workstreams: [
+      { title: "Tenant governance & security", deliverable: "M365 governance baseline", detail: "Sharing policies, guest access, and lifecycle for Teams and SharePoint so collaboration doesn't quietly become data exposure." },
+      { title: "Secure collaboration design", deliverable: "Collaboration architecture", detail: "How Teams, SharePoint, and OneDrive should be structured, labelled, and protected for the way your people actually work." },
+      { title: "Migration & rollout", deliverable: "Migrated, governed workloads", detail: "Move from legacy file shares or another suite into a well-governed M365, without recreating the old mess." },
+      { title: "Adoption enablement", deliverable: "Adoption plan & training", detail: "Champions, training, and comms so features get used and the investment shows up in how people work." },
+    ],
+    tiers: [
+      { name: "Assessment", duration: "2–3 weeks", summary: "We assess your M365 tenant and design governance.", includes: ["Tenant & sharing review", "Security & compliance gaps", "Collaboration design", "Adoption plan"], excludes: ["Migration", "Ongoing management"], price: "" },
+      { name: "Implementation", duration: "4–10 weeks", summary: "We roll out governance, migrate, and drive adoption.", includes: ["Everything in Assessment", "Governance rollout", "Migration", "Adoption enablement"], excludes: ["24/7 support (see Managed Workplace)"], price: "" },
+      { name: "Managed", duration: "Ongoing", summary: "We keep collaboration governed and adopted.", includes: ["Governance upkeep", "Guest & lifecycle reviews", "Adoption support", "Quarterly reviews"], excludes: ["End-user help desk (see Managed Workplace)"], price: "" },
+    ],
+    deliverables: ["M365 governance baseline", "Collaboration architecture", "Sharing & guest-access policy", "Adoption plan & training", "Migration runbook"],
+    faqs: [
+      { q: "Is this a security service or a productivity service?", a: "Both, deliberately. We govern and secure M365 and drive adoption, because a collaboration platform that's secure but unused — or used but leaking data — both fail." },
+      { q: "How does it relate to Data Security & Governance?", a: "Purview labelling and DLP are how we enforce the collaboration boundaries here; on sensitive estates we deliver them together." },
+      { q: "Can you migrate us from Google or a file server?", a: "Yes — we migrate from Google Workspace, legacy file shares, or another tenant into a well-governed M365, rather than lifting the old sprawl across." },
+    ],
+    seo: { title: "Microsoft 365 & Collaboration", description: "Governed, secure Microsoft 365 and Teams — tenant governance, sharing and guest-access control, migration, and adoption enablement so collaboration is an asset, not a risk." },
+  },
+
+  "managed-workplace": {
+    situation:
+      "Your IT team is buried in tickets and never gets to the projects that matter. Northport runs your digital workplace — endpoints, identity, patching, and support — proactively, so devices stay compliant, users stay productive, and your team is freed to work on what moves the business.",
+    workstreams: [
+      { title: "Endpoint & patch management", deliverable: "Managed endpoint estate", detail: "Compliant, patched, monitored devices via Intune and Defender — health and hardening maintained, not left to drift." },
+      { title: "Identity & access operations", deliverable: "Managed identity operations", detail: "Day-to-day identity, access, and conditional-access operations kept current and least-privilege." },
+      { title: "Service desk & support", deliverable: "Proactive support & service desk", detail: "Responsive support with SLAs, plus proactive fixes that stop the same tickets recurring." },
+      { title: "Reporting & continual improvement", deliverable: "Workplace health reporting", detail: "Monthly reporting on estate health, security posture, and the improvements we're driving." },
+    ],
+    tiers: [
+      { name: "Assessment", duration: "2–3 weeks", summary: "We baseline your workplace estate and design the service.", includes: ["Endpoint & identity review", "Support-model design", "Security baseline", "Transition plan"], excludes: ["Ongoing operation"], price: "" },
+      { name: "Implementation", duration: "3–6 weeks", summary: "We onboard the estate and stand up management.", includes: ["Everything in Assessment", "Tooling & baseline rollout", "Runbook build", "Service transition"], excludes: ["Long-term operation (see Managed)"], price: "" },
+      { name: "Managed", duration: "Ongoing", summary: "We run your digital workplace, proactively.", includes: ["Endpoint & patch management", "Identity operations", "Service desk with SLAs", "Monthly reporting"], excludes: ["Physical hardware repair"], price: "" },
+    ],
+    deliverables: ["Managed endpoint estate", "Managed identity operations", "Service desk with SLAs", "Security & compliance baseline", "Workplace health reporting"],
+    faqs: [
+      { q: "Do you replace our IT team or support it?", a: "Either — we run the whole digital workplace, or take the operational load (patching, endpoints, tickets) so your team focuses on strategic projects. We scope to your setup." },
+      { q: "Is security included?", a: "Yes — endpoint hardening, patching, and compliance are core, and this pairs with Managed SOC / MDR when you want 24/7 detection on top." },
+      { q: "Which tools do you manage?", a: "We're strongest with the Microsoft stack (Intune, Entra ID, Defender), and we work with what you have rather than forcing a rip-and-replace." },
+    ],
+    seo: { title: "Managed Workplace Services", description: "Proactive management of your digital workplace — endpoints, identity, patching, and service desk with SLAs — so your team ships projects instead of drowning in tickets." },
+  },
+
+  "device-management": {
+    situation:
+      "A new hire shouldn't wait days for a working laptop, and a lost device shouldn't mean lost data. Northport stands up zero-touch device provisioning and lifecycle management with Intune and Autopilot, so every device arrives compliant and configured on day one and is secured — or wiped — the moment it needs to be.",
+    workstreams: [
+      { title: "Zero-touch provisioning", deliverable: "Autopilot provisioning process", detail: "Devices ship to the user and configure themselves to your compliant baseline out of the box — no manual imaging." },
+      { title: "Compliance & hardening baselines", deliverable: "Intune compliance & configuration profiles", detail: "Security baselines, encryption, and compliance policies that gate access to corporate data." },
+      { title: "App & update management", deliverable: "Managed app & update rings", detail: "Consistent app delivery and staged updates so devices stay current without breaking on patch day." },
+      { title: "Lifecycle & retirement", deliverable: "Device lifecycle & wipe process", detail: "Reassignment and secure retirement, including remote wipe for lost or leaver devices." },
+    ],
+    tiers: [
+      { name: "Assessment", duration: "1–3 weeks", summary: "We assess your device estate and design the target.", includes: ["Estate & MDM review", "Baseline design", "Provisioning design", "Rollout plan"], excludes: ["Build", "Ongoing operation"], price: "" },
+      { name: "Implementation", duration: "3–6 weeks", summary: "We build provisioning, baselines, and lifecycle.", includes: ["Everything in Assessment", "Autopilot setup", "Compliance & config profiles", "App & update rings"], excludes: ["Day-to-day operation (see Managed Workplace)"], price: "" },
+      { name: "Managed", duration: "Ongoing", summary: "We manage the device lifecycle for you.", includes: ["Provisioning operation", "Baseline maintenance", "Update management", "Retirement & wipe"], excludes: ["Hardware procurement (see IT Procurement)"], price: "" },
+    ],
+    deliverables: ["Autopilot provisioning process", "Intune compliance & configuration profiles", "Managed app & update rings", "Device lifecycle & wipe process", "Estate compliance reporting"],
+    faqs: [
+      { q: "How is this different from Endpoint & Device Security?", a: "Endpoint & Device Security focuses on threat defence and hardening; Device Management focuses on the operational lifecycle — provisioning, compliance, updates, and retirement. They share the Intune/Defender foundation and are often delivered together." },
+      { q: "Windows only?", a: "No — Windows via Autopilot, plus macOS, iOS, and Android through Intune, under one compliance model." },
+      { q: "What about lost devices?", a: "Remote lock and wipe are part of the lifecycle process, and compliance policies ensure a non-compliant or lost device loses access to corporate data." },
+    ],
+    seo: { title: "Device Management & Provisioning (Intune, Autopilot)", description: "Zero-touch provisioning and lifecycle management with Intune and Autopilot — compliant devices ready on day one, secured or wiped the moment they need to be." },
+  },
+
+  "adoption-change": {
+    situation:
+      "You bought the licences, but the tools sit unused and the ROI never lands. Northport runs structured adoption and change management around your technology rollouts — champions, training, and communications tied to real business outcomes — so the change sticks and the value shows up.",
+    workstreams: [
+      { title: "Readiness & stakeholder mapping", deliverable: "Change readiness assessment", detail: "Who's affected, what changes for them, and where resistance will come from — before rollout, not after." },
+      { title: "Champion & training program", deliverable: "Champions network & training plan", detail: "A network of champions and role-based training so people learn the tools in the context of their actual work." },
+      { title: "Communications", deliverable: "Communications plan & assets", detail: "Clear, well-timed comms that explain the why, not just the how — the part most rollouts skip." },
+      { title: "Measurement & reinforcement", deliverable: "Adoption metrics & reinforcement plan", detail: "Track adoption and reinforce the behaviours that stick, so the change doesn't fade after go-live." },
+    ],
+    tiers: [
+      { name: "Assessment", duration: "1–2 weeks", summary: "We assess readiness and design the change plan.", includes: ["Readiness assessment", "Stakeholder mapping", "Adoption plan", "Metrics plan"], excludes: ["Delivery", "Ongoing reinforcement"], price: "" },
+      { name: "Implementation", duration: "3–8 weeks", summary: "We run the adoption program through go-live.", includes: ["Everything in Assessment", "Champions & training", "Communications delivery", "Go-live support"], excludes: ["Long-term operation"], price: "" },
+      { name: "Managed", duration: "Ongoing", summary: "We sustain adoption across your rollouts.", includes: ["Ongoing training", "Adoption reporting", "Reinforcement campaigns", "New-feature enablement"], excludes: ["Building the software itself"], price: "" },
+    ],
+    deliverables: ["Change readiness assessment", "Champions network & training plan", "Communications plan & assets", "Adoption metrics dashboard", "Reinforcement plan"],
+    faqs: [
+      { q: "Why pay for adoption — won't people just use it?", a: "Usually not. Unadopted tools are the single biggest source of wasted IT spend. Structured change management is what turns a licence purchase into a behaviour change and measurable value." },
+      { q: "Does this only apply to Microsoft rollouts?", a: "No — any significant technology or process change: M365, a new security control, a data platform, or a new way of working." },
+      { q: "How do you measure success?", a: "Against adoption and business outcomes agreed up front — active usage, task completion, reduced shadow IT — not attendance at a training session." },
+    ],
+    seo: { title: "Adoption & Change Management", description: "Structured adoption and change management for technology rollouts — readiness, champions, training, communications, and measurement so the change sticks and value lands." },
+  },
+
+  "datacenter-modernization": {
+    situation:
+      "Your data center is ageing, expensive, and increasingly a liability. Northport assesses what you run, modernises what should stay, and moves the rest to a hybrid or cloud target — cutting cost and risk while keeping availability and security intact.",
+    workstreams: [
+      { title: "Assessment & disposition", deliverable: "Workload disposition plan", detail: "Inventory every workload and decide its fate — modernise, migrate, retire — with cost and risk quantified." },
+      { title: "Virtualization & consolidation", deliverable: "Consolidated, virtualized estate", detail: "Consolidate and virtualize to reduce footprint, power, and licensing before anything moves." },
+      { title: "Hybrid target design", deliverable: "Hybrid target architecture", detail: "A secure hybrid design — what stays on-prem, what goes to cloud, and how they connect and are governed." },
+      { title: "Migration & decommission", deliverable: "Migrated workloads & decommission plan", detail: "Move workloads with hardening applied, then cleanly decommission the old estate." },
+    ],
+    tiers: [
+      { name: "Assessment", duration: "3–5 weeks", summary: "We assess the estate and design the modernization.", includes: ["Workload inventory & disposition", "Cost & risk analysis", "Hybrid target design", "Migration roadmap"], excludes: ["Migration", "Ongoing operation"], price: "" },
+      { name: "Implementation", duration: "8–20 weeks", summary: "We modernise, migrate, and decommission.", includes: ["Everything in Assessment", "Virtualization & consolidation", "Migration & hardening", "Decommissioning"], excludes: ["24/7 operation"], price: "" },
+      { name: "Managed", duration: "Ongoing", summary: "We manage the modernised infrastructure.", includes: ["Infrastructure monitoring", "Patch & lifecycle", "Capacity & cost management", "Reporting"], excludes: ["Application support"], price: "" },
+    ],
+    deliverables: ["Workload disposition plan", "Consolidated, virtualized estate", "Hybrid target architecture", "Migration & decommission plan", "Cost & availability model"],
+    faqs: [
+      { q: "Do we have to go all-cloud?", a: "No. Modernization means right-placing each workload; some belong in the cloud, some on modern on-prem or colocation. We design the hybrid target that's cheapest and safest for your mix." },
+      { q: "How is this different from Cloud Implementation?", a: "Cloud Implementation moves workloads to the cloud; Data Center Modernization takes a whole-estate view — including what stays on-prem, virtualization, and decommissioning — and hands the cloud-bound workloads to that service." },
+      { q: "Will security come with it?", a: "Yes — hardening baselines are applied as workloads move, and the hybrid design includes segmentation, backup, and monitoring rather than deferring them." },
+    ],
+    seo: { title: "Data Center Modernization", description: "Assess, virtualize, and modernise your data center — a secure hybrid target that cuts cost and risk, with migration, hardening, and clean decommissioning." },
+  },
+
+  "hybrid-cloud": {
+    situation:
+      "You're running across on-prem, Azure, and AWS, and no one has a single view of cost, security, or what's actually deployed. Northport brings one operating model to your hybrid and multi-cloud estate — governance, monitoring, and cost control — so you manage it deliberately instead of by surprise.",
+    workstreams: [
+      { title: "Estate discovery & governance", deliverable: "Multi-cloud governance model", detail: "Discover what's deployed where, and establish consistent governance, tagging, and policy across clouds." },
+      { title: "Unified monitoring & operations", deliverable: "Cross-cloud monitoring", detail: "One pane for health, security signals, and alerts across on-prem and clouds, feeding your SOC." },
+      { title: "Cost management (FinOps)", deliverable: "FinOps model & optimisation", detail: "Visibility, budgets, and right-sizing so spend is controlled and attributable across every cloud." },
+      { title: "Landing zones & guardrails", deliverable: "Consistent landing zones", detail: "Reusable, guardrailed landing zones so new workloads land governed on any cloud, not ungoverned." },
+    ],
+    tiers: [
+      { name: "Assessment", duration: "3–5 weeks", summary: "We assess the estate and design the operating model.", includes: ["Multi-cloud discovery", "Governance & cost review", "Target operating model", "Roadmap"], excludes: ["Implementation"], price: "" },
+      { name: "Implementation", duration: "6–14 weeks", summary: "We stand up governance, monitoring, and FinOps.", includes: ["Everything in Assessment", "Governance & guardrails", "Cross-cloud monitoring", "FinOps rollout"], excludes: ["24/7 operation"], price: "" },
+      { name: "Managed", duration: "Ongoing", summary: "We run your hybrid/multi-cloud operations.", includes: ["Monitoring & operations", "Cost optimisation", "Governance upkeep", "Monthly reporting"], excludes: ["Application development"], price: "" },
+    ],
+    deliverables: ["Multi-cloud governance model", "Cross-cloud monitoring", "FinOps model & optimisation", "Consistent landing zones", "Cost & posture dashboard"],
+    faqs: [
+      { q: "How is this different from Cloud Foundations?", a: "Cloud Foundations builds a single cloud's landing zone; Hybrid & Multi-Cloud Management is the operating model across several clouds plus on-prem — governance, monitoring, and cost as one." },
+      { q: "Can you control our cloud spend?", a: "Yes — FinOps is a core workstream: visibility, budgets, tagging, and right-sizing, with the Managed tier continuously optimising." },
+      { q: "Does security carry across clouds?", a: "That's the point of consistent governance and monitoring — posture and detections apply across clouds and feed your SOC, rather than each cloud being its own island." },
+    ],
+    seo: { title: "Hybrid & Multi-Cloud Management", description: "One operating model across on-prem, Azure, and AWS — governance, cross-cloud monitoring, FinOps cost control, and consistent landing zones you can actually see." },
+  },
+
+  "backup-storage": {
+    situation:
+      "Your backups are slow, costly, and — the part that matters — you're not certain they'd actually restore after a ransomware hit. Northport modernises backup and storage with immutable, tested recovery, sized to what the business truly needs, so a bad day is recoverable rather than catastrophic.",
+    workstreams: [
+      { title: "Backup & recovery assessment", deliverable: "Backup posture assessment", detail: "Review what's protected, how, and whether recovery objectives are actually met — most gaps are silent until tested." },
+      { title: "Immutable, ransomware-resilient backup", deliverable: "Immutable backup architecture", detail: "Air-gapped or immutable copies that ransomware can't encrypt or delete, aligned to a 3-2-1 strategy." },
+      { title: "Storage modernization", deliverable: "Right-sized storage design", detail: "Tiered storage that matches performance and cost to the data's real value, on-prem and in cloud." },
+      { title: "Recovery testing", deliverable: "Tested recovery runbooks", detail: "Regular restore tests against your recovery objectives, so 'we have backups' becomes 'we can recover.'" },
+    ],
+    tiers: [
+      { name: "Assessment", duration: "2–4 weeks", summary: "We assess backup and storage and design the target.", includes: ["Backup & recovery review", "Ransomware-resilience gap analysis", "Storage right-sizing", "Roadmap"], excludes: ["Implementation"], price: "" },
+      { name: "Implementation", duration: "4–10 weeks", summary: "We modernise backup and storage and test recovery.", includes: ["Everything in Assessment", "Immutable backup rollout", "Storage modernization", "Recovery test"], excludes: ["24/7 operation"], price: "" },
+      { name: "Managed", duration: "Ongoing", summary: "We manage backup and prove recoverability.", includes: ["Backup monitoring", "Scheduled restore tests", "Capacity management", "Reporting"], excludes: ["Operating unrelated apps"], price: "" },
+    ],
+    deliverables: ["Backup posture assessment", "Immutable backup architecture", "Right-sized storage design", "Tested recovery runbooks", "Recovery-objective reporting"],
+    faqs: [
+      { q: "How does this relate to Business Continuity & DR?", a: "Backup & Storage is the data-protection layer; BCDR is the wider plan to keep the business running. We align recovery objectives across both so the backups actually support the DR plan." },
+      { q: "What makes a backup ransomware-resilient?", a: "Immutability and separation — copies attackers can't encrypt or delete, kept off the primary domain, with tested restores. That combination is what turns ransomware from a crisis into an inconvenience." },
+      { q: "On-prem, cloud, or both?", a: "Both — we design the tiering and copies across on-prem and cloud to hit your recovery and cost targets, rather than defaulting to one." },
+    ],
+    seo: { title: "Backup & Storage Modernization", description: "Immutable, ransomware-resilient backup and right-sized storage with tested recovery — so a bad day is recoverable, aligned to your business continuity objectives." },
+  },
+
+  "network-transformation": {
+    situation:
+      "Your WAN was built for a data-center world, and it's expensive, slow to change, and fighting your cloud and remote-work reality. Northport modernises the network with SD-WAN and SASE — better performance, lower cost, and security converged into the fabric instead of bolted on.",
+    workstreams: [
+      { title: "Network assessment & design", deliverable: "Network transformation design", detail: "Assess traffic, sites, and cloud dependencies, and design an SD-WAN/SASE target that fits how the business now runs." },
+      { title: "SD-WAN rollout", deliverable: "SD-WAN deployment", detail: "Application-aware routing across sites and cloud, with resilience and central policy replacing rigid, costly links." },
+      { title: "SASE & secure edge", deliverable: "SASE / secure-edge integration", detail: "Converge networking and security at the edge — ZTNA, SWG, and inspection — so remote and cloud access is secure by default." },
+      { title: "Optimisation & management", deliverable: "Network monitoring & optimisation", detail: "Ongoing visibility and tuning so performance and cost stay optimised as the estate changes." },
+    ],
+    tiers: [
+      { name: "Assessment", duration: "2–4 weeks", summary: "We assess the network and design the target.", includes: ["Traffic & site assessment", "SD-WAN/SASE design", "Cost & resilience analysis", "Rollout plan"], excludes: ["Deployment"], price: "" },
+      { name: "Implementation", duration: "6–16 weeks", summary: "We deploy SD-WAN and secure edge.", includes: ["Everything in Assessment", "SD-WAN rollout", "SASE integration", "Cutover & validation"], excludes: ["24/7 operation"], price: "" },
+      { name: "Managed", duration: "Ongoing", summary: "We monitor and optimise the network.", includes: ["Network monitoring", "Policy & change management", "Optimisation", "Reporting"], excludes: ["Physical cabling"], price: "" },
+    ],
+    deliverables: ["Network transformation design", "SD-WAN deployment", "SASE / secure-edge integration", "Network monitoring & optimisation", "Resilience & cost model"],
+    faqs: [
+      { q: "How does this relate to Network Security & Segmentation?", a: "Network Security focuses on segmentation and containment; Network Transformation modernises the connectivity fabric (SD-WAN/SASE). SASE is where they converge, and we align the two." },
+      { q: "Will this cut our network cost?", a: "Often — SD-WAN typically reduces reliance on expensive MPLS and improves cloud performance, and we quantify the case before you commit." },
+      { q: "Which vendors?", a: "We're vendor-pragmatic across the major SD-WAN/SASE platforms and design to your existing investments and skills rather than a single badge." },
+    ],
+    seo: { title: "Network Transformation & SD-WAN", description: "Modernise the network with SD-WAN and SASE — application-aware routing, secure edge (ZTNA/SWG), and lower cost, with security converged into the fabric." },
+  },
+
+  "enterprise-wireless": {
+    situation:
+      "Wi-Fi drops in the warehouse, there are dead zones on the third floor, and every complaint lands on IT. Northport designs, surveys, and manages enterprise wireless and campus networking so connectivity is reliable, secure, and no longer a daily distraction.",
+    workstreams: [
+      { title: "Site survey & design", deliverable: "Wireless design & heat maps", detail: "Predictive and on-site surveys to design coverage and capacity that actually holds up under real load." },
+      { title: "Secure wireless architecture", deliverable: "Secure WLAN architecture", detail: "Segmented SSIDs, strong authentication, and guest isolation so wireless isn't the soft way in." },
+      { title: "Deployment & tuning", deliverable: "Deployed, tuned wireless", detail: "Install, validate, and tune against the design so coverage and performance match the plan." },
+      { title: "Monitoring & management", deliverable: "Managed wireless", detail: "Ongoing monitoring and optimisation so new dead zones and degradation are caught before users report them." },
+    ],
+    tiers: [
+      { name: "Assessment", duration: "1–3 weeks", summary: "We survey and design your wireless and LAN.", includes: ["Site survey", "Coverage & capacity design", "Security architecture", "Rollout plan"], excludes: ["Deployment"], price: "" },
+      { name: "Implementation", duration: "3–8 weeks", summary: "We deploy and tune the wireless estate.", includes: ["Everything in Assessment", "Deployment", "Validation & tuning", "Handover"], excludes: ["24/7 operation"], price: "" },
+      { name: "Managed", duration: "Ongoing", summary: "We monitor and manage wireless for you.", includes: ["Monitoring & optimisation", "Firmware & config management", "Capacity reviews", "Reporting"], excludes: ["Physical cabling works"], price: "" },
+    ],
+    deliverables: ["Wireless design & heat maps", "Secure WLAN architecture", "Deployed, tuned wireless", "Managed wireless monitoring", "Coverage & performance reporting"],
+    faqs: [
+      { q: "Do you do on-site surveys or just predictive?", a: "Both — predictive design up front and on-site validation surveys after deployment, because real walls and interference rarely match the model exactly." },
+      { q: "Is guest and IoT Wi-Fi secured?", a: "Yes — segmented SSIDs, strong authentication, and isolation for guest and IoT so wireless doesn't become a bridge into your core network." },
+      { q: "Which platforms?", a: "We work across the major enterprise wireless platforms and design to your standards rather than forcing a single vendor." },
+    ],
+    seo: { title: "Enterprise Wireless & LAN", description: "Designed, surveyed, and managed enterprise wireless and campus networking — reliable coverage, secure segmented SSIDs, and monitoring that catches issues before users do." },
+  },
+
+  "software-asset-management": {
+    situation:
+      "You're over-licensed on some products, under-licensed (and audit-exposed) on others, and no one can say exactly what you own versus what you use. Northport builds a software asset management baseline that reconciles entitlements against real usage — cutting waste, closing compliance gaps, and giving you the position to survive a vendor audit.",
+    workstreams: [
+      { title: "Discovery & inventory", deliverable: "Software inventory & entitlement register", detail: "Reconcile what's deployed and used against what you're entitled to across your major publishers." },
+      { title: "Compliance & risk position", deliverable: "License compliance position (ELP)", detail: "An effective licence position per publisher, surfacing both shortfalls (audit risk) and surplus (waste)." },
+      { title: "Optimisation", deliverable: "Optimisation & savings plan", detail: "Reharvest unused licences, right-size editions, and remove shelfware before the next renewal." },
+      { title: "SAM operations", deliverable: "SAM process & governance", detail: "A repeatable SAM process so the position stays current, not a one-off spreadsheet that rots." },
+    ],
+    tiers: [
+      { name: "Assessment", duration: "3–5 weeks", summary: "We baseline your licence position and risks.", includes: ["Software discovery", "Entitlement reconciliation", "Effective licence position", "Optimisation opportunities"], excludes: ["Ongoing operation", "Contract negotiation"], price: "" },
+      { name: "Implementation", duration: "4–8 weeks", summary: "We stand up SAM tooling, process, and governance.", includes: ["Everything in Assessment", "SAM tooling setup", "Process & governance", "Initial optimisation"], excludes: ["Publisher negotiation (see Licensing Optimization)"], price: "" },
+      { name: "Managed", duration: "Ongoing", summary: "We keep your licence position current and optimised.", includes: ["Ongoing reconciliation", "Renewal-ready positions", "Audit support", "Quarterly reporting"], excludes: ["Legal representation in disputes"], price: "" },
+    ],
+    deliverables: ["Software inventory & entitlement register", "Effective licence position (ELP)", "Optimisation & savings plan", "SAM process & governance", "Audit-defence pack"],
+    faqs: [
+      { q: "How does this relate to Licensing Optimization?", a: "SAM establishes the true position (what you own and use); Licensing Optimization uses that position to right-size and renegotiate the agreements. SAM is the evidence; optimisation is the action." },
+      { q: "Will this help if we're being audited?", a: "Directly — an accurate effective licence position and the underlying evidence are exactly what a publisher audit demands, and having it ready turns a stressful audit into a managed one." },
+      { q: "Which publishers?", a: "The ones that carry the most cost and audit risk for you — typically Microsoft, Oracle, VMware, Adobe, SAP — scoped to your estate." },
+    ],
+    seo: { title: "Software Asset Management (SAM)", description: "Reconcile entitlements against real usage across your major publishers — an effective licence position that cuts waste, closes compliance gaps, and survives a vendor audit." },
+  },
+
+  "licensing-optimization": {
+    situation:
+      "Your Microsoft, Adobe, and VMware renewals keep climbing, and no one's sure you're using what you pay for. Northport right-sizes and renegotiates your major software agreements against real usage — so you pay for what the business needs, not what a sales rep quoted.",
+    workstreams: [
+      { title: "Usage & needs analysis", deliverable: "Usage-based requirements", detail: "What editions and quantities you actually need, based on real usage — the counter to the vendor's upsell." },
+      { title: "Agreement & scenario modelling", deliverable: "Licensing scenario models", detail: "Model the renewal options (editions, terms, programs) so you go into negotiation knowing the best structure." },
+      { title: "Negotiation support", deliverable: "Negotiation strategy & support", detail: "An independent, publisher-savvy position to negotiate from — leverage points, benchmarks, and traps to avoid." },
+      { title: "Ongoing optimisation", deliverable: "Renewal governance", detail: "A cadence that catches over-provisioning and true-up risk before each renewal, not after." },
+    ],
+    tiers: [
+      { name: "Assessment", duration: "2–4 weeks", summary: "We analyse usage and model your best licensing position.", includes: ["Usage analysis", "Scenario modelling", "Savings opportunities", "Renewal roadmap"], excludes: ["Negotiation delivery"], price: "" },
+      { name: "Implementation", duration: "3–6 weeks", summary: "We support the negotiation and reset the agreements.", includes: ["Everything in Assessment", "Negotiation strategy & support", "Agreement restructuring", "Change implementation"], excludes: ["Acting as your signatory"], price: "" },
+      { name: "Managed", duration: "Ongoing", summary: "We govern renewals and keep spend optimised.", includes: ["Renewal governance", "Usage monitoring", "Pre-renewal optimisation", "Reporting"], excludes: ["Buying the licences on your behalf (see IT Procurement)"], price: "" },
+    ],
+    deliverables: ["Usage-based requirements", "Licensing scenario models", "Negotiation strategy & support", "Renewal governance", "Savings report"],
+    faqs: [
+      { q: "Are you independent of the vendors?", a: "Yes — our incentive is your total cost, not a publisher's revenue. We benchmark and model options so you negotiate from evidence, not from the rep's quote." },
+      { q: "How does this relate to SAM?", a: "SAM gives the accurate position; Licensing Optimization acts on it to right-size and renegotiate. They're often delivered as one engagement." },
+      { q: "Can you cover Microsoft EA renewals specifically?", a: "Yes — Microsoft agreements (EA, MCA, M365/E5) are among the most common and highest-value engagements, alongside Oracle, VMware, and Adobe." },
+    ],
+    seo: { title: "Software Licensing Optimization", description: "Right-size and renegotiate major software agreements (Microsoft, Adobe, VMware, Oracle) against real usage — independent negotiation support so you pay for what you need." },
+  },
+
+  "it-procurement": {
+    situation:
+      "Buying IT is slow, fragmented across teams, and you suspect you're leaving money — and security — on the table. Northport runs sourcing and procurement with security built into the process: better pricing, faster cycles, and vendors that are actually vetted before they get access to your environment.",
+    workstreams: [
+      { title: "Sourcing strategy", deliverable: "Sourcing strategy & standards", detail: "Consolidate demand, standardise what you buy, and set the vendor and security requirements up front." },
+      { title: "Vendor selection & security vetting", deliverable: "Vetted vendor shortlist", detail: "Evaluate vendors on price and on security posture, so a supplier's weakness doesn't become your incident." },
+      { title: "Procurement execution", deliverable: "Managed procurement process", detail: "Run the buying process — quotes, negotiation, and orders — faster and with better leverage than ad-hoc purchasing." },
+      { title: "Spend & contract management", deliverable: "Spend visibility & contract register", detail: "Track spend and contracts so renewals and commitments are managed, not forgotten." },
+    ],
+    tiers: [
+      { name: "Assessment", duration: "2–3 weeks", summary: "We assess your procurement and design the approach.", includes: ["Spend & process review", "Sourcing strategy", "Standards & security requirements", "Roadmap"], excludes: ["Ongoing buying"], price: "" },
+      { name: "Implementation", duration: "3–6 weeks", summary: "We stand up the procurement process and standards.", includes: ["Everything in Assessment", "Vendor vetting framework", "Process & tooling", "Initial sourcing"], excludes: ["Long-term operation"], price: "" },
+      { name: "Managed", duration: "Ongoing", summary: "We run IT procurement for you.", includes: ["Managed sourcing & buying", "Vendor & security vetting", "Contract & renewal tracking", "Spend reporting"], excludes: ["Approving spend on your behalf"], price: "" },
+    ],
+    deliverables: ["Sourcing strategy & standards", "Vetted vendor shortlist", "Managed procurement process", "Spend visibility & contract register", "Savings report"],
+    faqs: [
+      { q: "Why buy IT through a security firm?", a: "Because procurement is where security is won or lost cheaply: vendor vetting, security requirements in contracts, and standardised, hardened products chosen up front — plus the pricing leverage of consolidated demand." },
+      { q: "How does this relate to Third-Party Risk?", a: "Closely — the security vetting here is the front end of your third-party risk program, so vendors are assessed before they're onboarded, not after." },
+      { q: "Do you replace our procurement team?", a: "We can run IT sourcing end-to-end or support your team with strategy, vetting, and negotiation — scoped to how you buy today." },
+    ],
+    seo: { title: "IT Procurement & Sourcing", description: "Sourcing and procurement with security built in — consolidated demand, vetted vendors, faster cycles, and better pricing, with spend and contracts under management." },
+  },
+
+  "lifecycle-services": {
+    situation:
+      "You don't have a clean picture of the hardware you own, and retiring old kit is a security and compliance risk waiting to happen. Northport manages the hardware lifecycle from deployment to secure, certified disposal — with data destruction you can actually prove to an auditor.",
+    workstreams: [
+      { title: "Asset inventory & tracking", deliverable: "Hardware asset register", detail: "Know what you have, where it is, and its lifecycle stage — the base for everything else." },
+      { title: "Deployment & refresh", deliverable: "Deployment & refresh process", detail: "A repeatable process for rolling out and refreshing hardware on a sensible cadence, tied to provisioning." },
+      { title: "Secure disposal & data destruction", deliverable: "Certified disposal & destruction certificates", detail: "Data-bearing devices wiped or destroyed to standard, with certificates that satisfy audit and privacy requirements." },
+      { title: "Value recovery & sustainability", deliverable: "Value recovery & e-waste reporting", detail: "Recover residual value and dispose responsibly, with reporting for your sustainability and ESG obligations." },
+    ],
+    tiers: [
+      { name: "Assessment", duration: "1–3 weeks", summary: "We inventory your hardware and design the lifecycle.", includes: ["Asset inventory", "Lifecycle & refresh design", "Disposal process design", "Roadmap"], excludes: ["Ongoing operation"], price: "" },
+      { name: "Implementation", duration: "3–6 weeks", summary: "We stand up the lifecycle and disposal process.", includes: ["Everything in Assessment", "Asset-tracking setup", "Deployment & refresh process", "Disposal process"], excludes: ["Long-term operation"], price: "" },
+      { name: "Managed", duration: "Ongoing", summary: "We run the hardware lifecycle for you.", includes: ["Asset tracking", "Refresh coordination", "Secure disposal & certificates", "Value-recovery reporting"], excludes: ["On-site physical repairs"], price: "" },
+    ],
+    deliverables: ["Hardware asset register", "Deployment & refresh process", "Certified disposal & destruction certificates", "Value recovery & e-waste reporting", "Lifecycle dashboard"],
+    faqs: [
+      { q: "Why does disposal matter for security?", a: "Retired devices are a top source of accidental data leaks. Certified data destruction — with certificates — is both a security control and a compliance requirement under ISO 27001 and privacy law." },
+      { q: "Do you provide destruction certificates?", a: "Yes — every data-bearing asset is wiped or physically destroyed to standard, with a certificate you can produce for an audit or a regulator." },
+      { q: "How does this tie to Device Management?", a: "Device Management provisions and secures devices in service; Lifecycle Services covers the physical asset from receipt to certified end-of-life. Together they cover the whole hardware journey." },
+    ],
+    seo: { title: "Product Lifecycle & Asset Disposition", description: "Hardware lifecycle from deployment to secure, certified disposal — asset tracking, refresh, data destruction with certificates, and responsible value recovery." },
+  },
 };
 
 export function getServiceDetail(slug: ServiceSlug): ServiceDetail {

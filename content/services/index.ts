@@ -13,6 +13,7 @@ export const SERVICE_SLUGS = [
   "ai-security",
   "data-security",
   "data-privacy",
+  "data-platform",
   // Cloud & Infrastructure
   "cloud-implementation",
   "cloud-foundations",
@@ -42,6 +43,23 @@ export const SERVICE_SLUGS = [
   "penetration-testing",
   "security-architecture",
   "security-awareness",
+  // Modern Workplace
+  "workplace-collaboration",
+  "managed-workplace",
+  "device-management",
+  "adoption-change",
+  // Data Center & Infrastructure
+  "datacenter-modernization",
+  "hybrid-cloud",
+  "backup-storage",
+  // Networking
+  "network-transformation",
+  "enterprise-wireless",
+  // IT Asset Management
+  "software-asset-management",
+  "licensing-optimization",
+  "it-procurement",
+  "lifecycle-services",
 ] as const;
 
 export type ServiceSlug = (typeof SERVICE_SLUGS)[number];
@@ -54,6 +72,10 @@ export const DOMAINS = [
   "Detection & Response",
   "Governance, Risk & Compliance",
   "Advisory & Assurance",
+  "Modern Workplace",
+  "Data Center & Infrastructure",
+  "Networking",
+  "IT Asset Management",
 ] as const;
 
 export type Domain = (typeof DOMAINS)[number];
@@ -105,6 +127,14 @@ export const SERVICES: Record<ServiceSlug, ServiceSummary> = {
     domain: "AI & Data",
     question: "Are we actually compliant with privacy law — and can we prove it?",
     blurb: "Data mapping, DPIAs, and a privacy program aligned to GDPR, CCPA and friends — with the records a regulator asks for.",
+  },
+  "data-platform": {
+    slug: "data-platform",
+    name: "Data Platform & Analytics",
+    short: "Data Platform",
+    domain: "AI & Data",
+    question: "Our data is siloed and no one trusts the reporting.",
+    blurb: "A governed data platform on Microsoft Fabric or Azure — pipelines, a semantic model, and analytics people can actually rely on.",
   },
 
   // ── Cloud & Infrastructure ───────────────────────────────────────
@@ -301,6 +331,118 @@ export const SERVICES: Record<ServiceSlug, ServiceSummary> = {
     domain: "Advisory & Assurance",
     question: "Our people are the target and training is a checkbox.",
     blurb: "Role-based awareness training and realistic phishing simulations that measurably cut click rates.",
+  },
+
+  // ── Modern Workplace ─────────────────────────────────────────────
+  "workplace-collaboration": {
+    slug: "workplace-collaboration",
+    name: "Microsoft 365 & Collaboration",
+    short: "M365 & Collab",
+    domain: "Modern Workplace",
+    question: "We rolled out Teams and M365, but adoption and governance are a mess.",
+    blurb: "Microsoft 365 and Teams done right — tenant governance, secure collaboration, and a rollout people actually adopt.",
+  },
+  "managed-workplace": {
+    slug: "managed-workplace",
+    name: "Managed Workplace Services",
+    short: "Managed Workplace",
+    domain: "Modern Workplace",
+    question: "Our IT team spends all day on tickets instead of moving the business forward.",
+    blurb: "Proactive management of your digital workplace — endpoints, identity, and support — so your team ships projects, not tickets.",
+  },
+  "device-management": {
+    slug: "device-management",
+    name: "Device Management & Provisioning",
+    short: "Device Mgmt",
+    domain: "Modern Workplace",
+    question: "New starters wait days for a working laptop.",
+    blurb: "Zero-touch provisioning and lifecycle management with Intune and Autopilot — a compliant device, ready on day one.",
+  },
+  "adoption-change": {
+    slug: "adoption-change",
+    name: "Adoption & Change Management",
+    short: "Adoption",
+    domain: "Modern Workplace",
+    question: "We buy the tools; no one actually uses them.",
+    blurb: "Structured adoption and change management so the technology you invest in gets used — and the value shows up.",
+  },
+
+  // ── Data Center & Infrastructure ─────────────────────────────────
+  "datacenter-modernization": {
+    slug: "datacenter-modernization",
+    name: "Data Center Modernization",
+    short: "Data Center",
+    domain: "Data Center & Infrastructure",
+    question: "Our data center is ageing and expensive to run.",
+    blurb: "Modernise or exit the data center — assessment, virtualization, and a hybrid target that cuts cost and risk.",
+  },
+  "hybrid-cloud": {
+    slug: "hybrid-cloud",
+    name: "Hybrid & Multi-Cloud Management",
+    short: "Hybrid Cloud",
+    domain: "Data Center & Infrastructure",
+    question: "We're spread across on-prem, Azure, and AWS with no single view.",
+    blurb: "One operating model across on-prem and clouds — governance, monitoring, and cost control you can actually see.",
+  },
+  "backup-storage": {
+    slug: "backup-storage",
+    name: "Backup & Storage Modernization",
+    short: "Backup & Storage",
+    domain: "Data Center & Infrastructure",
+    question: "Our backups are slow, costly, and we're not sure they'd restore.",
+    blurb: "Modern, immutable backup and storage — tested recovery, ransomware-resilient, and sized to what the business actually needs.",
+  },
+
+  // ── Networking ───────────────────────────────────────────────────
+  "network-transformation": {
+    slug: "network-transformation",
+    name: "Network Transformation & SD-WAN",
+    short: "SD-WAN",
+    domain: "Networking",
+    question: "Our WAN is expensive and can't keep up with cloud traffic.",
+    blurb: "Modern networking — SD-WAN, SASE, and a topology built for a cloud-first, work-anywhere business.",
+  },
+  "enterprise-wireless": {
+    slug: "enterprise-wireless",
+    name: "Enterprise Wireless & LAN",
+    short: "Wireless & LAN",
+    domain: "Networking",
+    question: "Wi-Fi is unreliable and there are dead zones everywhere.",
+    blurb: "Designed, surveyed, and managed wireless and campus networking — reliable connectivity that just works.",
+  },
+
+  // ── IT Asset Management ──────────────────────────────────────────
+  "software-asset-management": {
+    slug: "software-asset-management",
+    name: "Software Asset Management (SAM)",
+    short: "SAM",
+    domain: "IT Asset Management",
+    question: "We're over-licensed in places, under-licensed in others, and audit-exposed.",
+    blurb: "Know exactly what you own and use — a SAM baseline that cuts waste, closes compliance gaps, and survives a vendor audit.",
+  },
+  "licensing-optimization": {
+    slug: "licensing-optimization",
+    name: "Software Licensing Optimization",
+    short: "Licensing",
+    domain: "IT Asset Management",
+    question: "Microsoft, Adobe, and VMware renewals keep climbing. Are we even using it?",
+    blurb: "Right-size and renegotiate your major software agreements — pay for what you use, not what a rep sold you.",
+  },
+  "it-procurement": {
+    slug: "it-procurement",
+    name: "IT Procurement & Sourcing",
+    short: "Procurement",
+    domain: "IT Asset Management",
+    question: "Buying IT is slow, fragmented, and we leave money on the table.",
+    blurb: "Sourcing and procurement done with security in mind — better pricing, faster cycles, and vetted vendors.",
+  },
+  "lifecycle-services": {
+    slug: "lifecycle-services",
+    name: "Product Lifecycle & Asset Disposition",
+    short: "Lifecycle",
+    domain: "IT Asset Management",
+    question: "We don't know what hardware we have or how to retire it securely.",
+    blurb: "Hardware lifecycle from deployment to secure, certified disposal — with data destruction you can prove.",
   },
 };
 

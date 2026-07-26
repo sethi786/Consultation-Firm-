@@ -574,6 +574,75 @@ export const CONTROLS: Control[] = [
   { framework: "ISO/IEC 27001:2022", reference: "A.6.3", name: "Information security awareness, education and training", service: "security-awareness", current: 1, target: 4 },
   { framework: "NIST CSF 2.0", reference: "PR.AT-01", name: "Personnel are provided with awareness and training so that they possess the knowledge and skills to perform general tasks with security risks in mind", service: "security-awareness", current: 1, target: 4 },
   { framework: "CIS Controls v8", reference: "CIS 14", name: "Security awareness and skills training", service: "security-awareness", current: 1, target: 4 },
+
+  // ── Data Platform & Analytics ────────────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.5.12", name: "Classification of information", service: "data-platform", current: 2, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "PR.DS-01", name: "The confidentiality, integrity, and availability of data-at-rest are protected", service: "data-platform", current: 2, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 3.3", name: "Configure data access control lists", service: "data-platform", current: 1, target: 4 },
+
+  // ── Microsoft 365 & Collaboration ────────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.5.14", name: "Information transfer", service: "workplace-collaboration", current: 2, target: 4 },
+  { framework: "ISO/IEC 27001:2022", reference: "A.8.12", name: "Data leakage prevention", service: "workplace-collaboration", current: 1, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 3.3", name: "Configure data access control lists", service: "workplace-collaboration", current: 1, target: 4 },
+
+  // ── Managed Workplace Services ───────────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.8.1", name: "User end point devices", service: "managed-workplace", current: 2, target: 4 },
+  { framework: "ISO/IEC 27001:2022", reference: "A.8.8", name: "Management of technical vulnerabilities", service: "managed-workplace", current: 2, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "PR.PS-01", name: "Configuration management practices are established and applied", service: "managed-workplace", current: 2, target: 4 },
+
+  // ── Device Management & Provisioning ─────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.8.1", name: "User end point devices", service: "device-management", current: 2, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "PR.PS-01", name: "Configuration management practices are established and applied", service: "device-management", current: 2, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 4.1", name: "Establish and maintain a secure configuration process", service: "device-management", current: 1, target: 4 },
+
+  // ── Adoption & Change Management ─────────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.6.3", name: "Information security awareness, education and training", service: "adoption-change", current: 1, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "PR.AT-01", name: "Personnel are provided with awareness and training so that they possess the knowledge and skills to perform general tasks with security risks in mind", service: "adoption-change", current: 1, target: 4 },
+
+  // ── Data Center Modernization ────────────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.8.14", name: "Redundancy of information processing facilities", service: "datacenter-modernization", current: 2, target: 4 },
+  { framework: "ISO/IEC 27001:2022", reference: "A.5.23", name: "Information security for use of cloud services", service: "datacenter-modernization", current: 1, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 4.1", name: "Establish and maintain a secure configuration process", service: "datacenter-modernization", current: 2, target: 4 },
+
+  // ── Hybrid & Multi-Cloud Management ──────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.5.23", name: "Information security for use of cloud services", service: "hybrid-cloud", current: 2, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "PR.IR-01", name: "Networks and environments are protected from unauthorized logical access and usage", service: "hybrid-cloud", current: 2, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 4.1", name: "Establish and maintain a secure configuration process", service: "hybrid-cloud", current: 2, target: 4 },
+
+  // ── Backup & Storage Modernization ───────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.8.13", name: "Information backup", service: "backup-storage", current: 2, target: 4 },
+  { framework: "ISO/IEC 27001:2022", reference: "A.8.14", name: "Redundancy of information processing facilities", service: "backup-storage", current: 1, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 11", name: "Data recovery", service: "backup-storage", current: 2, target: 4 },
+
+  // ── Network Transformation & SD-WAN ──────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.8.21", name: "Security of network services", service: "network-transformation", current: 2, target: 4 },
+  { framework: "ISO/IEC 27001:2022", reference: "A.8.20", name: "Networks security", service: "network-transformation", current: 2, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 12.2", name: "Establish and maintain a secure network architecture", service: "network-transformation", current: 1, target: 4 },
+
+  // ── Enterprise Wireless & LAN ────────────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.8.20", name: "Networks security", service: "enterprise-wireless", current: 2, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "PR.IR-01", name: "Networks and environments are protected from unauthorized logical access and usage", service: "enterprise-wireless", current: 2, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 12.2", name: "Establish and maintain a secure network architecture", service: "enterprise-wireless", current: 1, target: 4 },
+
+  // ── Software Asset Management (SAM) ───────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.5.9", name: "Inventory of information and other associated assets", service: "software-asset-management", current: 2, target: 4 },
+  { framework: "ISO/IEC 27001:2022", reference: "A.5.32", name: "Intellectual property rights", service: "software-asset-management", current: 2, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 2.1", name: "Establish and maintain a software inventory", service: "software-asset-management", current: 1, target: 4 },
+
+  // ── Software Licensing Optimization ──────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.5.32", name: "Intellectual property rights", service: "licensing-optimization", current: 2, target: 4 },
+  { framework: "ISO/IEC 27001:2022", reference: "A.5.9", name: "Inventory of information and other associated assets", service: "licensing-optimization", current: 2, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 2.1", name: "Establish and maintain a software inventory", service: "licensing-optimization", current: 1, target: 4 },
+
+  // ── IT Procurement & Sourcing ────────────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.5.20", name: "Addressing information security within supplier agreements", service: "it-procurement", current: 2, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "GV.SC-01", name: "A cybersecurity supply chain risk management program, strategy, objectives, policies, and processes are established and agreed to by organizational stakeholders", service: "it-procurement", current: 1, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 15.1", name: "Establish and maintain an inventory of service providers", service: "it-procurement", current: 1, target: 4 },
+
+  // ── Product Lifecycle & Asset Disposition ────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.7.14", name: "Secure disposal or re-use of equipment", service: "lifecycle-services", current: 2, target: 4 },
+  { framework: "ISO/IEC 27001:2022", reference: "A.5.9", name: "Inventory of information and other associated assets", service: "lifecycle-services", current: 2, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 1.1", name: "Establish and maintain detailed enterprise asset inventory", service: "lifecycle-services", current: 1, target: 4 },
 ];
 
 /** Rows for a single service (used by service pages, §6). */

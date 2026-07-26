@@ -46,6 +46,18 @@
   --color-rose: #f43f5e;
   --color-rose-soft: #fde0e5;
   --color-rose-ink: #d32744;
+  --color-teal: #0d9488;
+  --color-teal-soft: #d3efec;
+  --color-teal-ink: #0a6b60;
+  --color-orange: #ea580c;
+  --color-orange-soft: #fde5d5;
+  --color-orange-ink: #c2410c;
+  --color-lime: #65a30d;
+  --color-lime-soft: #e6f0cf;
+  --color-lime-ink: #4d7c0f;
+  --color-fuchsia: #c026d3;
+  --color-fuchsia-soft: #f6ddf9;
+  --color-fuchsia-ink: #a21caf;
   --color-night: #0f1220; /* deep ground for high-contrast blocks */
 
   /* Playful radii + a soft pop shadow for lifted color cards */
@@ -229,6 +241,14 @@
   --color-amber-soft: color-mix(in srgb, var(--color-amber) 22%, #0c1116);
   --color-rose-ink: color-mix(in srgb, var(--color-rose) 82%, white);
   --color-rose-soft: color-mix(in srgb, var(--color-rose) 24%, #0c1116);
+  --color-teal-ink: color-mix(in srgb, var(--color-teal) 78%, white);
+  --color-teal-soft: color-mix(in srgb, var(--color-teal) 24%, #0c1116);
+  --color-orange-ink: color-mix(in srgb, var(--color-orange) 82%, white);
+  --color-orange-soft: color-mix(in srgb, var(--color-orange) 24%, #0c1116);
+  --color-lime-ink: color-mix(in srgb, var(--color-lime) 80%, white);
+  --color-lime-soft: color-mix(in srgb, var(--color-lime) 26%, #0c1116);
+  --color-fuchsia-ink: color-mix(in srgb, var(--color-fuchsia) 84%, white);
+  --color-fuchsia-soft: color-mix(in srgb, var(--color-fuchsia) 26%, #0c1116);
 }
 
 /* Utilities -------------------------------------------------------- */
