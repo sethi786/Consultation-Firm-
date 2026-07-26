@@ -13,7 +13,16 @@ import type { ContactInput } from "./contact-schema";
  */
 export async function persistAssessmentRequest(
   input: ContactInput,
-  meta: { ip: string; userAgent: string; receivedAt: string },
+  meta: {
+    ip: string;
+    userAgent: string;
+    receivedAt: string;
+    /** Where the lead came from — a contact form or a meeting request. */
+    source?: "contact-form" | "meeting-request";
+    /** Set on meeting requests: the prospect's chosen slot (ISO) + duration. */
+    preferredSlot?: string;
+    durationMins?: "30" | "45" | "60";
+  },
 ): Promise<string> {
   const payload = await getPayloadClient();
   const doc = await payload.create({
@@ -26,6 +35,9 @@ export async function persistAssessmentRequest(
       seats: input.seats || undefined,
       message: input.message,
       status: "new",
+      source: meta.source ?? "contact-form",
+      preferredSlot: meta.preferredSlot,
+      durationMins: meta.durationMins,
       meta: {
         ip: meta.ip,
         userAgent: meta.userAgent,

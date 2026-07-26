@@ -1,5 +1,6 @@
 import "server-only";
 import type { ContactInput } from "./contact-schema";
+import type { MeetingInput } from "./meeting-schema";
 import { SERVICE_LIST } from "@/content/services";
 
 const FROM_DEFAULT = "Northport Security <no-reply@northport.security>";
@@ -170,5 +171,59 @@ export async function notifyCallBooking(booking: {
     replyTo: firmTo,
     subject: "Call requested — we'll confirm shortly",
     text: clientText,
+  });
+}
+
+/**
+ * Notify the firm of a public "book a meeting" request and confirm to the
+ * prospect. No-op until Resend is configured; the lead is stored regardless.
+ */
+export async function notifyMeetingRequest(input: MeetingInput): Promise<void> {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.info("[meeting] RESEND_API_KEY not set — logging instead of sending.", {
+      company: input.company,
+      when: input.preferredSlot,
+    });
+    return;
+  }
+  const from = process.env.CONTACT_FROM ?? FROM_DEFAULT;
+  const firmTo = process.env.CONTACT_TO ?? TO_DEFAULT;
+  const service = serviceLabel(input.service);
+  const when = new Date(input.preferredSlot).toUTCString();
+
+  await send({
+    from,
+    to: firmTo,
+    replyTo: input.email,
+    subject: `Meeting request — ${oneLine(input.company)} (${oneLine(service)})`,
+    text: [
+      `New meeting request from ${input.name} at ${input.company}.`,
+      "",
+      `About:     ${service}`,
+      `Requested: ${when}`,
+      `Duration:  ${input.durationMins} minutes`,
+      `Email:     ${input.email}`,
+      input.notes ? `\nNotes:\n${input.notes}` : "",
+      "",
+      "Confirm the time and send an invite from /admin → Assessment requests.",
+    ].join("\n"),
+  });
+
+  await send({
+    from,
+    to: input.email,
+    replyTo: firmTo,
+    subject: "Meeting requested — we'll confirm shortly",
+    text: [
+      `Hi ${input.name.split(" ")[0] || input.name},`,
+      "",
+      `Thanks — your meeting request about ${service} is in. A consultant will`,
+      "confirm the exact time and send a calendar invite within one business day.",
+      "",
+      `Requested: ${when} · ${input.durationMins} minutes`,
+      "",
+      "— Northport Security",
+    ].join("\n"),
   });
 }

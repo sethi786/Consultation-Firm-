@@ -6,9 +6,12 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
 import { Button } from "@/components/ui";
 import { ThemeToggle } from "./ThemeToggle";
+import { ServicesMegaMenu } from "./ServicesMegaMenu";
+import { SERVICES_BY_DOMAIN } from "@/content/services";
+import { domainAccent } from "@/lib/accent";
 
+// "Services" is rendered by the mega-menu; the rest are plain links.
 const NAV = [
-  { href: "/services", label: "Services" },
   { href: "/solutions", label: "Solutions" },
   { href: "/explore", label: "Explore", accent: true },
   { href: "/approach", label: "Approach" },
@@ -29,6 +32,7 @@ function Wordmark() {
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [mobileServices, setMobileServices] = useState(false);
   const pathname = usePathname();
 
   return (
@@ -37,6 +41,7 @@ export function SiteHeader() {
         <Wordmark />
 
         <nav aria-label="Primary" className="hidden items-center gap-6 md:flex">
+          <ServicesMegaMenu />
           {NAV.map((item) => {
             const active = pathname === item.href || pathname.startsWith(item.href + "/");
             return (
@@ -95,6 +100,55 @@ export function SiteHeader() {
           className="border-t border-rule bg-paper px-6 py-4 md:hidden"
         >
           <ul className="flex flex-col divide-y divide-rule">
+            {/* Services — expandable categories */}
+            <li>
+              <button
+                type="button"
+                aria-expanded={mobileServices}
+                onClick={() => setMobileServices((o) => !o)}
+                className="flex w-full items-center justify-between py-3 font-body text-body text-ink"
+              >
+                Services
+                <span aria-hidden="true" className="font-mono text-mono-xs text-slate">
+                  {mobileServices ? "–" : "+"}
+                </span>
+              </button>
+              {mobileServices && (
+                <div className="pb-3">
+                  {SERVICES_BY_DOMAIN.map((group) => {
+                    const a = domainAccent(group.domain);
+                    return (
+                      <div key={group.domain} className="mb-3">
+                        <p className={cn("mb-1 inline-flex items-center gap-2 font-mono text-mono-xs uppercase", a.text)}>
+                          <span className={cn("h-1.5 w-1.5 rounded-full", a.dot)} />
+                          {group.domain}
+                        </p>
+                        <ul className="flex flex-col">
+                          {group.services.map((s) => (
+                            <li key={s.slug}>
+                              <Link
+                                href={`/services/${s.slug}`}
+                                className="block py-1.5 text-small text-slate"
+                                onClick={() => setOpen(false)}
+                              >
+                                {s.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    );
+                  })}
+                  <Link
+                    href="/book"
+                    onClick={() => setOpen(false)}
+                    className="mt-1 inline-block font-mono text-mono-xs uppercase text-coral-ink"
+                  >
+                    Book a meeting →
+                  </Link>
+                </div>
+              )}
+            </li>
             {NAV.map((item) => (
               <li key={item.href}>
                 <Link

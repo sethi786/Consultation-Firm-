@@ -54,6 +54,38 @@ export const AssessmentRequests: CollectionConfig = {
     { name: "seats", type: "text", label: "Approx. seats", admin: { width: "50%" } },
     { name: "message", type: "textarea", required: true },
     {
+      type: "row",
+      fields: [
+        {
+          name: "source",
+          type: "select",
+          defaultValue: "contact-form",
+          options: [
+            { label: "Contact form", value: "contact-form" },
+            { label: "Meeting request", value: "meeting-request" },
+          ],
+          admin: { width: "50%" },
+        },
+        {
+          name: "preferredSlot",
+          type: "date",
+          label: "Preferred meeting slot",
+          admin: { width: "50%", date: { pickerAppearance: "dayAndTime" }, description: "Set on meeting requests." },
+        },
+      ],
+    },
+    {
+      name: "durationMins",
+      type: "select",
+      defaultValue: "30",
+      options: [
+        { label: "30 minutes", value: "30" },
+        { label: "45 minutes", value: "45" },
+        { label: "60 minutes", value: "60" },
+      ],
+      admin: { width: "50%" },
+    },
+    {
       name: "status",
       type: "select",
       defaultValue: "new",

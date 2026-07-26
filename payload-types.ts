@@ -470,6 +470,12 @@ export interface AssessmentRequest {
     | 'not-sure';
   seats?: string | null;
   message: string;
+  source?: ('contact-form' | 'meeting-request') | null;
+  /**
+   * Set on meeting requests.
+   */
+  preferredSlot?: string | null;
+  durationMins?: ('30' | '45' | '60') | null;
   status?: ('new' | 'contacted' | 'qualified' | 'won' | 'archived') | null;
   meta?: {
     ip?: string | null;
@@ -1076,6 +1082,9 @@ export interface AssessmentRequestsSelect<T extends boolean = true> {
   service?: T;
   seats?: T;
   message?: T;
+  source?: T;
+  preferredSlot?: T;
+  durationMins?: T;
   status?: T;
   meta?:
     | T
