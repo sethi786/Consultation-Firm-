@@ -33,6 +33,142 @@ export interface Control {
 }
 
 export const CONTROLS: Control[] = [
+  // ── AI-Powered SOC ───────────────────────────────────────────────────
+  {
+    framework: "NIST CSF 2.0",
+    reference: "DE.AE-02",
+    name: "Potentially adverse events are analyzed to better understand associated activities",
+    service: "ai-soc",
+    current: 2,
+    target: 4,
+  },
+  {
+    framework: "ISO/IEC 27001:2022",
+    reference: "A.8.16",
+    name: "Monitoring activities",
+    service: "ai-soc",
+    current: 2,
+    target: 4,
+  },
+  {
+    framework: "CIS Controls v8",
+    reference: "CIS 13.1",
+    name: "Centralize Security Event Alerting",
+    service: "ai-soc",
+    current: 2,
+    target: 4,
+  },
+  {
+    framework: "NIST CSF 2.0",
+    reference: "RS.MA-02",
+    name: "Incident reports are triaged and validated",
+    service: "ai-soc",
+    current: 2,
+    target: 4,
+  },
+
+  // ── AI Alert Triage ──────────────────────────────────────────────────
+  {
+    framework: "NIST CSF 2.0",
+    reference: "DE.AE-03",
+    name: "Information is correlated from multiple sources",
+    service: "ai-alert-triage",
+    current: 2,
+    target: 4,
+  },
+  {
+    framework: "ISO/IEC 27001:2022",
+    reference: "A.8.16",
+    name: "Monitoring activities",
+    service: "ai-alert-triage",
+    current: 2,
+    target: 4,
+  },
+  {
+    framework: "CIS Controls v8",
+    reference: "CIS 13.11",
+    name: "Tune Security Event Alerting Thresholds",
+    service: "ai-alert-triage",
+    current: 1,
+    target: 4,
+  },
+  {
+    framework: "CIS Controls v8",
+    reference: "CIS 8.11",
+    name: "Conduct Audit Log Reviews",
+    service: "ai-alert-triage",
+    current: 2,
+    target: 4,
+  },
+
+  // ── AI Service Desk ──────────────────────────────────────────────────
+  {
+    framework: "NIST CSF 2.0",
+    reference: "PR.AA-05",
+    name: "Access permissions, entitlements, and authorizations are defined in a policy, managed, enforced, and reviewed, and incorporate the principles of least privilege and separation of duties",
+    service: "ai-service-desk",
+    current: 2,
+    target: 4,
+  },
+  {
+    framework: "ISO/IEC 27001:2022",
+    reference: "A.5.18",
+    name: "Access rights",
+    service: "ai-service-desk",
+    current: 2,
+    target: 4,
+  },
+  {
+    framework: "ISO/IEC 27001:2022",
+    reference: "A.8.15",
+    name: "Logging",
+    service: "ai-service-desk",
+    current: 2,
+    target: 4,
+  },
+  {
+    framework: "CIS Controls v8",
+    reference: "CIS 6.1",
+    name: "Establish an Access Granting Process",
+    service: "ai-service-desk",
+    current: 2,
+    target: 4,
+  },
+
+  // ── AI Readiness & Risk Assessment ───────────────────────────────────
+  {
+    framework: "NIST CSF 2.0",
+    reference: "GV.RM-01",
+    name: "Risk management objectives are established and agreed to by organizational stakeholders",
+    service: "ai-assessment",
+    current: 1,
+    target: 4,
+  },
+  {
+    framework: "NIST CSF 2.0",
+    reference: "ID.RA-01",
+    name: "Vulnerabilities in assets are identified, validated, and recorded",
+    service: "ai-assessment",
+    current: 2,
+    target: 4,
+  },
+  {
+    framework: "ISO/IEC 27001:2022",
+    reference: "A.5.8",
+    name: "Information security in project management",
+    service: "ai-assessment",
+    current: 1,
+    target: 4,
+  },
+  {
+    framework: "ISO/IEC 27001:2022",
+    reference: "A.8.8",
+    name: "Management of technical vulnerabilities",
+    service: "ai-assessment",
+    current: 2,
+    target: 4,
+  },
+
   // ── AI & LLM Security ────────────────────────────────────────────────
   {
     framework: "NIST CSF 2.0",

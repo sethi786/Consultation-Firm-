@@ -14,6 +14,11 @@ export const SERVICE_SLUGS = [
   "data-security",
   "data-privacy",
   "data-platform",
+  // AI Operations
+  "ai-soc",
+  "ai-alert-triage",
+  "ai-service-desk",
+  "ai-assessment",
   // Cloud & Infrastructure
   "cloud-implementation",
   "cloud-foundations",
@@ -66,6 +71,7 @@ export type ServiceSlug = (typeof SERVICE_SLUGS)[number];
 
 export const DOMAINS = [
   "AI & Data",
+  "AI Operations",
   "Cloud & Infrastructure",
   "Identity & Access",
   "Endpoint & Application",
@@ -135,6 +141,40 @@ export const SERVICES: Record<ServiceSlug, ServiceSummary> = {
     domain: "AI & Data",
     question: "Our data is siloed and no one trusts the reporting.",
     blurb: "A governed data platform on Microsoft Fabric or Azure — pipelines, a semantic model, and analytics people can actually rely on.",
+  },
+
+  // ── AI Operations ────────────────────────────────────────────────
+  "ai-soc": {
+    slug: "ai-soc",
+    name: "AI-Powered SOC",
+    short: "AI SOC",
+    domain: "AI Operations",
+    question: "Our SOC can't keep up with the alert volume — can AI actually help?",
+    blurb: "AI-augmented 24/7 detection and triage: models correlate and enrich alerts on your SIEM/XDR, and a human analyst verifies every escalation.",
+  },
+  "ai-alert-triage": {
+    slug: "ai-alert-triage",
+    name: "AI Alert Triage",
+    short: "AI Alerts",
+    domain: "AI Operations",
+    question: "We drown in alerts and almost all of them are noise.",
+    blurb: "AI correlation, enrichment, and prioritisation that collapses alert noise and surfaces the few that matter — reviewed by an analyst before you're paged.",
+  },
+  "ai-service-desk": {
+    slug: "ai-service-desk",
+    name: "AI Service Desk",
+    short: "AI Helpdesk",
+    domain: "AI Operations",
+    question: "Our service desk is buried in password resets and access requests.",
+    blurb: "An AI helpdesk that resolves routine IT and access requests instantly and safely — with least-privilege guardrails, a full audit trail, and humans for the rest.",
+  },
+  "ai-assessment": {
+    slug: "ai-assessment",
+    name: "AI Readiness & Risk Assessment",
+    short: "AI Assessment",
+    domain: "AI Operations",
+    question: "We're adopting AI faster than we can govern it — is it safe?",
+    blurb: "Where AI is actually in use, what it exposes, and a governance roadmap mapped to NIST AI RMF and ISO/IEC 42001 — so adoption stays ahead of the risk.",
   },
 
   // ── Cloud & Infrastructure ───────────────────────────────────────

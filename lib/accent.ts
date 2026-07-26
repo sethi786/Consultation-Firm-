@@ -60,6 +60,7 @@ export const ACCENTS: Record<Accent, AccentClasses> = {
  *  kept so callers (and a future re-theme) still address domains by name. */
 export const DOMAIN_ACCENT: Record<Domain, Accent> = {
   "AI & Data": "coral",
+  "AI Operations": "indigo",
   "Cloud & Infrastructure": "sky",
   "Identity & Access": "violet",
   "Endpoint & Application": "mint",

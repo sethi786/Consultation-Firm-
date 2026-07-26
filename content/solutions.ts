@@ -86,6 +86,12 @@ export const CAPABILITY_MATRIX: MatrixRow[] = [
     operate: "Ongoing data-risk monitoring",
   },
   {
+    domain: "AI Operations",
+    advise: "AI readiness & risk assessment",
+    implement: "AI SOC, alert triage & service-desk build",
+    operate: "Managed AI-augmented SOC & service desk",
+  },
+  {
     domain: "Cloud & Infrastructure",
     advise: "Cloud posture & landing-zone review",
     implement: "Migration & secure landing zone",

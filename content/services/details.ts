@@ -13,6 +13,427 @@ import type { ServiceDetail } from "./types";
  */
 
 const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["ai-security"]>> = {
+  "ai-soc": {
+    situation:
+      "Your alert volume outgrew your team years ago, and most pitches for an “AI SOC” mean a black box that either floods you with false positives or quietly closes a real incident. Cairn runs an AI-augmented SOC the honest way: models handle correlation, enrichment, and first-pass triage across your SIEM and XDR at machine speed, and a human analyst verifies every escalation before it reaches you. You get the coverage of automation with an auditable decision behind every action.",
+    workstreams: [
+      {
+        title: "Connect and baseline your telemetry",
+        deliverable: "Detection coverage and data-source map",
+        detail:
+          "We map what you log — identity, endpoint, cloud, email, network — find the blind spots, and baseline normal so the models reason against something true.",
+      },
+      {
+        title: "AI triage and enrichment pipeline",
+        deliverable: "AI triage pipeline with confidence scoring",
+        detail:
+          "Each alert is auto-correlated across sources, enriched with asset and identity context, and scored — so analysts start from a conclusion to check, not a raw log to read.",
+      },
+      {
+        title: "Human-verified response playbooks",
+        deliverable: "Response runbooks with approval gates",
+        detail:
+          "Automation contains the obvious — isolate a host, disable a token — only within limits you set. Anything that changes state waits on analyst approval, and every action is logged.",
+      },
+      {
+        title: "Continuous tuning and reporting",
+        deliverable: "Monthly SOC report: dwell time, precision, what we tuned",
+        detail:
+          "We track model precision and false-positive rate as first-class metrics, retune weekly, and report what matters — not a volume dashboard.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "2–3 weeks",
+        summary: "We assess your detection coverage and design a tuned AI-SOC pipeline for your stack.",
+        includes: [
+          "Detection coverage & data-source map",
+          "Alert-volume and noise baseline",
+          "AI-SOC design for your SIEM/XDR",
+          "Gap findings mapped to NIST CSF 2.0",
+        ],
+        excludes: ["24/7 staffing", "Response automation build"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "4–8 weeks",
+        summary: "We build the triage pipeline and response playbooks with your team.",
+        includes: [
+          "Everything in Assessment",
+          "AI triage & enrichment pipeline",
+          "Human-verified response runbooks",
+          "Analyst onboarding",
+        ],
+        excludes: ["Round-the-clock monitoring"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We run the AI-augmented SOC 24/7, with analysts on the queue.",
+        includes: [
+          "24/7 AI triage with human verification",
+          "Weekly tuning",
+          "Monthly reporting & threat hunting",
+          "Named SOC lead",
+        ],
+        excludes: ["Application development"],
+        price: "",
+      },
+    ],
+    deliverables: [
+      "Detection coverage & data-source map",
+      "AI triage pipeline with confidence scoring",
+      "Response runbooks with approval gates",
+      "Monthly SOC report",
+      "Named SOC lead",
+    ],
+    faqs: [
+      {
+        q: "Does the AI close incidents on its own?",
+        a: "No. Models triage, correlate, and recommend — a human analyst verifies every escalation and approves any state-changing action. Automation only ever acts inside limits you set, and every action is logged.",
+      },
+      {
+        q: "Do we have to replace our SIEM?",
+        a: "No. We run on your existing Sentinel, Defender, or other SIEM/XDR. The AI layer sits on top of what you already pay for.",
+      },
+      {
+        q: "How do you stop the AI inventing an incident?",
+        a: "Every AI conclusion links to the underlying evidence an analyst can open, and we track model precision and false-positive rate. Low-confidence cases go to a human, not to you.",
+      },
+      {
+        q: "Is our data used to train someone's model?",
+        a: "No. Your telemetry is processed to run your SOC only; it is not used to train shared models, and it stays in the region agreed in your engagement.",
+      },
+      {
+        q: "How fast do we see fewer false positives?",
+        a: "We baseline in the first two weeks and tune weekly. The precision and false-positive numbers are in your monthly report from month one.",
+      },
+    ],
+    seo: {
+      title: "AI-Powered SOC — AI-augmented detection & 24/7 triage",
+      description:
+        "An AI-augmented SOC that correlates and triages alerts on your SIEM/XDR at machine speed, with a human analyst verifying every escalation. Mapped to NIST CSF 2.0.",
+    },
+  },
+
+  "ai-alert-triage": {
+    situation:
+      "Your SIEM fires thousands of alerts a week and your team has learned to ignore the dashboard — which is exactly how the real one gets missed. Cairn puts an AI triage layer in front of your alert queue: it correlates related alerts into single incidents, enriches each with asset, identity, and threat context, and ranks them by real risk. An analyst reviews the top of the list; the noise is suppressed with a reason you can audit, never silently deleted.",
+    workstreams: [
+      {
+        title: "Alert-source inventory & noise baseline",
+        deliverable: "Alert baseline: volume, sources, false-positive rate",
+        detail:
+          "We measure where your alerts come from and how many are noise today, so the reduction is a number you can hold us to.",
+      },
+      {
+        title: "Correlation & enrichment rules",
+        deliverable: "Correlation and enrichment ruleset",
+        detail:
+          "Related alerts collapse into one incident, each enriched with the context an analyst would otherwise gather by hand.",
+      },
+      {
+        title: "Risk-based prioritisation",
+        deliverable: "Prioritisation model with audit trail",
+        detail:
+          "Alerts are ranked by exploitability and asset value; anything suppressed carries a logged reason, so nothing is silently dropped.",
+      },
+      {
+        title: "Tuning & handoff",
+        deliverable: "Runbook and tuning cadence",
+        detail:
+          "We tune thresholds against your environment and hand your team a runbook — or run the triage for you.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "1–2 weeks",
+        summary: "We baseline your alert noise and design the triage model.",
+        includes: [
+          "Alert-source inventory",
+          "False-positive baseline",
+          "Correlation & prioritisation design",
+          "Findings mapped to NIST CSF 2.0",
+        ],
+        excludes: ["Ongoing triage", "SOAR build"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "3–5 weeks",
+        summary: "We build the correlation, enrichment, and prioritisation and tune it in.",
+        includes: [
+          "Everything in Assessment",
+          "Correlation & enrichment ruleset",
+          "Risk-based prioritisation model",
+          "Analyst handoff & runbook",
+        ],
+        excludes: ["24/7 monitoring"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We run triage on your queue and keep it tuned.",
+        includes: [
+          "Continuous AI triage",
+          "Weekly threshold tuning",
+          "Monthly noise-reduction report",
+        ],
+        excludes: ["Full incident response"],
+        price: "",
+      },
+    ],
+    deliverables: [
+      "Alert baseline report",
+      "Correlation & enrichment ruleset",
+      "Prioritisation model with audit trail",
+      "Tuning runbook",
+      "Monthly noise-reduction report",
+    ],
+    faqs: [
+      {
+        q: "Will real alerts get suppressed?",
+        a: "Suppression is never silent. Every suppressed alert keeps a logged, reviewable reason, and we track the suppression ruleset so you can audit exactly what was filtered and why.",
+      },
+      {
+        q: "Does this replace our SOC or SIEM?",
+        a: "Neither. It's a triage layer in front of your existing queue — pair it with your team, or with our AI-Powered SOC if you want the queue staffed.",
+      },
+      {
+        q: "How much noise can we actually expect to cut?",
+        a: "We baseline it in week one and report the reduction monthly, committing to a number against your baseline rather than a marketing figure.",
+      },
+      {
+        q: "Which tools does it work with?",
+        a: "Microsoft Sentinel and Defender, and most major SIEM/XDR platforms via their alert APIs. We work on your stack, not a replacement.",
+      },
+      {
+        q: "Who reviews the top of the list?",
+        a: "Your analysts, or ours under the Managed tier. The AI ranks and explains; a person decides.",
+      },
+    ],
+    seo: {
+      title: "AI Alert Triage — cut alert noise, surface what matters",
+      description:
+        "AI correlation, enrichment, and risk-based prioritisation that collapses SIEM/XDR alert noise and surfaces the alerts that matter, with an auditable suppression trail.",
+    },
+  },
+
+  "ai-service-desk": {
+    situation:
+      "Half your service-desk tickets are password resets, access requests, and “how do I” questions — and every one is a small identity decision made under time pressure. Cairn stands up an AI service desk that resolves the routine safely: it answers from your own knowledge base, handles resets and access requests through policy-bound workflows with least-privilege guardrails, and hands anything sensitive or ambiguous to a human. Every action is logged and every access grant is auditable.",
+    workstreams: [
+      {
+        title: "Knowledge & workflow ingestion",
+        deliverable: "Grounded knowledge base and intent map",
+        detail:
+          "The assistant answers only from your approved documentation and IT policies, so it doesn't invent steps or entitlements.",
+      },
+      {
+        title: "Policy-bound access workflows",
+        deliverable: "Least-privilege request & reset workflows",
+        detail:
+          "Resets and access requests run through Entra ID with approval gates, MFA, and role limits — the AI can request, but policy grants.",
+      },
+      {
+        title: "Guardrails & escalation",
+        deliverable: "Escalation policy and guardrail config",
+        detail:
+          "Sensitive, privileged, or low-confidence requests route to a human automatically. The AI never grants standing privilege on its own.",
+      },
+      {
+        title: "Audit & reporting",
+        deliverable: "Audit trail and service-desk metrics",
+        detail:
+          "Every interaction and grant is logged for review; you get deflection rate, resolution time, and an access-change audit.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "2 weeks",
+        summary: "We assess your ticket mix and design a safe AI service desk.",
+        includes: [
+          "Ticket-mix & deflection analysis",
+          "Knowledge-base readiness review",
+          "Access-workflow & guardrail design",
+          "Findings mapped to NIST CSF 2.0",
+        ],
+        excludes: ["Build", "Ongoing operation"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "4–6 weeks",
+        summary: "We build the assistant, workflows, and guardrails and integrate identity.",
+        includes: [
+          "Everything in Assessment",
+          "Grounded knowledge base",
+          "Least-privilege reset & request workflows",
+          "Entra ID integration & audit logging",
+        ],
+        excludes: ["24/7 human desk"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We run and tune the AI desk with human escalation.",
+        includes: [
+          "Operated AI service desk",
+          "Human escalation queue",
+          "Monthly deflection & access-audit report",
+        ],
+        excludes: ["Field / on-site support"],
+        price: "",
+      },
+    ],
+    deliverables: [
+      "Grounded knowledge base & intent map",
+      "Least-privilege request & reset workflows",
+      "Escalation & guardrail configuration",
+      "Access-change audit trail",
+      "Service-desk metrics report",
+    ],
+    faqs: [
+      {
+        q: "Can the AI grant admin access?",
+        a: "No. It can request access through your policy workflows, but grants require the approvals, MFA, and role limits you define — and privileged or sensitive requests always route to a human. Least privilege is enforced in the workflow, not left to the model.",
+      },
+      {
+        q: "Will it make up answers?",
+        a: "It answers only from your approved knowledge base and policies, and cites the source. If it can't ground an answer, it escalates rather than guessing.",
+      },
+      {
+        q: "How does this stay compliant?",
+        a: "Every interaction and access change is logged to an audit trail, MFA and approvals gate resets, and the flow maps to your access-control policy — the evidence an auditor asks for is produced by default.",
+      },
+      {
+        q: "Does it work with our tools?",
+        a: "It integrates with Microsoft 365, Entra ID, and common ITSM platforms (ServiceNow, Jira Service Management, Intune). We fit your stack.",
+      },
+      {
+        q: "What happens to tickets it can't handle?",
+        a: "They escalate to your humans, or ours, with the full context already gathered — so the handoff is faster, not a cold restart.",
+      },
+    ],
+    seo: {
+      title: "AI Service Desk — safe AI helpdesk with least-privilege guardrails",
+      description:
+        "An AI helpdesk that resolves routine IT and access requests instantly, with policy-bound least-privilege workflows, MFA, human escalation, and a full audit trail.",
+    },
+  },
+
+  "ai-assessment": {
+    situation:
+      "AI arrived in your business through the side door — a team wired a copilot into SharePoint, another shipped an agent that can call production APIs, and no one can say what's in use or what it can reach. Cairn assesses your AI adoption the way a regulator soon will: we inventory where AI actually runs, what data and tools it touches, and what it exposes — then hand you a governance roadmap mapped to NIST AI RMF and ISO/IEC 42001 so adoption stays ahead of the risk instead of behind it.",
+    workstreams: [
+      {
+        title: "AI inventory & shadow-AI discovery",
+        deliverable: "AI system inventory (models, data, tools, owners)",
+        detail:
+          "Find every AI system in use — sanctioned and shadow — what data it reads, which tools it can call, and who owns it.",
+      },
+      {
+        title: "Risk & exposure assessment",
+        deliverable: "AI risk register with severities",
+        detail:
+          "Assess each system for data leakage, over-scoped permissions, prompt-injection exposure, and decision risk — scored and owned.",
+      },
+      {
+        title: "Governance gap analysis",
+        deliverable: "NIST AI RMF / ISO 42001 gap assessment",
+        detail:
+          "Measure your AI governance against recognised frameworks — policy, accountability, testing, monitoring — and see which gaps matter first.",
+      },
+      {
+        title: "Roadmap & guardrails",
+        deliverable: "AI governance roadmap and acceptable-use policy",
+        detail:
+          "A staged plan — inventory controls, approval gates, guardrails, monitoring — plus an acceptable-use policy your teams can actually follow.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "3–4 weeks",
+        summary: "We inventory, assess, and hand you a governance roadmap.",
+        includes: [
+          "AI system inventory & shadow-AI discovery",
+          "AI risk register with severities",
+          "NIST AI RMF / ISO 42001 gap assessment",
+          "Board-ready governance roadmap",
+        ],
+        excludes: ["Guardrail implementation", "Ongoing monitoring"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "4–8 weeks",
+        summary: "We stand up the governance controls and guardrails with your team.",
+        includes: [
+          "Everything in Assessment",
+          "AI acceptable-use policy & approval gates",
+          "Guardrail & DLP configuration",
+          "Inventory & monitoring setup",
+        ],
+        excludes: ["24/7 monitoring"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We keep the AI inventory current and governance live.",
+        includes: [
+          "Continuous AI inventory & drift detection",
+          "Quarterly risk re-assessment",
+          "Governance reporting",
+        ],
+        excludes: ["Model development"],
+        price: "",
+      },
+    ],
+    deliverables: [
+      "AI system inventory",
+      "AI risk register with severities",
+      "NIST AI RMF / ISO 42001 gap assessment",
+      "AI governance roadmap",
+      "AI acceptable-use policy",
+    ],
+    faqs: [
+      {
+        q: "Is this about securing our AI, or using AI?",
+        a: "This assesses the AI you're adopting — where it runs and what it risks. If you specifically need adversarial testing of an LLM feature you built, that's our AI & LLM Security service; the two pair well.",
+      },
+      {
+        q: "We don't think we use much AI. Worth it?",
+        a: "That's usually the finding that surprises boards. Shadow AI — copilots, browser extensions, embedded features — is where the exposure hides, and the inventory is where the assessment earns its fee.",
+      },
+      {
+        q: "Which frameworks do you map to?",
+        a: "NIST AI RMF 1.0 and ISO/IEC 42001 for AI governance, alongside NIST CSF 2.0, ISO 27001 and CIS for the underlying security controls — so it slots into the audits you already answer.",
+      },
+      {
+        q: "Will this slow down our AI adoption?",
+        a: "The opposite. Clear guardrails and an approval path let teams ship AI faster, because the risk questions are answered up front instead of blocking a launch later.",
+      },
+      {
+        q: "Do you need access to our models or data?",
+        a: "We need to see configuration, permissions, and data flows — not to ingest your data. The assessment works from architecture, access, and policy, and anything sensitive stays in your environment.",
+      },
+    ],
+    seo: {
+      title: "AI Readiness & Risk Assessment — govern AI to NIST AI RMF & ISO 42001",
+      description:
+        "Inventory where AI is in use, assess what it exposes, and get a governance roadmap mapped to NIST AI RMF and ISO/IEC 42001 — so AI adoption stays ahead of the risk.",
+    },
+  },
+
   "ai-security": {
     situation:
       "You shipped an LLM feature — a support copilot, a RAG assistant over internal docs, an agent that can call tools — and now someone on the board wants to know what it can leak, who can make it misbehave, and whether a prompt in a customer ticket can reach your database. Cairn assesses the AI system the way an attacker will: prompt injection, data exfiltration through the model, over-scoped tool permissions, and the retrieval layer that quietly indexed data the model should never surface.",
