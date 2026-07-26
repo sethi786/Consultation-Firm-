@@ -13,6 +13,7 @@ import { Posts } from "./payload/collections/Posts";
 import { CaseStudies } from "./payload/collections/CaseStudies";
 import { Industries } from "./payload/collections/Industries";
 import { Pages } from "./payload/collections/Pages";
+import { AssessmentRequests } from "./payload/collections/AssessmentRequests";
 import { Organisations } from "./payload/collections/portal/Organisations";
 import { PortalUsers } from "./payload/collections/portal/PortalUsers";
 import { Memberships } from "./payload/collections/portal/Memberships";
@@ -49,6 +50,8 @@ export default buildConfig({
     Pages,
     Authors,
     Media,
+    // Leads (PII — staff-only read; written by the contact form server-side)
+    AssessmentRequests,
     // Portal (tenant data — scoped by lib/portal/data.ts)
     Organisations,
     PortalUsers,

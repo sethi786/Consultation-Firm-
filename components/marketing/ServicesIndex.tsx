@@ -20,7 +20,7 @@ export function ServicesIndex({ index = 2 }: { index?: number }) {
       <div className="flex flex-col gap-14">
         {SERVICES_BY_DOMAIN.map((group, gi) => (
           <div key={group.domain} className="grid grid-cols-1 gap-x-10 gap-y-6 md:grid-cols-12">
-            <div className="md:col-span-3">
+            <div className="self-start md:col-span-3 md:sticky md:top-28">
               <Reveal>
                 <h3 className="font-mono text-mono-xs uppercase tracking-mono text-brass-lift">
                   {group.domain}

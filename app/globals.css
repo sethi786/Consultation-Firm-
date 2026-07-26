@@ -178,4 +178,45 @@
   .tracking-mono {
     letter-spacing: 0.08em;
   }
+
+  /* ── Refined on-brand entrance (calm, documentary — not theatre) ──────────
+     First-paint staged reveal for the hero. Transform-only on the title so the
+     LCP element paints immediately (never gated behind opacity). All of this is
+     disabled by the global reduced-motion killswitch above. */
+  @keyframes rise-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Title: opacity stays at 1 so the largest text is painted at once (LCP). */
+  @keyframes rise-in-solid {
+    from {
+      transform: translateY(10px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  .anim-hero-title {
+    animation: rise-in-solid 700ms var(--ease-doc) both;
+  }
+  .anim-rise {
+    animation: rise-in 700ms var(--ease-doc) both;
+  }
+  .anim-delay-1 {
+    animation-delay: 90ms;
+  }
+  .anim-delay-2 {
+    animation-delay: 180ms;
+  }
+  .anim-delay-3 {
+    animation-delay: 280ms;
+  }
 }

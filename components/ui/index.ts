@@ -9,3 +9,4 @@ export { Field, TextareaField, SelectField } from "./Field";
 export { Reveal } from "./Reveal";
 export { Accordion } from "./Accordion";
 export { Tabs } from "./Tabs";
+export { CountUp } from "./CountUp";

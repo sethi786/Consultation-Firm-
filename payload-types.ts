@@ -73,6 +73,7 @@ export interface Config {
     pages: Page;
     authors: Author;
     media: Media;
+    'assessment-requests': AssessmentRequest;
     organisations: Organisation;
     'portal-users': PortalUser;
     memberships: Membership;
@@ -95,6 +96,7 @@ export interface Config {
     pages: PagesSelect<false> | PagesSelect<true>;
     authors: AuthorsSelect<false> | AuthorsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    'assessment-requests': AssessmentRequestsSelect<false> | AssessmentRequestsSelect<true>;
     organisations: OrganisationsSelect<false> | OrganisationsSelect<true>;
     'portal-users': PortalUsersSelect<false> | PortalUsersSelect<true>;
     memberships: MembershipsSelect<false> | MembershipsSelect<true>;
@@ -276,7 +278,21 @@ export interface CaseStudy {
    * Anonymised is fine, e.g. "a 900-seat Ontario credit union".
    */
   clientDescriptor: string;
-  service?: ('ai-security' | 'cloud-security' | 'identity' | 'zero-trust' | 'managed-soc' | 'compliance') | null;
+  service?:
+    | (
+        | 'ai-security'
+        | 'data-security'
+        | 'cloud-security'
+        | 'cloud-foundations'
+        | 'network-security'
+        | 'identity'
+        | 'zero-trust'
+        | 'endpoint-security'
+        | 'application-security'
+        | 'managed-soc'
+        | 'compliance'
+      )
+    | null;
   summary: string;
   /**
    * The numbers. Each needs written client approval.
@@ -398,6 +414,39 @@ export interface Page {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "assessment-requests".
+ */
+export interface AssessmentRequest {
+  id: number;
+  name: string;
+  email: string;
+  company: string;
+  service:
+    | 'ai-security'
+    | 'data-security'
+    | 'cloud-security'
+    | 'cloud-foundations'
+    | 'network-security'
+    | 'identity'
+    | 'zero-trust'
+    | 'endpoint-security'
+    | 'application-security'
+    | 'managed-soc'
+    | 'compliance'
+    | 'not-sure';
+  seats?: string | null;
+  message: string;
+  status?: ('new' | 'contacted' | 'qualified' | 'won' | 'archived') | null;
+  meta?: {
+    ip?: string | null;
+    userAgent?: string | null;
+    receivedAt?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "organisations".
  */
 export interface Organisation {
@@ -445,7 +494,21 @@ export interface Engagement {
   id: number;
   organisation: number | Organisation;
   name: string;
-  service?: ('ai-security' | 'cloud-security' | 'identity' | 'zero-trust' | 'managed-soc' | 'compliance') | null;
+  service?:
+    | (
+        | 'ai-security'
+        | 'data-security'
+        | 'cloud-security'
+        | 'cloud-foundations'
+        | 'network-security'
+        | 'identity'
+        | 'zero-trust'
+        | 'endpoint-security'
+        | 'application-security'
+        | 'managed-soc'
+        | 'compliance'
+      )
+    | null;
   status?: ('scoping' | 'active' | 'reporting' | 'closed') | null;
   startDate?: string | null;
   /**
@@ -693,6 +756,10 @@ export interface PayloadLockedDocument {
         value: number | Media;
       } | null)
     | ({
+        relationTo: 'assessment-requests';
+        value: number | AssessmentRequest;
+      } | null)
+    | ({
         relationTo: 'organisations';
         value: number | Organisation;
       } | null)
@@ -921,6 +988,28 @@ export interface MediaSelect<T extends boolean = true> {
               filename?: T;
             };
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "assessment-requests_select".
+ */
+export interface AssessmentRequestsSelect<T extends boolean = true> {
+  name?: T;
+  email?: T;
+  company?: T;
+  service?: T;
+  seats?: T;
+  message?: T;
+  status?: T;
+  meta?:
+    | T
+    | {
+        ip?: T;
+        userAgent?: T;
+        receivedAt?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
