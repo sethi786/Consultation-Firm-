@@ -40,7 +40,7 @@ export function ServicesIndex({ index = 2 }: { index?: number }) {
                   <Reveal key={s.slug} delay={(gi === 0 ? si : 0) * 60}>
                     <Link
                       href={`/services/${s.slug}`}
-                      className={`group flex h-full flex-col overflow-hidden rounded-2xl border border-rule bg-white p-6 transition-all duration-300 ease-doc hover:-translate-y-0.5 ${a.borderHover} hover:shadow-pop-sm`}
+                      className={`group flex h-full flex-col overflow-hidden rounded-2xl border border-rule bg-surface p-6 transition-all duration-300 ease-doc hover:-translate-y-0.5 ${a.borderHover} hover:shadow-pop-sm`}
                     >
                       <span aria-hidden="true" className={`mb-4 block h-1 w-10 rounded-full ${a.dot}`} />
                       <div className="flex items-baseline justify-between gap-3">

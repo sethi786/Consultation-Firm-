@@ -59,7 +59,7 @@ export function PostureCalculator() {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-6 rounded-3xl bg-white p-6 shadow-pop-sm md:grid-cols-5 md:p-10">
+    <div className="grid grid-cols-1 gap-6 rounded-3xl bg-surface p-6 shadow-pop-sm md:grid-cols-5 md:p-10">
       {/* Controls */}
       <div className="md:col-span-3">
         <p className="font-mono text-mono-xs uppercase text-slate">Toggle what you have in place</p>
@@ -85,7 +85,7 @@ export function PostureCalculator() {
                 >
                   <span
                     className={cn(
-                      "absolute top-0.5 h-5 w-5 rounded-full bg-white shadow-sm transition-all",
+                      "absolute top-0.5 h-5 w-5 rounded-full bg-surface shadow-sm transition-all",
                       c.on ? "left-[1.125rem]" : "left-0.5",
                     )}
                   />
@@ -119,7 +119,7 @@ export function PostureCalculator() {
           </div>
 
           {topExposure && (
-            <div className="mt-6 rounded-xl border border-rule bg-white p-4">
+            <div className="mt-6 rounded-xl border border-rule bg-surface p-4">
               <p className="font-mono text-mono-xs uppercase text-slate">Biggest exposure</p>
               <p className="mt-1 text-small text-ink">{topExposure.label}</p>
             </div>

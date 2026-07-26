@@ -45,7 +45,7 @@ export function AttackPathVisualizer() {
   }
 
   return (
-    <div className="rounded-3xl bg-white p-6 shadow-pop-sm md:p-10">
+    <div className="rounded-3xl bg-surface p-6 shadow-pop-sm md:p-10">
       {/* Live verdict */}
       <div
         className={cn(

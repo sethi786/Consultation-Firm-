@@ -151,7 +151,7 @@ export function MaturityAssessment() {
   if (done) {
     const dash = 2 * Math.PI * 52;
     return (
-      <div className="rounded-3xl bg-white p-6 shadow-pop-sm md:p-10">
+      <div className="rounded-3xl bg-surface p-6 shadow-pop-sm md:p-10">
         <p className="font-mono text-mono-xs uppercase text-slate">Your maturity snapshot</p>
         <div className="mt-6 grid grid-cols-1 items-center gap-8 md:grid-cols-2">
           <div className="flex items-center gap-6">
@@ -212,7 +212,7 @@ export function MaturityAssessment() {
 
   const q = QUESTIONS[step]!;
   return (
-    <div className="rounded-3xl bg-white p-6 shadow-pop-sm md:p-10">
+    <div className="rounded-3xl bg-surface p-6 shadow-pop-sm md:p-10">
       <div className="flex items-center justify-between gap-4">
         <p className="font-mono text-mono-xs uppercase text-slate">
           {q.dimension} · {step + 1} / {QUESTIONS.length}

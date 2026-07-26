@@ -55,6 +55,11 @@
   --shadow-pop: 0 24px 50px -16px rgba(18, 24, 26, 0.28);
   --shadow-pop-sm: 0 12px 26px -12px rgba(18, 24, 26, 0.24);
 
+  /* Card / panel surface — flips to a dark panel in the dark theme so `bg-surface`
+     recolors automatically where we'd otherwise hardcode white. */
+  --color-surface: #ffffff;
+  --color-surface-2: #f8f9f6;
+
   /* Severity — only ever inside data chips, never decoration */
   --color-sev-crit: #8c2f1b;
   --color-sev-crit-tint: #f2e2dd;
@@ -181,6 +186,49 @@
       scroll-behavior: auto !important;
     }
   }
+}
+
+/* Dark theme ------------------------------------------------------- *
+ * Opt-in via [data-theme="dark"] (the marketing default; the portal forces it
+ * on its own subtree). Overriding the semantic tokens recolours every
+ * token-based utility — bg-paper, text-ink, bg-surface, the accent -soft/-ink
+ * values — with no per-component dark: variants. The vivid accents themselves
+ * stay saturated; they read even better on the near-black ground.
+ * ------------------------------------------------------------------ */
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-ink: #eef1ec;
+  --color-slate: #93a29b;
+  --color-rule: #273039;
+  --color-paper: #0c1116;
+  --color-paper-sunk: #121a21;
+  --color-surface: #161e27;
+  --color-surface-2: #1c2732;
+
+  /* Pine reads as a mid-forest in dark so it works as both a button fill and
+     link text; brass lifts a touch. */
+  --color-pine: #4f9d82;
+  --color-pine-lift: #63b295;
+  --color-brass: #cbaa61;
+  --color-brass-lift: #ddc283;
+
+  /* Brighten accent text values; darken the soft tints onto the dark ground. */
+  --color-coral-ink: color-mix(in srgb, var(--color-coral) 82%, white);
+  --color-coral-soft: color-mix(in srgb, var(--color-coral) 22%, #0c1116);
+  --color-sky-ink: color-mix(in srgb, var(--color-sky) 82%, white);
+  --color-sky-soft: color-mix(in srgb, var(--color-sky) 22%, #0c1116);
+  --color-violet-ink: color-mix(in srgb, var(--color-violet) 86%, white);
+  --color-violet-soft: color-mix(in srgb, var(--color-violet) 26%, #0c1116);
+  --color-mint-ink: color-mix(in srgb, var(--color-mint) 82%, white);
+  --color-mint-soft: color-mix(in srgb, var(--color-mint) 22%, #0c1116);
+  --color-indigo-ink: color-mix(in srgb, var(--color-indigo) 88%, white);
+  --color-indigo-soft: color-mix(in srgb, var(--color-indigo) 28%, #0c1116);
+  --color-amber-ink: color-mix(in srgb, var(--color-amber) 82%, white);
+  --color-amber-soft: color-mix(in srgb, var(--color-amber) 22%, #0c1116);
+  --color-rose-ink: color-mix(in srgb, var(--color-rose) 82%, white);
+  --color-rose-soft: color-mix(in srgb, var(--color-rose) 24%, #0c1116);
 }
 
 /* Utilities -------------------------------------------------------- */

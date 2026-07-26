@@ -39,7 +39,7 @@ export function CredibilityBand({ index = 5 }: { index?: number }) {
             {extras.length > 0 ? (
               <ul className="mt-3 flex flex-wrap gap-2">
                 {extras.map((e) => (
-                  <li key={e.label} className="rounded-full border border-rule bg-white px-3 py-1.5 text-caption text-ink">
+                  <li key={e.label} className="rounded-full border border-rule bg-surface px-3 py-1.5 text-caption text-ink">
                     {e.label}
                     {e.note && <span className="text-slate"> · {e.note}</span>}
                   </li>

@@ -51,7 +51,7 @@ export default function SolutionsPage() {
             return (
               <div
                 key={m.key}
-                className="flex flex-col rounded-3xl border border-rule bg-white p-7 shadow-pop-sm"
+                className="flex flex-col rounded-3xl border border-rule bg-surface p-7 shadow-pop-sm"
               >
                 <span className={`inline-flex w-fit items-center gap-2 rounded-full ${a.softBg} px-3 py-1 font-mono text-mono-xs uppercase ${a.softText}`}>
                   <span className={`h-1.5 w-1.5 rounded-full ${a.dot}`} />
@@ -82,7 +82,7 @@ export default function SolutionsPage() {
           <Eyebrow index={2}>Every capability, in the mode you need</Eyebrow>
           <h2 className="mt-2 mb-8 text-h2 text-ink">The capability matrix</h2>
 
-          <div className="overflow-x-auto rounded-2xl border border-rule bg-white">
+          <div className="overflow-x-auto rounded-2xl border border-rule bg-surface">
             <table className="w-full min-w-[720px] border-collapse text-left">
               <thead>
                 <tr className="border-b border-rule">

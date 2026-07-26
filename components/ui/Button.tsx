@@ -36,8 +36,8 @@ const sizes: Record<Size, string> = {
 };
 
 const variants: Record<Variant, string> = {
-  // Pine fill — the primary action. Paper text meets AA on pine.
-  primary: "bg-pine text-paper hover:bg-pine-lift",
+  // Pine fill — the primary action. White label reads on pine in both themes.
+  primary: "bg-pine text-white hover:bg-pine-lift",
   // Ink outline — secondary.
   secondary: "border border-ink/25 text-ink hover:border-ink/60 hover:bg-ink/[0.03]",
   // Text only — the brass underline motif (one of the three permitted brass uses).

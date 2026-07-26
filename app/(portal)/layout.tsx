@@ -17,6 +17,7 @@ export default function PortalBaseLayout({
 }) {
   return (
     <div
+      data-theme="dark"
       className="min-h-dvh bg-portal-bg text-portal-ink"
       style={{ colorScheme: "dark" }}
     >

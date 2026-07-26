@@ -72,7 +72,7 @@ export function FindingsDemo() {
   );
 
   return (
-    <div className="rounded-3xl bg-white p-5 shadow-pop-sm md:p-8">
+    <div className="rounded-3xl bg-surface p-5 shadow-pop-sm md:p-8">
       {/* Severity distribution */}
       <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
         {SEV_ORDER.map((s) => (

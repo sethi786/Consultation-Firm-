@@ -67,7 +67,7 @@ export default function ManagedServicesPage() {
             </Link>
             <Link
               href="/services/managed-soc"
-              className="rounded-full border border-white/25 bg-white/5 px-6 py-3 font-body text-small font-medium text-white transition-colors hover:border-white/60"
+              className="rounded-full border border-white/25 bg-surface/5 px-6 py-3 font-body text-small font-medium text-white transition-colors hover:border-white/60"
             >
               Managed SOC / MDR detail →
             </Link>
@@ -81,7 +81,7 @@ export default function ManagedServicesPage() {
         <h2 className="mt-2 mb-8 text-h2 text-ink">A loop, not a ticket queue.</h2>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {LOOP.map((s) => (
-            <div key={s.n} className="rounded-3xl border border-rule bg-white p-6 shadow-pop-sm">
+            <div key={s.n} className="rounded-3xl border border-rule bg-surface p-6 shadow-pop-sm">
               <span className="font-mono text-mono-xs uppercase text-coral-ink">{s.n}</span>
               <h3 className="mt-2 text-h3 text-ink">{s.title}</h3>
               <p className="mt-2 text-small text-slate">{s.body}</p>
@@ -99,7 +99,7 @@ export default function ManagedServicesPage() {
               <h2 className="mt-2 mb-6 text-h2 text-ink">Coverage across your estate</h2>
               <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {WATCH.map((w) => (
-                  <li key={w} className="flex items-baseline gap-2 rounded-2xl border border-rule bg-white px-4 py-3 text-small text-ink">
+                  <li key={w} className="flex items-baseline gap-2 rounded-2xl border border-rule bg-surface px-4 py-3 text-small text-ink">
                     <span aria-hidden="true" className="text-sky-ink">◆</span>
                     {w}
                   </li>

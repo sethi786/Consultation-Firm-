@@ -52,7 +52,7 @@ export default function HomePage() {
           }}
         />
         <Container className="relative pt-16 pb-14 md:pt-24 md:pb-20">
-          <span className="anim-rise mb-6 inline-flex items-center gap-2 rounded-full border border-rule bg-white/70 px-4 py-1.5 font-mono text-mono-xs uppercase text-slate backdrop-blur-sm">
+          <span className="anim-rise mb-6 inline-flex items-center gap-2 rounded-full border border-rule bg-surface/70 px-4 py-1.5 font-mono text-mono-xs uppercase text-slate backdrop-blur-sm">
             <span className="h-1.5 w-1.5 rounded-full bg-coral" />
             Security consulting &amp; managed detection
           </span>
@@ -78,7 +78,7 @@ export default function HomePage() {
                 </Link>
                 <Link
                   href="/explore"
-                  className="rounded-full border border-ink/15 bg-white px-6 py-3 font-body text-small font-medium text-ink transition-colors hover:border-ink/40"
+                  className="rounded-full border border-ink/15 bg-surface px-6 py-3 font-body text-small font-medium text-ink transition-colors hover:border-ink/40"
                 >
                   Explore live demos →
                 </Link>
@@ -140,7 +140,7 @@ export default function HomePage() {
 
       {/* The Control Register — the credibility anchor (§3.4) */}
       <Container className="pb-16 md:pb-24">
-        <div className="rounded-3xl border border-rule bg-white p-4 shadow-pop-sm md:p-8">
+        <div className="rounded-3xl border border-rule bg-surface p-4 shadow-pop-sm md:p-8">
           <ControlRegister scrollable />
           <p className="mt-4 border-t border-rule pt-4 font-mono text-mono-xs uppercase text-slate/80">
             <CountUp value={CONTROLS.length} /> controls · <CountUp value={SERVICE_LIST.length} /> services · verified against the published frameworks
