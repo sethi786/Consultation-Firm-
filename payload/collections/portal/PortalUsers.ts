@@ -1,4 +1,5 @@
 import type { CollectionConfig } from "payload";
+import bcrypt from "bcryptjs";
 import { authenticated } from "../../access";
 
 /**
@@ -16,9 +17,33 @@ export const PortalUsers: CollectionConfig = {
     update: authenticated,
     delete: authenticated,
   },
+  hooks: {
+    beforeChange: [
+      async ({ data }) => {
+        // Staff can set/reset a client's password from /admin via the virtual
+        // `password` field; it is hashed into passwordHash and never stored.
+        if (data && typeof data.password === "string" && data.password.length > 0) {
+          data.passwordHash = await bcrypt.hash(data.password, 10);
+          delete data.password;
+        }
+        return data;
+      },
+    ],
+  },
   fields: [
     { name: "email", type: "email", required: true, unique: true, index: true },
     { name: "name", type: "text" },
+    {
+      // Virtual: write-only. Setting it (re)sets the password; it is never stored
+      // or read back.
+      name: "password",
+      type: "text",
+      virtual: true,
+      access: { read: () => false },
+      admin: {
+        description: "Set a temporary password for email/password sign-in. Leave blank to keep the current one.",
+      },
+    },
     {
       name: "passwordHash",
       type: "text",

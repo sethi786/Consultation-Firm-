@@ -3,6 +3,7 @@ import { fileURLToPath } from "url";
 import { buildConfig } from "payload";
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
 import sharp from "sharp";
 
 import { Users } from "./payload/collections/Users";
@@ -50,6 +51,16 @@ export default buildConfig({
     Users,
   ],
   editor: lexicalEditor(),
+  plugins: [
+    // Durable media storage. Off in local dev (files go to public/media); when
+    // BLOB_READ_WRITE_TOKEN is set (Vercel Blob), uploads go there instead so
+    // they survive on serverless hosting.
+    vercelBlobStorage({
+      enabled: !!process.env.BLOB_READ_WRITE_TOKEN,
+      collections: { media: true },
+      token: process.env.BLOB_READ_WRITE_TOKEN || "",
+    }),
+  ],
   secret: process.env.PAYLOAD_SECRET || "",
   db: postgresAdapter({
     pool: { connectionString: process.env.DATABASE_URI || "" },

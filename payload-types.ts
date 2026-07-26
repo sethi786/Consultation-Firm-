@@ -415,6 +415,10 @@ export interface PortalUser {
   id: number;
   email: string;
   name?: string | null;
+  /**
+   * Set a temporary password for email/password sign-in. Leave blank to keep the current one.
+   */
+  password?: string | null;
   passwordHash?: string | null;
   authProvider?: ('password' | 'entra-id') | null;
   updatedAt: string;
@@ -935,6 +939,7 @@ export interface OrganisationsSelect<T extends boolean = true> {
 export interface PortalUsersSelect<T extends boolean = true> {
   email?: T;
   name?: T;
+  password?: T;
   passwordHash?: T;
   authProvider?: T;
   updatedAt?: T;
