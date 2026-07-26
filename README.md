@@ -142,10 +142,10 @@ The build follows `BUILDPLAN.md`. Status:
 | 2 | Control Register (verified data) | ✅ Done |
 | 3 | Marketing pages + contact | ✅ Done |
 | 4 | Payload CMS (Postgres) | ✅ Done — collections, admin, insights/case-studies/industries wired |
-| 5 | Portal auth + tenancy | 🟡 Backend done (collections, Auth.js config, tenancy data layer); sign-in UI, gating switch-on, and Vitest tenancy tests remain |
-| 6 | Portal features | ⬜ Not started — dashboard, findings, documents, timeline, users |
+| 5 | Portal auth + tenancy | ✅ Done — Auth.js v5, gated portal, tenancy data layer, **7/7 Vitest tenancy tests pass** |
+| 6 | Portal features | ✅ Done — dashboard, findings register, documents vault, timeline, settings/users |
 | 7 | Security headers & CSP | ✅ Done |
-| 8 | SEO (robots, sitemap, JSON-LD, OG) | ✅ Done · perf/Playwright/Plausible pending |
+| 8 | SEO (robots, sitemap, JSON-LD, OG) | ✅ Done · Lighthouse/Playwright/Plausible + deploy pending |
 
 **Local database:** Phase 4 runs against a Postgres in the dev container
 (`postgresql://northport:northport_dev@127.0.0.1:5432/northport`). It is
@@ -153,29 +153,49 @@ ephemeral — set `DATABASE_URI` to a Neon connection string for anything durabl
 The admin studio is at `/admin`; create the first user there (or via
 `POST /api/users/first-register`).
 
-**Phase 5 remaining:** `auth.ts` / `auth.config.ts` (Auth.js v5, email/password +
-Entra ID drop-in) and `lib/portal/data.ts` (the tenancy-scoped data layer) are in
-place and build clean, but the portal sign-in page, middleware gating switch-on,
-and the Vitest cross-tenant tests are not yet done. To finish: build
-`app/(portal)/portal/sign-in`, re-enable the auth gate in `middleware.ts`, and add
-`lib/portal/data.test.ts` seeding two orgs and asserting cross-tenant reads fail.
+## The client portal (`(portal)` route group)
 
-### What Phases 4–6 need from you
+Dark, mono-heavy, auth-gated. Route group `app/(portal)/portal/(authed)/*`
+(sign-in sits outside the `(authed)` gate).
 
-These phases integrate third-party services and cannot be completed without
-credentials:
+- **Auth:** Auth.js v5. Email/password (verified with bcrypt against the
+  `portal-users` collection) works out of the box; **Microsoft Entra ID SSO**
+  turns on automatically when `AUTH_MICROSOFT_ENTRA_ID_*` are set. Short 1-hour
+  sessions with refresh. Middleware gates `/portal/*` and sets the CSP.
+- **Tenancy — the point.** Every portal read/write goes through
+  `lib/portal/data.ts`, which binds the caller's `orgId` and filters single-doc
+  reads on `id AND organisation`. `pnpm test` runs `lib/portal/data.test.ts`,
+  which seeds two orgs and asserts cross-tenant reads/comments/remediation/
+  downloads all fail. **7/7 passing.**
+- **Features:** dashboard (open findings by severity, engagements, recent docs),
+  findings register (filter by severity/status, sort, comment, client
+  "mark remediated" → `pending_verification`), documents vault (download writes
+  an `AuditLog` row), engagement timeline, and org settings (members + invite +
+  audit log for admins).
 
-- **Phase 4 (CMS):** a **Neon Postgres** connection string (`DATABASE_URI`) and a
-  `PAYLOAD_SECRET`. Payload 3 installs into this Next app; collections: Posts,
-  CaseStudies (structured outcome fields), Industries, Authors, Media, Pages.
-- **Phase 5 (Portal auth):** a **Microsoft Entra ID** app registration
-  (client id/secret/issuer) plus `AUTH_SECRET`. Row-level tenancy in the
-  data-access layer is the gating requirement, with Vitest cross-tenant tests.
-- **Phase 6 (Portal features):** dashboard, findings register, documents vault,
-  engagement timeline, user management — on the Phase 4/5 foundation.
+### Provisioning a portal user
 
-Provide the Neon string and Entra registration (or say "use a local Postgres and
-email/password only") and these can proceed.
+Portal users are separate from `/admin` staff. In production, the intended path
+is **Entra ID SSO** (provision the `portal-user` + `membership` first, then the
+user signs in with Microsoft). For **email/password**, an admin/owner can invite
+teammates from `/portal/settings` (creates an `invited` membership); wiring the
+invite email + set-password link is the one remaining `{{TODO}}` in the auth flow.
+For local dev, seed a user with a bcrypt `passwordHash` directly (see the demo
+data flow in git history) — e.g. `alice@meridian.example` / `PortalDemo!123`.
+
+### Remaining before a production launch
+
+- **Media storage:** Payload media (incl. portal documents) currently writes to
+  local disk (`public/media`). Vercel's filesystem is ephemeral/read-only — wire
+  a storage adapter (`@payloadcms/storage-vercel-blob` or `-s3`) before relying on
+  uploads/downloads in production.
+- **DB schema:** Payload runs `push: true` (auto-sync) so a fresh Neon DB builds
+  itself on first boot — turnkey for deploy. For controlled changes later, switch
+  to migrations (`pnpm payload migrate:create`).
+- **Portal invite email + set-password** flow (see above).
+- **Phase 8 tail:** Lighthouse pass, Playwright E2E (contact / sign-in / findings
+  filter / cross-tenant denial), and Plausible.
+- **Deploy:** import the repo into Vercel, set the env vars below, deploy.
 
 ### Business facts still needed
 

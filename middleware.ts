@@ -1,21 +1,15 @@
-import { NextResponse, type NextRequest } from "next/server";
+import NextAuth from "next-auth";
+import { NextResponse } from "next/server";
+import { authConfig } from "./auth.config";
 
 /**
- * Per-request Content-Security-Policy with a nonce (CLAUDE.md §8).
- *
- * `script-src` is strict: 'self' + a per-request nonce + 'strict-dynamic', with
- * NO 'unsafe-inline'. Next.js reads the nonce from the request's CSP header and
- * stamps it onto its own bootstrap scripts, so hydration works without opening
- * the door to inline script injection.
- *
- * `style-src` keeps 'unsafe-inline': nonces don't cover inline *style attributes*
- * (e.g. the register's per-row animation-delay), and injected styles are far
- * lower risk than scripts.
- *
- * Portal auth gating is wired in `auth.ts` / `auth.config.ts` and will be
- * enabled here once the portal sign-in UI lands (Phase 6). Keeping it off for
- * now means the /portal placeholder stays reachable.
+ * Middleware does two jobs:
+ *  1. Gate the /portal route group — unauthenticated requests are redirected to
+ *     sign-in (CLAUDE.md §7). Uses the edge-safe Auth.js config (no DB).
+ *  2. Set a per-request nonce CSP (CLAUDE.md §8).
  */
+const { auth } = NextAuth(authConfig);
+
 function generateNonce(): string {
   const bytes = new Uint8Array(16);
   crypto.getRandomValues(bytes);
@@ -24,9 +18,8 @@ function generateNonce(): string {
   return btoa(binary);
 }
 
-export function middleware(request: NextRequest) {
+function withCsp(req: Request): NextResponse {
   const nonce = generateNonce();
-
   const csp = [
     `default-src 'self'`,
     `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,
@@ -42,7 +35,7 @@ export function middleware(request: NextRequest) {
     `upgrade-insecure-requests`,
   ].join("; ");
 
-  const requestHeaders = new Headers(request.headers);
+  const requestHeaders = new Headers(req.headers);
   requestHeaders.set("x-nonce", nonce);
   requestHeaders.set("content-security-policy", csp);
 
@@ -50,6 +43,25 @@ export function middleware(request: NextRequest) {
   response.headers.set("content-security-policy", csp);
   return response;
 }
+
+export default auth((req) => {
+  const { nextUrl } = req;
+  const path = nextUrl.pathname;
+  const isPortal = path === "/portal" || path.startsWith("/portal/");
+  const isSignIn = path === "/portal/sign-in";
+  const loggedIn = Boolean(req.auth?.user?.orgId);
+
+  if (isPortal && !isSignIn && !loggedIn) {
+    const url = new URL("/portal/sign-in", nextUrl);
+    url.searchParams.set("callbackUrl", path);
+    return NextResponse.redirect(url);
+  }
+  if (isSignIn && loggedIn) {
+    return NextResponse.redirect(new URL("/portal", nextUrl));
+  }
+
+  return withCsp(req);
+});
 
 export const config = {
   matcher: [

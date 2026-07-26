@@ -195,6 +195,50 @@ export async function listMembers(ctx: PortalContext): Promise<Membership[]> {
   return docs;
 }
 
+/**
+ * Invite a teammate into the caller's org. Admins/owners only. Creates the
+ * portal user if needed and a membership bound to `ctx.orgId` — the new member
+ * can never land in another organisation.
+ */
+export async function inviteMember(
+  ctx: PortalContext,
+  email: string,
+  role: "admin" | "member" | "viewer",
+): Promise<Membership> {
+  if (!canManageOrg(ctx.role)) throw new TenancyError("Admins only.");
+  const normalised = email.trim().toLowerCase();
+  const payload = await getPayloadClient();
+
+  const existing = await payload.find({
+    collection: "portal-users",
+    where: { email: { equals: normalised } },
+    limit: 1,
+    overrideAccess: true,
+  });
+  const user =
+    existing.docs[0] ??
+    (await payload.create({
+      collection: "portal-users",
+      data: { email: normalised, authProvider: "password" },
+      overrideAccess: true,
+    }));
+
+  // Don't create a duplicate membership in this org.
+  const dupe = await payload.find({
+    collection: "memberships",
+    where: { and: [{ user: { equals: user.id } }, orgWhere(ctx.orgId)] },
+    limit: 1,
+    overrideAccess: true,
+  });
+  if (dupe.docs[0]) return dupe.docs[0];
+
+  return payload.create({
+    collection: "memberships",
+    data: { user: user.id, organisation: ctx.orgId, role, status: "invited" },
+    overrideAccess: true,
+  });
+}
+
 export async function listAuditLog(ctx: PortalContext): Promise<AuditLog[]> {
   if (!canManageOrg(ctx.role)) throw new TenancyError("Admins only.");
   const payload = await getPayloadClient();
