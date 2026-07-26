@@ -8,6 +8,7 @@ import { Button } from "@/components/ui";
 
 const NAV = [
   { href: "/services", label: "Services" },
+  { href: "/explore", label: "Explore", accent: true },
   { href: "/approach", label: "Approach" },
   { href: "/insights", label: "Insights" },
   { href: "/case-studies", label: "Case studies" },
@@ -46,7 +47,12 @@ export function SiteHeader() {
                   active ? "text-ink" : "text-slate hover:text-ink",
                 )}
               >
-                {item.label}
+                <span className="inline-flex items-center gap-1.5">
+                  {item.accent && (
+                    <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-coral" />
+                  )}
+                  {item.label}
+                </span>
                 {active && (
                   <span className="absolute -bottom-0.5 left-0 h-px w-full bg-brass" aria-hidden="true" />
                 )}

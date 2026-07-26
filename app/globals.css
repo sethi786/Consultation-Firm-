@@ -22,6 +22,39 @@
   --color-brass: #b08d45;
   --color-brass-lift: #8f7231; /* accessible brass for text on paper (AA) */
 
+  /* Vivid accents — the "bright color-block" system. Each service domain owns a
+     hue; the strong value is for solid blocks (white text), the -soft value is a
+     tint background (ink text), the -ink value is AA-accessible text on paper. */
+  --color-coral: #ff5a3c;
+  --color-coral-soft: #ffe6df;
+  --color-coral-ink: #c23a1f;
+  --color-indigo: #4f46e5;
+  --color-indigo-soft: #e6e5fb;
+  --color-indigo-ink: #4038c9;
+  --color-sky: #0ea5e9;
+  --color-sky-soft: #daf0fb;
+  --color-sky-ink: #0b7fb4;
+  --color-violet: #7c3aed;
+  --color-violet-soft: #ece0fc;
+  --color-violet-ink: #6d28d9;
+  --color-mint: #10b981;
+  --color-mint-soft: #d5f3e8;
+  --color-mint-ink: #0a875f;
+  --color-amber: #f59e0b;
+  --color-amber-soft: #fdeecc;
+  --color-amber-ink: #b0730a;
+  --color-rose: #f43f5e;
+  --color-rose-soft: #fde0e5;
+  --color-rose-ink: #d32744;
+  --color-night: #0f1220; /* deep ground for high-contrast blocks */
+
+  /* Playful radii + a soft pop shadow for lifted color cards */
+  --radius-xl: 16px;
+  --radius-2xl: 28px;
+  --radius-3xl: 40px;
+  --shadow-pop: 0 24px 50px -16px rgba(18, 24, 26, 0.28);
+  --shadow-pop-sm: 0 12px 26px -12px rgba(18, 24, 26, 0.24);
+
   /* Severity — only ever inside data chips, never decoration */
   --color-sev-crit: #8c2f1b;
   --color-sev-crit-tint: #f2e2dd;
@@ -177,6 +210,28 @@
 
   .tracking-mono {
     letter-spacing: 0.08em;
+  }
+
+  /* Attack-path visualizer: a pulse flowing along a breached segment. Gated by
+     the global reduced-motion killswitch (segment still shows red, just still). */
+  @keyframes attack-flow {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 24px 0;
+    }
+  }
+  .attack-flow {
+    background-image: repeating-linear-gradient(
+      90deg,
+      var(--color-rose) 0,
+      var(--color-rose) 8px,
+      color-mix(in srgb, var(--color-rose) 55%, white) 8px,
+      color-mix(in srgb, var(--color-rose) 55%, white) 16px
+    );
+    background-size: 24px 100%;
+    animation: attack-flow 600ms linear infinite;
   }
 
   /* ── Refined on-brand entrance (calm, documentary — not theatre) ──────────
