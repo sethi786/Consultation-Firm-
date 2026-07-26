@@ -1,6 +1,8 @@
 import Link from "next/link";
-import { Container, Eyebrow, CountUp } from "@/components/ui";
+import { Container, Eyebrow, CountUp, Reveal } from "@/components/ui";
 import { ControlRegister } from "@/components/marketing/ControlRegister";
+import { HeroSpotlight } from "@/components/marketing/HeroSpotlight";
+import { FrameworkMarquee } from "@/components/marketing/FrameworkMarquee";
 import { ServicesOverview } from "@/components/marketing/ServicesOverview";
 import { ApproachStrip } from "@/components/marketing/ApproachStrip";
 import { EvidenceBand } from "@/components/marketing/EvidenceBand";
@@ -36,16 +38,9 @@ const DEMO_CARDS = [
 export default function HomePage() {
   return (
     <>
-      {/* Hero — centered, big, airy (Apple-style) */}
+      {/* Hero — centered, big, airy, with a live pointer-follow aurora */}
       <section className="relative overflow-hidden">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(60% 55% at 50% 0%, color-mix(in oklab, var(--color-pine) 7%, transparent), transparent 70%)",
-          }}
-        />
+        <HeroSpotlight />
         <Container className="relative pt-24 pb-20 text-center md:pt-36 md:pb-28">
           <span className="anim-rise mx-auto mb-8 inline-flex items-center gap-2 rounded-full border border-rule bg-surface/70 px-4 py-1.5 font-mono text-mono-xs uppercase text-slate backdrop-blur-sm">
             <span className="h-1.5 w-1.5 rounded-full bg-pine" />
@@ -80,6 +75,9 @@ export default function HomePage() {
         </Container>
       </section>
 
+      {/* Capability ticker */}
+      <FrameworkMarquee />
+
       {/* Live demos — invite exploration immediately */}
       <Container as="section" className="py-20 md:py-28">
         <div className="mx-auto mb-12 max-w-2xl text-center">
@@ -93,25 +91,26 @@ export default function HomePage() {
         </div>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           {DEMO_CARDS.map((c, i) => (
-            <Link
-              key={c.href}
-              href={c.href}
-              className="group flex flex-col justify-between rounded-3xl border border-rule bg-surface p-8 transition-colors duration-300 ease-doc hover:border-pine md:p-10"
-            >
-              <div>
-                <span className="font-mono text-mono-xs uppercase text-slate/70">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-4 font-display text-h3 leading-tight text-ink">{c.title}</h3>
-                <p className="mt-3 max-w-md text-body text-slate">{c.desc}</p>
-              </div>
-              <span
-                aria-hidden="true"
-                className="mt-8 inline-block font-mono text-mono-xs uppercase text-pine transition-transform duration-300 ease-doc group-hover:translate-x-1"
+            <Reveal key={c.href} delay={i * 90} className="h-full">
+              <Link
+                href={c.href}
+                className="sheen group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-rule bg-surface p-8 transition-all duration-300 ease-doc hover:-translate-y-1 hover:border-pine hover:shadow-pop-sm md:p-10"
               >
-                Try it →
-              </span>
-            </Link>
+                <div>
+                  <span className="font-mono text-mono-xs uppercase text-slate/70">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="mt-4 font-display text-h3 leading-tight text-ink">{c.title}</h3>
+                  <p className="mt-3 max-w-md text-body text-slate">{c.desc}</p>
+                </div>
+                <span
+                  aria-hidden="true"
+                  className="mt-8 inline-block font-mono text-mono-xs uppercase text-pine transition-transform duration-300 ease-doc group-hover:translate-x-1"
+                >
+                  Try it →
+                </span>
+              </Link>
+            </Reveal>
           ))}
         </div>
       </Container>

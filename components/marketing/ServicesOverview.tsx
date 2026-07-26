@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Container, Eyebrow } from "@/components/ui";
+import { Container, Eyebrow, Reveal } from "@/components/ui";
 import { SERVICES_BY_DOMAIN, SERVICE_LIST, DOMAINS } from "@/content/services";
 
 /**
@@ -23,10 +23,11 @@ export function ServicesOverview({ index = 4 }: { index?: number }) {
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {SERVICES_BY_DOMAIN.map((group) => (
-          <div
+        {SERVICES_BY_DOMAIN.map((group, gi) => (
+          <Reveal
             key={group.domain}
-            className="flex flex-col rounded-3xl border border-rule bg-surface p-7"
+            delay={(gi % 3) * 90}
+            className="sheen relative flex flex-col overflow-hidden rounded-3xl border border-rule bg-surface p-7 transition-all duration-300 ease-doc hover:-translate-y-1 hover:border-pine hover:shadow-pop-sm"
           >
             <div className="flex items-baseline justify-between gap-3 border-b border-rule pb-4">
               <h3 className="inline-flex items-center gap-2 font-mono text-mono-xs uppercase tracking-mono text-slate">
@@ -55,7 +56,7 @@ export function ServicesOverview({ index = 4 }: { index?: number }) {
                 </li>
               ))}
             </ul>
-          </div>
+          </Reveal>
         ))}
       </div>
 

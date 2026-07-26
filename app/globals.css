@@ -342,4 +342,92 @@
   .anim-delay-3 {
     animation-delay: 280ms;
   }
+
+  /* ── Innovative-but-professional motion (owner override of §3.6) ───────────
+     Purposeful, restrained motion — no particle theatre, no scroll-jacking.
+     Everything here is disabled by the global reduced-motion killswitch. */
+
+  /* Hero: a slow pine "aurora" that drifts behind the headline. */
+  @keyframes aurora-drift {
+    0%   { transform: translate3d(-3%, -2%, 0) scale(1); }
+    50%  { transform: translate3d(3%, 2%, 0) scale(1.1); }
+    100% { transform: translate3d(-3%, -2%, 0) scale(1); }
+  }
+  .aurora {
+    animation: aurora-drift 20s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  /* Hero: a soft glow that follows the pointer (--mx/--my set in JS). */
+  .spotlight {
+    background: radial-gradient(
+      260px 260px at var(--mx, 50%) var(--my, 8%),
+      color-mix(in oklab, var(--color-pine) 18%, transparent),
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 400ms var(--ease-doc);
+  }
+  .spotlight[data-active="true"] {
+    opacity: 1;
+  }
+
+  /* Framework ticker: a slow, seamless marquee that pauses on hover. */
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .marquee-track {
+    animation: marquee-scroll 40s linear infinite;
+    width: max-content;
+  }
+  .marquee:hover .marquee-track,
+  .marquee:focus-within .marquee-track {
+    animation-play-state: paused;
+  }
+  .marquee-mask {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  }
+
+  /* Premium sheen sweep across a card on hover. */
+  .sheen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      105deg,
+      transparent 32%,
+      color-mix(in oklab, var(--color-pine) 12%, transparent) 46%,
+      transparent 60%
+    );
+    transform: translateX(-130%);
+    transition: transform 900ms var(--ease-doc);
+    pointer-events: none;
+  }
+  .sheen:hover::after {
+    transform: translateX(130%);
+  }
+
+  /* Process timeline: connector line draws left→right when scrolled in. */
+  .draw-line {
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 1100ms var(--ease-doc);
+  }
+  [data-shown="true"] .draw-line {
+    transform: scaleX(1);
+  }
+
+  /* Process timeline: numbered nodes pop in sequence. */
+  .node-pop {
+    opacity: 0;
+    transform: translateY(10px) scale(0.9);
+    transition: opacity 600ms var(--ease-doc), transform 600ms var(--ease-doc);
+  }
+  [data-shown="true"] .node-pop {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
