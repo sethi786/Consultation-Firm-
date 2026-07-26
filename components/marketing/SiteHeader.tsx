@@ -8,10 +8,10 @@ import { Button } from "@/components/ui";
 
 const NAV = [
   { href: "/services", label: "Services" },
+  { href: "/solutions", label: "Solutions" },
   { href: "/explore", label: "Explore", accent: true },
   { href: "/approach", label: "Approach" },
   { href: "/insights", label: "Insights" },
-  { href: "/case-studies", label: "Case studies" },
   { href: "/about", label: "About" },
 ];
 
@@ -35,7 +35,7 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 max-w-page items-center justify-between px-6 md:px-8">
         <Wordmark />
 
-        <nav aria-label="Primary" className="hidden items-center gap-7 md:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-6 md:flex">
           {NAV.map((item) => {
             const active = pathname === item.href || pathname.startsWith(item.href + "/");
             return (

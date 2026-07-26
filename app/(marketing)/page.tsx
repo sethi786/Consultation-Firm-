@@ -5,6 +5,7 @@ import { ServicesIndex } from "@/components/marketing/ServicesIndex";
 import { ApproachStrip } from "@/components/marketing/ApproachStrip";
 import { EvidenceBand } from "@/components/marketing/EvidenceBand";
 import { InsightsTeaser } from "@/components/marketing/InsightsTeaser";
+import { CredibilityBand } from "@/components/marketing/CredibilityBand";
 import { ContactCTA } from "@/components/marketing/ContactCTA";
 import { SERVICE_LIST, DOMAINS } from "@/content/services";
 import { CONTROLS } from "@/content/controls";
@@ -153,6 +154,7 @@ export default function HomePage() {
       <ApproachStrip index={4} />
       <EvidenceBand index={5} />
       <InsightsTeaser index={6} />
+      <CredibilityBand index={7} />
 
       <ContactCTA />
     </>
