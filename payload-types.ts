@@ -80,6 +80,7 @@ export interface Config {
     engagements: Engagement;
     findings: Finding;
     'portal-documents': PortalDocument;
+    'call-bookings': CallBooking;
     'audit-log': AuditLog;
     users: User;
     'payload-kv': PayloadKv;
@@ -103,6 +104,7 @@ export interface Config {
     engagements: EngagementsSelect<false> | EngagementsSelect<true>;
     findings: FindingsSelect<false> | FindingsSelect<true>;
     'portal-documents': PortalDocumentsSelect<false> | PortalDocumentsSelect<true>;
+    'call-bookings': CallBookingsSelect<false> | CallBookingsSelect<true>;
     'audit-log': AuditLogSelect<false> | AuditLogSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
@@ -572,6 +574,28 @@ export interface PortalDocument {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "call-bookings".
+ */
+export interface CallBooking {
+  id: number;
+  organisation: number | Organisation;
+  engagement?: (number | null) | Engagement;
+  purpose: 'kickoff' | 'review' | 'incident' | 'general';
+  preferredSlot: string;
+  durationMins?: ('30' | '45' | '60') | null;
+  status: 'requested' | 'confirmed' | 'cancelled' | 'completed';
+  requestedByEmail?: string | null;
+  requestedByName?: string | null;
+  notes?: string | null;
+  /**
+   * Added by Northport on confirmation.
+   */
+  meetingLink?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "audit-log".
  */
 export interface AuditLog {
@@ -782,6 +806,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'portal-documents';
         value: number | PortalDocument;
+      } | null)
+    | ({
+        relationTo: 'call-bookings';
+        value: number | CallBooking;
       } | null)
     | ({
         relationTo: 'audit-log';
@@ -1104,6 +1132,24 @@ export interface PortalDocumentsSelect<T extends boolean = true> {
   type?: T;
   version?: T;
   file?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "call-bookings_select".
+ */
+export interface CallBookingsSelect<T extends boolean = true> {
+  organisation?: T;
+  engagement?: T;
+  purpose?: T;
+  preferredSlot?: T;
+  durationMins?: T;
+  status?: T;
+  requestedByEmail?: T;
+  requestedByName?: T;
+  notes?: T;
+  meetingLink?: T;
   updatedAt?: T;
   createdAt?: T;
 }

@@ -20,6 +20,7 @@ import { Memberships } from "./payload/collections/portal/Memberships";
 import { Engagements } from "./payload/collections/portal/Engagements";
 import { Findings } from "./payload/collections/portal/Findings";
 import { PortalDocuments } from "./payload/collections/portal/Documents";
+import { CallBookings } from "./payload/collections/portal/CallBookings";
 import { AuditLog } from "./payload/collections/portal/AuditLog";
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -59,6 +60,7 @@ export default buildConfig({
     Engagements,
     Findings,
     PortalDocuments,
+    CallBookings,
     AuditLog,
     // System
     Users,

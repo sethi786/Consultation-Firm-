@@ -11,9 +11,17 @@ export default async function DashboardPage() {
 
   return (
     <div className="flex flex-col gap-8">
-      <div>
-        <PortalEyebrow>Dashboard</PortalEyebrow>
-        <h1 className="mt-1 text-h2 text-portal-ink">Welcome back.</h1>
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <PortalEyebrow>Dashboard</PortalEyebrow>
+          <h1 className="mt-1 text-h2 text-portal-ink">Welcome back.</h1>
+        </div>
+        <Link
+          href="/portal/schedule"
+          className="rounded bg-portal-brass px-4 py-2 font-body text-small font-medium text-portal-bg transition-opacity hover:opacity-90"
+        >
+          Book a call →
+        </Link>
       </div>
 
       {/* Open findings by severity */}

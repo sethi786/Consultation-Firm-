@@ -2,7 +2,8 @@ import "server-only";
 import type { Where } from "payload";
 import { getPayloadClient } from "@/lib/payload";
 import { canManageOrg, canWrite, type PortalContext } from "./context";
-import type { Finding, Engagement, PortalDocument, AuditLog, Membership, PortalUser } from "@/payload-types";
+import type { BookingInput } from "./booking-schema";
+import type { Finding, Engagement, PortalDocument, AuditLog, Membership, PortalUser, CallBooking } from "@/payload-types";
 
 /**
  * Tenancy-scoped data access for the portal (CLAUDE.md §7).
@@ -180,6 +181,77 @@ export async function recordDocumentDownload(
     overrideAccess: true,
   });
   return doc;
+}
+
+// ── Call bookings ────────────────────────────────────────────────────
+
+export async function listBookings(ctx: PortalContext): Promise<CallBooking[]> {
+  const payload = await getPayloadClient();
+  const { docs } = await payload.find({
+    collection: "call-bookings",
+    where: orgWhere(ctx.orgId),
+    sort: "-preferredSlot",
+    depth: 0,
+    limit: 100,
+    overrideAccess: true,
+  });
+  return docs;
+}
+
+/** Create a call request bound to the caller's org. Denied for viewers. */
+export async function createBooking(
+  ctx: PortalContext,
+  input: BookingInput,
+): Promise<CallBooking> {
+  if (!canWrite(ctx.role)) throw new TenancyError("Your role is read-only.");
+  const payload = await getPayloadClient();
+  const booking = await payload.create({
+    collection: "call-bookings",
+    data: {
+      organisation: ctx.orgId,
+      purpose: input.purpose,
+      preferredSlot: input.preferredSlot,
+      durationMins: input.durationMins,
+      notes: input.notes || undefined,
+      status: "requested",
+      requestedByEmail: ctx.email,
+      requestedByName: ctx.email,
+    },
+    overrideAccess: true,
+  });
+  await payload.create({
+    collection: "audit-log",
+    data: {
+      organisation: ctx.orgId,
+      actorEmail: ctx.email,
+      action: "call.requested",
+      targetType: "call-bookings",
+      targetId: String(booking.id),
+    },
+    overrideAccess: true,
+  });
+  return booking;
+}
+
+/** Cancel a call request. Cross-tenant ids resolve to null and change nothing. */
+export async function cancelBooking(ctx: PortalContext, id: number | string): Promise<CallBooking | null> {
+  if (!canWrite(ctx.role)) throw new TenancyError("Your role is read-only.");
+  const payload = await getPayloadClient();
+  const { docs } = await payload.find({
+    collection: "call-bookings",
+    where: orgAndId(ctx.orgId, id),
+    limit: 1,
+    depth: 0,
+    overrideAccess: true,
+  });
+  const booking = docs[0];
+  if (!booking) return null;
+  return payload.update({
+    collection: "call-bookings",
+    id: booking.id,
+    data: { status: "cancelled" },
+    overrideAccess: true,
+  });
 }
 
 // ── Members & audit (org admins) ─────────────────────────────────────

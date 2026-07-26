@@ -105,3 +105,70 @@ export async function sendAssessmentConfirmation(input: ContactInput): Promise<v
     text,
   });
 }
+
+/**
+ * Notify Northport of a client's call request and confirm to the client. Called
+ * from the portal booking action. No-op until Resend is configured, so the
+ * on-screen confirmation still works locally without a key.
+ */
+export async function notifyCallBooking(booking: {
+  orgName: string;
+  requestedByEmail: string;
+  purposeLabel: string;
+  whenISO: string;
+  durationMins: string;
+  notes?: string;
+}): Promise<void> {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.info("[booking] RESEND_API_KEY not set — logging instead of sending.", {
+      org: booking.orgName,
+      when: booking.whenISO,
+    });
+    return;
+  }
+  const from = process.env.CONTACT_FROM ?? FROM_DEFAULT;
+  const firmTo = process.env.CONTACT_TO ?? TO_DEFAULT;
+  const when = new Date(booking.whenISO).toUTCString();
+
+  const firmText = [
+    `New call request from ${booking.orgName}.`,
+    "",
+    `Purpose:   ${booking.purposeLabel}`,
+    `Requested: ${when}`,
+    `Duration:  ${booking.durationMins} minutes`,
+    `Contact:   ${booking.requestedByEmail}`,
+    booking.notes ? `\nNotes:\n${booking.notes}` : "",
+    "",
+    "Confirm it and add a meeting link in /admin → Call bookings.",
+  ].join("\n");
+
+  await send({
+    from,
+    to: firmTo,
+    replyTo: booking.requestedByEmail,
+    subject: `Call request — ${oneLine(booking.orgName)} (${oneLine(booking.purposeLabel)})`,
+    text: firmText,
+  });
+
+  const clientText = [
+    "Thanks — your call request is in.",
+    "",
+    `Purpose:   ${booking.purposeLabel}`,
+    `Requested: ${when}`,
+    `Duration:  ${booking.durationMins} minutes`,
+    "",
+    "A consultant will confirm the time and send a meeting link shortly. You can",
+    "see the status any time in your portal under Calls.",
+    "",
+    "— Northport Security",
+  ].join("\n");
+
+  await send({
+    from,
+    to: booking.requestedByEmail,
+    replyTo: firmTo,
+    subject: "Call requested — we'll confirm shortly",
+    text: clientText,
+  });
+}

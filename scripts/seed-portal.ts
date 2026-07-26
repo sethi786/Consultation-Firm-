@@ -11,7 +11,7 @@
  * Demo credentials printed at the end. CHANGE THE PASSWORD before any real use,
  * and never run this against a production tenant you don't want demo data in.
  */
-import { getPayload } from "payload";
+import { getPayload, type Where } from "payload";
 import config from "@payload-config";
 
 const DEMO = {
@@ -25,7 +25,7 @@ const DEMO = {
 async function upsert<T extends Record<string, unknown>>(
   payload: Awaited<ReturnType<typeof getPayload>>,
   collection: Parameters<typeof payload.find>[0]["collection"],
-  where: Record<string, unknown>,
+  where: Where,
   data: T,
 ): Promise<{ id: number }> {
   const { docs } = await payload.find({ collection, where, limit: 1, overrideAccess: true });
@@ -99,8 +99,7 @@ const payload = await getPayload({ config });
     );
   }
 
-  // eslint-disable-next-line no-console
-  console.log(`
+  console.info(`
 ✅ Portal demo seeded.
 
    Sign in at:  /portal/sign-in
