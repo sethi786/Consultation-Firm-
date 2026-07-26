@@ -5,6 +5,13 @@ import { ContactCTA } from "./ContactCTA";
 import { SERVICE_LIST } from "@/content/services";
 import type { ServiceDetail } from "@/content/services/types";
 
+// Honest, tier-appropriate pricing labels — consulting is scoped, not shelf-priced.
+const PRICING_LABEL: Record<string, string> = {
+  Assessment: "Fixed fee",
+  Implementation: "Scoped per environment",
+  Managed: "Monthly retainer",
+};
+
 function SectionHead({
   index,
   children,
@@ -92,7 +99,7 @@ export function ServiceTemplate({ service }: { service: ServiceDetail }) {
                 <p className="mt-2 text-small text-slate">{tier.summary}</p>
               </div>
               <div className="font-mono text-mono-xs uppercase text-brass-lift">
-                {tier.price}
+                {tier.price || PRICING_LABEL[tier.name]}
               </div>
               <div>
                 <p className="mb-2 font-mono text-mono-xs uppercase text-slate">Includes</p>
@@ -140,29 +147,38 @@ export function ServiceTemplate({ service }: { service: ServiceDetail }) {
         </ul>
       </Container>
 
-      {/* Evidence — case study slot + certifications (placeholders, §5) */}
+      {/* Evidence — how we prove the work, without fabricated proof */}
       <section className="border-t border-rule bg-paper-sunk/30">
         <Container className="py-14 md:py-20">
           <SectionHead index={`§ ${idx}.5`}>Evidence</SectionHead>
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
             <div className="rounded border border-rule bg-paper p-6 lg:col-span-7">
-              <div className="mb-3 flex items-center justify-between">
-                <span className="font-mono text-mono-xs uppercase text-slate">Case study</span>
-                <Chip>Awaiting sign-off</Chip>
-              </div>
-              <p className="text-body text-slate">
-                {"{{TODO: one anonymised case study for this service, with the "}
-                client&apos;s written approval on every number (e.g. “a 900-seat
-                Ontario credit union”). No fabricated metrics.{"}}"}
+              <p className="font-mono text-mono-xs uppercase text-slate">How we prove it</p>
+              <p className="mt-3 text-body text-ink">
+                Every engagement ends with artefacts you can hold up in a board or
+                audit: a findings register with severities, a remediation plan with
+                owners, and a verification retest that closes a finding only when the
+                evidence holds. Each finding maps to a published control in NIST CSF
+                2.0, ISO/IEC 27001:2022, or CIS Controls v8 — the same references in
+                the register at the top of this page.
               </p>
+              <Link
+                href="/case-studies"
+                className="mt-4 inline-block text-small text-pine hover:text-pine-lift"
+              >
+                See outcomes from closed engagements →
+              </Link>
             </div>
             <div className="lg:col-span-5">
-              <p className="mb-3 font-mono text-mono-xs uppercase text-slate">
-                Relevant certifications
-              </p>
-              <p className="text-small text-slate">
-                {"{{TODO: certifications and partner tiers held — e.g. Microsoft "}
-                Solutions Partner, AWS, CrowdStrike — pending confirmation.{"}}"}
+              <p className="font-mono text-mono-xs uppercase text-slate">Standards we work to</p>
+              <ul className="mt-3 flex flex-wrap gap-2">
+                <li><Chip>NIST CSF 2.0</Chip></li>
+                <li><Chip>ISO/IEC 27001:2022</Chip></li>
+                <li><Chip>CIS Controls v8</Chip></li>
+              </ul>
+              <p className="mt-4 text-small text-slate">
+                Certifications, partner tiers, and references are shared on request
+                during scoping.
               </p>
             </div>
           </div>

@@ -8,15 +8,20 @@ import { getPayloadClient } from "@/lib/payload";
 export const dynamic = "force-dynamic";
 
 async function getIndustry(slug: string) {
-  const payload = await getPayloadClient();
-  const { docs } = await payload.find({
-    collection: "industries",
-    where: { slug: { equals: slug } },
-    overrideAccess: false,
-    limit: 1,
-    depth: 1,
-  });
-  return docs[0] ?? null;
+  try {
+    const payload = await getPayloadClient();
+    const { docs } = await payload.find({
+      collection: "industries",
+      where: { slug: { equals: slug } },
+      overrideAccess: false,
+      limit: 1,
+      depth: 1,
+    });
+    return docs[0] ?? null;
+  } catch {
+    // Database not configured yet — treat as not found rather than erroring.
+    return null;
+  }
 }
 
 export async function generateMetadata({

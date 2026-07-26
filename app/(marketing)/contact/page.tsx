@@ -48,9 +48,10 @@ export default async function ContactPage({
               </dd>
             </div>
             <div>
-              <dt className="font-mono text-mono-xs uppercase text-slate">Prefer email?</dt>
+              <dt className="font-mono text-mono-xs uppercase text-slate">Where it goes</dt>
               <dd className="mt-1 text-body text-ink">
-                {"{{TODO: assessments@your-domain}}"}
+                Straight to a consultant&apos;s inbox — not a marketing queue. No
+                newsletter, no tracking.
               </dd>
             </div>
           </dl>

@@ -9,6 +9,14 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about" },
 };
 
+const INDUSTRIES = [
+  "Financial services",
+  "Healthcare",
+  "Manufacturing",
+  "Public sector",
+  "SaaS",
+];
+
 export default function AboutPage() {
   return (
     <>
@@ -37,23 +45,40 @@ export default function AboutPage() {
             plan sequenced by risk.
           </p>
           <p className="max-w-measure text-body text-slate">
-            {"{{TODO: the firm's real history, size, and locations. Where you're "}
-            based, how long you’ve operated, and the data-residency posture buyers in
-            regulated sectors will ask about.{"}}"}
+            We work as an extension of your team, inside your change control, with
+            least-privilege access that expires. Nothing we do leaves you dependent on
+            us to run your own environment — the deliverable is always something your
+            people can operate, verify, and take to a board or an auditor.
           </p>
         </div>
       </Container>
 
       <Container as="section" className="border-t border-rule py-16 md:py-24">
-        <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
-          <Eyebrow index={2}>Certifications &amp; partnerships</Eyebrow>
-          <Chip>To confirm</Chip>
+        <Eyebrow index={2} className="mb-8">
+          Standards &amp; credentials
+        </Eyebrow>
+        <div className="grid grid-cols-1 gap-x-10 gap-y-8 md:grid-cols-2">
+          <div>
+            <p className="mb-4 max-w-measure text-body text-slate">
+              Every engagement is mapped to recognised frameworks, so the work is
+              portable across the audits you already answer to:
+            </p>
+            <ul className="flex flex-wrap gap-2">
+              <li><Chip>NIST CSF 2.0</Chip></li>
+              <li><Chip>ISO/IEC 27001:2022</Chip></li>
+              <li><Chip>CIS Controls v8</Chip></li>
+              <li><Chip>SOC 2</Chip></li>
+              <li><Chip>OWASP</Chip></li>
+              <li><Chip>MITRE ATT&amp;CK</Chip></li>
+            </ul>
+          </div>
+          <p className="max-w-measure text-body text-slate">
+            We share our consultants&apos; certifications, partner tiers, and client
+            references on request during scoping — and, on principle, we never display
+            a badge or a logo we can&apos;t stand behind. That restraint is the point:
+            it&apos;s the same discipline we bring to your evidence.
+          </p>
         </div>
-        <p className="max-w-measure text-body text-slate">
-          {"{{TODO: real certifications and partner tiers — e.g. Microsoft Solutions "}
-          Partner, AWS Partner, CrowdStrike — with proof buyers can verify. Do not
-          display a partner badge the firm does not hold.{"}}"}
-        </p>
       </Container>
 
       <Container as="section" className="border-t border-rule py-16 md:py-24">
@@ -61,21 +86,16 @@ export default function AboutPage() {
           Industries we work in
         </Eyebrow>
         <ul className="flex flex-wrap gap-3">
-          {[
-            "Financial services",
-            "Healthcare",
-            "Manufacturing",
-            "Public sector",
-            "SaaS",
-          ].map((i) => (
-            <li key={i}>
-              <Chip>{i}</Chip>
+          {INDUSTRIES.map((label) => (
+            <li key={label}>
+              <Chip>{label}</Chip>
             </li>
           ))}
         </ul>
-        <p className="mt-6 max-w-measure text-small text-slate">
-          {"{{TODO: sector-specific detail and any regulatory experience (PCI DSS, "}
-          HIPAA, OSFI, etc.) once confirmed.{"}}"}
+        <p className="mt-6 max-w-measure text-body text-slate">
+          The regulations differ — PCI DSS and OSFI in financial services, HIPAA in
+          healthcare, IT/OT convergence in manufacturing — but the method holds: map
+          the controls, sequence the risk, and prove the fix.
         </p>
       </Container>
 

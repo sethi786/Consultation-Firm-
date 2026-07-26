@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Container, Eyebrow } from "@/components/ui";
 import { ContactCTA } from "@/components/marketing/ContactCTA";
 import { getPayloadClient } from "@/lib/payload";
+import type { Post } from "@/payload-types";
 
 export const metadata: Metadata = {
   title: "Insights",
@@ -21,14 +22,20 @@ function formatDate(value?: string | null) {
 }
 
 export default async function InsightsPage() {
-  const payload = await getPayloadClient();
-  const { docs } = await payload.find({
-    collection: "posts",
-    overrideAccess: false,
-    sort: "-publishedAt",
-    limit: 50,
-    depth: 0,
-  });
+  let docs: Post[] = [];
+  try {
+    const payload = await getPayloadClient();
+    ({ docs } = await payload.find({
+      collection: "posts",
+      overrideAccess: false,
+      sort: "-publishedAt",
+      limit: 50,
+      depth: 0,
+    }));
+  } catch {
+    // Database not configured yet — show the empty state, never a 500.
+    docs = [];
+  }
 
   return (
     <>

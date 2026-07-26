@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Container, Eyebrow } from "@/components/ui";
 import { ContactCTA } from "@/components/marketing/ContactCTA";
 import { getPayloadClient } from "@/lib/payload";
+import type { CaseStudy } from "@/payload-types";
 
 export const metadata: Metadata = {
   title: "Case studies",
@@ -12,13 +13,19 @@ export const metadata: Metadata = {
 };
 
 export default async function CaseStudiesPage() {
-  const payload = await getPayloadClient();
-  const { docs } = await payload.find({
-    collection: "case-studies",
-    overrideAccess: false,
-    limit: 50,
-    depth: 0,
-  });
+  let docs: CaseStudy[] = [];
+  try {
+    const payload = await getPayloadClient();
+    ({ docs } = await payload.find({
+      collection: "case-studies",
+      overrideAccess: false,
+      limit: 50,
+      depth: 0,
+    }));
+  } catch {
+    // Database not configured yet — show the empty state, never a 500.
+    docs = [];
+  }
 
   return (
     <>

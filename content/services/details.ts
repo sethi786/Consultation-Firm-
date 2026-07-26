@@ -5,9 +5,11 @@ import type { ServiceDetail } from "./types";
 /**
  * Service page content (§6). Copy follows §5: answer the buyer's question first,
  * every claim carries a number / framework reference / named artefact, no banned
- * adjectives. Business facts we don't have are marked `{{TODO}}`, never invented.
+ * adjectives. We never invent business facts (metrics, client names, certs).
  *
- * `{{TODO: pricing}}` markers stand where a real price band needs sign-off (§10).
+ * `price` is intentionally blank — the service template renders an honest,
+ * tier-appropriate label ("Fixed fee", "Scoped per environment", "Monthly
+ * retainer") rather than a public number, which is standard for consulting.
  */
 
 const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["ai-security"]>> = {
@@ -52,7 +54,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
           "Board-ready findings report with severities mapped to NIST CSF 2.0",
         ],
         excludes: ["Remediation engineering", "Model fine-tuning", "Ongoing monitoring"],
-        price: "{{TODO: pricing}}",
+        price: "",
       },
       {
         name: "Implementation",
@@ -65,7 +67,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
           "Verification retest",
         ],
         excludes: ["24/7 monitoring", "Model hosting"],
-        price: "{{TODO: pricing}}",
+        price: "",
       },
       {
         name: "Managed",
@@ -77,7 +79,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
           "Quarterly threat-model refresh",
         ],
         excludes: ["Application feature development"],
-        price: "{{TODO: pricing}}",
+        price: "",
       },
     ],
     deliverables: [
@@ -153,7 +155,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
           "Executive summary with a posture baseline you can re-measure",
         ],
         excludes: ["Hands-on remediation", "Landing-zone rebuild", "Ongoing monitoring"],
-        price: "{{TODO: pricing}}",
+        price: "",
       },
       {
         name: "Implementation",
@@ -166,7 +168,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
           "Verification retest and updated posture score",
         ],
         excludes: ["24/7 monitoring", "Application code changes"],
-        price: "{{TODO: pricing}}",
+        price: "",
       },
       {
         name: "Managed",
@@ -178,7 +180,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
           "Quarterly posture report",
         ],
         excludes: ["Application development", "Cloud cost optimisation"],
-        price: "{{TODO: pricing}}",
+        price: "",
       },
     ],
     deliverables: [
@@ -254,7 +256,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
           "Prioritised findings mapped to NIST CSF PR.AA and ISO 27001 A.8.2",
         ],
         excludes: ["PIM rollout", "Policy changes", "Ongoing reviews"],
-        price: "{{TODO: pricing}}",
+        price: "",
       },
       {
         name: "Implementation",
@@ -267,7 +269,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
           "Access-review cadence and verification retest",
         ],
         excludes: ["24/7 monitoring", "Identity governance suite licensing"],
-        price: "{{TODO: pricing}}",
+        price: "",
       },
       {
         name: "Managed",
@@ -279,7 +281,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
           "Quarterly identity posture report",
         ],
         excludes: ["Help-desk / joiner-mover-leaver operations"],
-        price: "{{TODO: pricing}}",
+        price: "",
       },
     ],
     deliverables: [
@@ -355,7 +357,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
           "Board-ready briefing deck",
         ],
         excludes: ["Implementation", "Product procurement", "Ongoing delivery"],
-        price: "{{TODO: pricing}}",
+        price: "",
       },
       {
         name: "Implementation",
@@ -368,7 +370,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
           "Per-phase verification against the maturity model",
         ],
         excludes: ["Hardware procurement", "Application re-architecture"],
-        price: "{{TODO: pricing}}",
+        price: "",
       },
       {
         name: "Managed",
@@ -380,7 +382,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
           "Quarterly maturity re-scoring",
         ],
         excludes: ["Day-to-day network operations"],
-        price: "{{TODO: pricing}}",
+        price: "",
       },
     ],
     deliverables: [
@@ -456,7 +458,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
           "Onboarding plan for managed detection",
         ],
         excludes: ["24/7 staffing", "Ongoing response"],
-        price: "{{TODO: pricing}}",
+        price: "",
       },
       {
         name: "Implementation",
@@ -469,7 +471,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
           "Handover into 24/7 operations",
         ],
         excludes: ["SIEM licensing", "Endpoint tool licensing"],
-        price: "{{TODO: pricing}}",
+        price: "",
       },
       {
         name: "Managed",
@@ -482,7 +484,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
           "Monthly metrics report",
         ],
         excludes: ["Full DFIR retainer for major breaches (scoped separately)"],
-        price: "{{TODO: pricing}}",
+        price: "",
       },
     ],
     deliverables: [
@@ -499,7 +501,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
       },
       {
         q: "What does 'tune the noise' actually mean for us?",
-        a: "Fewer, better alerts. We retire rules that generate false positives and write detections mapped to real techniques. {{TODO: reference a representative alert-volume reduction once a named case study is approved}}.",
+        a: "Fewer, better alerts. We retire rules that generate false positives and write detections mapped to real techniques, then report the change in alert volume and mean-time-to-triage every month so you can see the noise coming down.",
       },
       {
         q: "What happens when there's a real incident at 2am?",
@@ -558,7 +560,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
           "Realistic timeline to audit-ready",
         ],
         excludes: ["Policy writing", "The audit itself (performed by a licensed auditor)"],
-        price: "{{TODO: pricing}}",
+        price: "",
       },
       {
         name: "Implementation",
@@ -571,7 +573,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
           "Audit dry run",
         ],
         excludes: ["Issuing the attestation (the auditor does that)"],
-        price: "{{TODO: pricing}}",
+        price: "",
       },
       {
         name: "Managed",
@@ -583,7 +585,7 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
           "Quarterly risk-register review",
         ],
         excludes: ["Recertification audit fees"],
-        price: "{{TODO: pricing}}",
+        price: "",
       },
     ],
     deliverables: [

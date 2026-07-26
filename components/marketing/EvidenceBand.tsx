@@ -1,54 +1,46 @@
-import { Container, Eyebrow, Chip } from "@/components/ui";
+import Link from "next/link";
+import { Container, Eyebrow } from "@/components/ui";
 
 /**
- * Structured case-study evidence (§4.5). The shape is real — metric label,
- * before, after, timeframe — but the numbers are marked {{TODO}} until a case
- * study is closed and the client has signed off on every figure (§5). No
- * fabricated metrics: a fake case study is a credibility and legal problem.
+ * Homepage evidence band (§4.5). We hold an ethical line: no fabricated metrics
+ * or logos. Instead this states *how* outcomes are proven — the artefacts, the
+ * verification step, the framework mapping — all of which are real. Real,
+ * client-approved case-study numbers live in the CMS (/case-studies) once signed
+ * off, and surface there.
  */
-const METRICS: { label: string; before: string; after: string; timeframe: string }[] = [
+const PROOF_POINTS: { label: string; body: string }[] = [
   {
-    label: "{{TODO: metric, e.g. Sentinel alert volume}}",
-    before: "{{TODO}}",
-    after: "{{TODO}}",
-    timeframe: "{{TODO}}",
+    label: "A findings register, not a slide",
+    body: "Every issue is logged with a severity, an affected asset, an owner, and a due date — the same register your team works from in the portal.",
   },
   {
-    label: "{{TODO: metric, e.g. standing global admins}}",
-    before: "{{TODO}}",
-    after: "{{TODO}}",
-    timeframe: "{{TODO}}",
+    label: "Mapped to published controls",
+    body: "Each finding references a real control in NIST CSF 2.0, ISO/IEC 27001:2022, or CIS Controls v8, so the work lines up with the audit you already answer to.",
   },
   {
-    label: "{{TODO: metric, e.g. critical cloud findings}}",
-    before: "{{TODO}}",
-    after: "{{TODO}}",
-    timeframe: "{{TODO}}",
+    label: "Closed only when verified",
+    body: "A remediation is signed off after we retest and the evidence holds — not when a ticket is marked done.",
   },
 ];
 
 export function EvidenceBand({ index = 4 }: { index?: number }) {
   return (
     <Container as="section" className="py-16 md:py-24">
-      <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
-        <Eyebrow index={index}>Evidence</Eyebrow>
-        <Chip>Awaiting client sign-off</Chip>
+      <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+        <Eyebrow index={index}>Evidence, not theatre</Eyebrow>
+        <Link href="/case-studies" className="font-body text-small text-pine hover:text-pine-lift">
+          Case studies →
+        </Link>
       </div>
-      <p className="mb-10 max-w-measure text-body text-slate">
-        Every number we publish comes from a closed engagement with the client’s
-        written approval on each figure. These slots hold the shape until the
-        first case studies are signed off.
+      <p className="mb-10 max-w-measure text-lede text-slate">
+        We publish outcomes only with the client&apos;s written approval on every
+        number. What we can show you up front is how the work is proven.
       </p>
-      <dl className="grid grid-cols-1 gap-px overflow-hidden rounded border border-rule bg-rule sm:grid-cols-3">
-        {METRICS.map((m, i) => (
-          <div key={i} className="flex flex-col gap-3 bg-paper p-6">
-            <dt className="font-mono text-mono-xs uppercase text-slate">{m.label}</dt>
-            <dd className="flex items-baseline gap-2 font-mono text-ink">
-              <span className="text-slate line-through decoration-slate/40">{m.before}</span>
-              <span aria-hidden="true" className="text-brass-lift">→</span>
-              <span className="text-h3">{m.after}</span>
-            </dd>
-            <dd className="font-mono text-mono-xs uppercase text-slate/70">in {m.timeframe}</dd>
+      <dl className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-rule bg-rule md:grid-cols-3">
+        {PROOF_POINTS.map((p) => (
+          <div key={p.label} className="flex flex-col gap-3 bg-paper p-6">
+            <dt className="text-h3 text-ink">{p.label}</dt>
+            <dd className="text-small text-slate">{p.body}</dd>
           </div>
         ))}
       </dl>

@@ -30,13 +30,9 @@ export default async function SignInPage({
           <SignInForm callbackUrl={callbackUrl ?? "/portal"} />
         </div>
 
-        {entraEnabled ? (
+        {entraEnabled && (
           <p className="mt-6 text-center font-mono text-mono-xs uppercase text-portal-ink-2">
-            Microsoft Entra ID SSO is enabled for your tenant.
-          </p>
-        ) : (
-          <p className="mt-6 font-mono text-mono-xs uppercase text-portal-ink-2/70">
-            {"{{TODO: enable Entra ID SSO by setting AUTH_MICROSOFT_ENTRA_ID_*}}"}
+            Microsoft Entra ID single sign-on is enabled for your organisation.
           </p>
         )}
 

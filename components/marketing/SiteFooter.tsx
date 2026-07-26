@@ -63,7 +63,7 @@ export function SiteFooter() {
         {/* Colophon */}
         <div className="mt-14 flex flex-col gap-3 border-t border-rule pt-6 md:flex-row md:items-center md:justify-between">
           <p className="font-mono text-mono-xs uppercase text-slate">
-            © {new Date().getFullYear()} Northport Security. {"{{TODO: legal entity name}}"}
+            © {new Date().getFullYear()} Northport Security. All rights reserved.
           </p>
           <p className="font-mono text-mono-xs uppercase text-slate/70">
             Cookieless · No trackers · Self-hosted fonts

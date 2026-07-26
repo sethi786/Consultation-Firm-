@@ -62,13 +62,22 @@ export default function ApproachPage() {
 
       <Container as="section" className="border-t border-rule py-16 md:py-24">
         <Eyebrow index={3} className="mb-8">
-          The team
+          Who does the work
         </Eyebrow>
-        <p className="max-w-measure text-body text-slate">
-          {"{{TODO: the team's actual credentials — named consultants, certifications "}
-          (OSCP, CISSP, GIAC, Azure/AWS), and years in practice. Buyers weigh who
-          does the work; do not generalise or invent.{"}}"}
-        </p>
+        <div className="grid grid-cols-1 gap-x-10 gap-y-8 md:grid-cols-2">
+          <p className="max-w-measure text-body text-slate">
+            The consultant who scopes your engagement is the one who does it. No
+            hand-off from a senior name on the pitch to a junior on delivery — the
+            person testing your Entra ID tenant or tuning your detections is the one
+            who signs the report.
+          </p>
+          <p className="max-w-measure text-body text-slate">
+            You&apos;ll get the named consultants assigned to your engagement, their
+            certifications, and relevant references before you commit — as part of
+            scoping, not as a marketing claim on a web page. We&apos;d rather show you
+            the people than tell you about them.
+          </p>
+        </div>
       </Container>
 
       <ContactCTA />

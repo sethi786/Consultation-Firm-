@@ -72,9 +72,7 @@ export default async function InsightPage({
           {post.content ? (
             <RichText data={post.content} />
           ) : (
-            <p className="text-slate">
-              {"{{TODO: article body — write in the CMS.}}"}
-            </p>
+            <p className="text-slate">{post.excerpt}</p>
           )}
         </div>
         <div className="mt-12 border-t border-rule pt-6">
