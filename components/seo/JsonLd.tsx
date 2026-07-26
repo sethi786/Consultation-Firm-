@@ -33,6 +33,38 @@ export function OrganizationJsonLd() {
   );
 }
 
+export function ArticleJsonLd({
+  title,
+  description,
+  slug,
+  datePublished,
+}: {
+  title: string;
+  description: string;
+  slug: string;
+  datePublished: string;
+}) {
+  return (
+    <Ld
+      data={{
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: title,
+        description,
+        datePublished,
+        url: absoluteUrl(`/insights/${slug}`),
+        author: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+        publisher: {
+          "@type": "Organization",
+          name: SITE_NAME,
+          url: SITE_URL,
+          logo: { "@type": "ImageObject", url: absoluteUrl("/opengraph-image") },
+        },
+      }}
+    />
+  );
+}
+
 export function ServiceJsonLd({ service }: { service: ServiceDetail }) {
   return (
     <Ld

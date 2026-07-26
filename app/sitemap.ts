@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 import { SERVICE_SLUGS } from "@/content/services";
 import { INDUSTRY_SLUGS } from "@/content/industries";
+import { INSIGHT_SLUGS } from "@/content/insights";
 
 const LEGAL = ["security", "privacy", "terms", "dpa"];
 
@@ -43,6 +44,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.5,
+    });
+  }
+  for (const slug of INSIGHT_SLUGS) {
+    entries.push({
+      url: `${SITE_URL}/insights/${slug}`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.6,
     });
   }
   for (const slug of LEGAL) {
