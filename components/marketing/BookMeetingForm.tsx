@@ -47,11 +47,11 @@ export function BookMeetingForm({ initialService }: { initialService?: string })
 
   if (state.status === "success") {
     return (
-      <div className="rounded-3xl border border-rule bg-surface p-8 shadow-pop-sm">
-        <p className="font-mono text-mono-xs uppercase text-mint-ink">Meeting requested</p>
+      <div className="rounded-2xl border border-rule bg-surface p-8">
+        <p className="font-mono text-mono-xs uppercase text-pine">Meeting requested</p>
         <h2 className="mt-2 text-h2 text-ink">We&apos;ll be in touch to confirm.</h2>
         <p className="mt-3 max-w-measure text-body text-slate">{state.message}</p>
-        <Link href="/" className="mt-6 inline-block text-small text-coral-ink underline decoration-coral/40 underline-offset-4 hover:decoration-coral">
+        <Link href="/" className="mt-6 inline-block text-small text-pine underline decoration-pine/40 underline-offset-4 hover:decoration-pine">
           Back to home →
         </Link>
       </div>
@@ -155,7 +155,7 @@ export function BookMeetingForm({ initialService }: { initialService?: string })
         <button
           type="submit"
           disabled={!selected || pending}
-          className="rounded-full bg-coral px-6 py-3 font-body text-small font-medium text-white shadow-pop-sm transition-transform enabled:hover:-translate-y-0.5 disabled:opacity-40"
+          className="rounded-full bg-pine px-6 py-3 font-body text-small font-medium text-white transition-colors enabled:hover:bg-pine-lift disabled:opacity-40"
         >
           {pending ? "Requesting…" : "Request this meeting"}
         </button>

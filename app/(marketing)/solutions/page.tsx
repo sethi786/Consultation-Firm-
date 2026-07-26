@@ -30,7 +30,7 @@ export default function SolutionsPage() {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-7">
             <h1 className="text-display text-ink">
-              Advise, implement, or <span className="text-coral-ink">operate.</span>
+              Advise, implement, or <span className="text-pine">operate.</span>
             </h1>
           </div>
           <div className="flex flex-col justify-end lg:col-span-5">
@@ -51,7 +51,7 @@ export default function SolutionsPage() {
             return (
               <div
                 key={m.key}
-                className="flex flex-col rounded-3xl border border-rule bg-surface p-7 shadow-pop-sm"
+                className="flex flex-col rounded-2xl border border-rule bg-surface p-7"
               >
                 <span className={`inline-flex w-fit items-center gap-2 rounded-full ${a.softBg} px-3 py-1 font-mono text-mono-xs uppercase ${a.softText}`}>
                   <span className={`h-1.5 w-1.5 rounded-full ${a.dot}`} />
@@ -127,7 +127,7 @@ export default function SolutionsPage() {
 
           <p className="mt-5 max-w-measure text-small text-slate">
             Prefer to run detection and response with us rather than build it?{" "}
-            <Link href="/managed-services" className="text-coral-ink underline decoration-coral/40 underline-offset-4 hover:decoration-coral">
+            <Link href="/managed-services" className="text-pine underline decoration-pine/40 underline-offset-4 hover:decoration-pine">
               See managed services →
             </Link>
           </p>

@@ -59,7 +59,7 @@ export function CredibilityBand({ index = 5 }: { index?: number }) {
             <ul className="mt-3 flex flex-col gap-2">
               {POSTURE.map((p) => (
                 <li key={p.label} className="flex items-baseline gap-3 border-b border-rule py-3">
-                  <span aria-hidden="true" className="font-mono text-mono-xs text-mint-ink">✓</span>
+                  <span aria-hidden="true" className="font-mono text-mono-xs text-pine">✓</span>
                   <span className="text-body text-ink">
                     {p.label}
                     <span className="text-slate"> — {p.note}</span>

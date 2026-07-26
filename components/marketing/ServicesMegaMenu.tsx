@@ -137,7 +137,7 @@ export function ServicesMegaMenu() {
               <Link href="/solutions" onClick={() => setOpen(false)} className="hover:text-ink">
                 Solutions (advise · implement · operate)
               </Link>
-              <Link href="/book" onClick={() => setOpen(false)} className="text-coral-ink hover:text-coral">
+              <Link href="/book" onClick={() => setOpen(false)} className="text-pine hover:text-pine-lift">
                 Book a meeting →
               </Link>
             </div>

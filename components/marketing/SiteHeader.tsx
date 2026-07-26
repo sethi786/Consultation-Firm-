@@ -55,7 +55,7 @@ export function SiteHeader() {
               >
                 <span className="inline-flex items-center gap-1.5">
                   {item.accent && (
-                    <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-coral" />
+                    <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-pine" />
                   )}
                   {item.label}
                 </span>
@@ -142,7 +142,7 @@ export function SiteHeader() {
                   <Link
                     href="/book"
                     onClick={() => setOpen(false)}
-                    className="mt-1 inline-block font-mono text-mono-xs uppercase text-coral-ink"
+                    className="mt-1 inline-block font-mono text-mono-xs uppercase text-pine"
                   >
                     Book a meeting →
                   </Link>

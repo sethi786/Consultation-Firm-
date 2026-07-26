@@ -16,51 +16,47 @@ const DEMO_CARDS = [
     href: "/explore#maturity",
     title: "Score your maturity",
     desc: "Six questions, an instant maturity band and your focus areas.",
-    solid: "bg-coral",
   },
   {
     href: "/explore#posture",
     title: "Calculate cloud & AI posture",
     desc: "Flip your controls and watch a live posture score move.",
-    solid: "bg-sky",
   },
   {
     href: "/explore#zero-trust",
     title: "Contain a breach",
     desc: "Switch on zero-trust gates and stop an attack in its tracks.",
-    solid: "bg-violet",
   },
   {
     href: "/explore#findings",
     title: "Open a findings register",
     desc: "Explore the live product view clients work in after an engagement.",
-    solid: "bg-indigo",
   },
 ];
 
 export default function HomePage() {
   return (
     <>
-      {/* Hero — bright, colourful, high-energy */}
+      {/* Hero — calm, documentary, one quiet accent */}
       <section className="relative overflow-hidden">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(45% 55% at 8% 4%, rgba(255,90,60,0.16), transparent 60%), radial-gradient(45% 55% at 92% 0%, rgba(124,58,237,0.16), transparent 60%), radial-gradient(55% 60% at 60% 115%, rgba(14,165,233,0.14), transparent 60%)",
+              "radial-gradient(60% 70% at 15% 0%, color-mix(in oklab, var(--color-pine) 8%, transparent), transparent 65%)",
           }}
         />
         <Container className="relative pt-16 pb-14 md:pt-24 md:pb-20">
           <span className="anim-rise mb-6 inline-flex items-center gap-2 rounded-full border border-rule bg-surface/70 px-4 py-1.5 font-mono text-mono-xs uppercase text-slate backdrop-blur-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-coral" />
+            <span className="h-1.5 w-1.5 rounded-full bg-pine" />
             Security consulting &amp; managed detection
           </span>
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
             <div className="lg:col-span-7">
               <h1 className="anim-hero-title text-display text-ink">
                 We tell you what&apos;s actually exposed — and{" "}
-                <span className="text-coral-ink">prove it&apos;s fixed.</span>
+                <span className="text-pine">prove it&apos;s fixed.</span>
               </h1>
             </div>
             <div className="flex flex-col justify-end lg:col-span-5">
@@ -72,7 +68,7 @@ export default function HomePage() {
               <div className="anim-rise anim-delay-2 mt-8 flex flex-wrap items-center gap-3">
                 <Link
                   href="/contact"
-                  className="rounded-full bg-coral px-6 py-3 font-body text-small font-medium text-white shadow-pop-sm transition-transform hover:-translate-y-0.5"
+                  className="rounded-full bg-pine px-6 py-3 font-body text-small font-medium text-white transition-colors hover:bg-pine-lift"
                 >
                   Book an assessment
                 </Link>
@@ -86,7 +82,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Domain pills — the estate, colour-coded */}
+          {/* Domain pills — the estate at a glance */}
           <div className="anim-rise anim-delay-3 mt-12 flex flex-wrap gap-2">
             {DOMAINS.map((d) => {
               const a = ACCENTS[DOMAIN_ACCENT[d]];
@@ -113,23 +109,28 @@ export default function HomePage() {
           </div>
           <Link
             href="/explore"
-            className="font-body text-small text-coral-ink underline decoration-coral/40 underline-offset-4 hover:decoration-coral"
+            className="font-body text-small text-pine underline decoration-pine/40 underline-offset-4 hover:decoration-pine"
           >
             Open the explorer →
           </Link>
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {DEMO_CARDS.map((c) => (
+          {DEMO_CARDS.map((c, i) => (
             <Link
               key={c.href}
               href={c.href}
-              className={`group flex flex-col justify-between rounded-3xl ${c.solid} p-6 text-white shadow-pop-sm transition-transform duration-300 ease-doc hover:-translate-y-1`}
+              className="group flex flex-col justify-between rounded-2xl border border-rule bg-surface p-6 transition-colors duration-300 ease-doc hover:border-pine"
             >
-              <h3 className="font-display text-h3 leading-tight text-white">{c.title}</h3>
-              <p className="mt-3 text-small text-white/85">{c.desc}</p>
+              <div>
+                <span className="font-mono text-mono-xs uppercase text-slate/70">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-3 font-display text-h3 leading-tight text-ink">{c.title}</h3>
+                <p className="mt-3 text-small text-slate">{c.desc}</p>
+              </div>
               <span
                 aria-hidden="true"
-                className="mt-6 inline-block font-mono text-mono-xs uppercase text-white/90 transition-transform duration-300 ease-doc group-hover:translate-x-1"
+                className="mt-6 inline-block font-mono text-mono-xs uppercase text-pine transition-transform duration-300 ease-doc group-hover:translate-x-1"
               >
                 Try it →
               </span>
@@ -140,7 +141,7 @@ export default function HomePage() {
 
       {/* The Control Register — the credibility anchor (§3.4) */}
       <Container className="pb-16 md:pb-24">
-        <div className="rounded-3xl border border-rule bg-surface p-4 shadow-pop-sm md:p-8">
+        <div className="rounded-2xl border border-rule bg-surface p-4 md:p-8">
           <ControlRegister scrollable />
           <p className="mt-4 border-t border-rule pt-4 font-mono text-mono-xs uppercase text-slate/80">
             <CountUp value={CONTROLS.length} /> controls · <CountUp value={SERVICE_LIST.length} /> services · verified against the published frameworks

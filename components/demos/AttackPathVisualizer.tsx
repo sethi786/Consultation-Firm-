@@ -138,7 +138,7 @@ export function AttackPathVisualizer() {
       <div className="mt-8 flex flex-wrap items-center gap-4">
         <Link
           href="/contact?service=zero-trust"
-          className="rounded-full bg-coral px-6 py-3 font-body text-small font-medium text-white shadow-pop-sm transition-transform hover:-translate-y-0.5"
+          className="rounded-full bg-pine px-6 py-3 font-body text-small font-medium text-white transition-colors hover:bg-pine-lift"
         >
           Get a zero-trust roadmap →
         </Link>

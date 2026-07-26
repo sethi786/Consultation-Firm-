@@ -38,14 +38,14 @@ const INCLUDED = [
 export default function ManagedServicesPage() {
   return (
     <>
-      {/* Flagship hero — dark, high-energy */}
+      {/* Flagship hero — dark, calm */}
       <section className="relative overflow-hidden bg-night">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(55% 70% at 12% 8%, rgba(255,90,60,0.32), transparent 60%), radial-gradient(50% 65% at 90% 20%, rgba(14,165,233,0.28), transparent 60%)",
+              "radial-gradient(65% 80% at 15% 5%, rgba(79,157,130,0.22), transparent 65%)",
           }}
         />
         <Container className="relative py-20 md:py-28">
@@ -61,7 +61,7 @@ export default function ManagedServicesPage() {
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="/contact?service=managed-soc"
-              className="rounded-full bg-coral px-6 py-3 font-body text-small font-medium text-white shadow-pop-sm transition-transform hover:-translate-y-0.5"
+              className="rounded-full bg-pine px-6 py-3 font-body text-small font-medium text-white transition-colors hover:bg-pine-lift"
             >
               Book an assessment
             </Link>
@@ -81,8 +81,8 @@ export default function ManagedServicesPage() {
         <h2 className="mt-2 mb-8 text-h2 text-ink">A loop, not a ticket queue.</h2>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {LOOP.map((s) => (
-            <div key={s.n} className="rounded-3xl border border-rule bg-surface p-6 shadow-pop-sm">
-              <span className="font-mono text-mono-xs uppercase text-coral-ink">{s.n}</span>
+            <div key={s.n} className="rounded-2xl border border-rule bg-surface p-6">
+              <span className="font-mono text-mono-xs uppercase text-pine">{s.n}</span>
               <h3 className="mt-2 text-h3 text-ink">{s.title}</h3>
               <p className="mt-2 text-small text-slate">{s.body}</p>
             </div>
@@ -100,7 +100,7 @@ export default function ManagedServicesPage() {
               <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {WATCH.map((w) => (
                   <li key={w} className="flex items-baseline gap-2 rounded-2xl border border-rule bg-surface px-4 py-3 text-small text-ink">
-                    <span aria-hidden="true" className="text-sky-ink">◆</span>
+                    <span aria-hidden="true" className="text-pine">◆</span>
                     {w}
                   </li>
                 ))}
@@ -112,7 +112,7 @@ export default function ManagedServicesPage() {
               <ul className="flex flex-col gap-2">
                 {INCLUDED.map((it) => (
                   <li key={it} className="flex items-baseline gap-3 border-b border-rule py-3 text-body text-ink">
-                    <span aria-hidden="true" className="font-mono text-mono-xs text-coral-ink">▪</span>
+                    <span aria-hidden="true" className="font-mono text-mono-xs text-pine">▪</span>
                     {it}
                   </li>
                 ))}

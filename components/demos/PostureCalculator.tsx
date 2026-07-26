@@ -127,7 +127,7 @@ export function PostureCalculator() {
 
           <Link
             href="/contact?service=cloud-security"
-            className="mt-6 block rounded-full bg-coral px-6 py-3 text-center font-body text-small font-medium text-white shadow-pop-sm transition-transform hover:-translate-y-0.5"
+            className="mt-6 block rounded-full bg-pine px-6 py-3 text-center font-body text-small font-medium text-white transition-colors hover:bg-pine-lift"
           >
             Book an assessment →
           </Link>

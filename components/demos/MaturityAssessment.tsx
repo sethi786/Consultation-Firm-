@@ -191,7 +191,7 @@ export function MaturityAssessment() {
         <div className="mt-8 flex flex-wrap items-center gap-4">
           <Link
             href="/contact"
-            className="rounded-full bg-coral px-6 py-3 font-body text-small font-medium text-white shadow-pop-sm transition-transform hover:-translate-y-0.5"
+            className="rounded-full bg-pine px-6 py-3 font-body text-small font-medium text-white transition-colors hover:bg-pine-lift"
           >
             Book an assessment →
           </Link>
@@ -219,7 +219,7 @@ export function MaturityAssessment() {
         </p>
         <div className="h-1.5 w-32 overflow-hidden rounded-full bg-rule">
           <div
-            className="h-full rounded-full bg-coral motion-safe:transition-[width] motion-safe:duration-500 motion-safe:ease-doc"
+            className="h-full rounded-full bg-pine motion-safe:transition-[width] motion-safe:duration-500 motion-safe:ease-doc"
             style={{ width: `${(step / QUESTIONS.length) * 100}%` }}
           />
         </div>
@@ -231,10 +231,10 @@ export function MaturityAssessment() {
             key={o.label}
             type="button"
             onClick={() => choose(q.id, o.score)}
-            className="group flex items-center justify-between rounded-2xl border border-rule bg-paper px-5 py-4 text-left transition-all hover:-translate-y-0.5 hover:border-coral hover:shadow-pop-sm"
+            className="group flex items-center justify-between rounded-2xl border border-rule bg-paper px-5 py-4 text-left transition-colors hover:border-pine"
           >
             <span className="text-body text-ink">{o.label}</span>
-            <span aria-hidden="true" className="font-mono text-mono-xs text-slate transition-transform group-hover:translate-x-1 group-hover:text-coral-ink">
+            <span aria-hidden="true" className="font-mono text-mono-xs text-slate transition-transform group-hover:translate-x-1 group-hover:text-pine">
               →
             </span>
           </button>
