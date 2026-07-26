@@ -10,11 +10,11 @@ import { cn } from "@/lib/cn";
  * theme, so this control lives on the marketing header only.
  */
 export function ThemeToggle({ className }: { className?: string }) {
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
     const t = document.documentElement.getAttribute("data-theme");
-    setTheme(t === "light" ? "light" : "dark");
+    setTheme(t === "dark" ? "dark" : "light");
   }, []);
 
   function toggle() {

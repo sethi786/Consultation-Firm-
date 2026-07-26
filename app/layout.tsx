@@ -52,8 +52,9 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   // Theme is read from a cookie and applied server-side, so there's no flash of
-  // the wrong theme. Dark is the default; the header toggle sets the cookie.
-  const theme = (await cookies()).get("theme")?.value === "light" ? "light" : "dark";
+  // the wrong theme. Light is the default (airy, document-first); the header
+  // toggle sets the cookie. The portal forces its own dark surface.
+  const theme = (await cookies()).get("theme")?.value === "dark" ? "dark" : "light";
 
   return (
     <html
