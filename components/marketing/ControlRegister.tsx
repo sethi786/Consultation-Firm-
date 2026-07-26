@@ -43,7 +43,15 @@ function usePrefersReducedMotion(): boolean {
   return reduced;
 }
 
-export function ControlRegister({ className }: { className?: string }) {
+export function ControlRegister({
+  className,
+  scrollable = false,
+}: {
+  className?: string;
+  /** Cap the register height with an internal scroll — used on the homepage,
+   *  where the full register is long. All rows stay filterable and keyboard-reachable. */
+  scrollable?: boolean;
+}) {
   const rows = CONTROLS;
   const step = useMemo(() => cascadeStep(rows.length), [rows.length]);
   const reducedMotion = usePrefersReducedMotion();
@@ -177,14 +185,19 @@ export function ControlRegister({ className }: { className?: string }) {
         {/* The register */}
         <div className="min-w-0">
           {/* Desktop: semantic table */}
-          <div className="hidden overflow-x-auto md:block">
+          <div
+            className={cn(
+              "hidden overflow-x-auto md:block",
+              scrollable && "max-h-[34rem] overflow-y-auto rounded border border-rule",
+            )}
+          >
             <table className="w-full border-collapse text-left">
               <caption className="sr-only">
                 Control register: mapping of Northport Security services to NIST CSF
                 2.0, ISO/IEC 27001:2022, and CIS Controls v8, with current and target
                 maturity for each.
               </caption>
-              <thead>
+              <thead className={cn(scrollable && "sticky top-0 z-10 bg-paper")}>
                 <tr className="border-y border-rule">
                   <th scope="col" className="whitespace-nowrap py-2 pr-3 font-mono text-mono-xs font-medium uppercase text-slate">
                     Framework
@@ -245,7 +258,12 @@ export function ControlRegister({ className }: { className?: string }) {
           </div>
 
           {/* Mobile: card stack (never a squashed table) */}
-          <ul className="flex flex-col gap-3 md:hidden">
+          <ul
+            className={cn(
+              "flex flex-col gap-3 md:hidden",
+              scrollable && "max-h-[30rem] overflow-y-auto rounded border border-rule p-2",
+            )}
+          >
             {rows.map((c, i) => (
               <li
                 key={`m-${c.reference}-${c.service}`}

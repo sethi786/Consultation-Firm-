@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Container, Eyebrow, Chip } from "@/components/ui";
+import { Container, Eyebrow, Chip, Tabs, Accordion, Reveal } from "@/components/ui";
+import type { TabItem } from "@/components/ui/Tabs";
 import { ServiceControls } from "./ServiceControls";
 import { ContactCTA } from "./ContactCTA";
 import { SERVICE_LIST } from "@/content/services";
@@ -86,63 +87,57 @@ export function ServiceTemplate({ service }: { service: ServiceDetail }) {
       {/* Engagement tiers */}
       <Container as="section" className="border-t border-rule py-14 md:py-20">
         <SectionHead index={`§ ${idx}.3`}>Engagement tiers</SectionHead>
-        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-rule bg-rule md:grid-cols-3">
-          {service.tiers.map((tier) => (
-            <div key={tier.name} className="flex flex-col gap-4 bg-paper p-6">
-              <div>
-                <div className="flex items-center justify-between">
-                  <h3 className="text-h3 text-ink">{tier.name}</h3>
-                  <span className="font-mono text-mono-xs uppercase text-slate">
-                    {tier.duration}
-                  </span>
+        <Tabs
+          items={service.tiers.map<TabItem>((tier) => ({
+            label: tier.name,
+            meta: tier.duration,
+            panel: (
+              <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
+                <div className="md:col-span-5">
+                  <p className="text-lede text-ink">{tier.summary}</p>
+                  <p className="mt-4 font-mono text-mono-xs uppercase text-brass-lift">
+                    {tier.price || PRICING_LABEL[tier.name]} · {tier.duration}
+                  </p>
                 </div>
-                <p className="mt-2 text-small text-slate">{tier.summary}</p>
+                <div className="md:col-span-4">
+                  <p className="mb-3 font-mono text-mono-xs uppercase text-slate">Includes</p>
+                  <ul className="flex flex-col gap-2">
+                    {tier.includes.map((it) => (
+                      <li key={it} className="flex gap-2 text-small text-ink">
+                        <span aria-hidden="true" className="text-pine">—</span>
+                        {it}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="md:col-span-3">
+                  <p className="mb-3 font-mono text-mono-xs uppercase text-slate">Not included</p>
+                  <ul className="flex flex-col gap-2">
+                    {tier.excludes.map((it) => (
+                      <li key={it} className="flex gap-2 text-small text-slate">
+                        <span aria-hidden="true" className="text-rule">×</span>
+                        {it}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <div className="font-mono text-mono-xs uppercase text-brass-lift">
-                {tier.price || PRICING_LABEL[tier.name]}
-              </div>
-              <div>
-                <p className="mb-2 font-mono text-mono-xs uppercase text-slate">Includes</p>
-                <ul className="flex flex-col gap-1.5">
-                  {tier.includes.map((it) => (
-                    <li key={it} className="flex gap-2 text-small text-ink">
-                      <span aria-hidden="true" className="text-pine">
-                        —
-                      </span>
-                      {it}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <p className="mb-2 font-mono text-mono-xs uppercase text-slate">Not included</p>
-                <ul className="flex flex-col gap-1.5">
-                  {tier.excludes.map((it) => (
-                    <li key={it} className="flex gap-2 text-small text-slate">
-                      <span aria-hidden="true" className="text-rule">
-                        ×
-                      </span>
-                      {it}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          ))}
-        </div>
+            ),
+          }))}
+        />
       </Container>
 
       {/* Deliverables */}
       <Container as="section" className="border-t border-rule py-14 md:py-20">
         <SectionHead index={`§ ${idx}.4`}>What you receive</SectionHead>
         <ul className="grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2">
-          {service.deliverables.map((d) => (
-            <li key={d} className="flex items-baseline gap-3 border-b border-rule py-3">
+          {service.deliverables.map((d, i) => (
+            <Reveal as="li" key={d} delay={(i % 2) * 60} className="flex items-baseline gap-3 border-b border-rule py-3">
               <span aria-hidden="true" className="font-mono text-mono-xs text-brass-lift">
                 ▪
               </span>
               <span className="text-body text-ink">{d}</span>
-            </li>
+            </Reveal>
           ))}
         </ul>
       </Container>
@@ -188,17 +183,7 @@ export function ServiceTemplate({ service }: { service: ServiceDetail }) {
       {/* FAQ */}
       <Container as="section" className="border-t border-rule py-14 md:py-20">
         <SectionHead index={`§ ${idx}.6`}>Questions procurement asks</SectionHead>
-        <dl className="border-t border-rule">
-          {service.faqs.map((f) => (
-            <div
-              key={f.q}
-              className="grid grid-cols-1 gap-2 border-b border-rule py-6 md:grid-cols-12 md:gap-6"
-            >
-              <dt className="text-h3 text-ink md:col-span-5">{f.q}</dt>
-              <dd className="text-body text-slate md:col-span-7">{f.a}</dd>
-            </div>
-          ))}
-        </dl>
+        <Accordion items={service.faqs} />
       </Container>
 
       {/* Other services */}

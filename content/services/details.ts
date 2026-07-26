@@ -619,6 +619,511 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
         "SOC 2 and ISO/IEC 27001 readiness: a control-by-control gap assessment, the policies and evidence auditors ask for, and a realistic path to audit-ready.",
     },
   },
+
+  "data-security": {
+    situation:
+      "You can't protect data you can't see. Sensitive records — PII, financials, source code, customer contracts — are scattered across SharePoint, OneDrive, Teams, and a dozen SaaS apps, and no one can say with confidence where the crown jewels live or who can reach them. Northport stands up Microsoft Purview to find and classify sensitive data, label it, and stop it from leaving through the channels that actually leak — so data protection becomes a control you can evidence, not a hope.",
+    workstreams: [
+      {
+        title: "Data discovery & classification",
+        deliverable: "Sensitive data map with classification scheme",
+        detail:
+          "Purview sensitive information types and trainable classifiers scan your estate to surface where regulated and confidential data actually lives.",
+      },
+      {
+        title: "Sensitivity labels & protection",
+        deliverable: "Label taxonomy and auto-labelling policy",
+        detail:
+          "A label scheme your users can actually apply, with encryption and access controls that travel with the file, plus auto-labelling for the data they forget to tag.",
+      },
+      {
+        title: "Data loss prevention",
+        deliverable: "DLP policy set with tuned enforcement",
+        detail:
+          "Policies across email, endpoints, and cloud apps that block the exfiltration paths that matter, tuned so they stop leaks without stopping work.",
+      },
+      {
+        title: "Insider risk & lifecycle",
+        deliverable: "Insider-risk and retention baseline",
+        detail:
+          "Insider-risk indicators and data-lifecycle rules so data is kept only as long as it should be, and risky movement is flagged early.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "2–4 weeks",
+        summary: "We map where your sensitive data lives and how it can leave.",
+        includes: [
+          "Purview data discovery and classification",
+          "Sensitive-data map and exposure review",
+          "DLP and labelling gap analysis",
+          "Prioritised data-protection roadmap",
+        ],
+        excludes: ["Policy rollout", "End-user change management", "Ongoing tuning"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "4–10 weeks",
+        summary: "We roll out labels, DLP, and insider-risk with your team.",
+        includes: [
+          "Everything in Assessment",
+          "Label taxonomy and auto-labelling",
+          "DLP policy deployment and tuning",
+          "Insider-risk and retention configuration",
+        ],
+        excludes: ["Microsoft licensing", "24/7 monitoring"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We tune policies and watch for data risk as your estate changes.",
+        includes: [
+          "Continuous DLP and classifier tuning",
+          "Insider-risk alert triage",
+          "Quarterly data-posture report",
+        ],
+        excludes: ["Records-management program ownership"],
+        price: "",
+      },
+    ],
+    deliverables: [
+      "Sensitive data map",
+      "Label taxonomy and auto-labelling policy",
+      "DLP policy set",
+      "Insider-risk and retention baseline",
+      "Data-protection roadmap",
+    ],
+    faqs: [
+      {
+        q: "Do we need the top Microsoft licence for this?",
+        a: "The advanced Purview capabilities (auto-labelling, insider risk) need Microsoft 365 E5 or the compliance add-on. We'll tell you exactly what your goals require before you buy anything, and what's achievable on your current licensing.",
+      },
+      {
+        q: "Won't DLP just annoy everyone and get turned off?",
+        a: "That's the usual failure mode. We start in audit mode, tune against real data flows, and only then enforce — so policies block genuine exfiltration without breaking day-to-day work.",
+      },
+      {
+        q: "Can this cover data outside Microsoft 365?",
+        a: "Yes — Purview extends to endpoints, on-prem file shares, and, via connectors, major SaaS and cloud data stores. We scope the estate up front so nothing important is out of view.",
+      },
+      {
+        q: "How does this help our audit?",
+        a: "Classification, DLP, and retention map directly to ISO/IEC 27001 A.5.12/A.5.13/A.8.12 and NIST CSF PR.DS — so the same work produces the evidence an auditor asks for.",
+      },
+    ],
+    seo: {
+      title: "Data Security & Governance with Microsoft Purview",
+      description:
+        "Find, classify, label, and protect sensitive data with Microsoft Purview — data discovery, sensitivity labels, DLP, and insider risk mapped to ISO 27001 and NIST CSF.",
+    },
+  },
+
+  "cloud-foundations": {
+    situation:
+      "You're scaling in Azure on foundations that grew by accident — subscriptions spun up ad hoc, inconsistent networking, no guardrails, and security bolted on after each workload ships. Every new project inherits the drift. Northport builds a secure-by-default Azure landing zone to the Microsoft Well-Architected and Cloud Adoption Framework, so governance, identity, network topology, and policy-as-code are in place before the next workload lands — and staying secure becomes the path of least resistance.",
+    workstreams: [
+      {
+        title: "Landing zone architecture",
+        deliverable: "Target landing-zone design",
+        detail:
+          "Management-group hierarchy, subscription topology, and a hub-and-spoke network designed for how you actually operate, aligned to the Cloud Adoption Framework.",
+      },
+      {
+        title: "Governance & policy-as-code",
+        deliverable: "Azure Policy and guardrail baseline",
+        detail:
+          "Guardrails as code — Azure Policy, RBAC, and naming/tagging standards — so misconfiguration is prevented by default, not caught after the fact.",
+      },
+      {
+        title: "Identity & network foundation",
+        deliverable: "Identity and connectivity baseline",
+        detail:
+          "Entra ID integration, privileged access, private connectivity, and segmentation wired into the foundation rather than retrofitted per workload.",
+      },
+      {
+        title: "Deployment & handover",
+        deliverable: "Infrastructure-as-code templates and runbooks",
+        detail:
+          "The landing zone delivered as Bicep/Terraform your team owns, with runbooks so new subscriptions and workloads land inside the guardrails automatically.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "2–3 weeks",
+        summary: "We review your current cloud setup and design the target landing zone.",
+        includes: [
+          "Current-state review against the Well-Architected Framework",
+          "Target landing-zone design",
+          "Governance and guardrail plan",
+          "Migration and adoption roadmap",
+        ],
+        excludes: ["Build", "Workload migration", "Ongoing operations"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "4–10 weeks",
+        summary: "We build the landing zone as infrastructure-as-code with your team.",
+        includes: [
+          "Everything in Assessment",
+          "Landing-zone build (Bicep / Terraform)",
+          "Azure Policy and RBAC guardrails",
+          "Identity, network, and logging foundation",
+        ],
+        excludes: ["Application re-platforming", "24/7 monitoring"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We govern the platform and review new workloads before they ship.",
+        includes: [
+          "Guardrail and policy maintenance",
+          "New-workload design review",
+          "Quarterly Well-Architected review",
+        ],
+        excludes: ["Application development", "Cloud cost management"],
+        price: "",
+      },
+    ],
+    deliverables: [
+      "Target landing-zone design",
+      "Azure Policy and guardrail baseline",
+      "Identity and connectivity baseline",
+      "Infrastructure-as-code templates and runbooks",
+      "Cloud adoption roadmap",
+    ],
+    faqs: [
+      {
+        q: "We already have workloads in Azure. Do we start over?",
+        a: "No. We design the landing zone around what you run, then migrate existing subscriptions into the governance model in stages — no big-bang rebuild.",
+      },
+      {
+        q: "Azure only, or AWS too?",
+        a: "This service is Azure-focused (landing zones, Well-Architected). For AWS foundations or multi-cloud posture, our Cloud Security service covers both — we'll scope the right mix.",
+      },
+      {
+        q: "Do you leave us dependent on you to run it?",
+        a: "Never. The landing zone ships as infrastructure-as-code your team owns, with runbooks. We hand over the keys — operating it is yours.",
+      },
+      {
+        q: "How is this different from just turning on Defender for Cloud?",
+        a: "Defender for Cloud tells you what's wrong. A landing zone stops it being wrong in the first place — the guardrails, topology, and identity model that new workloads inherit by default.",
+      },
+    ],
+    seo: {
+      title: "Azure Landing Zones & Cloud Foundations",
+      description:
+        "A secure-by-default Azure landing zone built to the Well-Architected and Cloud Adoption Frameworks: governance, policy-as-code, identity, and network topology as infrastructure-as-code.",
+    },
+  },
+
+  "network-security": {
+    situation:
+      "Your network is flat. Once an attacker lands a single foothold — a phished laptop, an exposed service — nothing stops them moving laterally to the domain controller and the data. Northport designs and delivers segmentation, traffic filtering, and a secure network architecture that turns a breach into a contained incident instead of a company-wide one.",
+    workstreams: [
+      {
+        title: "Architecture & segmentation review",
+        deliverable: "Network segmentation plan",
+        detail:
+          "Map trust boundaries across on-prem and cloud, find the flat spots and the paths to critical assets, and design segments that contain a compromise.",
+      },
+      {
+        title: "Traffic filtering & control",
+        deliverable: "Filtering and firewall rule baseline",
+        detail:
+          "Least-privilege traffic rules between segments, egress control, and the removal of the any-any rules that make lateral movement trivial.",
+      },
+      {
+        title: "Secure network services",
+        deliverable: "Hardened network-services configuration",
+        detail:
+          "DNS, VPN, and remote-access hardened and monitored, with the legacy protocols and exposed management planes retired.",
+      },
+      {
+        title: "Verification",
+        deliverable: "Lateral-movement test and closure report",
+        detail:
+          "We test whether the segmentation actually holds — attempting the lateral paths that mattered — and close what doesn't.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "2–3 weeks",
+        summary: "We map the network, find the flat spots, and design segmentation.",
+        includes: [
+          "Segmentation and trust-boundary review",
+          "Lateral-movement path analysis",
+          "Target network architecture",
+          "Prioritised remediation roadmap",
+        ],
+        excludes: ["Firewall changes", "Implementation", "Ongoing monitoring"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "4–10 weeks",
+        summary: "We implement segmentation and filtering with your network team.",
+        includes: [
+          "Everything in Assessment",
+          "Segmentation and filtering rollout",
+          "Secure network-services hardening",
+          "Lateral-movement verification test",
+        ],
+        excludes: ["Hardware procurement", "24/7 monitoring"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We review rules and architecture as the network changes.",
+        includes: [
+          "Rule-base review and hygiene",
+          "New-segment design review",
+          "Quarterly architecture review",
+        ],
+        excludes: ["Day-to-day network operations"],
+        price: "",
+      },
+    ],
+    deliverables: [
+      "Network segmentation plan",
+      "Filtering and firewall rule baseline",
+      "Hardened network-services configuration",
+      "Lateral-movement test and closure report",
+      "Remediation roadmap",
+    ],
+    faqs: [
+      {
+        q: "Do we have to re-architect the whole network at once?",
+        a: "No. We sequence segmentation so the highest-value assets — domain controllers, data stores, OT — are ring-fenced first, then extend it in phases without a disruptive rebuild.",
+      },
+      {
+        q: "On-prem, cloud, or both?",
+        a: "Both, and the seams between them — the site-to-site links and hybrid paths where segmentation usually breaks down are exactly where we focus.",
+      },
+      {
+        q: "How does this relate to zero trust?",
+        a: "Segmentation is one pillar of zero trust. If you want the full programme across identity, device, and data as well, our Zero Trust Architecture service sequences all of it.",
+      },
+      {
+        q: "Will you prove the segmentation works?",
+        a: "Yes — we attempt the lateral-movement paths that mattered before and after, so you get evidence the containment holds, not just a diagram.",
+      },
+    ],
+    seo: {
+      title: "Network Security & Segmentation",
+      description:
+        "Segmentation, traffic filtering, and a secure network architecture that contains a breach — with lateral-movement testing to prove it holds. Aligned to ISO 27001 and CIS Controls v8.",
+    },
+  },
+
+  "endpoint-security": {
+    situation:
+      "Every laptop and phone that touches your data is a way in — and half of them you can't see. Unmanaged devices, inconsistent patching, and endpoint protection that's installed but not tuned mean the endpoint is the softest part of your attack surface. Northport uses Microsoft Intune and Defender for Endpoint to bring every device under management, harden it to a baseline, and make device health a condition of reaching your data.",
+    workstreams: [
+      {
+        title: "Device inventory & management",
+        deliverable: "Managed-device inventory and enrolment plan",
+        detail:
+          "Bring every corporate and BYO device under Intune management, so there are no unknown endpoints holding company data.",
+      },
+      {
+        title: "Hardening baselines",
+        deliverable: "Endpoint hardening and compliance baseline",
+        detail:
+          "Security baselines for Windows, macOS, and mobile — disk encryption, patching, and configuration enforced by policy, not by hope.",
+      },
+      {
+        title: "Malware & threat defence",
+        deliverable: "Defender for Endpoint deployment and tuning",
+        detail:
+          "EDR deployed, tuned, and integrated so real endpoint threats are detected and contained, and the noise is turned down.",
+      },
+      {
+        title: "Compliance-gated access",
+        deliverable: "Device-compliance access policy",
+        detail:
+          "Conditional Access that only lets healthy, compliant devices reach your data — the device becomes part of the trust decision.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "2–3 weeks",
+        summary: "We inventory devices and review your endpoint posture.",
+        includes: [
+          "Device inventory and management-gap review",
+          "Endpoint hardening and EDR review",
+          "Compliance and Conditional Access gap analysis",
+          "Prioritised endpoint roadmap",
+        ],
+        excludes: ["Rollout", "End-user migration", "Ongoing management"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "4–8 weeks",
+        summary: "We enrol devices, deploy baselines, and gate access on compliance.",
+        includes: [
+          "Everything in Assessment",
+          "Intune enrolment and hardening baselines",
+          "Defender for Endpoint deployment and tuning",
+          "Device-compliance Conditional Access",
+        ],
+        excludes: ["Microsoft licensing", "24/7 monitoring"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We keep baselines current and triage endpoint threats.",
+        includes: [
+          "Baseline and patch-compliance monitoring",
+          "Endpoint threat triage",
+          "Quarterly endpoint-posture report",
+        ],
+        excludes: ["Help-desk / device provisioning operations"],
+        price: "",
+      },
+    ],
+    deliverables: [
+      "Managed-device inventory and enrolment plan",
+      "Endpoint hardening and compliance baseline",
+      "Defender for Endpoint deployment and tuning",
+      "Device-compliance access policy",
+      "Endpoint roadmap",
+    ],
+    faqs: [
+      {
+        q: "Can we support BYOD without managing personal phones fully?",
+        a: "Yes — Intune app protection policies protect company data on personal devices without taking over the whole phone, so you get control where it matters and users keep their privacy.",
+      },
+      {
+        q: "We already have antivirus. Why Defender for Endpoint?",
+        a: "Traditional AV blocks known malware; Defender for Endpoint is EDR — it detects the behaviour of an active intrusion and lets you contain it. We'll assess whether your current tool is enough before recommending a change.",
+      },
+      {
+        q: "How does this connect to zero trust?",
+        a: "Device health is one of the trust signals in a zero-trust model. Compliance-gated access — only healthy devices reach data — is exactly the endpoint pillar of that architecture.",
+      },
+      {
+        q: "What frameworks does this map to?",
+        a: "ISO/IEC 27001 A.8.1 and A.8.7, NIST CSF PR.PS-05, and CIS Control 10 — so the work lines up with your audit and the rest of your register.",
+      },
+    ],
+    seo: {
+      title: "Endpoint & Device Security with Intune & Defender",
+      description:
+        "Bring every device under management with Microsoft Intune and Defender for Endpoint: hardening baselines, EDR, and compliance-gated access mapped to ISO 27001 and CIS Controls v8.",
+    },
+  },
+
+  "application-security": {
+    situation:
+      "You ship weekly, and security can't be a gate bolted on at the end — by then the design decisions are made and the fix is expensive. Northport builds security into your software development lifecycle: security requirements up front, secure-coding standards, automated SAST/DAST and API testing in the pipeline, and a way to prioritise what actually matters — so your teams keep their velocity and stop shipping the same classes of bug.",
+    workstreams: [
+      {
+        title: "SDLC & threat modelling",
+        deliverable: "Secure-SDLC assessment and threat models",
+        detail:
+          "Review how software is built and shipped, and threat-model the applications that matter so security requirements are set before code is written.",
+      },
+      {
+        title: "Pipeline security testing",
+        deliverable: "SAST / DAST / dependency scanning in CI",
+        detail:
+          "Static, dynamic, and dependency scanning wired into the pipeline with sensible gates — findings triaged by exploitability, not a wall of scanner noise.",
+      },
+      {
+        title: "API & secure-coding standards",
+        deliverable: "Secure-coding and API-security standards",
+        detail:
+          "Coding standards and API-security testing mapped to the OWASP Top 10 and OWASP API Top 10, with the recurring bug classes named and closed.",
+      },
+      {
+        title: "Developer enablement",
+        deliverable: "Security champions and remediation playbooks",
+        detail:
+          "Lightweight training and a security-champions model so your engineers can find and fix issues themselves — security scales with the team, not against it.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "2–4 weeks",
+        summary: "We assess your SDLC and hand you a prioritised AppSec roadmap.",
+        includes: [
+          "Secure-SDLC maturity assessment",
+          "Threat models for priority applications",
+          "Pipeline and tooling gap analysis",
+          "Prioritised application-security roadmap",
+        ],
+        excludes: ["Pipeline engineering", "Ongoing testing"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "4–10 weeks",
+        summary: "We wire security testing into the pipeline and set the standards.",
+        includes: [
+          "Everything in Assessment",
+          "SAST / DAST / dependency scanning in CI",
+          "Secure-coding and API-security standards",
+          "Security-champions enablement",
+        ],
+        excludes: ["Feature development", "24/7 monitoring"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We keep testing tuned and re-threat-model as the product evolves.",
+        includes: [
+          "Pipeline-finding triage and tuning",
+          "Per-release threat-model updates",
+          "Quarterly AppSec posture report",
+        ],
+        excludes: ["Application development"],
+        price: "",
+      },
+    ],
+    deliverables: [
+      "Secure-SDLC assessment and threat models",
+      "SAST / DAST / dependency scanning in CI",
+      "Secure-coding and API-security standards",
+      "Security champions and remediation playbooks",
+      "Application-security roadmap",
+    ],
+    faqs: [
+      {
+        q: "Will security testing slow our releases down?",
+        a: "Done wrong, yes. We tune gates so only genuinely serious issues block a release, and everything else becomes a tracked, prioritised backlog item — velocity stays, risk comes down.",
+      },
+      {
+        q: "We use a lot of open-source. Is that covered?",
+        a: "Yes — dependency and software-composition scanning is part of the pipeline, so vulnerable and unmaintained components are flagged before they ship, not after a CVE lands.",
+      },
+      {
+        q: "Do you test APIs specifically?",
+        a: "Yes. APIs are where a lot of modern risk lives, so API security is a first-class part of the work, mapped to the OWASP API Security Top 10.",
+      },
+      {
+        q: "Can you work with our existing tools?",
+        a: "We're tool-agnostic — we'll make your current SAST/DAST/SCA stack work harder before recommending anything new, and integrate with the pipeline you already run.",
+      },
+    ],
+    seo: {
+      title: "Application Security & Secure SDLC",
+      description:
+        "Security built into the SDLC: threat modelling, SAST/DAST and dependency scanning in CI, secure-coding and API-security standards mapped to OWASP, ISO 27001, and NIST CSF.",
+    },
+  },
 };
 
 export function getServiceDetail(slug: ServiceSlug): ServiceDetail {

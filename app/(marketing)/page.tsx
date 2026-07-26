@@ -5,6 +5,8 @@ import { ApproachStrip } from "@/components/marketing/ApproachStrip";
 import { EvidenceBand } from "@/components/marketing/EvidenceBand";
 import { InsightsTeaser } from "@/components/marketing/InsightsTeaser";
 import { ContactCTA } from "@/components/marketing/ContactCTA";
+import { SERVICE_LIST } from "@/content/services";
+import { CONTROLS } from "@/content/controls";
 
 export default function HomePage() {
   return (
@@ -29,7 +31,7 @@ export default function HomePage() {
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Button href="/contact">Book an assessment</Button>
               <Button href="/services" variant="secondary">
-                See the six services
+                See all services
               </Button>
             </div>
           </div>
@@ -39,7 +41,10 @@ export default function HomePage() {
       {/* The Control Register — the hero art (§3.4) */}
       <Container className="pb-16 md:pb-24">
         <div className="rounded-lg border border-rule bg-paper p-4 md:p-8">
-          <ControlRegister />
+          <ControlRegister scrollable />
+          <p className="mt-4 border-t border-rule pt-4 font-mono text-mono-xs uppercase text-slate/80">
+            {CONTROLS.length} controls · {SERVICE_LIST.length} services · verified against the published frameworks
+          </p>
         </div>
       </Container>
 

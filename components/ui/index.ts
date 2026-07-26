@@ -6,3 +6,6 @@ export { Eyebrow } from "./Eyebrow";
 export { Rule } from "./Rule";
 export { Table, THead, TBody, TR, TH, TD } from "./Table";
 export { Field, TextareaField, SelectField } from "./Field";
+export { Reveal } from "./Reveal";
+export { Accordion } from "./Accordion";
+export { Tabs } from "./Tabs";
