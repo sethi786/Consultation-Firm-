@@ -1124,6 +1124,1206 @@ const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["
         "Security built into the SDLC: threat modelling, SAST/DAST and dependency scanning in CI, secure-coding and API-security standards mapped to OWASP, ISO 27001, and NIST CSF.",
     },
   },
+
+  "ai-implementation": {
+    situation:
+      "You want Copilot and AI in the business — but the last thing you need is a fast rollout that over-shares SharePoint to every user or ships an agent with keys to production. Northport deploys Microsoft 365 Copilot and custom LLM solutions with the data boundaries, guardrails, and adoption plan in place first, so you get the productivity without opening a new front door.",
+    workstreams: [
+      {
+        title: "AI readiness & data-boundary review",
+        deliverable: "AI readiness assessment & data-access baseline",
+        detail:
+          "Before Copilot indexes anything, we fix oversharing: label sensitive sites, tighten permissions, and set the boundaries the model must respect.",
+      },
+      {
+        title: "Use-case scoping & solution design",
+        deliverable: "Prioritised use-case backlog with guardrail design",
+        detail:
+          "Pick the use cases with real value and low blast radius first, and design the prompts, tools, and human-in-the-loop gates for each.",
+      },
+      {
+        title: "Deployment & integration",
+        deliverable: "Deployed Copilot / LLM solution with guardrails",
+        detail:
+          "Roll out Copilot or a custom assistant with input/output filtering, scoped tool permissions, and logging wired in from day one.",
+      },
+      {
+        title: "Adoption & measurement",
+        deliverable: "Adoption plan and usage/value dashboard",
+        detail:
+          "Training, champions, and a dashboard that tracks adoption and value so the investment doesn't stall after launch.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "2–3 weeks",
+        summary: "We assess readiness and design a safe rollout you can approve.",
+        includes: ["AI readiness assessment", "Data-oversharing review", "Use-case backlog", "Rollout & guardrail design"],
+        excludes: ["Deployment", "Custom development", "Ongoing management"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "4–10 weeks",
+        summary: "We deploy Copilot or a custom assistant with guardrails and train your people.",
+        includes: ["Everything in Assessment", "Copilot / LLM deployment", "Guardrail & tool-permission setup", "Adoption enablement"],
+        excludes: ["24/7 monitoring", "Model hosting at scale"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We keep the AI estate safe, adopted, and improving.",
+        includes: ["Usage & value reporting", "Guardrail tuning", "New use-case onboarding", "Quarterly reviews"],
+        excludes: ["Application feature development"],
+        price: "",
+      },
+    ],
+    deliverables: [
+      "AI readiness assessment",
+      "Data-access & oversharing baseline",
+      "Prioritised use-case backlog",
+      "Deployed Copilot / LLM solution with guardrails",
+      "Adoption plan and value dashboard",
+    ],
+    faqs: [
+      { q: "Isn't Copilot just a switch we turn on?", a: "The switch is easy; the risk is that Copilot inherits every permission your users already have, including the oversharing you never cleaned up. We fix the data boundaries first so it only surfaces what each person should already see." },
+      { q: "Can you build a custom assistant, not just Microsoft Copilot?", a: "Yes — custom RAG assistants and agents on Azure OpenAI or your model of choice, with the same guardrails, scoped tools, and logging we apply to Copilot." },
+      { q: "How does this relate to AI & LLM Security?", a: "This service builds it safely; AI & LLM Security tests it adversarially. Many clients pair them — implement with guardrails, then verify with an assessment before going wide." },
+      { q: "Will you help our people actually use it?", a: "Adoption is part of the work: role-based training, champions, and a value dashboard, because an AI tool no one trusts is wasted spend." },
+    ],
+    seo: {
+      title: "AI Implementation & Copilot Enablement",
+      description:
+        "Deploy Microsoft 365 Copilot and custom LLM solutions safely: data-boundary cleanup, guardrails, scoped tools, and an adoption plan — value without new exposure.",
+    },
+  },
+
+  "data-privacy": {
+    situation:
+      "Between GDPR, CCPA, and whatever your next contract demands, \"are we compliant with privacy law\" has become a question you can't answer with confidence — and can't prove. Northport maps where personal data actually lives, runs the assessments regulators expect, and stands up a privacy program that produces the records-of-processing and DPIAs an auditor or a regulator asks for.",
+    workstreams: [
+      {
+        title: "Data mapping & records of processing",
+        deliverable: "Data inventory and Record of Processing Activities (RoPA)",
+        detail:
+          "Find personal data across systems and SaaS, map the flows, and document processing activities the way GDPR Article 30 expects.",
+      },
+      {
+        title: "Privacy impact assessments",
+        deliverable: "DPIA templates and completed assessments for high-risk processing",
+        detail:
+          "Assess the processing that carries real risk — profiling, large-scale, or special-category data — and record the mitigations.",
+      },
+      {
+        title: "Rights & consent operations",
+        deliverable: "DSAR / consent runbooks",
+        detail:
+          "Make data-subject requests and consent handling a repeatable process with defined SLAs, not a fire drill each time.",
+      },
+      {
+        title: "Privacy program & policy",
+        deliverable: "Privacy policy framework and control mapping",
+        detail:
+          "Policies, roles, and controls mapped to ISO/IEC 27701 and NIST, so privacy sits inside your wider security programme.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "3–5 weeks",
+        summary: "We map your data and assess your privacy posture against the laws you're held to.",
+        includes: ["Data inventory & mapping", "Gap assessment vs GDPR/CCPA", "RoPA baseline", "Prioritised remediation roadmap"],
+        excludes: ["Implementation", "Legal advice", "Ongoing DPO service"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "6–12 weeks",
+        summary: "We stand up the program: DPIAs, DSAR runbooks, policies, and controls.",
+        includes: ["Everything in Assessment", "DPIA process & templates", "DSAR / consent runbooks", "Policy framework rollout"],
+        excludes: ["Acting as your legal counsel"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We run privacy operations and keep you current as laws change.",
+        includes: ["DSAR handling support", "Periodic DPIA reviews", "Regulatory-change monitoring", "Quarterly reporting"],
+        excludes: ["Regulatory legal representation"],
+        price: "",
+      },
+    ],
+    deliverables: [
+      "Personal-data inventory & flow map",
+      "Record of Processing Activities (RoPA)",
+      "DPIA templates and completed assessments",
+      "DSAR / consent runbooks",
+      "Privacy policy framework & control mapping",
+    ],
+    faqs: [
+      { q: "Are you our lawyers?", a: "No — we're the security and operations side of privacy. We build the data maps, assessments, controls, and evidence; we work alongside your legal counsel on interpretation, not instead of them." },
+      { q: "We only care about GDPR (or only CCPA). Can you scope to that?", a: "Yes. We scope to the regimes that apply to you and design the program so adding another later is incremental, not a restart." },
+      { q: "How does this connect to Data Security & Governance?", a: "Closely — Purview classification and DLP are how we operationalise the data map and enforce the boundaries privacy requires. The two services are frequently delivered together." },
+      { q: "Can you help before a specific audit or deal?", a: "Yes; we routinely run a focused readiness pass to get the RoPA, DPIAs, and evidence in place before a customer security review or regulator deadline." },
+    ],
+    seo: {
+      title: "Data Privacy — GDPR & CCPA readiness",
+      description:
+        "Data mapping, RoPA, DPIAs, and DSAR runbooks for GDPR, CCPA and beyond — a privacy program with the records regulators ask for, mapped to ISO 27701 and NIST.",
+    },
+  },
+
+  "cloud-implementation": {
+    situation:
+      "You've decided to move to the cloud — or you're already there and it grew faster than anyone planned. The worry is doing it without blowing the budget or leaving security to \"phase two\" that never comes. Northport migrates and modernises workloads to Azure and AWS on a secure-by-default foundation, with cost guardrails and posture controls in place from the first subscription.",
+    workstreams: [
+      {
+        title: "Assessment & migration planning",
+        deliverable: "Cloud migration assessment and wave plan",
+        detail:
+          "Inventory workloads, pick the right disposition (rehost, replatform, refactor), and sequence a migration plan with security and cost baked in.",
+      },
+      {
+        title: "Secure landing zone",
+        deliverable: "Landing zone with policy-as-code guardrails",
+        detail:
+          "A secure-by-default foundation — identity, network topology, policy, and logging — so every workload lands inside guardrails, not outside them.",
+      },
+      {
+        title: "Migration & modernization",
+        deliverable: "Migrated workloads with hardening baselines",
+        detail:
+          "Move and modernise workloads with hardening applied as they land, and validation that each one meets the baseline before cutover.",
+      },
+      {
+        title: "Cost & posture management",
+        deliverable: "FinOps and posture guardrails",
+        detail:
+          "Budgets, tagging, and posture policies so cloud spend and cloud risk are both visible and controlled from day one.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "2–4 weeks",
+        summary: "We assess your estate and design a secure, costed migration plan.",
+        includes: ["Workload assessment", "Migration wave plan", "Landing-zone & cost design", "Risk & dependency map"],
+        excludes: ["The migration itself", "Application refactoring"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "6–16 weeks",
+        summary: "We build the landing zone and migrate the workloads, secure by default.",
+        includes: ["Everything in Assessment", "Secure landing zone build", "Workload migration & hardening", "FinOps guardrails"],
+        excludes: ["24/7 operations", "Bespoke app development"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We run posture and cost management on the estate we built.",
+        includes: ["Continuous posture management", "Cost optimization", "Guardrail updates", "Monthly reporting"],
+        excludes: ["Application support"],
+        price: "",
+      },
+    ],
+    deliverables: [
+      "Cloud migration assessment & wave plan",
+      "Secure landing zone (policy-as-code)",
+      "Migrated workloads with hardening baselines",
+      "FinOps & tagging baseline",
+      "Posture & cost dashboard",
+    ],
+    faqs: [
+      { q: "How is this different from Cloud Foundations & Landing Zones?", a: "Foundations builds the platform; Cloud Implementation moves your actual workloads onto it and modernises them. On a greenfield engagement they're one project; on brownfield we assess what exists first." },
+      { q: "Can you keep our spend under control?", a: "Cost is a first-class workstream: budgets, tagging, and right-sizing are designed in, and the Managed tier keeps optimising rather than letting spend drift." },
+      { q: "Azure, AWS, or both?", a: "Both. We're strongest in Azure (and the Microsoft security stack), and we deliver AWS migrations and multi-cloud governance where that's where you're headed." },
+      { q: "Will security really be built in, not bolted on?", a: "That's the point of landing-zone-first: identity, network segmentation, policy, and logging exist before a single workload lands, so hardening isn't a phase-two you never fund." },
+    ],
+    seo: {
+      title: "Cloud Implementation & Migration (Azure, AWS)",
+      description:
+        "Migrate and modernise to Azure and AWS on a secure-by-default landing zone, with hardening, FinOps cost guardrails, and posture management from day one.",
+    },
+  },
+
+  "ot-iot-security": {
+    situation:
+      "Your plant floor, building systems, or device fleet were engineered for uptime, not for being on a routable network — and now they are. Northport gives you visibility into what's actually connected, segments OT and IoT away from the paths an attacker would use, and monitors it without touching the availability your operations depend on.",
+    workstreams: [
+      {
+        title: "Asset discovery & visibility",
+        deliverable: "OT/IoT asset inventory and network map",
+        detail:
+          "Passive discovery of every device, protocol, and flow — because you can't protect the controllers and sensors you can't see.",
+      },
+      {
+        title: "Segmentation & architecture",
+        deliverable: "OT segmentation design (Purdue-aligned)",
+        detail:
+          "Zone-and-conduit segmentation that isolates OT from IT and from the internet, contained so a breach can't cross into production.",
+      },
+      {
+        title: "Risk assessment",
+        deliverable: "OT/IoT risk assessment with prioritised findings",
+        detail:
+          "Assess exposure against IEC 62443 and NIST guidance, ranked by what an attacker could actually reach and disrupt.",
+      },
+      {
+        title: "Monitoring & detection",
+        deliverable: "OT-aware monitoring and detections",
+        detail:
+          "Detection tuned for OT protocols and behaviours, feeding your SOC without probing devices that don't tolerate it.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "3–5 weeks",
+        summary: "We discover your OT/IoT estate and assess its exposure.",
+        includes: ["Passive asset discovery", "Network & flow mapping", "Risk assessment (IEC 62443-aligned)", "Segmentation design"],
+        excludes: ["Network changes", "Device firmware work"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "6–14 weeks",
+        summary: "We segment the estate and stand up OT-aware monitoring.",
+        includes: ["Everything in Assessment", "Segmentation rollout", "OT monitoring deployment", "Detection tuning"],
+        excludes: ["Control-system engineering", "Production downtime windows we don't agree first"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We monitor OT/IoT and keep the segmentation honest.",
+        includes: ["OT/IoT monitoring", "New-asset onboarding", "Detection maintenance", "Periodic risk reviews"],
+        excludes: ["Physical maintenance of devices"],
+        price: "",
+      },
+    ],
+    deliverables: [
+      "OT/IoT asset inventory & network map",
+      "OT segmentation design (Purdue-aligned)",
+      "OT/IoT risk assessment",
+      "OT-aware detections",
+      "Monitoring dashboard",
+    ],
+    faqs: [
+      { q: "Will scanning break our production systems?", a: "We lead with passive discovery precisely because many OT devices don't tolerate active scanning. Anything active is agreed and scheduled with your operations team first." },
+      { q: "Which standards do you work to?", a: "IEC 62443 for OT/ICS, plus the NIST CSF and CIS controls that map across, so OT risk sits in the same register as the rest of your programme." },
+      { q: "We're not manufacturing — is this relevant?", a: "Yes: building management systems, medical devices, retail IoT, and physical security all raise the same 'never-designed-to-be-networked' problem this service addresses." },
+      { q: "Can our existing SOC watch OT?", a: "That's the goal — we deploy OT-aware detection that feeds your existing SOC or our Managed SOC, so you don't run a second, disconnected operation." },
+    ],
+    seo: {
+      title: "OT / ICS & IoT Security",
+      description:
+        "Visibility, Purdue-aligned segmentation, IEC 62443 risk assessment, and OT-aware monitoring for operational technology and IoT — without disrupting production.",
+    },
+  },
+
+  "iam-onboarding": {
+    situation:
+      "Every new hire is a ticket, every leaver is a risk, and access has sprawled to the point where no one can say who can reach what. Northport maps every identity and entitlement, then automates the joiner-mover-leaver lifecycle and access reviews in Entra ID so onboarding is fast, offboarding is instant, and least privilege is the default.",
+    workstreams: [
+      {
+        title: "Identity & entitlement mapping",
+        deliverable: "Identity and access map",
+        detail:
+          "A complete picture of accounts, groups, roles, and entitlements — including the service accounts and standing access no one remembers granting.",
+      },
+      {
+        title: "Joiner-mover-leaver automation",
+        deliverable: "Automated JML lifecycle workflows",
+        detail:
+          "Role-based access at onboarding, adjustments on role change, and immediate revocation on exit — driven from HR, not from tickets.",
+      },
+      {
+        title: "Access reviews & certification",
+        deliverable: "Access review campaigns and certification cadence",
+        detail:
+          "Recurring, owner-driven access reviews so entitlements are re-justified regularly and drift is caught, using Entra ID governance.",
+      },
+      {
+        title: "Least-privilege & role design",
+        deliverable: "Role model and least-privilege baseline",
+        detail:
+          "A workable role model that grants what a job needs and no more, with just-in-time elevation for privileged access.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "2–4 weeks",
+        summary: "We map identities and entitlements and design the target lifecycle.",
+        includes: ["Identity & entitlement inventory", "Access-risk findings", "Role-model design", "JML & review design"],
+        excludes: ["Automation build", "Ongoing operation"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "5–12 weeks",
+        summary: "We build the JML automation, access reviews, and role model in Entra ID.",
+        includes: ["Everything in Assessment", "JML workflow automation", "Access review campaigns", "Least-privilege rollout"],
+        excludes: ["24/7 operation", "Custom HR-system development"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We run the identity lifecycle and reviews for you.",
+        includes: ["JML operation", "Access review facilitation", "Entitlement clean-up", "Quarterly reporting"],
+        excludes: ["Help-desk password resets"],
+        price: "",
+      },
+    ],
+    deliverables: [
+      "Identity & entitlement map",
+      "Automated JML lifecycle workflows",
+      "Access review / certification cadence",
+      "Role model & least-privilege baseline",
+      "Access-risk report",
+    ],
+    faqs: [
+      { q: "How does this differ from Identity & Access Management?", a: "IAM is the broader assessment and privileged-access strategy; IAM Onboarding & Mapping focuses on the lifecycle — joiner-mover-leaver, entitlement mapping, and access reviews — and automating it in Entra ID." },
+      { q: "We use a specific HR system. Will it integrate?", a: "Yes — we drive the lifecycle from your HR source of truth (Workday, SuccessFactors, etc.) so access follows the employment record automatically." },
+      { q: "Can you clean up the access sprawl we already have?", a: "That's the first pass: the entitlement map surfaces the standing and orphaned access, and the initial certification campaign removes what can't be re-justified." },
+      { q: "Do access reviews have to be painful?", a: "Not when they're owner-driven and scoped. We configure Entra ID access reviews so the right person certifies the right access on a sensible cadence, with escalation for what's ignored." },
+    ],
+    seo: {
+      title: "IAM Onboarding & Access Mapping (Entra ID)",
+      description:
+        "Map every identity and entitlement, then automate joiner-mover-leaver, access reviews, and least privilege in Entra ID — fast onboarding, instant offboarding, no sprawl.",
+    },
+  },
+
+  "vulnerability-management": {
+    situation:
+      "Your scanner found 50,000 vulnerabilities and your team can fix maybe 200 a month. Counting them isn't the problem — knowing which ones actually expose you, and getting them fixed before they're used, is. Northport runs risk-based vulnerability management: continuous discovery, prioritisation by real exploitability, and remediation SLAs that hold.",
+    workstreams: [
+      {
+        title: "Discovery & continuous scanning",
+        deliverable: "Asset-aware vulnerability baseline",
+        detail:
+          "Authenticated scanning across cloud, endpoint, and network, tied to an asset inventory so nothing important is invisible.",
+      },
+      {
+        title: "Risk-based prioritisation",
+        deliverable: "Prioritised remediation queue",
+        detail:
+          "Rank by exploitability (KEV, EPSS), exposure, and asset value — so the queue reflects real risk, not raw CVSS.",
+      },
+      {
+        title: "Remediation orchestration & SLAs",
+        deliverable: "Remediation workflow with SLAs by severity",
+        detail:
+          "Route fixes to the right owners with agreed SLAs, and track them to closure instead of to a dashboard nobody reads.",
+      },
+      {
+        title: "Verification & metrics",
+        deliverable: "Verification retests and program metrics",
+        detail:
+          "Confirm fixes hold and report the metrics that matter — mean time to remediate, SLA attainment, and trend.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "2–3 weeks",
+        summary: "We baseline your vulnerabilities and build a risk-based priority queue.",
+        includes: ["Authenticated scan & asset mapping", "Risk-based prioritisation", "Remediation roadmap", "Program design"],
+        excludes: ["Remediation execution", "Ongoing management"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "4–8 weeks",
+        summary: "We stand up the program: scanning, prioritisation, workflow, and SLAs.",
+        includes: ["Everything in Assessment", "Scanning & workflow setup", "SLA & routing configuration", "Initial remediation drive"],
+        excludes: ["24/7 operation", "Application code fixes"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We run vulnerability management and drive remediation to closure.",
+        includes: ["Continuous scanning & triage", "Prioritisation & routing", "Verification retests", "Monthly metrics & reviews"],
+        excludes: ["Developing the fixes themselves"],
+        price: "",
+      },
+    ],
+    deliverables: [
+      "Asset-aware vulnerability baseline",
+      "Risk-based remediation queue",
+      "Remediation workflow with SLAs",
+      "Verification retest results",
+      "Program metrics dashboard",
+    ],
+    faqs: [
+      { q: "We already have a scanner. Why do we need this?", a: "A scanner produces findings; a program produces fixed vulnerabilities. We make your existing scanner work harder — prioritising by exploitability and driving remediation to closure with SLAs — rather than replacing it." },
+      { q: "How do you decide what to fix first?", a: "Exploitability and exposure, not raw CVSS: CISA KEV and EPSS scores, whether the asset is internet-facing, and what it's worth — so the top of the queue is what an attacker would actually use." },
+      { q: "Does this include patching?", a: "We orchestrate and verify remediation and drive it to closure; the fixes are applied by the owning teams (or your managed-endpoint service), and we confirm they hold." },
+      { q: "How does it relate to Penetration Testing?", a: "Vulnerability management is the continuous baseline; pen testing is the periodic proof that the gaps that remain can't be chained into a breach. They complement each other." },
+    ],
+    seo: {
+      title: "Risk-based Vulnerability Management",
+      description:
+        "Continuous scanning, prioritisation by exploitability (KEV/EPSS), remediation SLAs, and verification — a vulnerability management program that reduces real risk, not counts.",
+    },
+  },
+
+  "siem-soar": {
+    situation:
+      "Your SIEM ingests everything, costs a fortune, and floods analysts with alerts no one trusts. The fix isn't more data — it's high-fidelity detections, automation that handles the repetitive response, and an ingestion strategy that stops paying to store noise. Northport engineers Microsoft Sentinel (or your SIEM) and SOAR playbooks so the alerts that fire are worth acting on.",
+    workstreams: [
+      {
+        title: "Detection engineering",
+        deliverable: "Tuned analytic rules and detection content",
+        detail:
+          "Build and tune detections mapped to MITRE ATT&CK, retire the noisy ones, and close coverage gaps that matter.",
+      },
+      {
+        title: "SOAR automation",
+        deliverable: "Automated response playbooks",
+        detail:
+          "Automate enrichment, triage, and containment for the repetitive cases so analysts spend time on the ones that need judgement.",
+      },
+      {
+        title: "Ingestion & cost optimisation",
+        deliverable: "Log-source and cost optimisation plan",
+        detail:
+          "Route the right data to the right tier, drop what has no detection or compliance value, and cut ingestion cost without losing visibility.",
+      },
+      {
+        title: "Content lifecycle",
+        deliverable: "Detection-as-code pipeline",
+        detail:
+          "Version-controlled detections and playbooks with testing, so your content improves over time instead of decaying.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "2–4 weeks",
+        summary: "We assess your SIEM, detections, and cost, and design the improvements.",
+        includes: ["Detection coverage review (MITRE ATT&CK)", "Alert-quality & noise analysis", "Ingestion & cost review", "Improvement roadmap"],
+        excludes: ["Implementation", "24/7 monitoring"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "5–12 weeks",
+        summary: "We engineer the detections, SOAR playbooks, and ingestion strategy.",
+        includes: ["Everything in Assessment", "Detection engineering", "SOAR playbook build", "Ingestion / cost optimisation"],
+        excludes: ["Staffed 24/7 triage"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We maintain and improve your detection content continuously.",
+        includes: ["Detection tuning & new content", "Playbook maintenance", "Cost monitoring", "Quarterly ATT&CK coverage reviews"],
+        excludes: ["Analyst triage (see Managed SOC / MDR)"],
+        price: "",
+      },
+    ],
+    deliverables: [
+      "Tuned analytic rules & detection content",
+      "MITRE ATT&CK coverage map",
+      "Automated SOAR playbooks",
+      "Log-source & cost optimisation plan",
+      "Detection-as-code pipeline",
+    ],
+    faqs: [
+      { q: "Is this the same as Managed SOC / MDR?", a: "No — SIEM & SOAR Engineering builds and tunes the detection content and automation; Managed SOC provides the 24/7 analysts who act on it. Some clients want the engineering only; many pair the two." },
+      { q: "Which SIEM do you work with?", a: "We're strongest with Microsoft Sentinel, and we work with Splunk, Elastic, and others. The engineering approach — ATT&CK-mapped detections, SOAR automation, cost control — is the same." },
+      { q: "Can you actually cut our SIEM bill?", a: "Usually, yes: a lot of ingestion has no detection or compliance value. We route data by value and tier, which cuts cost while keeping the visibility that matters." },
+      { q: "Will automation take actions on our systems?", a: "Only the actions you approve, with gates where you want a human in the loop. Enrichment and triage automate freely; containment automates within the guardrails you set." },
+    ],
+    seo: {
+      title: "SIEM & SOAR Engineering (Microsoft Sentinel)",
+      description:
+        "Detection engineering mapped to MITRE ATT&CK, SOAR automation, and ingestion cost optimisation for Microsoft Sentinel and other SIEMs — high-fidelity alerts, lower cost.",
+    },
+  },
+
+  "threat-intelligence": {
+    situation:
+      "Generic threat feeds tell you what's happening to everyone; you need to know what's targeting your industry, your brand, and your exposed assets — and have it actually drive your defences. Northport delivers curated, relevant threat intelligence and attack-surface monitoring, wired into your detections and your decisions rather than sitting in a portal no one opens.",
+    workstreams: [
+      {
+        title: "Intelligence requirements & sourcing",
+        deliverable: "Priority intelligence requirements (PIRs)",
+        detail:
+          "Define what actually matters to you — the actors, sectors, and assets — and source intelligence against those requirements, not everything.",
+      },
+      {
+        title: "Attack-surface & brand monitoring",
+        deliverable: "External attack-surface and brand-exposure report",
+        detail:
+          "Monitor exposed assets, leaked credentials, look-alike domains, and dark-web mentions of your brand and data.",
+      },
+      {
+        title: "Intelligence-driven detection",
+        deliverable: "IOC and TTP feeds wired into your SIEM",
+        detail:
+          "Turn intelligence into detections — indicators and attacker techniques flowing into your SIEM so it fires on what's relevant.",
+      },
+      {
+        title: "Reporting & briefings",
+        deliverable: "Tailored threat briefings",
+        detail:
+          "Regular briefings pitched at both the SOC and the board, so intelligence informs day-to-day defence and strategic decisions.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "2–3 weeks",
+        summary: "We define your intelligence requirements and baseline your exposure.",
+        includes: ["Priority intelligence requirements", "External attack-surface baseline", "Brand & credential exposure scan", "Integration design"],
+        excludes: ["Ongoing monitoring", "SIEM integration build"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "3–6 weeks",
+        summary: "We wire intelligence into your detections and reporting.",
+        includes: ["Everything in Assessment", "IOC/TTP feed integration", "Monitoring setup", "Reporting cadence"],
+        excludes: ["24/7 analyst response"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We run threat intelligence and attack-surface monitoring for you.",
+        includes: ["Curated intelligence & alerts", "Attack-surface & brand monitoring", "Detection updates", "Regular briefings"],
+        excludes: ["Incident response (see that service)"],
+        price: "",
+      },
+    ],
+    deliverables: [
+      "Priority intelligence requirements (PIRs)",
+      "External attack-surface & brand-exposure report",
+      "IOC / TTP detection feeds",
+      "Tailored threat briefings",
+      "Exposure monitoring dashboard",
+    ],
+    faqs: [
+      { q: "We already get threat feeds. What's different?", a: "Raw feeds are noise until they're scoped to you and wired into action. We define what matters (your sector, brand, assets), curate against that, and push it into your detections and briefings." },
+      { q: "What is attack-surface monitoring?", a: "A continuous outside-in view of what an attacker sees: exposed services, leaked credentials, look-alike domains, and dark-web mentions of your organisation — so you find exposure before they exploit it." },
+      { q: "How does this feed our SOC?", a: "Directly: indicators and attacker techniques flow into your SIEM (or our Managed SOC), so detection is driven by what's actually relevant to you." },
+      { q: "Is this useful without a big security team?", a: "Yes — the Managed tier does the curation and briefing for you, so a lean team gets relevant intelligence without a dedicated analyst." },
+    ],
+    seo: {
+      title: "Threat Intelligence & Attack-Surface Monitoring",
+      description:
+        "Curated, requirements-driven threat intelligence, external attack-surface and brand monitoring, and IOC/TTP feeds wired into your SIEM — intelligence that drives defence.",
+    },
+  },
+
+  "incident-response": {
+    situation:
+      "The question isn't whether you'll have an incident — it's whether, at 2am, you have a plan, the right people on a call, and a tested way to recover. Northport puts an incident-response retainer in place, exercises your team against realistic ransomware and breach scenarios, and builds the recovery runbooks so a bad day stays a bad day instead of becoming an existential one.",
+    workstreams: [
+      {
+        title: "IR readiness & retainer",
+        deliverable: "Incident-response plan and retainer",
+        detail:
+          "A clear IR plan, defined roles, escalation paths, and a retainer so expert responders are a phone call away when it counts.",
+      },
+      {
+        title: "Ransomware & tabletop exercises",
+        deliverable: "Tabletop exercise reports with findings",
+        detail:
+          "Run your leadership and technical teams through realistic ransomware and breach scenarios, and capture what broke before it matters.",
+      },
+      {
+        title: "Recovery runbooks & backups",
+        deliverable: "Tested recovery runbooks",
+        detail:
+          "Recovery procedures for your critical systems, validated against your backups — because untested recovery is a hope, not a plan.",
+      },
+      {
+        title: "Response & forensics (on call)",
+        deliverable: "Incident response & DFIR on activation",
+        detail:
+          "When an incident is declared, we lead containment, eradication, recovery, and forensics, and produce the post-incident report.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "2–4 weeks",
+        summary: "We assess IR readiness and run a scenario to find the gaps.",
+        includes: ["IR readiness assessment", "Ransomware tabletop exercise", "Backup / recovery review", "Prioritised gap report"],
+        excludes: ["Live incident response", "Retainer coverage"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "4–8 weeks",
+        summary: "We build the plan, runbooks, and readiness your team can execute.",
+        includes: ["Everything in Assessment", "IR plan & playbooks", "Tested recovery runbooks", "Team training & exercises"],
+        excludes: ["24/7 retainer (see Managed)"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We're on retainer to respond, and keep you exercise-ready.",
+        includes: ["IR retainer with response SLA", "Quarterly exercises", "Runbook & plan maintenance", "Post-incident support"],
+        excludes: ["Guaranteed on-site presence in every region"],
+        price: "",
+      },
+    ],
+    deliverables: [
+      "Incident-response plan & playbooks",
+      "Ransomware tabletop exercise reports",
+      "Tested recovery runbooks",
+      "IR retainer with response SLA",
+      "Post-incident reports (on activation)",
+    ],
+    faqs: [
+      { q: "What does a retainer actually get us?", a: "Guaranteed access to expert responders within an agreed SLA, pre-agreed terms so there's no procurement scramble mid-incident, and a team that already knows your environment from the exercises." },
+      { q: "Why tabletop exercises?", a: "Because plans fail on contact. Exercises surface the missing contacts, the untested backup, and the decision no one owns — while it's a discussion, not a disaster." },
+      { q: "Do you handle the forensics too?", a: "Yes — on activation we lead containment through recovery and produce the digital-forensics and post-incident report, including what to tell regulators and customers." },
+      { q: "How does this pair with Managed SOC?", a: "The SOC detects and escalates; incident response takes over when something is a real incident. Together they cover the full detect-to-recover path." },
+    ],
+    seo: {
+      title: "Incident Response & Ransomware Readiness",
+      description:
+        "IR retainer, ransomware tabletop exercises, and tested recovery runbooks — plus on-call containment, forensics, and post-incident reporting when an incident is declared.",
+    },
+  },
+
+  grc: {
+    situation:
+      "Risk lives in spreadsheets, policies are out of date, and every audit is a surprise. You need governance, risk, and compliance run as a program — one risk register, a current policy framework, and controls mapped once and reused across every standard you're held to. Northport builds and runs that program so compliance becomes routine instead of a recurring emergency.",
+    workstreams: [
+      {
+        title: "Risk register & assessment",
+        deliverable: "Enterprise risk register",
+        detail:
+          "Identify, rate, and own risks in one register, with treatment plans and a cadence for keeping it current.",
+      },
+      {
+        title: "Policy & control framework",
+        deliverable: "Policy framework and control library",
+        detail:
+          "A coherent set of policies and a control library mapped to the frameworks you follow, written to be used, not shelved.",
+      },
+      {
+        title: "Multi-standard control mapping",
+        deliverable: "Unified control mapping (crosswalk)",
+        detail:
+          "Map controls once and satisfy many standards — NIST CSF, ISO 27001, SOC 2, CIS — so evidence is collected once and reused.",
+      },
+      {
+        title: "GRC operations & reporting",
+        deliverable: "Compliance calendar and board reporting",
+        detail:
+          "A calendar of reviews, evidence collection, and reporting that keeps you audit-ready and gives the board a real risk picture.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "3–5 weeks",
+        summary: "We assess your risk and control posture and design the program.",
+        includes: ["Risk assessment & register", "Control-framework gap analysis", "Multi-standard crosswalk", "Program roadmap"],
+        excludes: ["Program operation", "Tooling implementation"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "6–12 weeks",
+        summary: "We stand up the policies, controls, mapping, and reporting.",
+        includes: ["Everything in Assessment", "Policy framework rollout", "Control library & mapping", "Reporting & calendar setup"],
+        excludes: ["Acting as your auditor"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We run the GRC program and keep you audit-ready.",
+        includes: ["Risk-register upkeep", "Evidence collection", "Control reviews", "Board & audit reporting"],
+        excludes: ["Issuing certifications (that's your auditor)"],
+        price: "",
+      },
+    ],
+    deliverables: [
+      "Enterprise risk register",
+      "Policy framework & control library",
+      "Unified multi-standard control mapping",
+      "Compliance calendar",
+      "Board-ready risk & compliance reporting",
+    ],
+    faqs: [
+      { q: "How is this different from Compliance & Audit?", a: "Compliance & Audit gets you through a specific audit (SOC 2, ISO 27001). GRC is the ongoing program — risk register, policies, and control mapping — that makes every audit routine rather than a project." },
+      { q: "We follow several frameworks. Isn't that duplicate work?", a: "It doesn't have to be. We map controls once to a unified library and crosswalk them to each standard, so you collect evidence once and satisfy many." },
+      { q: "Do we need a GRC tool?", a: "Not necessarily. We can run the program in a tool you have or a lightweight setup, and recommend tooling only when scale justifies it." },
+      { q: "Can you give the board a real risk picture?", a: "Yes — the risk register and reporting are designed for the board: rated risks, owners, treatment status, and trend, not a wall of controls." },
+    ],
+    seo: {
+      title: "Governance, Risk & Compliance (GRC)",
+      description:
+        "A GRC program run properly: enterprise risk register, policy framework, and controls mapped once across NIST CSF, ISO 27001, SOC 2 and CIS — audit-ready by default.",
+    },
+  },
+
+  "third-party-risk": {
+    situation:
+      "Your biggest exposures increasingly sit outside your walls — in the vendors, SaaS platforms, and partners with access to your data. Northport stands up third-party risk management: assess and tier your vendors, track their security posture continuously, and make sure a supplier's bad day doesn't become your breach.",
+    workstreams: [
+      {
+        title: "Vendor inventory & tiering",
+        deliverable: "Vendor inventory with risk tiers",
+        detail:
+          "Know who your third parties are, what data and access they hold, and tier them by the risk they actually carry.",
+      },
+      {
+        title: "Assessment & due diligence",
+        deliverable: "Vendor assessment process and questionnaires",
+        detail:
+          "A right-sized assessment process — questionnaires, evidence review, and scoring — proportional to each vendor's tier.",
+      },
+      {
+        title: "Continuous monitoring",
+        deliverable: "Continuous third-party monitoring",
+        detail:
+          "Outside-in security ratings and breach monitoring so a vendor's deteriorating posture is flagged between assessments.",
+      },
+      {
+        title: "Contracts & remediation",
+        deliverable: "Security requirements and remediation tracking",
+        detail:
+          "Security clauses for contracts and a process to track and close the gaps assessments find in your key vendors.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "3–5 weeks",
+        summary: "We inventory and tier your vendors and design the TPRM process.",
+        includes: ["Vendor inventory & tiering", "Assessment framework design", "Key-vendor deep-dives", "Program roadmap"],
+        excludes: ["Ongoing monitoring", "Contract negotiation"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "5–10 weeks",
+        summary: "We stand up the assessment process, monitoring, and requirements.",
+        includes: ["Everything in Assessment", "Questionnaire & scoring setup", "Monitoring integration", "Security requirements pack"],
+        excludes: ["Legal contract drafting"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We run vendor assessments and monitoring for you.",
+        includes: ["Ongoing vendor assessments", "Continuous monitoring & alerts", "Remediation tracking", "Quarterly reporting"],
+        excludes: ["Acting as your procurement team"],
+        price: "",
+      },
+    ],
+    deliverables: [
+      "Vendor inventory with risk tiers",
+      "Vendor assessment process & questionnaires",
+      "Continuous monitoring dashboard",
+      "Security requirements pack for contracts",
+      "Third-party risk reporting",
+    ],
+    faqs: [
+      { q: "We have hundreds of vendors. Do we assess them all the same?", a: "No — tiering is the point. A payroll processor with deep access gets a deep-dive; a low-risk tool gets a light-touch check. Effort follows risk, so the program is sustainable." },
+      { q: "What is continuous monitoring versus a questionnaire?", a: "A questionnaire is a point-in-time self-report; continuous monitoring is an outside-in view of a vendor's real posture and breach exposure between assessments, so you're not blind for a year at a time." },
+      { q: "How does this relate to GRC and Compliance?", a: "Third-party risk is a domain within your wider GRC program and a control many audits (SOC 2, ISO 27001) require. We keep it consistent with the rest of your risk register." },
+      { q: "Can you help when a customer assesses us?", a: "Yes — the same evidence and control mapping we build for your program answers inbound security questionnaires from your customers far faster." },
+    ],
+    seo: {
+      title: "Third-Party / Vendor Risk Management (TPRM)",
+      description:
+        "Vendor inventory and tiering, right-sized assessments, continuous outside-in monitoring, and security requirements — so a supplier's breach doesn't become yours.",
+    },
+  },
+
+  "business-continuity": {
+    situation:
+      "If a core system were down for a week — ransomware, a cloud outage, a failed data centre — could the business keep running, and for how long? Northport runs a business impact analysis, builds continuity and disaster-recovery plans against your real recovery objectives, and then tests them, so resilience is proven rather than assumed.",
+    workstreams: [
+      {
+        title: "Business impact analysis",
+        deliverable: "Business impact analysis (BIA)",
+        detail:
+          "Identify critical processes, their dependencies, and the recovery objectives (RTO/RPO) the business actually needs.",
+      },
+      {
+        title: "Continuity & DR planning",
+        deliverable: "Business continuity and DR plans",
+        detail:
+          "Continuity plans for the business and disaster-recovery runbooks for the systems, aligned to the recovery objectives.",
+      },
+      {
+        title: "Backup & recovery strategy",
+        deliverable: "Backup and recovery architecture review",
+        detail:
+          "Validate that backups are immutable, offsite, and actually restorable — the failure mode ransomware counts on.",
+      },
+      {
+        title: "Exercising & validation",
+        deliverable: "DR test reports",
+        detail:
+          "Test recovery against the plans and objectives, and capture what didn't work while it's an exercise, not an outage.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "3–5 weeks",
+        summary: "We run the BIA and assess your continuity and recovery readiness.",
+        includes: ["Business impact analysis", "RTO/RPO definition", "Backup & DR review", "Gap report & roadmap"],
+        excludes: ["Plan build", "DR tooling implementation"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "5–10 weeks",
+        summary: "We build the continuity plans, DR runbooks, and test them.",
+        includes: ["Everything in Assessment", "BC & DR plan build", "Recovery runbooks", "Initial DR test"],
+        excludes: ["Building the DR infrastructure itself"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We keep the plans current and exercise them on a cadence.",
+        includes: ["Plan maintenance", "Scheduled DR tests", "Post-test remediation tracking", "Annual BIA refresh"],
+        excludes: ["Operating your backup infrastructure"],
+        price: "",
+      },
+    ],
+    deliverables: [
+      "Business impact analysis (BIA)",
+      "Business continuity & DR plans",
+      "Backup & recovery architecture review",
+      "Tested recovery runbooks",
+      "DR test reports",
+    ],
+    faqs: [
+      { q: "Isn't DR just having backups?", a: "Backups are necessary and not sufficient. DR is knowing your recovery objectives, having tested runbooks to hit them, and proving the backups actually restore — which is exactly where untested plans fail." },
+      { q: "How does this connect to Incident Response?", a: "IR contains and eradicates the threat; BCDR restores the business. Ransomware readiness in particular spans both, which is why we align the recovery runbooks across the two services." },
+      { q: "What are RTO and RPO?", a: "Recovery Time Objective (how long you can be down) and Recovery Point Objective (how much data you can afford to lose). The BIA sets these per process so recovery is designed to real needs, not guesses." },
+      { q: "Do you actually test it?", a: "Yes — an untested plan is a liability. We run DR tests against the objectives and track the gaps to closure, and the Managed tier keeps exercising on a cadence." },
+    ],
+    seo: {
+      title: "Business Continuity & Disaster Recovery (BCDR)",
+      description:
+        "Business impact analysis, continuity and DR plans against real RTO/RPO objectives, immutable-backup review, and tested recovery runbooks — resilience that's proven, not assumed.",
+    },
+  },
+
+  vciso: {
+    situation:
+      "You need a security leader — strategy, board reporting, program ownership, someone who can sit across from an auditor or a customer's CISO — but not a full-time executive salary. Northport provides a virtual CISO: an experienced security leader who owns your programme at the cadence you need, from a few days a month to a hands-on interim mandate.",
+    workstreams: [
+      {
+        title: "Security strategy & roadmap",
+        deliverable: "Security strategy and multi-quarter roadmap",
+        detail:
+          "A strategy tied to business risk and a roadmap the board can fund, sequenced by risk reduction and constraints.",
+      },
+      {
+        title: "Program governance",
+        deliverable: "Security program governance & metrics",
+        detail:
+          "Own the risk register, policies, and the cadence of reviews, with metrics that show the programme is working.",
+      },
+      {
+        title: "Board & stakeholder reporting",
+        deliverable: "Board-ready reporting pack",
+        detail:
+          "Translate security into business terms for the board, and represent security to customers, auditors, and regulators.",
+      },
+      {
+        title: "Team & vendor leadership",
+        deliverable: "Team mentoring and vendor oversight",
+        detail:
+          "Lead and mentor your security team, and hold your security vendors to account so spend delivers outcomes.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "2–4 weeks",
+        summary: "We assess your programme and set the strategy and roadmap.",
+        includes: ["Program maturity assessment", "Risk-based strategy", "Prioritised roadmap", "Board summary"],
+        excludes: ["Ongoing leadership", "Hands-on delivery"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "1–3 months",
+        summary: "We stand up governance and get the roadmap moving.",
+        includes: ["Everything in Assessment", "Governance & policy setup", "Metrics & reporting", "Initial roadmap execution"],
+        excludes: ["Permanent employment"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We're your CISO at the cadence you need.",
+        includes: ["Ongoing security leadership", "Board & audit representation", "Program & risk ownership", "Team mentoring"],
+        excludes: ["A full-time on-site executive (by definition)"],
+        price: "",
+      },
+    ],
+    deliverables: [
+      "Security strategy & roadmap",
+      "Risk register & program governance",
+      "Board-ready reporting pack",
+      "Security metrics dashboard",
+      "Policy framework ownership",
+    ],
+    faqs: [
+      { q: "How much time do we get?", a: "As much as the mandate needs — from a couple of days a month for governance and board reporting, up to a hands-on interim CISO during a transition. We scope it to your stage and risk." },
+      { q: "Can a vCISO represent us to auditors and customers?", a: "Yes — representing security to auditors, regulators, and customers' security teams is core to the role, and often the immediate reason clients engage one." },
+      { q: "How is this different from your other advisory services?", a: "The other services are scoped projects; the vCISO owns the programme and decides which of them you need and when. Think of the vCISO as the leader who directs the rest." },
+      { q: "What happens if we hire a permanent CISO?", a: "We hand over cleanly — the strategy, risk register, governance, and metrics are all documented — and can stay on to support the new leader through the transition." },
+    ],
+    seo: {
+      title: "Virtual CISO (vCISO)",
+      description:
+        "Fractional security leadership: strategy, program governance, board and auditor representation, and team mentoring from an experienced CISO — at the cadence you need.",
+    },
+  },
+
+  "penetration-testing": {
+    situation:
+      "You need to know — and prove — that an attacker can't get from the internet to your crown jewels. Northport runs penetration tests and red-team exercises that find the real paths, chain the weaknesses the way an adversary would, and hand you evidence and fixes, not a scanner dump with the severity dialled up.",
+    workstreams: [
+      {
+        title: "Scoping & threat profiling",
+        deliverable: "Test scope and rules of engagement",
+        detail:
+          "Agree targets, objectives, and rules up front, informed by the threats that actually apply to your business.",
+      },
+      {
+        title: "Penetration testing",
+        deliverable: "Findings register with reproductions",
+        detail:
+          "External, internal, web, and API testing that exploits and chains weaknesses safely, with clear reproductions for every finding.",
+      },
+      {
+        title: "Red-team / adversary emulation",
+        deliverable: "Objective-based red-team report",
+        detail:
+          "Goal-oriented, stealthy emulation of a real adversary to test detection and response, not just prevention.",
+      },
+      {
+        title: "Remediation & retest",
+        deliverable: "Prioritised remediation guidance and retest",
+        detail:
+          "Fixes ranked by exploitability, and a retest that confirms the paths we found are actually closed.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "1–3 weeks",
+        summary: "A scoped penetration test with a findings register and fixes.",
+        includes: ["Scoping & rules of engagement", "Penetration testing", "Findings register with reproductions", "Remediation guidance"],
+        excludes: ["Red-team engagement", "Remediation execution"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "2–5 weeks",
+        summary: "A full red-team / adversary emulation against real objectives.",
+        includes: ["Everything in Assessment", "Objective-based red team", "Detection & response evaluation", "Retest"],
+        excludes: ["Fixing the findings for you"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "A continuous testing cadence that keeps pace with change.",
+        includes: ["Scheduled tests each cycle", "Continuous/attack-surface testing", "Retests on remediation", "Trend reporting"],
+        excludes: ["Application development"],
+        price: "",
+      },
+    ],
+    deliverables: [
+      "Test scope & rules of engagement",
+      "Findings register with reproductions",
+      "Objective-based red-team report",
+      "Prioritised remediation guidance",
+      "Retest confirmation",
+    ],
+    faqs: [
+      { q: "What's the difference between a pen test and a red team?", a: "A pen test finds and proves as many exploitable weaknesses as possible in a scope; a red team pursues a specific objective stealthily to test whether you'd detect and respond to a real adversary. Different questions, both valuable." },
+      { q: "Do you just run a scanner?", a: "No — scanning is a starting point at most. The value is in manual exploitation and chaining weaknesses the way an attacker would, which a scanner can't do, plus reproductions you can act on." },
+      { q: "Can you test our cloud and our apps, not just the network?", a: "Yes — external and internal infrastructure, web and API, cloud configurations, and social engineering are all in scope depending on your objectives." },
+      { q: "How does this fit with Vulnerability Management?", a: "Vulnerability management is the continuous baseline; pen testing is the periodic proof that what remains can't be chained into a breach. We map findings into the same register." },
+    ],
+    seo: {
+      title: "Penetration Testing & Red Team",
+      description:
+        "External, internal, web, API, and red-team testing that finds and chains the paths a real attacker would — with reproductions, prioritised fixes, and a retest to confirm closure.",
+    },
+  },
+
+  "security-architecture": {
+    situation:
+      "You're building something significant — a new platform, a cloud migration, a product — and you want to know it's secure by design before it ships, not after a pen test finds out. Northport reviews your reference architecture and designs against zero-trust and secure-by-design principles, and gives you a prioritised set of changes while they're still cheap to make.",
+    workstreams: [
+      {
+        title: "Architecture & design review",
+        deliverable: "Architecture review report",
+        detail:
+          "Review your reference architecture and key designs for trust boundaries, data flows, and the assumptions that don't hold.",
+      },
+      {
+        title: "Threat modelling",
+        deliverable: "Threat models for critical systems",
+        detail:
+          "Structured threat modelling (STRIDE) of the systems that matter, so design decisions are made against real abuse cases.",
+      },
+      {
+        title: "Zero-trust & pattern alignment",
+        deliverable: "Target-state patterns and guardrails",
+        detail:
+          "Align to zero-trust and secure-by-design patterns, and define reusable guardrails so future designs start secure.",
+      },
+      {
+        title: "Roadmap & standards",
+        deliverable: "Prioritised remediation roadmap and design standards",
+        detail:
+          "A prioritised set of changes and the design standards that keep the architecture secure as it evolves.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "2–4 weeks",
+        summary: "We review the architecture and hand you prioritised findings.",
+        includes: ["Architecture & design review", "Threat modelling", "Zero-trust gap analysis", "Prioritised roadmap"],
+        excludes: ["Implementation", "Ongoing advisory"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "3–8 weeks",
+        summary: "We define target patterns, guardrails, and standards with your teams.",
+        includes: ["Everything in Assessment", "Target-state patterns", "Reusable guardrails", "Design standards"],
+        excludes: ["Building the systems themselves"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We review designs as they come, keeping architecture secure by default.",
+        includes: ["Design review as-a-service", "Pattern & standard updates", "Architect office hours", "Quarterly reviews"],
+        excludes: ["Full development ownership"],
+        price: "",
+      },
+    ],
+    deliverables: [
+      "Architecture review report",
+      "Threat models for critical systems",
+      "Target-state security patterns & guardrails",
+      "Design standards",
+      "Prioritised remediation roadmap",
+    ],
+    faqs: [
+      { q: "When should we do this — before or after building?", a: "Before, and continuously. The whole point is catching design flaws while they're cheap to fix; the Managed tier reviews designs as they come so security is a design input, not a launch-day surprise." },
+      { q: "How does this relate to Zero Trust Architecture?", a: "Zero Trust is a specific target model for identity, network, and access; Security Architecture Review is broader — it evaluates any design against secure-by-design principles, of which zero trust is a major one." },
+      { q: "Will you review our cloud and app designs?", a: "Yes — cloud reference architectures, application designs, integration and data flows, and platform blueprints are all in scope." },
+      { q: "Do we get standards we can reuse?", a: "Yes — reusable patterns, guardrails, and design standards so your teams start from a secure baseline instead of re-litigating the same decisions each project." },
+    ],
+    seo: {
+      title: "Security Architecture Review",
+      description:
+        "Independent review of your reference architecture and designs against zero-trust and secure-by-design principles — threat models, reusable guardrails, and a prioritised roadmap.",
+    },
+  },
+
+  "security-awareness": {
+    situation:
+      "Your people are the most-targeted part of your attack surface, and annual click-through training treats it like a checkbox. Northport runs role-based awareness training and realistic phishing simulations that change behaviour — and gives you the metrics to prove click rates are actually falling.",
+    workstreams: [
+      {
+        title: "Baseline & program design",
+        deliverable: "Awareness baseline and program plan",
+        detail:
+          "Measure where you are with a baseline phishing simulation, and design a program targeted at your real risks and roles.",
+      },
+      {
+        title: "Phishing simulation",
+        deliverable: "Phishing simulation campaigns with reporting",
+        detail:
+          "Realistic, escalating simulations that reflect what actually targets your people, with reporting by team and role.",
+      },
+      {
+        title: "Role-based training",
+        deliverable: "Role-based training content and cadence",
+        detail:
+          "Short, relevant training tied to the risks each role faces — developers, finance, executives — not one generic module.",
+      },
+      {
+        title: "Culture & measurement",
+        deliverable: "Behaviour metrics and reporting",
+        detail:
+          "Track click, report, and repeat-offender rates over time, and build a positive reporting culture, not a blame one.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "2–3 weeks",
+        summary: "We baseline behaviour and design a targeted program.",
+        includes: ["Baseline phishing simulation", "Risk & role analysis", "Program design", "Metrics plan"],
+        excludes: ["Ongoing campaigns", "Content delivery"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "3–6 weeks",
+        summary: "We launch the training and simulation program.",
+        includes: ["Everything in Assessment", "Training content & delivery", "Simulation campaign setup", "Reporting configuration"],
+        excludes: ["Long-term operation (see Managed)"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We run continuous training and simulations and report on behaviour.",
+        includes: ["Ongoing phishing simulations", "Refreshed training content", "Repeat-offender coaching", "Quarterly behaviour reporting"],
+        excludes: ["Disciplinary action (that's yours)"],
+        price: "",
+      },
+    ],
+    deliverables: [
+      "Awareness baseline report",
+      "Phishing simulation campaigns & results",
+      "Role-based training content",
+      "Behaviour metrics dashboard",
+      "Board-ready awareness reporting",
+    ],
+    faqs: [
+      { q: "Does awareness training actually work?", a: "Generic annual training barely moves the needle; targeted, frequent simulation with coaching does. We measure click, report, and repeat-offender rates so you can see behaviour change rather than assume it." },
+      { q: "Won't phishing simulations upset staff?", a: "Not when they're run to build a reporting culture, not to shame people. We design campaigns and messaging so 'I reported it' is the win, and coaching — not punishment — follows a click." },
+      { q: "Can you tailor it to specific roles?", a: "Yes — finance gets invoice-fraud scenarios, developers get secure-coding-adjacent content, executives get whaling simulations. Relevance is what makes it stick." },
+      { q: "How does this fit the wider program?", a: "Security awareness is a control most frameworks (ISO 27001, SOC 2) require, and a genuine risk reducer. We report it as part of your GRC metrics." },
+    ],
+    seo: {
+      title: "Security Awareness & Phishing Simulation",
+      description:
+        "Role-based awareness training and realistic phishing simulations that measurably cut click rates — with behaviour metrics and reporting that satisfy ISO 27001 and SOC 2.",
+    },
+  },
 };
 
 export function getServiceDetail(slug: ServiceSlug): ServiceDetail {

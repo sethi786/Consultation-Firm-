@@ -94,13 +94,16 @@ export const ACCENTS: Record<Accent, AccentClasses> = {
   },
 };
 
-/** Domain → hue. Keeps the whole site's color-coding coherent. */
+/** Category → hue. Keeps the whole site's color-coding coherent (7 categories,
+ *  one per accent). */
 export const DOMAIN_ACCENT: Record<Domain, Accent> = {
-  "Data & AI": "coral",
+  "AI & Data": "coral",
   "Cloud & Infrastructure": "sky",
   "Identity & Access": "violet",
   "Endpoint & Application": "mint",
-  "Detection & Governance": "indigo",
+  "Detection & Response": "indigo",
+  "Governance, Risk & Compliance": "amber",
+  "Advisory & Assurance": "rose",
 };
 
 export function domainAccent(domain: Domain): AccentClasses {

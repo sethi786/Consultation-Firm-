@@ -282,17 +282,33 @@ export interface CaseStudy {
   clientDescriptor: string;
   service?:
     | (
+        | 'ai-implementation'
         | 'ai-security'
         | 'data-security'
-        | 'cloud-security'
+        | 'data-privacy'
+        | 'cloud-implementation'
         | 'cloud-foundations'
+        | 'cloud-security'
         | 'network-security'
+        | 'ot-iot-security'
         | 'identity'
+        | 'iam-onboarding'
         | 'zero-trust'
         | 'endpoint-security'
         | 'application-security'
+        | 'vulnerability-management'
         | 'managed-soc'
+        | 'siem-soar'
+        | 'threat-intelligence'
+        | 'incident-response'
         | 'compliance'
+        | 'grc'
+        | 'third-party-risk'
+        | 'business-continuity'
+        | 'vciso'
+        | 'penetration-testing'
+        | 'security-architecture'
+        | 'security-awareness'
       )
     | null;
   summary: string;
@@ -424,17 +440,33 @@ export interface AssessmentRequest {
   email: string;
   company: string;
   service:
+    | 'ai-implementation'
     | 'ai-security'
     | 'data-security'
-    | 'cloud-security'
+    | 'data-privacy'
+    | 'cloud-implementation'
     | 'cloud-foundations'
+    | 'cloud-security'
     | 'network-security'
+    | 'ot-iot-security'
     | 'identity'
+    | 'iam-onboarding'
     | 'zero-trust'
     | 'endpoint-security'
     | 'application-security'
+    | 'vulnerability-management'
     | 'managed-soc'
+    | 'siem-soar'
+    | 'threat-intelligence'
+    | 'incident-response'
     | 'compliance'
+    | 'grc'
+    | 'third-party-risk'
+    | 'business-continuity'
+    | 'vciso'
+    | 'penetration-testing'
+    | 'security-architecture'
+    | 'security-awareness'
     | 'not-sure';
   seats?: string | null;
   message: string;
@@ -498,17 +530,33 @@ export interface Engagement {
   name: string;
   service?:
     | (
+        | 'ai-implementation'
         | 'ai-security'
         | 'data-security'
-        | 'cloud-security'
+        | 'data-privacy'
+        | 'cloud-implementation'
         | 'cloud-foundations'
+        | 'cloud-security'
         | 'network-security'
+        | 'ot-iot-security'
         | 'identity'
+        | 'iam-onboarding'
         | 'zero-trust'
         | 'endpoint-security'
         | 'application-security'
+        | 'vulnerability-management'
         | 'managed-soc'
+        | 'siem-soar'
+        | 'threat-intelligence'
+        | 'incident-response'
         | 'compliance'
+        | 'grc'
+        | 'third-party-risk'
+        | 'business-continuity'
+        | 'vciso'
+        | 'penetration-testing'
+        | 'security-architecture'
+        | 'security-awareness'
       )
     | null;
   status?: ('scoping' | 'active' | 'reporting' | 'closed') | null;

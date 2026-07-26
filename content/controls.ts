@@ -3,7 +3,7 @@ import type { ServiceSlug } from "@/content/services";
 /**
  * The Control Register dataset (CLAUDE.md §3.4).
  *
- * Maps Northport's six services to real framework controls. EVERY reference here
+ * Maps Northport's services to real framework controls. EVERY reference here
  * was verified against the published framework — NIST CSF 2.0, ISO/IEC 27001:2022
  * Annex A, and CIS Controls v8/v8.1 — not recalled. Wrong IDs get spotted by every
  * buyer, so if you add a row, look the reference up before committing it.
@@ -494,6 +494,86 @@ export const CONTROLS: Control[] = [
     current: 1,
     target: 3,
   },
+
+  // ── AI Implementation & Enablement ───────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.5.23", name: "Information security for use of cloud services", service: "ai-implementation", current: 2, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "PR.DS-01", name: "The confidentiality, integrity, and availability of data-at-rest are protected", service: "ai-implementation", current: 2, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 3.3", name: "Configure data access control lists", service: "ai-implementation", current: 1, target: 4 },
+
+  // ── Data Privacy (GDPR / CCPA) ───────────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.5.34", name: "Privacy and protection of personally identifiable information (PII)", service: "data-privacy", current: 1, target: 4 },
+  { framework: "ISO/IEC 27001:2022", reference: "A.8.12", name: "Data leakage prevention", service: "data-privacy", current: 2, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 3.1", name: "Establish and maintain a data management process", service: "data-privacy", current: 1, target: 3 },
+
+  // ── Cloud Implementation & Migration ─────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.5.23", name: "Information security for use of cloud services", service: "cloud-implementation", current: 2, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "PR.IR-01", name: "Networks and environments are protected from unauthorized logical access and usage", service: "cloud-implementation", current: 2, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 4.1", name: "Establish and maintain a secure configuration process", service: "cloud-implementation", current: 2, target: 4 },
+
+  // ── OT / ICS & IoT Security ──────────────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.8.20", name: "Networks security", service: "ot-iot-security", current: 1, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "PR.IR-01", name: "Networks and environments are protected from unauthorized logical access and usage", service: "ot-iot-security", current: 1, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 12.2", name: "Establish and maintain a secure network architecture", service: "ot-iot-security", current: 1, target: 3 },
+
+  // ── IAM Onboarding & Access Mapping ──────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.8.2", name: "Privileged access rights", service: "iam-onboarding", current: 2, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "PR.AA-05", name: "Access permissions, entitlements, and authorizations are defined in a policy, managed, enforced, and reviewed, and incorporate the principle of least privilege", service: "iam-onboarding", current: 2, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 6.2", name: "Establish an access revoking process", service: "iam-onboarding", current: 1, target: 4 },
+
+  // ── Vulnerability Management ─────────────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.8.8", name: "Management of technical vulnerabilities", service: "vulnerability-management", current: 2, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "ID.RA-01", name: "Vulnerabilities in assets are identified, validated, and recorded", service: "vulnerability-management", current: 2, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 7", name: "Continuous vulnerability management", service: "vulnerability-management", current: 1, target: 4 },
+
+  // ── SIEM & SOAR Engineering ──────────────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.8.16", name: "Monitoring activities", service: "siem-soar", current: 2, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "DE.AE-02", name: "Potentially adverse events are analyzed to better understand associated activities", service: "siem-soar", current: 2, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 8.11", name: "Conduct audit log reviews", service: "siem-soar", current: 1, target: 4 },
+
+  // ── Threat Intelligence ──────────────────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.5.7", name: "Threat intelligence", service: "threat-intelligence", current: 1, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "DE.AE-07", name: "Cyber threat intelligence and other contextual information are integrated into the analysis", service: "threat-intelligence", current: 1, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 13.1", name: "Centralize security event alerting", service: "threat-intelligence", current: 1, target: 3 },
+
+  // ── Incident Response & Ransomware Readiness ─────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.5.24", name: "Information security incident management planning and preparation", service: "incident-response", current: 2, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "RS.MA-01", name: "The incident response plan is executed in coordination with relevant third parties once an incident is declared", service: "incident-response", current: 1, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 17", name: "Incident response management", service: "incident-response", current: 1, target: 4 },
+
+  // ── Governance, Risk & Compliance ────────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.5.1", name: "Policies for information security", service: "grc", current: 2, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "GV.RM-01", name: "Risk management objectives are established and agreed to by organizational stakeholders", service: "grc", current: 1, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "ID.RA-05", name: "Threats, vulnerabilities, likelihoods, and impacts are used to understand inherent risk and inform risk response prioritization", service: "grc", current: 1, target: 4 },
+
+  // ── Third-Party / Vendor Risk ────────────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.5.19", name: "Information security in supplier relationships", service: "third-party-risk", current: 2, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "GV.SC-01", name: "A cybersecurity supply chain risk management program, strategy, objectives, policies, and processes are established and agreed to by organizational stakeholders", service: "third-party-risk", current: 1, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 15.1", name: "Establish and maintain an inventory of service providers", service: "third-party-risk", current: 1, target: 4 },
+
+  // ── Business Continuity & DR ─────────────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.5.30", name: "ICT readiness for business continuity", service: "business-continuity", current: 1, target: 4 },
+  { framework: "ISO/IEC 27001:2022", reference: "A.5.29", name: "Information security during disruption", service: "business-continuity", current: 1, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 11", name: "Data recovery", service: "business-continuity", current: 2, target: 4 },
+
+  // ── Virtual CISO (vCISO) ─────────────────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.5.1", name: "Policies for information security", service: "vciso", current: 2, target: 4 },
+  { framework: "ISO/IEC 27001:2022", reference: "A.5.4", name: "Management responsibilities", service: "vciso", current: 2, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "GV.RM-01", name: "Risk management objectives are established and agreed to by organizational stakeholders", service: "vciso", current: 1, target: 4 },
+
+  // ── Penetration Testing & Red Team ───────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.8.29", name: "Security testing in development and acceptance", service: "penetration-testing", current: 2, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "ID.RA-01", name: "Vulnerabilities in assets are identified, validated, and recorded", service: "penetration-testing", current: 2, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 18", name: "Penetration testing", service: "penetration-testing", current: 1, target: 4 },
+
+  // ── Security Architecture Review ─────────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.8.27", name: "Secure system architecture and engineering principles", service: "security-architecture", current: 2, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "PR.PS-01", name: "Configuration management practices are established and applied", service: "security-architecture", current: 2, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 4.1", name: "Establish and maintain a secure configuration process", service: "security-architecture", current: 2, target: 4 },
+
+  // ── Security Awareness & Phishing Simulation ─────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.6.3", name: "Information security awareness, education and training", service: "security-awareness", current: 1, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "PR.AT-01", name: "Personnel are provided with awareness and training so that they possess the knowledge and skills to perform general tasks with security risks in mind", service: "security-awareness", current: 1, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 14", name: "Security awareness and skills training", service: "security-awareness", current: 1, target: 4 },
 ];
 
 /** Rows for a single service (used by service pages, §6). */

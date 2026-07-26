@@ -80,33 +80,45 @@ export interface MatrixRow {
 
 export const CAPABILITY_MATRIX: MatrixRow[] = [
   {
-    domain: "Data & AI",
-    advise: "Data & AI exposure assessment",
-    implement: "Purview classification & DLP rollout",
+    domain: "AI & Data",
+    advise: "AI & data exposure assessment",
+    implement: "Copilot rollout & Purview classification",
     operate: "Ongoing data-risk monitoring",
   },
   {
     domain: "Cloud & Infrastructure",
     advise: "Cloud posture & landing-zone review",
-    implement: "Secure landing zone & hardening",
+    implement: "Migration & secure landing zone",
     operate: "Continuous cloud posture management",
   },
   {
     domain: "Identity & Access",
     advise: "Privileged-access & IAM assessment",
-    implement: "Entra ID & zero-trust rollout",
+    implement: "Entra ID, JML & zero-trust rollout",
     operate: "Managed identity & access reviews",
   },
   {
     domain: "Endpoint & Application",
-    advise: "Endpoint & application-security review",
-    implement: "EDR & secure-SDLC implementation",
-    operate: "Managed endpoint detection",
+    advise: "Endpoint, app-sec & vulnerability assessment",
+    implement: "EDR, secure-SDLC & vuln remediation",
+    operate: "Managed endpoint & vulnerability management",
   },
   {
-    domain: "Detection & Governance",
-    advise: "SOC & compliance readiness",
-    implement: "Sentinel tuning & control build",
+    domain: "Detection & Response",
+    advise: "SOC & detection readiness",
+    implement: "Sentinel/SIEM & SOAR build",
     operate: "24/7 managed SOC / MDR",
+  },
+  {
+    domain: "Governance, Risk & Compliance",
+    advise: "Compliance, risk & vendor assessment",
+    implement: "GRC program & control build",
+    operate: "Continuous compliance & vendor monitoring",
+  },
+  {
+    domain: "Advisory & Assurance",
+    advise: "Pen test, vCISO & architecture review",
+    implement: "Remediation & awareness rollout",
+    operate: "Ongoing vCISO & testing cadence",
   },
 ];
