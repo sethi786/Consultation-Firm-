@@ -6,7 +6,7 @@
  * otherwise invalid env value must never crash the build (it feeds
  * `metadataBase: new URL(SITE_URL)`, which throws on an invalid URL).
  */
-const FALLBACK_URL = "https://cairnsecurity.com";
+const FALLBACK_URL = "https://waypointsecurity.com";
 
 function normalizeSiteUrl(raw: string | undefined): string {
   const trimmed = (raw ?? "").trim().replace(/\/+$/, "");
@@ -33,7 +33,7 @@ function normalizeSiteUrl(raw: string | undefined): string {
 
 export const SITE_URL = normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL);
 
-export const SITE_NAME = "Cairn Security";
+export const SITE_NAME = "Waypoint Security";
 
 export const SITE_DESCRIPTION =
   "Evidence-led security consulting and managed detection for 200–5,000-seat organisations. We map your controls to NIST CSF, ISO 27001, and CIS, then close the gaps.";

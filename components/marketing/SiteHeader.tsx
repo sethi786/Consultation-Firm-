@@ -21,8 +21,8 @@ const NAV = [
 
 function Wordmark() {
   return (
-    <Link href="/" className="group inline-flex items-baseline gap-2" aria-label="Cairn Security — home">
-      <span className="font-display text-h3 leading-none text-ink">Cairn</span>
+    <Link href="/" className="group inline-flex items-baseline gap-2" aria-label="Waypoint Security — home">
+      <span className="font-display text-h3 leading-none text-ink">Waypoint</span>
       <span className="font-mono text-mono-xs uppercase text-slate group-hover:text-brass-lift">
         Security
       </span>

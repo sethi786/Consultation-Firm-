@@ -40,7 +40,7 @@ export default buildConfig({
   admin: {
     user: Users.slug,
     meta: {
-      titleSuffix: "— Cairn Security",
+      titleSuffix: "— Waypoint Security",
     },
   },
   collections: [

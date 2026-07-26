@@ -1,10 +1,11 @@
-# CLAUDE.md — Cairn Security Website
+# CLAUDE.md — Waypoint Security Website
 
-> **Firm name.** The firm is **Cairn Security** (wordmark `Cairn`) — a cairn is the
-> stack of stones that marks a verified path, which fits the evidence-led brand.
-> Domain `cairnsecurity.com` is the intended home but is **pending registration
+> **Firm name.** The firm is **Waypoint Security** (wordmark `Waypoint`) — a waypoint is a
+> precise, marked coordinate you navigate by, which fits the evidence-led, "we map the
+> path" brand.
+> Domain `waypointsecurity.com` is the intended home but is **pending registration
 > confirmation**; the owner will confirm before launch. To change the name later,
-> search-and-replace `Cairn` / `cairnsecurity.com` across `content/`,
+> search-and-replace `Waypoint` / `waypointsecurity.com` across `content/`,
 > `components/`, `app/`, and `lib/`.
 >
 > Read this file fully before any task. Every decision below is deliberate.
@@ -16,7 +17,7 @@
 
 ## 1. What we're building
 
-A marketing site + headless CMS + authenticated client portal for **Cairn
+A marketing site + headless CMS + authenticated client portal for **Waypoint
 Security**, a managed security services provider and security consultancy.
 
 **Services (six, equal weight — all are revenue drivers):**

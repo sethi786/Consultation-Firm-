@@ -83,7 +83,7 @@ export default function StyleGuidePage() {
     <main>
       <Container>
         <header className="border-b border-rule py-14">
-          <Eyebrow className="mb-4">Cairn Security · design system</Eyebrow>
+          <Eyebrow className="mb-4">Waypoint Security · design system</Eyebrow>
           <h1 className="text-display">Style guide</h1>
           <p className="mt-4 max-w-measure text-lede text-slate">
             Every primitive at every variant, and the full type scale — reviewed in

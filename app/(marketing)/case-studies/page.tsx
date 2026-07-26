@@ -8,7 +8,7 @@ import type { CaseStudy } from "@/payload-types";
 export const metadata: Metadata = {
   title: "Case studies",
   description:
-    "Outcome-led case studies from Cairn Security engagements, with the numbers — published only with the client's written approval.",
+    "Outcome-led case studies from Waypoint Security engagements, with the numbers — published only with the client's written approval.",
   alternates: { canonical: "/case-studies" },
 };
 

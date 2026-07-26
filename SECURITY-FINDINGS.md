@@ -1,4 +1,4 @@
-# Security self-audit — cairn-security web
+# Security self-audit — waypoint-security web
 
 **Scope:** the marketing site and its supporting code as built through Phase 8
 (design system, Control Register, marketing pages, contact Server Action, SEO,

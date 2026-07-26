@@ -3,7 +3,7 @@ import type { ServiceSlug } from "@/content/services";
 /**
  * The Control Register dataset (CLAUDE.md §3.4).
  *
- * Maps Cairn's services to real framework controls. EVERY reference here
+ * Maps Waypoint's services to real framework controls. EVERY reference here
  * was verified against the published framework — NIST CSF 2.0, ISO/IEC 27001:2022
  * Annex A, and CIS Controls v8/v8.1 — not recalled. Wrong IDs get spotted by every
  * buyer, so if you add a row, look the reference up before committing it.

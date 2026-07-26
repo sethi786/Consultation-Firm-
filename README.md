@@ -1,6 +1,6 @@
-# Cairn Security — website & client portal
+# Waypoint Security — website & client portal
 
-> **Cairn Security** is a placeholder firm name. See `CLAUDE.md` for the
+> **Waypoint Security** is a placeholder firm name. See `CLAUDE.md` for the
 > product specification; this README is the build runbook.
 
 An evidence-led marketing site (and, in later phases, a headless CMS and
@@ -150,7 +150,7 @@ The build follows `BUILDPLAN.md`. Status:
 | 8 | SEO + launch tail | ✅ SEO, Plausible (cookieless, env-gated), Playwright E2E (5 tests). Lighthouse run + Vercel deploy are manual (below) |
 
 **Local database:** Phase 4 runs against a Postgres in the dev container
-(`postgresql://cairn:cairn_dev@127.0.0.1:5432/cairn`). It is
+(`postgresql://waypoint:waypoint_dev@127.0.0.1:5432/waypoint`). It is
 ephemeral — set `DATABASE_URI` to a Neon connection string for anything durable.
 The admin studio is at `/admin`; create the first user there (or via
 `POST /api/users/first-register`).

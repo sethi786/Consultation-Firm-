@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: { default: "Client portal", template: "%s — Cairn portal" },
-  description: "Cairn Security client portal.",
+  title: { default: "Client portal", template: "%s — Waypoint portal" },
+  description: "Waypoint Security client portal.",
   robots: { index: false, follow: false },
 };
 

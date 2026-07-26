@@ -3,7 +3,7 @@ import { authenticated } from "../../access";
 
 /**
  * Assessment findings. Clients can comment and request remediation, but a
- * client-set "remediated" only moves status to `pending_verification` — Cairn
+ * client-set "remediated" only moves status to `pending_verification` — Waypoint
  * verifies before `closed` (CLAUDE.md §7).
  */
 export const Findings: CollectionConfig = {

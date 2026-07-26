@@ -696,7 +696,7 @@ export interface CallBooking {
   requestedByName?: string | null;
   notes?: string | null;
   /**
-   * Added by Cairn on confirmation.
+   * Added by Waypoint on confirmation.
    */
   meetingLink?: string | null;
   updatedAt: string;

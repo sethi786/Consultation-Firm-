@@ -6,7 +6,7 @@ import { ContactCTA } from "@/components/marketing/ContactCTA";
 export const metadata: Metadata = {
   title: "Approach",
   description:
-    "How a Cairn engagement runs: scope, assess, report, remediate, verify — with a findings register and evidence at the end, not a slide deck.",
+    "How a Waypoint engagement runs: scope, assess, report, remediate, verify — with a findings register and evidence at the end, not a slide deck.",
   alternates: { canonical: "/approach" },
 };
 

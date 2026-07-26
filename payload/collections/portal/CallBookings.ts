@@ -3,7 +3,7 @@ import { authenticated } from "../../access";
 
 /**
  * Client-requested calls. A portal user proposes a slot and purpose; the request
- * lands here (status "requested"). Cairn confirms and adds the meeting link.
+ * lands here (status "requested"). Waypoint confirms and adds the meeting link.
  * Tenancy is enforced in lib/portal/data.ts — every query binds the caller's org.
  */
 export const CallBookings: CollectionConfig = {
@@ -60,7 +60,7 @@ export const CallBookings: CollectionConfig = {
     { name: "requestedByEmail", type: "email", admin: { readOnly: true } },
     { name: "requestedByName", type: "text", admin: { readOnly: true } },
     { name: "notes", type: "textarea" },
-    { name: "meetingLink", type: "text", admin: { description: "Added by Cairn on confirmation." } },
+    { name: "meetingLink", type: "text", admin: { description: "Added by Waypoint on confirmation." } },
   ],
   timestamps: true,
 };

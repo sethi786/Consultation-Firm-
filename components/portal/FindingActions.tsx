@@ -33,7 +33,7 @@ export function CommentForm({ findingId, canWrite }: { findingId: number; canWri
       <textarea
         name="body"
         rows={3}
-        placeholder="Add a comment for the Cairn team…"
+        placeholder="Add a comment for the Waypoint team…"
         className="w-full rounded border border-portal-line bg-portal-bg px-3 py-2 text-body text-portal-ink placeholder:text-portal-ink-2/60 focus:border-portal-brass focus-visible:outline-none"
       />
       {state.error && <p className="text-small text-[#e0a06a]">{state.error}</p>}
@@ -60,7 +60,7 @@ export function RemediateForm({
   if (alreadyRequested) {
     return (
       <p className="font-mono text-mono-xs uppercase text-portal-ink-2">
-        Remediation {status === "pending_verification" ? "pending Cairn verification" : status}.
+        Remediation {status === "pending_verification" ? "pending Waypoint verification" : status}.
       </p>
     );
   }
@@ -69,7 +69,7 @@ export function RemediateForm({
       <input type="hidden" name="findingId" value={findingId} />
       <PendingButton>Mark remediated</PendingButton>
       <p className="font-mono text-mono-xs uppercase text-portal-ink-2">
-        Sets status to “pending verification” — Cairn confirms before it closes.
+        Sets status to “pending verification” — Waypoint confirms before it closes.
       </p>
       {state.error && <p className="text-small text-[#e0a06a]">{state.error}</p>}
     </form>
