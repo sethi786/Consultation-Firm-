@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/posture", priority: 0.8 },
     { path: "/book", priority: 0.8 },
     { path: "/approach", priority: 0.7 },
+    { path: "/build-vs-partner", priority: 0.6 },
     { path: "/about", priority: 0.6 },
     { path: "/contact", priority: 0.9 },
     { path: "/insights", priority: 0.6 },

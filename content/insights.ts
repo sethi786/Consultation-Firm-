@@ -124,6 +124,61 @@ export const INSIGHTS: Insight[] = [
         "Indirect prompt injection, RAG access-control failures, and over-scoped agent tools — the real prompt-injection exposure in production LLM features, and how to reduce it.",
     },
   },
+  {
+    slug: "cyber-insurance-controls-that-decide-your-premium",
+    kicker: "Compliance",
+    title: "The cyber insurance controls that actually decide your premium",
+    excerpt:
+      "The application is now a security audit, and a few controls are effectively pass/fail. Here's what underwriters really check — and why answering the form loosely can void your claim.",
+    date: "2026-07-20",
+    readMins: 6,
+    blocks: [
+      { type: "p", text: "Cyber insurance used to be a formality. Now the application is a control questionnaire, and for a handful of items the answer is effectively pass or fail: get them wrong and you face a decline, a higher premium, or — worst of all — a claim denied after an incident because the application overstated your posture. The good news is that the list is short and knowable." },
+      { type: "h2", text: "The controls that are effectively mandatory" },
+      { type: "p", text: "Across the market, the same high-signal controls decide most applications:" },
+      { type: "ul", items: [
+        "MFA on all remote access and every privileged/admin account — the single most-checked item.",
+        "EDR (endpoint detection and response) deployed across endpoints and servers, not just antivirus.",
+        "Tested, offline or immutable backups — and evidence you've actually restored from them.",
+        "Email security and phishing controls, because that's still the top entry vector.",
+        "A documented, exercised incident-response plan.",
+      ] },
+      { type: "h2", text: "Why the wording of your answers matters" },
+      { type: "p", text: "Insurance is a contract of good faith. If the application says MFA is enforced everywhere and an incident later shows a gap — a legacy protocol, an excluded service account — the insurer can argue misrepresentation and reduce or deny the claim. The control you skipped becomes the reason the cover you paid for doesn't pay out. Answering truthfully, with evidence, is not box-ticking; it's what makes the policy real." },
+      { type: "h2", text: "Turn it into leverage" },
+      { type: "p", text: "Premiums are risk-priced, so demonstrably closing these controls does more than qualify you — it improves the risk profile underwriters price against. We can't promise a number (that's the underwriter's call), but a stronger, evidenced posture is what moves it. And because these controls are a subset of NIST CSF 2.0, ISO 27001 and CIS, the work doubles as progress toward any audit you also answer to." },
+      { type: "p", text: "If your renewal is coming and you're not sure you can evidence the list, that gap is exactly what our cyber insurance readiness engagement closes — honestly, and before the form is due." },
+    ],
+    seo: {
+      title: "The cyber insurance controls that actually decide your premium",
+      description:
+        "MFA, EDR, tested backups, email security, and an IR plan — the high-signal controls underwriters check, why loose answers can void a claim, and how to turn readiness into leverage.",
+    },
+  },
+  {
+    slug: "having-edr-is-not-the-same-as-defences-that-work",
+    kicker: "Detection",
+    title: "“We have EDR” is not the same as “our defences work”",
+    excerpt:
+      "Owning security tools and having them fire when it matters are different things. The gap between them is where breaches live — and it's measurable.",
+    date: "2026-07-24",
+    readMins: 6,
+    blocks: [
+      { type: "p", text: "Most organisations can list their security tools — EDR, a SIEM, email security, a firewall stack. Far fewer can tell you which of those controls would actually prevent or detect a given attacker technique today. That gap between owning a tool and the tool firing is where real incidents happen, and for years the only way to find out was to have a real breach. It doesn't have to be." },
+      { type: "h2", text: "Coverage is not the same as configuration" },
+      { type: "p", text: "A tool that's deployed but mis-tuned, exempted for a noisy team, or watching the wrong data source is a control on paper and a blind spot in practice. Vendors report coverage — how many endpoints have the agent — not efficacy, which is whether the agent actually stops or alerts on the techniques an attacker uses. The two drift apart quietly with every config change and exception." },
+      { type: "h2", text: "You can measure it safely" },
+      { type: "p", text: "Breach and attack simulation runs controlled, non-destructive versions of real attacker techniques — mapped to MITRE ATT&CK — against your live environment and records what your controls prevented, detected, or missed. Nothing detonates real malware; the value is the honest scoreboard: a heatmap of techniques showing exactly where a real attack would succeed silently." },
+      { type: "h2", text: "The point is the gaps, then the fix" },
+      { type: "p", text: "The output that matters isn't the green cells — it's the ones where an attack succeeded with no prevention and no alert. Those are the detections to write and the configs to fix, prioritised by how likely and how damaging the technique is for your industry. And because you can re-run the simulation, you can prove the gap is closed rather than hoping it is — then keep validating on a cadence so drift never silently reopens it." },
+      { type: "p", text: "That continuous loop — validate, find the gap, tune, prove it — is exactly what our continuous validation engagement runs, so “we have the tools” becomes “we've proven they work.”" },
+    ],
+    seo: {
+      title: "“We have EDR” is not the same as “our defences work”",
+      description:
+        "Owning security tools and having them fire are different things. How breach-and-attack simulation (MITRE ATT&CK) measures whether your controls actually prevent and detect — safely.",
+    },
+  },
 ];
 
 export const INSIGHT_SLUGS = INSIGHTS.map((i) => i.slug);
