@@ -28,7 +28,7 @@ export async function InsightsTeaser({ index = 5 }: { index?: number }) {
   if (posts.length === 0) return null;
 
   return (
-    <Container as="section" className="py-20 md:py-28">
+    <Container as="section" className="py-12 md:py-28">
       <div className="mb-8 flex items-center justify-between">
         <Eyebrow index={index}>Insights</Eyebrow>
         <Link href="/insights" className="font-body text-small text-pine hover:text-pine-lift">

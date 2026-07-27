@@ -62,7 +62,7 @@ export default function ExplorePage() {
               "radial-gradient(70% 90% at 20% 0%, rgba(79,157,130,0.22), transparent 65%)",
           }}
         />
-        <Container className="relative py-20 md:py-28">
+        <Container className="relative py-12 md:py-28">
           <p className="font-mono text-mono-xs uppercase text-white/60">Explore</p>
           <h1 className="mt-4 max-w-4xl font-display text-display text-white">
             Try it before you talk to us.
@@ -93,7 +93,7 @@ export default function ExplorePage() {
           id={d.id}
           className={`scroll-mt-24 border-t border-rule ${i % 2 === 0 ? "bg-paper" : "bg-paper-sunk"}`}
         >
-          <Container className="py-20 md:py-28">
+          <Container className="py-12 md:py-28">
             <div className="mb-8 flex items-center gap-3">
               <span aria-hidden="true" className="h-2.5 w-2.5 rounded-full bg-pine" />
               <p className="font-mono text-mono-xs uppercase text-slate">{d.kicker}</p>

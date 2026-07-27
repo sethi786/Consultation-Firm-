@@ -78,7 +78,7 @@ export default function SolutionsPage() {
 
       {/* Capability × mode matrix */}
       <section className="border-t border-rule bg-paper-sunk/40">
-        <Container className="py-20 md:py-28">
+        <Container className="py-12 md:py-28">
           <Eyebrow index={2}>Every capability, in the mode you need</Eyebrow>
           <h2 className="mt-2 mb-8 text-h2 text-ink">The capability matrix</h2>
 

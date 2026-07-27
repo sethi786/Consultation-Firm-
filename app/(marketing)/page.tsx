@@ -41,7 +41,7 @@ export default function HomePage() {
       {/* Hero — centered, big, airy, with a live pointer-follow aurora */}
       <section className="relative overflow-hidden">
         <HeroSpotlight />
-        <Container className="relative pt-24 pb-20 text-center md:pt-36 md:pb-28">
+        <Container className="relative pt-14 pb-12 text-center md:pt-36 md:pb-28">
           <span className="anim-rise mx-auto mb-8 inline-flex items-center gap-2 rounded-full border border-rule bg-surface/70 px-4 py-1.5 font-mono text-mono-xs uppercase text-slate backdrop-blur-sm">
             <span className="h-1.5 w-1.5 rounded-full bg-pine" />
             Security consulting &amp; managed detection
@@ -79,7 +79,7 @@ export default function HomePage() {
       <FrameworkMarquee />
 
       {/* Live demos — invite exploration immediately */}
-      <Container as="section" className="py-20 md:py-28">
+      <Container as="section" className="py-12 md:py-28">
         <div className="mx-auto mb-12 max-w-2xl text-center">
           <Eyebrow index={2} className="text-center">Try it live</Eyebrow>
           <h2 className="mt-3 text-h2 text-ink text-balance">
@@ -117,7 +117,7 @@ export default function HomePage() {
 
       {/* The Control Register — the credibility anchor (§3.4) */}
       <section className="border-t border-rule bg-paper-sunk/40">
-        <Container className="py-20 md:py-28">
+        <Container className="py-12 md:py-28">
           <div className="mx-auto mb-12 max-w-2xl text-center">
             <Eyebrow index={3} className="text-center">The control register</Eyebrow>
             <h2 className="mt-3 text-h2 text-ink text-balance">

@@ -10,7 +10,7 @@ import { SERVICES_BY_DOMAIN, SERVICE_LIST, DOMAINS } from "@/content/services";
  */
 export function ServicesOverview({ index = 4 }: { index?: number }) {
   return (
-    <Container as="section" className="py-20 md:py-28">
+    <Container as="section" className="py-12 md:py-28">
       <div className="mx-auto mb-12 max-w-2xl text-center">
         <Eyebrow index={index} className="text-center">Services</Eyebrow>
         <h2 className="mt-3 text-h2 text-ink text-balance">

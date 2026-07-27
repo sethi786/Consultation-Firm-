@@ -25,7 +25,7 @@ const PROOF_POINTS: { label: string; body: string }[] = [
 
 export function EvidenceBand({ index = 4 }: { index?: number }) {
   return (
-    <Container as="section" className="py-20 md:py-28">
+    <Container as="section" className="py-12 md:py-28">
       <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
         <Eyebrow index={index}>Evidence, not theatre</Eyebrow>
         <Link href="/case-studies" className="font-body text-small text-pine hover:text-pine-lift">

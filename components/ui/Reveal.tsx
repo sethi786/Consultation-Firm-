@@ -5,8 +5,13 @@ import { cn } from "@/lib/cn";
 
 /**
  * Scroll-reveal: content rises and fades in the first time it enters the
- * viewport. Subtle and premium, not bouncy. Fully gated behind
- * `prefers-reduced-motion` — reduced-motion users see everything immediately.
+ * viewport. Subtle and premium, not bouncy.
+ *
+ * Fail-safe by design: content is NEVER left permanently hidden. If
+ * `prefers-reduced-motion` is set, IntersectionObserver is unavailable, or the
+ * observer simply never fires (some mobile browsers, fast scrolls, background
+ * tabs), a short safety timeout reveals the content anyway. The animation is an
+ * enhancement — the words always show.
  */
 export function Reveal({
   as: Tag = "div",
@@ -25,26 +30,43 @@ export function Reveal({
   const [reduced, setReduced] = useState(false);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (
+      typeof window === "undefined" ||
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ||
+      typeof IntersectionObserver === "undefined"
+    ) {
       setReduced(true);
       setShown(true);
       return;
     }
+
     const el = ref.current;
-    if (!el) return;
+    if (!el) {
+      setShown(true);
+      return;
+    }
+
+    // Safety net: reveal no matter what within 700ms, so content is never stuck
+    // hidden if the observer never fires on this device.
+    const safety = window.setTimeout(() => setShown(true), 700);
+
     const io = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
           if (e.isIntersecting) {
             setShown(true);
             io.disconnect();
+            window.clearTimeout(safety);
           }
         }
       },
       { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
     );
     io.observe(el);
-    return () => io.disconnect();
+    return () => {
+      io.disconnect();
+      window.clearTimeout(safety);
+    };
   }, []);
 
   return (

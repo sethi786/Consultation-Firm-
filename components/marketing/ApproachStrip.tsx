@@ -44,30 +44,43 @@ export function ApproachStrip({ index = 3 }: { index?: number }) {
   const [shown, setShown] = useState(false);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (
+      typeof window === "undefined" ||
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ||
+      typeof IntersectionObserver === "undefined"
+    ) {
       setShown(true);
       return;
     }
     const el = ref.current;
-    if (!el) return;
+    if (!el) {
+      setShown(true);
+      return;
+    }
+    // Safety net: never leave the timeline invisible if the observer doesn't fire.
+    const safety = window.setTimeout(() => setShown(true), 700);
     const io = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
           if (e.isIntersecting) {
             setShown(true);
             io.disconnect();
+            window.clearTimeout(safety);
           }
         }
       },
-      { threshold: 0.25, rootMargin: "0px 0px -10% 0px" },
+      { threshold: 0.2, rootMargin: "0px 0px -10% 0px" },
     );
     io.observe(el);
-    return () => io.disconnect();
+    return () => {
+      io.disconnect();
+      window.clearTimeout(safety);
+    };
   }, []);
 
   return (
     <section className="border-y border-rule bg-paper-sunk/30">
-      <Container className="py-20 md:py-28">
+      <Container className="py-12 md:py-28">
         <Eyebrow index={index} className="mb-12">
           How an engagement runs
         </Eyebrow>

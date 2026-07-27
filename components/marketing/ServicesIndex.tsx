@@ -10,7 +10,7 @@ import { domainAccent } from "@/lib/accent";
  */
 export function ServicesIndex({ index = 2 }: { index?: number }) {
   return (
-    <Container as="section" className="py-20 md:py-28">
+    <Container as="section" className="py-12 md:py-28">
       <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
         <Eyebrow index={index}>Services</Eyebrow>
         <p className="font-mono text-mono-xs uppercase text-slate">
