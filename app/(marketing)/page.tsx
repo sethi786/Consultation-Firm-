@@ -63,10 +63,10 @@ export default function HomePage() {
               Book an assessment
             </Link>
             <Link
-              href="/explore"
-              className="rounded-full border border-ink/15 bg-surface px-7 py-3.5 font-body text-small font-medium text-ink transition-colors hover:border-ink/40"
+              href="/posture"
+              className="rounded-full border border-ink/15 bg-surface px-7 py-3.5 font-body text-small font-medium text-ink transition-colors hover:border-pine"
             >
-              Explore live demos →
+              Take the 2-minute posture check →
             </Link>
           </div>
           <p className="anim-rise anim-delay-3 mt-10 font-mono text-mono-xs uppercase text-slate/70">

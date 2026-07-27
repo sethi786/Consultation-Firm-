@@ -13,7 +13,8 @@ import { domainAccent } from "@/lib/accent";
 // "Services" is rendered by the mega-menu; the rest are plain links.
 const NAV = [
   { href: "/solutions", label: "Solutions" },
-  { href: "/explore", label: "Explore", accent: true },
+  { href: "/posture", label: "Posture check", accent: true },
+  { href: "/explore", label: "Explore" },
   { href: "/approach", label: "Approach" },
   { href: "/insights", label: "Insights" },
   { href: "/about", label: "About" },
