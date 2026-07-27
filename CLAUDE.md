@@ -3,9 +3,9 @@
 > **Firm name.** The firm is **Waypoint** (wordmark `Waypoint`) — a waypoint is a
 > precise, marked coordinate you navigate by, which fits the evidence-led, "we map the
 > path" brand.
-> Domain `waypointsecurity.com` is the intended home but is **pending registration
+> Domain `waypointsec.com` is the intended home but is **pending registration
 > confirmation**; the owner will confirm before launch. To change the name later,
-> search-and-replace `Waypoint` / `waypointsecurity.com` across `content/`,
+> search-and-replace `Waypoint` / `waypointsec.com` across `content/`,
 > `components/`, `app/`, and `lib/`.
 >
 > Read this file fully before any task. Every decision below is deliberate.

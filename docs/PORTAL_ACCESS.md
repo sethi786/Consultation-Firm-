@@ -18,7 +18,7 @@ This creates a ready-to-use demo login with sample findings and an engagement:
 | | |
 |---|---|
 | Sign in at | `/portal/sign-in` |
-| Email | `demo@waypointsecurity.com` |
+| Email | `demo@waypointsec.com` |
 | Password | `Portal-Demo-2026` |
 | Org | Meridian Health (demo) · role **owner** |
 

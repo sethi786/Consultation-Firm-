@@ -3,8 +3,8 @@ import type { ContactInput } from "./contact-schema";
 import type { MeetingInput } from "./meeting-schema";
 import { SERVICE_LIST } from "@/content/services";
 
-const FROM_DEFAULT = "Waypoint <no-reply@waypointsecurity.com>";
-const TO_DEFAULT = "assessments@waypointsecurity.com";
+const FROM_DEFAULT = "Waypoint <no-reply@waypointsec.com>";
+const TO_DEFAULT = "assessments@waypointsec.com";
 
 /** Human-readable service name for emails; slugs are never shown to a buyer. */
 function serviceLabel(value: string): string {

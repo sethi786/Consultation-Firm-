@@ -6,7 +6,7 @@
  * otherwise invalid env value must never crash the build (it feeds
  * `metadataBase: new URL(SITE_URL)`, which throws on an invalid URL).
  */
-const FALLBACK_URL = "https://waypointsecurity.com";
+const FALLBACK_URL = "https://waypointsec.com";
 
 function normalizeSiteUrl(raw: string | undefined): string {
   const trimmed = (raw ?? "").trim().replace(/\/+$/, "");
@@ -51,7 +51,7 @@ export const CONTACT: {
   registration: string;
   responseTime: string;
 } = {
-  /** e.g. "hello@waypointsecurity.com" — set once the domain is live. */
+  /** e.g. "hello@waypointsec.com" — set once the domain is live. */
   email: "",
   /** e.g. "+1 (416) 555-0100". */
   phone: "",

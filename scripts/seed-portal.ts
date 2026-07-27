@@ -17,7 +17,7 @@ import config from "@payload-config";
 const DEMO = {
   orgName: "Meridian Health (demo)",
   orgSlug: "meridian-health-demo",
-  userEmail: "demo@waypointsecurity.com",
+  userEmail: "demo@waypointsec.com",
   userName: "Dana Okafor",
   password: "Portal-Demo-2026",
 };

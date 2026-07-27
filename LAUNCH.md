@@ -5,18 +5,18 @@ Ordered so leads can never be silently lost. Items marked **(you)** need your
 accounts or real business facts.
 
 ## 1. Domain **(you)**
-- [ ] Confirm **waypointsecurity.com** is available and register it (the sandbox
+- [ ] Confirm **waypointsec.com** is available and register it (the sandbox
       couldn't verify registration — check a registrar). If taken, tell us and we
       rename in minutes.
 - [ ] Point DNS at Vercel (A / CNAME per Vercel's domain settings).
 
 ## 2. Hosting + environment variables (Vercel) **(you)**
 Set these in the Vercel project (Production + Preview). Names match the code.
-- [ ] `NEXT_PUBLIC_SITE_URL=https://waypointsecurity.com` (no trailing slash).
+- [ ] `NEXT_PUBLIC_SITE_URL=https://waypointsec.com` (no trailing slash).
 - [ ] `RESEND_API_KEY=…` — from Resend. **Until this is set, the contact/booking
       forms only store the lead (if a DB is configured) and never email you.**
 - [ ] `CONTACT_TO=…` — the inbox that receives new assessment requests.
-- [ ] `CONTACT_FROM="Waypoint <no-reply@waypointsecurity.com>"`.
+- [ ] `CONTACT_FROM="Waypoint <no-reply@waypointsec.com>"`.
 - [ ] `DATABASE_URI=…` — a Postgres (e.g. Neon) connection string. Needed for the
       CMS (`/admin`), the leads table, and the client portal. Optional for a pure
       marketing launch (see §5), but recommended so leads persist even if email
@@ -24,7 +24,7 @@ Set these in the Vercel project (Production + Preview). Names match the code.
 - [ ] `AUTH_SECRET=…` — only if you re-enable the client portal (see §6).
 
 ## 3. Email deliverability **(you)**
-- [ ] In Resend, verify the `waypointsecurity.com` sending domain (SPF + DKIM
+- [ ] In Resend, verify the `waypointsec.com` sending domain (SPF + DKIM
       records). Without this, autoresponder + notifications may land in spam or
       fail to send.
 
@@ -55,7 +55,7 @@ Set these in the Vercel project (Production + Preview). Names match the code.
 - [ ] Submit the contact form on the deployed site → confirm you receive the
       email **and/or** a row appears in `/admin → Assessment requests`.
 - [ ] Submit `/book` → same check (`source = meeting-request`).
-- [ ] `https://waypointsecurity.com/sitemap.xml` and `/robots.txt` load.
+- [ ] `https://waypointsec.com/sitemap.xml` and `/robots.txt` load.
 - [ ] Run a headers scan (securityheaders.com) — should be A/A+ (strict CSP,
       HSTS, etc. are already configured in `middleware.ts`).
 - [ ] Lighthouse: LCP < 2.0s, CLS < 0.05 (targets from CLAUDE.md §8).

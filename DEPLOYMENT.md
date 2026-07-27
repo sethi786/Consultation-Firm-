@@ -147,7 +147,7 @@ Then populate their portal:
 
 ## 7. Custom domain (optional)
 
-Vercel → **Settings → Domains** → add `waypointsecurity.com` (or your domain) and
+Vercel → **Settings → Domains** → add `waypointsec.com` (or your domain) and
 follow the DNS instructions. Then update `NEXT_PUBLIC_SITE_URL` to the custom
 domain and redeploy.
 
