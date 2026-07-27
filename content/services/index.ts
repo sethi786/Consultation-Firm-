@@ -19,6 +19,7 @@ export const SERVICE_SLUGS = [
   "ai-alert-triage",
   "ai-service-desk",
   "ai-assessment",
+  "ai-red-teaming",
   // Cloud & Infrastructure
   "cloud-implementation",
   "cloud-foundations",
@@ -38,16 +39,19 @@ export const SERVICE_SLUGS = [
   "siem-soar",
   "threat-intelligence",
   "incident-response",
+  "continuous-validation",
   // Governance, Risk & Compliance
   "compliance",
   "grc",
   "third-party-risk",
   "business-continuity",
+  "cyber-insurance",
   // Advisory & Assurance
   "vciso",
   "penetration-testing",
   "security-architecture",
   "security-awareness",
+  "ma-due-diligence",
   // Modern Workplace
   "workplace-collaboration",
   "managed-workplace",
@@ -175,6 +179,14 @@ export const SERVICES: Record<ServiceSlug, ServiceSummary> = {
     domain: "AI Operations",
     question: "We're adopting AI faster than we can govern it — is it safe?",
     blurb: "Where AI is actually in use, what it exposes, and a governance roadmap mapped to NIST AI RMF and ISO/IEC 42001 — so adoption stays ahead of the risk.",
+  },
+  "ai-red-teaming": {
+    slug: "ai-red-teaming",
+    name: "AI Red Teaming",
+    short: "AI Red Team",
+    domain: "AI Operations",
+    question: "Our AI feature passed QA — but would it survive an attacker?",
+    blurb: "Adversarial testing of your LLM apps and agents: prompt injection, jailbreaks, data exfiltration, and tool abuse — with reproductions and fixes, not a scanner dump.",
   },
 
   // ── Cloud & Infrastructure ───────────────────────────────────────
@@ -304,6 +316,14 @@ export const SERVICES: Record<ServiceSlug, ServiceSummary> = {
     question: "If we're hit tonight, what's the plan?",
     blurb: "IR retainer, ransomware tabletop exercises, and tested recovery runbooks — so a bad day doesn't become a crisis.",
   },
+  "continuous-validation": {
+    slug: "continuous-validation",
+    name: "Continuous Validation (Breach & Attack Simulation)",
+    short: "Continuous Validation",
+    domain: "Detection & Response",
+    question: "We bought the tools — but do our defences actually fire?",
+    blurb: "Safely and continuously simulate real attacker techniques (MITRE ATT&CK) to prove your controls and detections work — and find the gaps before an attacker does.",
+  },
 
   // ── Governance, Risk & Compliance ────────────────────────────────
   compliance: {
@@ -338,6 +358,14 @@ export const SERVICES: Record<ServiceSlug, ServiceSummary> = {
     question: "If a system goes down for a week, do we survive it?",
     blurb: "Business impact analysis, continuity plans, and disaster-recovery runbooks that are actually tested — not shelf-ware.",
   },
+  "cyber-insurance": {
+    slug: "cyber-insurance",
+    name: "Cyber Insurance Readiness",
+    short: "Cyber Insurance",
+    domain: "Governance, Risk & Compliance",
+    question: "Our cyber insurance renewal wants controls we're not sure we have.",
+    blurb: "Close the controls insurers now require — MFA, EDR, tested backups, IR plans — so you qualify for cover, lower your premium, and don't void a future claim.",
+  },
 
   // ── Advisory & Assurance ─────────────────────────────────────────
   vciso: {
@@ -371,6 +399,14 @@ export const SERVICES: Record<ServiceSlug, ServiceSummary> = {
     domain: "Advisory & Assurance",
     question: "Our people are the target and training is a checkbox.",
     blurb: "Role-based awareness training and realistic phishing simulations that measurably cut click rates.",
+  },
+  "ma-due-diligence": {
+    slug: "ma-due-diligence",
+    name: "M&A Security Due Diligence",
+    short: "M&A Diligence",
+    domain: "Advisory & Assurance",
+    question: "We're acquiring a company — what security risk are we buying?",
+    blurb: "A pre-deal security assessment of the target: real exposure, breach history, hidden liabilities, and an integration plan — so the risk is priced in, not inherited.",
   },
 
   // ── Modern Workplace ─────────────────────────────────────────────

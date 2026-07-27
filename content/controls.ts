@@ -33,6 +33,30 @@ export interface Control {
 }
 
 export const CONTROLS: Control[] = [
+  // ── AI Red Teaming ───────────────────────────────────────────────────
+  { framework: "ISO/IEC 27001:2022", reference: "A.8.29", name: "Security testing in development and acceptance", service: "ai-red-teaming", current: 2, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 18.1", name: "Establish and Maintain a Penetration Testing Program", service: "ai-red-teaming", current: 1, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 18.3", name: "Remediate Penetration Test Findings", service: "ai-red-teaming", current: 1, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "ID.RA-01", name: "Vulnerabilities in assets are identified, validated, and recorded", service: "ai-red-teaming", current: 2, target: 4 },
+
+  // ── Continuous Validation (BAS) ──────────────────────────────────────
+  { framework: "NIST CSF 2.0", reference: "DE.AE-02", name: "Potentially adverse events are analyzed to better understand associated activities", service: "continuous-validation", current: 2, target: 4 },
+  { framework: "ISO/IEC 27001:2022", reference: "A.8.29", name: "Security testing in development and acceptance", service: "continuous-validation", current: 2, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 18.1", name: "Establish and Maintain a Penetration Testing Program", service: "continuous-validation", current: 2, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "DE.CM-01", name: "Networks and network services are monitored to find potentially adverse events", service: "continuous-validation", current: 2, target: 4 },
+
+  // ── Cyber Insurance Readiness ────────────────────────────────────────
+  { framework: "NIST CSF 2.0", reference: "PR.AA-05", name: "Access permissions, entitlements, and authorizations are defined in a policy, managed, enforced, and reviewed, and incorporate the principles of least privilege and separation of duties", service: "cyber-insurance", current: 2, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 11.1", name: "Establish and Maintain a Data Recovery Process", service: "cyber-insurance", current: 2, target: 4 },
+  { framework: "ISO/IEC 27001:2022", reference: "A.5.24", name: "Information security incident management planning and preparation", service: "cyber-insurance", current: 2, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "GV.RM-01", name: "Risk management objectives are established and agreed to by organizational stakeholders", service: "cyber-insurance", current: 2, target: 4 },
+
+  // ── M&A Security Due Diligence ───────────────────────────────────────
+  { framework: "NIST CSF 2.0", reference: "ID.RA-01", name: "Vulnerabilities in assets are identified, validated, and recorded", service: "ma-due-diligence", current: 1, target: 4 },
+  { framework: "ISO/IEC 27001:2022", reference: "A.5.9", name: "Inventory of information and other associated assets", service: "ma-due-diligence", current: 2, target: 4 },
+  { framework: "CIS Controls v8", reference: "CIS 1.1", name: "Establish and Maintain Detailed Enterprise Asset Inventory", service: "ma-due-diligence", current: 2, target: 4 },
+  { framework: "NIST CSF 2.0", reference: "GV.RM-01", name: "Risk management objectives are established and agreed to by organizational stakeholders", service: "ma-due-diligence", current: 1, target: 4 },
+
   // ── AI-Powered SOC ───────────────────────────────────────────────────
   {
     framework: "NIST CSF 2.0",

@@ -13,6 +13,270 @@ import type { ServiceDetail } from "./types";
  */
 
 const details: Record<ServiceSlug, Omit<ServiceDetail, keyof (typeof SERVICES)["ai-security"]>> = {
+  "ai-red-teaming": {
+    situation:
+      "Your AI feature passed functional QA and shipped — but QA checks whether it works, not whether it survives someone trying to break it. Waypoint red-teams the AI the way an adversary will: we chain prompt injection, jailbreaks, data-exfiltration paths, and tool abuse against your real endpoints, and hand you reproductions and fixes, not a generic checklist. The output is evidence you can put in front of a board or a customer's security team.",
+    workstreams: [
+      {
+        title: "Scope and threat-model the AI system",
+        deliverable: "AI attack surface map",
+        detail:
+          "Map every untrusted input, retrieval source, tool the model can call, and downstream system that trusts its output — the paths an attacker actually uses.",
+      },
+      {
+        title: "Adversarial testing",
+        deliverable: "Red-team findings with reproductions",
+        detail:
+          "Direct and indirect prompt injection, jailbreaks, system-prompt extraction, tool-call hijacking, and retrieval data-exposure against your live endpoints.",
+      },
+      {
+        title: "Impact & blast-radius analysis",
+        deliverable: "Exploit chains and business-impact rating",
+        detail:
+          "For each finding, what an attacker can actually reach or do — the difference between an annoyance and an incident.",
+      },
+      {
+        title: "Remediation & retest",
+        deliverable: "Fix guidance and verification retest",
+        detail:
+          "Guardrails, least-privilege tool scopes, and human-in-the-loop gates, then a retest that closes findings only when the fix holds.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "2–3 weeks",
+        summary: "We red-team the AI system and hand you a prioritised findings register.",
+        includes: ["AI attack surface map", "Adversarial testing against live endpoints", "Exploit chains with business impact", "Board-ready report mapped to OWASP LLM Top 10 & NIST"],
+        excludes: ["Guardrail implementation", "Ongoing testing"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "3–6 weeks",
+        summary: "We close the findings with your engineers and verify the fixes.",
+        includes: ["Everything in Assessment", "Guardrail & tool-permission hardening", "CI checks for injection regressions", "Verification retest"],
+        excludes: ["24/7 monitoring"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We red-team each release and track new abuse cases.",
+        includes: ["Per-release adversarial testing", "New-technique regression coverage", "Quarterly threat-model refresh"],
+        excludes: ["Application feature development"],
+        price: "",
+      },
+    ],
+    deliverables: ["AI attack surface map", "Red-team findings register with reproductions", "Exploit chains & business-impact rating", "Guardrail & remediation guidance", "Verification retest report"],
+    faqs: [
+      { q: "How is this different from your AI & LLM Security service?", a: "That service is a structured assessment and hardening engagement. Red teaming is adversarial — we actively try to break the system with attacker creativity, chaining weaknesses rather than checking a list. Many clients do the assessment first, then red-team before a major launch." },
+      { q: "Do you test against production?", a: "Against a staging environment that mirrors production — same prompts, tools, and retrieval index. A sanitised copy hides the misconfigurations that matter, but we won't risk your live data." },
+      { q: "Which frameworks do you map findings to?", a: "The OWASP Top 10 for LLM Applications and NIST AI RMF, alongside NIST CSF for the surrounding controls — so findings slot into the reporting you already do." },
+      { q: "Can you test agents that take actions, not just chatbots?", a: "Yes — agents with tool access are the highest-risk case, because a successful injection does things rather than just says them. We specifically test tool-call hijacking and over-scoped permissions." },
+      { q: "What do we walk away with?", a: "A findings register with working reproductions, exploit chains rated by business impact, concrete fixes, and — if you engage us to remediate — a retest that proves they hold." },
+    ],
+    seo: { title: "AI Red Teaming — adversarial testing for LLM apps & agents", description: "Adversarial testing of your AI: prompt injection, jailbreaks, data exfiltration, and tool abuse against live endpoints, with reproductions and fixes. Mapped to OWASP LLM Top 10 & NIST AI RMF." },
+  },
+
+  "continuous-validation": {
+    situation:
+      "You've invested in EDR, a SIEM, email security, and a dozen other controls — but the only time most organisations find out whether they actually fire is during a real incident. Waypoint safely and continuously simulates real attacker techniques against your environment, mapped to MITRE ATT&CK, so you can prove which controls work, which don't, and where the detection gaps are — before an attacker runs the same play for real.",
+    workstreams: [
+      {
+        title: "Baseline against MITRE ATT&CK",
+        deliverable: "Coverage heatmap across ATT&CK techniques",
+        detail:
+          "Run a safe, controlled set of attacker techniques and map what your controls prevented, detected, or missed — turning 'we have tools' into a measured coverage picture.",
+      },
+      {
+        title: "Detection-gap analysis",
+        deliverable: "Prioritised detection-gap register",
+        detail:
+          "Where an attack succeeded silently: no prevention, no alert. Prioritised by how likely and how damaging the technique is for your industry.",
+      },
+      {
+        title: "Tuning & detection engineering",
+        deliverable: "New and tuned detections",
+        detail:
+          "Close the gaps that matter — write the missing detections, tune the noisy ones, and re-run the simulation to prove the fix.",
+      },
+      {
+        title: "Continuous cadence",
+        deliverable: "Scheduled validation & trend reporting",
+        detail:
+          "Re-validate on a cadence so drift, a new tool, or a config change never silently reopens a gap. You get a trend line, not a one-off.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "2–3 weeks",
+        summary: "We validate your controls once and hand you a coverage heatmap and gap register.",
+        includes: ["ATT&CK coverage heatmap", "Prevention & detection validation", "Prioritised detection-gap register", "Findings mapped to NIST CSF 2.0"],
+        excludes: ["Detection engineering", "Ongoing validation"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "3–6 weeks",
+        summary: "We close the priority gaps and prove the fixes with a re-run.",
+        includes: ["Everything in Assessment", "Detection engineering & tuning", "Re-validation of closed gaps", "Runbook for your team"],
+        excludes: ["24/7 monitoring"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We run continuous validation and report the trend.",
+        includes: ["Scheduled breach & attack simulation", "Continuous coverage trend reporting", "Ongoing detection tuning"],
+        excludes: ["Full incident response"],
+        price: "",
+      },
+    ],
+    deliverables: ["ATT&CK coverage heatmap", "Prioritised detection-gap register", "New & tuned detections", "Re-validation evidence", "Coverage trend report"],
+    faqs: [
+      { q: "Is this safe to run against production?", a: "Yes — we use controlled, non-destructive simulations designed for production, agreed with you in advance and run inside your change control. Nothing detonates real malware or damages data." },
+      { q: "How is this different from a penetration test?", a: "A pen test is a point-in-time, human-led attempt to break in. Continuous validation is automated, repeatable, and mapped to ATT&CK — it measures whether your controls and detections fire across many techniques, continuously. They complement each other." },
+      { q: "Do we need a specific tool?", a: "We work with leading breach-and-attack-simulation platforms and can run on your SIEM/XDR. If you already own a BAS tool, we operate and tune it; if not, we bring one for the engagement." },
+      { q: "What does the output look like?", a: "A MITRE ATT&CK heatmap showing prevented / detected / missed per technique, a prioritised gap register, and — on the managed tier — a trend line proving coverage improves over time." },
+      { q: "Who fixes the gaps?", a: "We do, under Implementation or Managed, with your team — writing and tuning detections and re-running the simulation to prove each gap is closed." },
+    ],
+    seo: { title: "Continuous Validation — breach & attack simulation (MITRE ATT&CK)", description: "Continuously simulate real attacker techniques to prove your controls and detections fire. ATT&CK coverage heatmap, detection-gap register, and tuning — safe for production." },
+  },
+
+  "cyber-insurance": {
+    situation:
+      "Cyber insurance used to be a form you signed; now the application is a security audit, and a missing control can mean no cover, a higher premium, or a denied claim after an incident. Waypoint closes the gap between what your insurer requires and what you actually have — MFA everywhere, EDR, tested backups, a real incident-response plan — and gives you the evidence to complete the application honestly and defensibly.",
+    workstreams: [
+      {
+        title: "Map insurer requirements to your controls",
+        deliverable: "Insurability gap assessment",
+        detail:
+          "Take your insurer's (or the market's) control questionnaire and assess each requirement against what you actually have — MFA coverage, privileged access, EDR, email security, backups, IR.",
+      },
+      {
+        title: "Close the must-have controls",
+        deliverable: "Remediation plan for insurability blockers",
+        detail:
+          "Prioritise the controls that are pass/fail for cover — usually MFA on remote access and privileged accounts, EDR everywhere, and tested, offline backups.",
+      },
+      {
+        title: "Evidence pack for the application",
+        deliverable: "Application evidence pack",
+        detail:
+          "The documentation and screenshots that let you answer the questionnaire truthfully — so a claim can't later be voided for a misrepresentation.",
+      },
+      {
+        title: "Renewal-ready posture",
+        deliverable: "Continuous-control attestation",
+        detail:
+          "Keep the controls that qualified you in place and evidenced, so next year's renewal is a formality and your premium reflects a real posture.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "1–2 weeks",
+        summary: "We assess you against insurer requirements and hand you a gap plan.",
+        includes: ["Insurability gap assessment", "Control-questionnaire readiness", "Prioritised remediation plan", "Findings mapped to NIST CSF 2.0"],
+        excludes: ["Remediation delivery", "Broker negotiation"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "3–6 weeks",
+        summary: "We close the insurability blockers and assemble the evidence.",
+        includes: ["Everything in Assessment", "MFA / EDR / backup remediation", "Application evidence pack", "Verification of closed controls"],
+        excludes: ["Acting as your broker"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "We keep you renewal-ready and evidenced year-round.",
+        includes: ["Continuous control attestation", "Annual renewal support", "Posture monitoring"],
+        excludes: ["Underwriting or claims handling"],
+        price: "",
+      },
+    ],
+    deliverables: ["Insurability gap assessment", "Remediation plan for blockers", "Application evidence pack", "Verification of closed controls", "Renewal-ready attestation"],
+    faqs: [
+      { q: "Do you sell insurance or act as a broker?", a: "No — we're independent. We get your security posture to where cover is available and defensible; you keep your broker and underwriter. That independence is the point: we work for you, not the policy." },
+      { q: "What controls do insurers care about most?", a: "Consistently: MFA on remote access and privileged accounts, EDR across endpoints, email security, tested and offline/immutable backups, and a documented incident-response plan. Missing any of these is often a straight decline." },
+      { q: "Can this actually lower our premium?", a: "It can. Premiums are risk-priced, and demonstrably closing the high-signal controls improves your risk profile. We can't promise a number — that's the underwriter's call — but a stronger, evidenced posture is what moves it." },
+      { q: "Why does the evidence matter so much?", a: "Because answering the application inaccurately can void a claim later. We help you answer truthfully with evidence, so the cover you pay for actually pays out." },
+      { q: "How does this map to frameworks?", a: "The controls insurers require are a subset of NIST CSF 2.0, ISO 27001 and CIS — so the work doubles as progress toward any audit you also answer to." },
+    ],
+    seo: { title: "Cyber Insurance Readiness — qualify, lower premiums, protect the claim", description: "Close the controls insurers now require — MFA, EDR, tested backups, IR plans — with the evidence to complete the application honestly, so you qualify for cover and don't void a claim." },
+  },
+
+  "ma-due-diligence": {
+    situation:
+      "When you acquire a company you acquire its security risk — its breaches, its technical debt, its unpatched estate, and any liability it hasn't disclosed. Financial and legal diligence rarely surface it. Waypoint runs security due diligence on the target before the deal closes: what's actually exposed, whether they've been breached, what integration will cost, and what should be priced into the deal — so you're not buying a liability you can't see.",
+    workstreams: [
+      {
+        title: "External exposure & breach check",
+        deliverable: "Target exposure and breach-history report",
+        detail:
+          "What the target looks like from the outside — exposed services, leaked credentials, dark-web mentions, and indicators they may already be compromised.",
+      },
+      {
+        title: "Internal posture review",
+        deliverable: "Security posture assessment of the target",
+        detail:
+          "With access, a rapid assessment of identity, cloud, endpoint, and data controls against the frameworks — the maturity you're actually buying.",
+      },
+      {
+        title: "Liability & compliance check",
+        deliverable: "Risk & compliance findings for the deal team",
+        detail:
+          "Undisclosed incidents, regulatory exposure (GDPR, HIPAA, PCI), and third-party risk that could become the acquirer's problem post-close.",
+      },
+      {
+        title: "Integration cost & plan",
+        deliverable: "Integration roadmap with cost estimate",
+        detail:
+          "What it takes to bring the target up to your standard — sequenced and costed, so it can be negotiated into the deal, not discovered after it.",
+      },
+    ],
+    tiers: [
+      {
+        name: "Assessment",
+        duration: "1–3 weeks",
+        summary: "We assess the target and hand the deal team a risk report.",
+        includes: ["External exposure & breach check", "Rapid internal posture review (with access)", "Liability & compliance findings", "Deal-team briefing"],
+        excludes: ["Post-close integration delivery"],
+        price: "",
+      },
+      {
+        name: "Implementation",
+        duration: "Post-close",
+        summary: "We deliver the integration and bring the target to your standard.",
+        includes: ["Everything in Assessment", "Prioritised integration roadmap", "Identity, cloud & endpoint hardening", "Verification against your baseline"],
+        excludes: ["Legal or financial diligence"],
+        price: "",
+      },
+      {
+        name: "Managed",
+        duration: "Ongoing",
+        summary: "For serial acquirers — a repeatable diligence and integration playbook.",
+        includes: ["Standardised diligence playbook", "Per-target assessment on demand", "Integration & assurance cadence"],
+        excludes: ["Deal advisory"],
+        price: "",
+      },
+    ],
+    deliverables: ["Target exposure & breach-history report", "Security posture assessment", "Risk & compliance findings", "Integration roadmap with cost estimate", "Deal-team briefing"],
+    faqs: [
+      { q: "How fast can you turn this around?", a: "Deals move quickly, so we scope for it — an external exposure and breach check in days, and a fuller posture review in one to three weeks with access to the target. We fit the diligence timeline." },
+      { q: "What if we can't get access to the target yet?", a: "We start with everything visible from the outside — exposed services, leaked credentials, dark-web signals, and breach indicators — which is often enough to flag deal-relevant risk before access is granted." },
+      { q: "Does this replace legal or financial diligence?", a: "No — it sits alongside them and covers what they don't: technical security risk and the cost to integrate it. We brief your deal team in their language." },
+      { q: "Can you help after the deal closes?", a: "Yes — under Implementation we deliver the integration roadmap, bringing the acquired environment up to your security standard and verifying it against your baseline." },
+      { q: "We acquire regularly — can this be repeatable?", a: "That's the Managed tier: a standardised diligence-and-integration playbook so every target is assessed the same way and integrated to the same bar." },
+    ],
+    seo: { title: "M&A Security Due Diligence — price the risk before you buy it", description: "Pre-deal security due diligence on an acquisition target: exposure, breach history, hidden liabilities, and a costed integration plan — so security risk is priced in, not inherited." },
+  },
+
   "ai-soc": {
     situation:
       "Your alert volume outgrew your team years ago, and most pitches for an “AI SOC” mean a black box that either floods you with false positives or quietly closes a real incident. Waypoint runs an AI-augmented SOC the honest way: models handle correlation, enrichment, and first-pass triage across your SIEM and XDR at machine speed, and a human analyst verifies every escalation before it reaches you. You get the coverage of automation with an auditable decision behind every action.",
