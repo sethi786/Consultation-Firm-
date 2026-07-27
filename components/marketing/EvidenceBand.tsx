@@ -44,6 +44,12 @@ export function EvidenceBand({ index = 4 }: { index?: number }) {
           </div>
         ))}
       </dl>
+      <p className="mt-6 text-small text-slate">
+        Want to see the actual artefact?{" "}
+        <Link href="/sample-report" className="text-pine underline decoration-pine/40 underline-offset-4 hover:decoration-pine">
+          Open a sample findings report →
+        </Link>
+      </p>
     </Container>
   );
 }

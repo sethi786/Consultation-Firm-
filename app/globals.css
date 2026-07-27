@@ -187,6 +187,13 @@
     color: var(--color-ink);
   }
 
+  /* Print: hide screen-only chrome (used by the sample report → PDF). */
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+  }
+
   /* Honour reduced motion globally (§3.6) */
   @media (prefers-reduced-motion: reduce) {
     *,
