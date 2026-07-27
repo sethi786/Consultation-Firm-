@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Container, Eyebrow } from "@/components/ui";
 import { ContactForm } from "@/components/marketing/ContactForm";
 import { CONTACT_SERVICE_VALUES } from "@/lib/contact-schema";
+import { CONTACT } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Book an assessment",
@@ -39,7 +40,7 @@ export default async function ContactPage({
           <dl className="mt-10 flex flex-col gap-5 border-t border-rule pt-8">
             <div>
               <dt className="font-mono text-mono-xs uppercase text-slate">Response time</dt>
-              <dd className="mt-1 text-body text-ink">One business day, from a consultant.</dd>
+              <dd className="mt-1 text-body text-ink">{CONTACT.responseTime}.</dd>
             </div>
             <div>
               <dt className="font-mono text-mono-xs uppercase text-slate">What happens next</dt>
@@ -54,6 +55,32 @@ export default async function ContactPage({
                 newsletter, no tracking.
               </dd>
             </div>
+            {CONTACT.email && (
+              <div>
+                <dt className="font-mono text-mono-xs uppercase text-slate">Email</dt>
+                <dd className="mt-1 text-body text-ink">
+                  <a href={`mailto:${CONTACT.email}`} className="text-pine underline decoration-pine/40 underline-offset-4 hover:decoration-pine">
+                    {CONTACT.email}
+                  </a>
+                </dd>
+              </div>
+            )}
+            {CONTACT.phone && (
+              <div>
+                <dt className="font-mono text-mono-xs uppercase text-slate">Phone</dt>
+                <dd className="mt-1 text-body text-ink">
+                  <a href={`tel:${CONTACT.phone.replace(/[^+\d]/g, "")}`} className="text-pine underline decoration-pine/40 underline-offset-4 hover:decoration-pine">
+                    {CONTACT.phone}
+                  </a>
+                </dd>
+              </div>
+            )}
+            {CONTACT.location && (
+              <div>
+                <dt className="font-mono text-mono-xs uppercase text-slate">Location</dt>
+                <dd className="mt-1 text-body text-ink">{CONTACT.location}</dd>
+              </div>
+            )}
           </dl>
         </div>
 

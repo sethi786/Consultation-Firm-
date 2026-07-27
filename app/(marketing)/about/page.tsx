@@ -50,7 +50,7 @@ export default function AboutPage() {
       </Container>
 
       {/* What we are */}
-      <Container as="section" className="border-t border-rule py-16 md:py-24">
+      <Container as="section" className="border-t border-rule py-20 md:py-28">
         <Eyebrow index={1} className="mb-8">
           What we are
         </Eyebrow>
@@ -73,7 +73,7 @@ export default function AboutPage() {
 
       {/* What we stand for */}
       <section className="border-t border-rule bg-paper-sunk/40">
-        <Container className="py-16 md:py-24">
+        <Container className="py-20 md:py-28">
           <Eyebrow index={2} className="mb-10">
             What we stand for
           </Eyebrow>
@@ -92,7 +92,7 @@ export default function AboutPage() {
       </section>
 
       {/* How we're built — the firm-not-founder stance */}
-      <Container as="section" className="border-t border-rule py-16 md:py-24">
+      <Container as="section" className="border-t border-rule py-20 md:py-28">
         <Eyebrow index={3} className="mb-8">
           How we&apos;re built
         </Eyebrow>
@@ -115,7 +115,7 @@ export default function AboutPage() {
 
       {/* How we engage */}
       <section className="border-t border-rule bg-paper-sunk/40">
-        <Container className="py-16 md:py-24">
+        <Container className="py-20 md:py-28">
           <Eyebrow index={4} className="mb-8">
             How we engage
           </Eyebrow>
@@ -139,7 +139,7 @@ export default function AboutPage() {
       </section>
 
       {/* Standards & credentials */}
-      <Container as="section" className="border-t border-rule py-16 md:py-24">
+      <Container as="section" className="border-t border-rule py-20 md:py-28">
         <Eyebrow index={5} className="mb-8">
           Standards &amp; credentials
         </Eyebrow>
@@ -171,7 +171,7 @@ export default function AboutPage() {
 
       {/* Industries */}
       <section className="border-t border-rule bg-paper-sunk/40">
-        <Container className="py-16 md:py-24">
+        <Container className="py-20 md:py-28">
           <Eyebrow index={6} className="mb-8">
             Industries we work in
           </Eyebrow>

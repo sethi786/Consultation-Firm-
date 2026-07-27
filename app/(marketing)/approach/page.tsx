@@ -46,7 +46,7 @@ export default function ApproachPage() {
 
       <ApproachStrip index={1} />
 
-      <Container as="section" className="py-16 md:py-24">
+      <Container as="section" className="py-20 md:py-28">
         <Eyebrow index={2} className="mb-10">
           What that means in practice
         </Eyebrow>
@@ -60,7 +60,7 @@ export default function ApproachPage() {
         </div>
       </Container>
 
-      <Container as="section" className="border-t border-rule py-16 md:py-24">
+      <Container as="section" className="border-t border-rule py-20 md:py-28">
         <Eyebrow index={3} className="mb-8">
           Who does the work
         </Eyebrow>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SERVICE_LIST } from "@/content/services";
 import { INDUSTRIES } from "@/content/industries";
+import { CONTACT } from "@/lib/site";
 
 const COLUMNS: { heading: string; links: { href: string; label: string }[] }[] = [
   {
@@ -46,6 +47,21 @@ export function SiteFooter() {
               Evidence-led security consulting and managed detection. We map your
               controls, close the gaps, and prove it.
             </p>
+            {(CONTACT.email || CONTACT.phone || CONTACT.location) && (
+              <ul className="mt-4 flex flex-col gap-1.5 text-caption text-slate">
+                {CONTACT.email && (
+                  <li>
+                    <a href={`mailto:${CONTACT.email}`} className="hover:text-ink">{CONTACT.email}</a>
+                  </li>
+                )}
+                {CONTACT.phone && (
+                  <li>
+                    <a href={`tel:${CONTACT.phone.replace(/[^+\d]/g, "")}`} className="hover:text-ink">{CONTACT.phone}</a>
+                  </li>
+                )}
+                {CONTACT.location && <li>{CONTACT.location}</li>}
+              </ul>
+            )}
           </div>
 
           {COLUMNS.map((col) => (

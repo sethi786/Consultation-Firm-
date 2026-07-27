@@ -51,7 +51,7 @@ export default function SolutionsPage() {
             return (
               <div
                 key={m.key}
-                className="flex flex-col rounded-2xl border border-rule bg-surface p-7"
+                className="sheen relative flex flex-col overflow-hidden rounded-3xl border border-rule bg-surface p-7 transition-all duration-300 ease-doc hover:-translate-y-1 hover:border-pine hover:shadow-pop-sm"
               >
                 <span className={`inline-flex w-fit items-center gap-2 rounded-full ${a.softBg} px-3 py-1 font-mono text-mono-xs uppercase ${a.softText}`}>
                   <span className={`h-1.5 w-1.5 rounded-full ${a.dot}`} />
@@ -78,7 +78,7 @@ export default function SolutionsPage() {
 
       {/* Capability × mode matrix */}
       <section className="border-t border-rule bg-paper-sunk/40">
-        <Container className="py-16 md:py-24">
+        <Container className="py-20 md:py-28">
           <Eyebrow index={2}>Every capability, in the mode you need</Eyebrow>
           <h2 className="mt-2 mb-8 text-h2 text-ink">The capability matrix</h2>
 

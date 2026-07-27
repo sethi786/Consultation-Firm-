@@ -93,7 +93,7 @@ export default function ExplorePage() {
           id={d.id}
           className={`scroll-mt-24 border-t border-rule ${i % 2 === 0 ? "bg-paper" : "bg-paper-sunk"}`}
         >
-          <Container className="py-16 md:py-24">
+          <Container className="py-20 md:py-28">
             <div className="mb-8 flex items-center gap-3">
               <span aria-hidden="true" className="h-2.5 w-2.5 rounded-full bg-pine" />
               <p className="font-mono text-mono-xs uppercase text-slate">{d.kicker}</p>

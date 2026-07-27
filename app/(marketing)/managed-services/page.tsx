@@ -76,7 +76,7 @@ export default function ManagedServicesPage() {
       </section>
 
       {/* The operate loop */}
-      <Container as="section" className="py-16 md:py-24">
+      <Container as="section" className="py-20 md:py-28">
         <Eyebrow index={1}>How it runs</Eyebrow>
         <h2 className="mt-2 mb-8 text-h2 text-ink">A loop, not a ticket queue.</h2>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -92,7 +92,7 @@ export default function ManagedServicesPage() {
 
       {/* What we watch + what's included */}
       <section className="border-t border-rule bg-paper-sunk/40">
-        <Container className="py-16 md:py-24">
+        <Container className="py-20 md:py-28">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
             <div>
               <Eyebrow index={2}>What we watch</Eyebrow>
