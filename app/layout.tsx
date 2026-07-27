@@ -34,13 +34,13 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Waypoint Security — evidence-led security consulting",
-    template: "%s — Waypoint Security",
+    default: "Waypoint — evidence-led security consulting",
+    template: "%s — Waypoint",
   },
   description: SITE_DESCRIPTION,
   openGraph: {
     type: "website",
-    siteName: "Waypoint Security",
+    siteName: "Waypoint",
     url: SITE_URL,
   },
   twitter: { card: "summary_large_image" },

@@ -1,4 +1,4 @@
-# Deploying Waypoint Security — go live for clients
+# Deploying Waypoint — go live for clients
 
 A start-to-finish guide to host the site publicly and make the client portal
 fully usable. No prior DevOps needed. ~30–45 minutes.

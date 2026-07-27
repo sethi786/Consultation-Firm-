@@ -1,6 +1,6 @@
-# Waypoint Security — website & client portal
+# Waypoint — website & client portal
 
-> **Waypoint Security** is a placeholder firm name. See `CLAUDE.md` for the
+> **Waypoint** is a placeholder firm name. See `CLAUDE.md` for the
 > product specification; this README is the build runbook.
 
 An evidence-led marketing site (and, in later phases, a headless CMS and

@@ -8,7 +8,7 @@ import { SERVICE_LIST, DOMAINS } from "@/content/services";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Waypoint Security is an evidence-led security consultancy and managed security services provider for 200–5,000-seat organisations — built as a firm, not a personality.",
+    "Waypoint is an evidence-led security consultancy and managed security services provider for 200–5,000-seat organisations — built as a firm, not a personality.",
   alternates: { canonical: "/about" },
 };
 
@@ -40,7 +40,7 @@ export default function AboutPage() {
           Security delivered like a firm — not a personality.
         </h1>
         <p className="mt-6 max-w-measure text-lede text-slate">
-          Waypoint Security is a security consultancy and managed security services
+          Waypoint is a security consultancy and managed security services
           provider for organisations of 200–5,000 seats. We sell evidence, not fear —
           and we are built to outlast any one person in the room.
         </p>

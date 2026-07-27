@@ -70,7 +70,7 @@ export default async function InsightPage({
         <h1 className="text-h1 text-ink">{post.title}</h1>
         <p className="mt-4 text-lede text-slate">{post.excerpt}</p>
         <p className="mt-6 font-mono text-mono-xs uppercase text-slate">
-          {formatDate(post.date)} · {post.readMins} min read · Waypoint Security
+          {formatDate(post.date)} · {post.readMins} min read · Waypoint
         </p>
       </Container>
 

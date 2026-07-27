@@ -3,7 +3,7 @@ import type { ContactInput } from "./contact-schema";
 import type { MeetingInput } from "./meeting-schema";
 import { SERVICE_LIST } from "@/content/services";
 
-const FROM_DEFAULT = "Waypoint Security <no-reply@waypointsecurity.com>";
+const FROM_DEFAULT = "Waypoint <no-reply@waypointsecurity.com>";
 const TO_DEFAULT = "assessments@waypointsecurity.com";
 
 /** Human-readable service name for emails; slugs are never shown to a buyer. */
@@ -97,7 +97,7 @@ export async function sendAssessmentConfirmation(input: ContactInput): Promise<v
     "  2. You get a fixed-fee proposal — no open-ended retainers to book an assessment.",
     "  3. We schedule and run it, and hand you a findings register with evidence.",
     "",
-    "— Waypoint Security",
+    "— Waypoint",
   ].join("\n");
 
   await send({
@@ -164,7 +164,7 @@ export async function notifyCallBooking(booking: {
     "A consultant will confirm the time and send a meeting link shortly. You can",
     "see the status any time in your portal under Calls.",
     "",
-    "— Waypoint Security",
+    "— Waypoint",
   ].join("\n");
 
   await send({
@@ -227,7 +227,7 @@ export async function notifyMeetingRequest(input: MeetingInput): Promise<boolean
       "",
       `Requested: ${when} · ${input.durationMins} minutes`,
       "",
-      "— Waypoint Security",
+      "— Waypoint",
     ].join("\n"),
   });
 

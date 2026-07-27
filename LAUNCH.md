@@ -1,4 +1,4 @@
-# Launch checklist — Waypoint Security
+# Launch checklist — Waypoint
 
 Everything needed to take the site live and make lead capture actually work.
 Ordered so leads can never be silently lost. Items marked **(you)** need your
@@ -16,7 +16,7 @@ Set these in the Vercel project (Production + Preview). Names match the code.
 - [ ] `RESEND_API_KEY=…` — from Resend. **Until this is set, the contact/booking
       forms only store the lead (if a DB is configured) and never email you.**
 - [ ] `CONTACT_TO=…` — the inbox that receives new assessment requests.
-- [ ] `CONTACT_FROM="Waypoint Security <no-reply@waypointsecurity.com>"`.
+- [ ] `CONTACT_FROM="Waypoint <no-reply@waypointsecurity.com>"`.
 - [ ] `DATABASE_URI=…` — a Postgres (e.g. Neon) connection string. Needed for the
       CMS (`/admin`), the leads table, and the client portal. Optional for a pure
       marketing launch (see §5), but recommended so leads persist even if email

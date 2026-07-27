@@ -1,6 +1,6 @@
-# CLAUDE.md — Waypoint Security Website
+# CLAUDE.md — Waypoint Website
 
-> **Firm name.** The firm is **Waypoint Security** (wordmark `Waypoint`) — a waypoint is a
+> **Firm name.** The firm is **Waypoint** (wordmark `Waypoint`) — a waypoint is a
 > precise, marked coordinate you navigate by, which fits the evidence-led, "we map the
 > path" brand.
 > Domain `waypointsecurity.com` is the intended home but is **pending registration

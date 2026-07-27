@@ -7,7 +7,7 @@ import { INSIGHTS } from "@/content/insights";
 export const metadata: Metadata = {
   title: "Insights",
   description:
-    "Research and practitioner notes from Waypoint Security — Entra ID hardening, SOC 2 readiness, prompt injection in production copilots, and more.",
+    "Research and practitioner notes from Waypoint — Entra ID hardening, SOC 2 readiness, prompt injection in production copilots, and more.",
   alternates: { canonical: "/insights" },
 };
 

@@ -73,9 +73,12 @@ export function Reveal({
     <Tag
       ref={ref as React.Ref<HTMLElement>}
       className={cn(
-        !reduced && "motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-doc",
-        !reduced && !shown && "opacity-0 translate-y-4",
-        !reduced && shown && "opacity-100 translate-y-0",
+        // TRANSFORM-ONLY reveal: content is always visible (no opacity gate), so
+        // a browser that never fires the observer still shows everything — the
+        // slide is pure enhancement.
+        !reduced && "motion-safe:transition-transform motion-safe:duration-700 motion-safe:ease-doc",
+        !reduced && !shown && "translate-y-3",
+        !reduced && shown && "translate-y-0",
         className,
       )}
       style={!reduced && shown ? { transitionDelay: `${delay}ms` } : undefined}

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: { default: "Client portal", template: "%s — Waypoint portal" },
-  description: "Waypoint Security client portal.",
+  description: "Waypoint client portal.",
   robots: { index: false, follow: false },
 };
 

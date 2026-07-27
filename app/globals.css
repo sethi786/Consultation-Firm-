@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------ *
- * Waypoint Security — token layer (CLAUDE.md §3.2)
+ * Waypoint — token layer (CLAUDE.md §3.2)
  * Tailwind v4 @theme. No tailwind.config. Never hardcode a hex elsewhere.
  * ------------------------------------------------------------------ */
 
@@ -303,16 +303,14 @@
   }
 
   /* ── Refined on-brand entrance (calm, documentary — not theatre) ──────────
-     First-paint staged reveal for the hero. Transform-only on the title so the
-     LCP element paints immediately (never gated behind opacity). All of this is
-     disabled by the global reduced-motion killswitch above. */
+     First-paint staged reveal for the hero. TRANSFORM-ONLY (no opacity) so
+     content is ALWAYS painted and can never be left invisible if an animation
+     fails to run on a given browser. Disabled by the reduced-motion killswitch. */
   @keyframes rise-in {
     from {
-      opacity: 0;
       transform: translateY(12px);
     }
     to {
-      opacity: 1;
       transform: translateY(0);
     }
   }
@@ -420,14 +418,13 @@
     transform: scaleX(1);
   }
 
-  /* Process timeline: numbered nodes pop in sequence. */
+  /* Process timeline: numbered nodes slide in. Transform-only (no opacity) so
+     the steps are always visible even if the observer never fires. */
   .node-pop {
-    opacity: 0;
-    transform: translateY(10px) scale(0.9);
-    transition: opacity 600ms var(--ease-doc), transform 600ms var(--ease-doc);
+    transform: translateY(8px);
+    transition: transform 600ms var(--ease-doc);
   }
   [data-shown="true"] .node-pop {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }

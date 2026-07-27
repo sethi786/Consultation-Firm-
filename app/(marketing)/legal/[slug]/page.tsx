@@ -68,7 +68,7 @@ const LEGAL: Record<
       {
         heading: "Intellectual property",
         body: [
-          "The content, design, and code of this site are owned by Waypoint Security or its licensors and are provided for your information. Framework references (NIST CSF, ISO/IEC 27001, CIS Controls) belong to their respective bodies and are used for identification only.",
+          "The content, design, and code of this site are owned by Waypoint or its licensors and are provided for your information. Framework references (NIST CSF, ISO/IEC 27001, CIS Controls) belong to their respective bodies and are used for identification only.",
         ],
       },
       {
@@ -152,7 +152,7 @@ function SecurityPosture() {
     ["Incident response", "Documented process; breach-notification commitments set in the engagement data processing agreement"],
   ];
   return (
-    <Table caption="Waypoint Security posture">
+    <Table caption="Waypoint posture">
       <THead>
         <TR>
           <TH>Area</TH>

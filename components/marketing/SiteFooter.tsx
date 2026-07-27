@@ -41,7 +41,6 @@ export function SiteFooter() {
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-baseline gap-2">
               <span className="font-display text-h3 text-ink">Waypoint</span>
-              <span className="font-mono text-mono-xs uppercase text-slate">Security</span>
             </div>
             <p className="mt-3 max-w-xs text-caption text-slate">
               Evidence-led security consulting and managed detection. We map your
@@ -83,7 +82,7 @@ export function SiteFooter() {
         {/* Colophon */}
         <div className="mt-14 flex flex-col gap-3 border-t border-rule pt-6 md:flex-row md:items-center md:justify-between">
           <p className="font-mono text-mono-xs uppercase text-slate">
-            © {new Date().getFullYear()} Waypoint Security. All rights reserved.
+            © {new Date().getFullYear()} Waypoint. All rights reserved.
           </p>
           <p className="font-mono text-mono-xs uppercase text-slate/70">
             Cookieless · No trackers · Self-hosted fonts
