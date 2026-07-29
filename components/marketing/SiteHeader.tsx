@@ -48,14 +48,18 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative py-1 font-body text-small transition-colors",
+                  "group relative py-1 font-body text-small transition-colors",
                   active ? "text-ink" : "text-slate hover:text-ink",
                 )}
               >
                 <span className="inline-flex items-center gap-1.5">{item.label}</span>
-                {active && (
-                  <span className="absolute -bottom-0.5 left-0 h-px w-full bg-brass" aria-hidden="true" />
-                )}
+                <span
+                  aria-hidden="true"
+                  className={cn(
+                    "absolute -bottom-0.5 left-0 h-px w-full origin-left bg-brass transition-transform duration-200 ease-doc",
+                    active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100",
+                  )}
+                />
               </Link>
             );
           })}

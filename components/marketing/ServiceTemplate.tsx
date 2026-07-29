@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Container, Eyebrow, Chip, Tabs, Accordion, Reveal } from "@/components/ui";
+import { Container, Eyebrow, Chip, Tabs, Accordion, Reveal, DomainIcon } from "@/components/ui";
 import type { TabItem } from "@/components/ui/Tabs";
 import { ServiceControls } from "./ServiceControls";
 import { ContactCTA } from "./ContactCTA";
@@ -30,6 +30,7 @@ function SectionHead({
 }
 
 export function ServiceTemplate({ service }: { service: ServiceDetail }) {
+  const summary = SERVICE_LIST.find((s) => s.slug === service.slug);
   const serviceNumber =
     SERVICE_LIST.findIndex((s) => s.slug === service.slug) + 1;
   const idx = String(serviceNumber).padStart(2, "0");
@@ -41,6 +42,16 @@ export function ServiceTemplate({ service }: { service: ServiceDetail }) {
         <Eyebrow className="mb-5">Services / {idx}</Eyebrow>
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
           <div className="lg:col-span-7">
+            {summary?.domain && (
+              <span className="mb-4 inline-flex items-center gap-2">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-rule bg-surface">
+                  <DomainIcon domain={summary.domain} className="h-5 w-5 text-pine" />
+                </span>
+                <span className="font-mono text-mono-xs uppercase tracking-mono text-slate">
+                  {summary.domain}
+                </span>
+              </span>
+            )}
             <h1 className="text-display text-ink">{service.name}</h1>
             <p className="mt-4 font-mono text-mono-xs uppercase text-slate">
               “{service.question}”

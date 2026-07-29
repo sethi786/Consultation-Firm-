@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Container, Eyebrow, Reveal } from "@/components/ui";
+import { Container, Eyebrow, Reveal, DomainIcon } from "@/components/ui";
 import { SERVICES_BY_DOMAIN, SERVICE_LIST, DOMAINS } from "@/content/services";
 import { domainAccent } from "@/lib/accent";
 
@@ -25,8 +25,10 @@ export function ServicesIndex({ index = 2 }: { index?: number }) {
             <div key={group.domain} className="grid grid-cols-1 gap-x-10 gap-y-6 md:grid-cols-12">
               <div className="self-start md:col-span-3 md:sticky md:top-28">
                 <Reveal>
-                  <h3 className={`inline-flex items-center gap-2 font-mono text-mono-xs uppercase tracking-mono ${a.text}`}>
-                    <span className={`h-2 w-2 rounded-full ${a.dot}`} />
+                  <span className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-rule bg-surface">
+                    <DomainIcon domain={group.domain} className="h-5 w-5 text-pine" />
+                  </span>
+                  <h3 className={`flex items-center gap-2 font-mono text-mono-xs uppercase tracking-mono ${a.text}`}>
                     {group.domain}
                   </h3>
                   <p className="mt-2 text-caption text-slate">

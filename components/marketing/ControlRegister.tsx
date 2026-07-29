@@ -24,6 +24,10 @@ const FRAMEWORK_ABBR: Record<Control["framework"], string> = {
   "CIS Controls v8": "CIS v8",
 };
 
+// Monochrome pine ramp for the maturity distribution — darker/fuller = more
+// mature. Reads as one brand colour deepening, not a rainbow.
+const MATURITY_RAMP = ["bg-pine/25", "bg-pine/45", "bg-pine/65", "bg-pine/80", "bg-pine"];
+
 // Cascade timing: 40ms stagger, but scaled down so the whole populate finishes
 // under 900ms no matter how many rows (§3.4). Row animation itself is ~420ms.
 function cascadeStep(rowCount: number): number {
@@ -99,6 +103,14 @@ export function ControlRegister({
 
   const isDimmed = (service: ServiceSlug) => active !== null && service !== active;
 
+  // Maturity distribution across the visible rows (respects the active filter).
+  const visible = active ? rows.filter((r) => r.service === active) : rows;
+  const dist = [1, 2, 3, 4, 5].map((lvl) => visible.filter((r) => r.current === lvl).length);
+  const avg = (key: "current" | "target") =>
+    visible.length ? visible.reduce((a, r) => a + r[key], 0) / visible.length : 0;
+  const avgCurrent = avg("current");
+  const avgTarget = avg("target");
+
   return (
     <section
       aria-labelledby="register-heading"
@@ -118,6 +130,45 @@ export function ControlRegister({
         <p className="font-mono text-mono-xs uppercase text-slate/80">
           NIST CSF 2.0 · ISO 27001:2022 · CIS v8
         </p>
+      </div>
+
+      {/* Maturity distribution — a graphical read on an otherwise dense table.
+          Recomputes as the register is filtered by service. */}
+      <div className="mb-5 rounded-lg border border-rule bg-surface p-4">
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
+          <p className="font-mono text-mono-xs uppercase tracking-mono text-slate">
+            {activeName ? `${activeName} — ` : "All services — "}
+            <span className="text-ink">{visible.length}</span> controls
+          </p>
+          <p className="font-mono text-mono-xs uppercase tracking-mono text-slate/80">
+            avg current <span className="text-ink">{avgCurrent.toFixed(1)}</span>
+            <span className="text-brass-lift">{"  →  "}</span>
+            target <span className="text-ink">{avgTarget.toFixed(1)}</span>
+          </p>
+        </div>
+        <div className="flex h-2.5 w-full overflow-hidden rounded-full bg-rule" aria-hidden="true">
+          {dist.map((count, i) =>
+            count > 0 ? (
+              <div
+                key={i}
+                style={{ flexGrow: count }}
+                className={cn("h-full", MATURITY_RAMP[i])}
+                title={`Level ${i + 1}: ${count}`}
+              />
+            ) : null,
+          )}
+        </div>
+        <div className="mt-2.5 flex flex-wrap gap-x-4 gap-y-1">
+          {dist.map((count, i) => (
+            <span
+              key={i}
+              className="inline-flex items-center gap-1.5 font-mono text-mono-xs uppercase text-slate"
+            >
+              <span className={cn("h-2 w-2 rounded-sm", MATURITY_RAMP[i])} aria-hidden="true" />
+              L{i + 1} · {count}
+            </span>
+          ))}
+        </div>
       </div>
 
       <div className="grid grid-cols-1 gap-x-8 gap-y-4 md:grid-cols-[10rem_1fr]">
