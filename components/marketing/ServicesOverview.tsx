@@ -27,7 +27,7 @@ export function ServicesOverview({ index = 4 }: { index?: number }) {
           <Reveal
             key={group.domain}
             delay={(gi % 3) * 90}
-            className="sheen relative flex flex-col overflow-hidden rounded-3xl border border-rule bg-surface p-7 transition-all duration-300 ease-doc hover:-translate-y-1 hover:border-pine hover:shadow-pop-sm"
+            className="relative flex flex-col overflow-hidden rounded-lg border border-rule bg-surface p-7 transition-colors duration-150 ease-doc hover:border-pine"
           >
             <div className="flex items-baseline justify-between gap-3 border-b border-rule pb-4">
               <h3 className="inline-flex items-center gap-2 font-mono text-mono-xs uppercase tracking-mono text-slate">
@@ -63,7 +63,7 @@ export function ServicesOverview({ index = 4 }: { index?: number }) {
       <div className="mt-10 text-center">
         <Link
           href="/services"
-          className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-surface px-6 py-3 font-body text-small font-medium text-ink transition-colors hover:border-pine"
+          className="inline-flex items-center gap-2 rounded border border-ink/25 bg-surface px-6 py-3 font-body text-small font-medium text-ink transition-colors hover:border-pine"
         >
           Explore the full catalogue →
         </Link>

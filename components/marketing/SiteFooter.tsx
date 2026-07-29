@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { WaypointMark } from "@/components/ui";
 import { SERVICE_LIST } from "@/content/services";
 import { INDUSTRIES } from "@/content/industries";
 import { CONTACT } from "@/lib/site";
@@ -40,15 +41,17 @@ export function SiteFooter() {
       <div className="mx-auto max-w-page px-6 py-16 md:px-8">
         <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-5">
           <div className="col-span-2 md:col-span-1">
-            <div className="flex items-baseline gap-2">
+            <div className="flex items-center gap-2">
+              <WaypointMark className="text-pine" title="" />
               <span className="font-display text-h3 text-ink">Waypoint</span>
             </div>
             <p className="mt-3 max-w-xs text-caption text-slate">
               Evidence-led security consulting and managed detection. We map your
               controls, close the gaps, and prove it.
             </p>
-            {(CONTACT.email || CONTACT.phone || CONTACT.location) && (
+            {(CONTACT.email || CONTACT.phone || CONTACT.address || CONTACT.location) && (
               <ul className="mt-4 flex flex-col gap-1.5 text-caption text-slate">
+                {CONTACT.address && <li className="max-w-xs not-italic">{CONTACT.address}</li>}
                 {CONTACT.email && (
                   <li>
                     <a href={`mailto:${CONTACT.email}`} className="hover:text-ink">{CONTACT.email}</a>
@@ -59,7 +62,7 @@ export function SiteFooter() {
                     <a href={`tel:${CONTACT.phone.replace(/[^+\d]/g, "")}`} className="hover:text-ink">{CONTACT.phone}</a>
                   </li>
                 )}
-                {CONTACT.location && <li>{CONTACT.location}</li>}
+                {!CONTACT.address && CONTACT.location && <li>{CONTACT.location}</li>}
               </ul>
             )}
           </div>
@@ -82,9 +85,19 @@ export function SiteFooter() {
 
         {/* Colophon */}
         <div className="mt-14 flex flex-col gap-3 border-t border-rule pt-6 md:flex-row md:items-center md:justify-between">
-          <p className="font-mono text-mono-xs uppercase text-slate">
-            © {new Date().getFullYear()} Waypoint. All rights reserved.
-          </p>
+          <div className="flex flex-col gap-1">
+            <p className="font-mono text-mono-xs uppercase text-slate">
+              © {new Date().getFullYear()} {CONTACT.legalEntity || "Waypoint"}. All rights reserved.
+              {CONTACT.foundingYear && <span className="text-slate/70"> · Established {CONTACT.foundingYear}</span>}
+            </p>
+            {(CONTACT.registrationNo || CONTACT.jurisdiction) && (
+              <p className="font-mono text-mono-xs uppercase text-slate/70">
+                {[CONTACT.jurisdiction, CONTACT.registrationNo && `No. ${CONTACT.registrationNo}`]
+                  .filter(Boolean)
+                  .join(" · ")}
+              </p>
+            )}
+          </div>
           <p className="font-mono text-mono-xs uppercase text-slate/70">
             Cookieless · No trackers · Self-hosted fonts
           </p>

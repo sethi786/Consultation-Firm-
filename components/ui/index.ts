@@ -1,4 +1,5 @@
 export { Button } from "./Button";
+export { WaypointMark } from "./Logo";
 export { Chip } from "./Chip";
 export { Container } from "./Container";
 export { Grid, Col } from "./Grid";

@@ -4,6 +4,8 @@ import { Container, Eyebrow, Chip } from "@/components/ui";
 import { ContactCTA } from "@/components/marketing/ContactCTA";
 import { INDUSTRIES } from "@/content/industries";
 import { SERVICE_LIST, DOMAINS } from "@/content/services";
+import { CERTIFICATIONS } from "@/content/credibility";
+import { CONTACT } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
@@ -44,6 +46,12 @@ export default function AboutPage() {
           provider for organisations of 200–5,000 seats. We sell evidence, not fear —
           and we are built to outlast any one person in the room.
         </p>
+        {CONTACT.foundingYear && (
+          <p className="mt-6 max-w-measure text-body text-ink">
+            Practising since {CONTACT.foundingYear}
+            {CONTACT.jurisdiction ? `, incorporated in ${CONTACT.jurisdiction}` : ""}.
+          </p>
+        )}
         <p className="mt-8 font-mono text-mono-xs uppercase text-slate/70">
           {SERVICE_LIST.length} services · {DOMAINS.length} practice areas · mapped to NIST CSF 2.0 · ISO 27001 · CIS
         </p>
@@ -160,12 +168,27 @@ export default function AboutPage() {
               <li><Chip>MITRE ATT&amp;CK</Chip></li>
             </ul>
           </div>
-          <p className="max-w-measure text-body text-slate">
-            We share the firm&apos;s certifications, partner tiers, and client
-            references on request during scoping — and, on principle, we never display
-            a badge or a logo we can&apos;t stand behind. That restraint is the point:
-            it is the same discipline we bring to your evidence.
-          </p>
+          <div>
+            {CERTIFICATIONS.length > 0 && (
+              <>
+                <p className="mb-4 max-w-measure text-body text-slate">
+                  Certifications our practitioners hold:
+                </p>
+                <ul className="mb-6 flex flex-wrap gap-2">
+                  {CERTIFICATIONS.map((c) => (
+                    <li key={c.label}>
+                      <Chip>{c.note ? `${c.label} · ${c.note}` : c.label}</Chip>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+            <p className="max-w-measure text-body text-slate">
+              {CERTIFICATIONS.length > 0
+                ? "We share our partner tiers and client references on request during scoping — and, on principle, we never display a badge or a logo we can't stand behind."
+                : "We share the firm's certifications, partner tiers, and client references on request during scoping — and, on principle, we never display a badge or a logo we can't stand behind. That restraint is the point: it is the same discipline we bring to your evidence."}
+            </p>
+          </div>
         </div>
       </Container>
 

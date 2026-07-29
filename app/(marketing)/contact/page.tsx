@@ -75,10 +75,10 @@ export default async function ContactPage({
                 </dd>
               </div>
             )}
-            {CONTACT.location && (
+            {(CONTACT.address || CONTACT.location) && (
               <div>
-                <dt className="font-mono text-mono-xs uppercase text-slate">Location</dt>
-                <dd className="mt-1 text-body text-ink">{CONTACT.location}</dd>
+                <dt className="font-mono text-mono-xs uppercase text-slate">Office</dt>
+                <dd className="mt-1 text-body text-ink">{CONTACT.address || CONTACT.location}</dd>
               </div>
             )}
           </dl>

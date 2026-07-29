@@ -51,7 +51,7 @@ export default function SolutionsPage() {
             return (
               <div
                 key={m.key}
-                className="sheen relative flex flex-col overflow-hidden rounded-3xl border border-rule bg-surface p-7 transition-all duration-300 ease-doc hover:-translate-y-1 hover:border-pine hover:shadow-pop-sm"
+                className="relative flex flex-col overflow-hidden rounded-lg border border-rule bg-surface p-7 transition-colors duration-150 ease-doc hover:border-pine"
               >
                 <span className={`inline-flex w-fit items-center gap-2 rounded-full ${a.softBg} px-3 py-1 font-mono text-mono-xs uppercase ${a.softText}`}>
                   <span className={`h-1.5 w-1.5 rounded-full ${a.dot}`} />

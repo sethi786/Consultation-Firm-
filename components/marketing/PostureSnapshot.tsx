@@ -231,7 +231,7 @@ export function PostureSnapshot() {
         <div className="mt-10 flex flex-wrap items-center gap-4 border-t border-rule pt-8">
           <Link
             href="/contact"
-            className="rounded-full bg-pine px-6 py-3 font-body text-small font-medium text-white transition-colors hover:bg-pine-lift"
+            className="rounded bg-pine px-6 py-3 font-body text-small font-medium text-white transition-colors hover:bg-pine-lift"
           >
             Turn this into a real assessment
           </Link>

@@ -61,13 +61,13 @@ export default function ManagedServicesPage() {
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="/contact?service=managed-soc"
-              className="rounded-full bg-pine px-6 py-3 font-body text-small font-medium text-white transition-colors hover:bg-pine-lift"
+              className="rounded bg-pine px-6 py-3 font-body text-small font-medium text-white transition-colors hover:bg-pine-lift"
             >
               Book an assessment
             </Link>
             <Link
               href="/services/managed-soc"
-              className="rounded-full border border-white/25 bg-surface/5 px-6 py-3 font-body text-small font-medium text-white transition-colors hover:border-white/60"
+              className="rounded border border-white/25 bg-surface/5 px-6 py-3 font-body text-small font-medium text-white transition-colors hover:border-white/60"
             >
               Managed SOC / MDR detail →
             </Link>

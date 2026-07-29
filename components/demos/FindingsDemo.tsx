@@ -38,9 +38,9 @@ const SEV_BAR: Record<Severity, string> = {
 };
 
 const STATUS_CHIP: Record<Status, string> = {
-  Open: "text-rose-ink",
-  "In progress": "text-amber-ink",
-  Remediated: "text-mint-ink",
+  Open: "text-sev-crit",
+  "In progress": "text-sev-high",
+  Remediated: "text-status-remediated",
 };
 
 const FINDINGS: Finding[] = [
@@ -167,7 +167,7 @@ export function FindingsDemo() {
       <div className="mt-6 flex flex-wrap items-center gap-4">
         <Link
           href="/contact"
-          className="rounded-full bg-pine px-6 py-3 font-body text-small font-medium text-white transition-colors hover:bg-pine-lift"
+          className="rounded bg-pine px-6 py-3 font-body text-small font-medium text-white transition-colors hover:bg-pine-lift"
         >
           Get your own register →
         </Link>

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { cookies } from "next/headers";
 import { Newsreader, Public_Sans, IBM_Plex_Mono } from "next/font/google";
 import { SITE_URL, SITE_DESCRIPTION } from "@/lib/site";
 import "./globals.css";
@@ -46,20 +45,18 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Theme is read from a cookie and applied server-side, so there's no flash of
-  // the wrong theme. Light is the default (airy, document-first); the header
-  // toggle sets the cookie. The portal forces its own dark surface.
-  const theme = (await cookies()).get("theme")?.value === "dark" ? "dark" : "light";
-
+  // The marketing site is light-only by design (§3.2) — the document, not the
+  // instrument. The portal and the printable sample report force their own dark
+  // / light surface on their own subtrees, so the root is unconditionally light.
   return (
     <html
       lang="en"
-      data-theme={theme}
+      data-theme="light"
       className={`${newsreader.variable} ${publicSans.variable} ${plexMono.variable}`}
     >
       <body className="min-h-dvh antialiased">{children}</body>

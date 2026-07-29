@@ -26,12 +26,14 @@ export default function OpengraphImage() {
           justifyContent: "space-between",
           backgroundColor: PAPER,
           padding: "72px",
-          fontFamily: "sans-serif",
+          fontFamily: "Georgia, 'Times New Roman', serif",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          <div style={{ fontSize: 34, fontWeight: 600, color: INK }}>Waypoint</div>
-          <div style={{ fontSize: 20, letterSpacing: 4, color: SLATE }}>SECURITY</div>
+        <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+          <svg width="30" height="30" viewBox="0 0 24 24" fill={PINE}>
+            <path d="M12 2.5 L20 20 L12 15.4 L4 20 Z" />
+          </svg>
+          <div style={{ fontSize: 34, color: INK }}>Waypoint</div>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
@@ -59,7 +61,7 @@ export default function OpengraphImage() {
             color: SLATE,
           }}
         >
-          <span>Security consulting &amp; managed detection</span>
+          <span>Evidence-led security consulting &amp; managed detection</span>
           <span style={{ color: PINE }}>NIST CSF · ISO 27001 · CIS</span>
         </div>
       </div>

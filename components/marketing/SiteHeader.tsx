@@ -4,17 +4,17 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
-import { Button } from "@/components/ui";
-import { ThemeToggle } from "./ThemeToggle";
+import { Button, WaypointMark } from "@/components/ui";
 import { ServicesMegaMenu } from "./ServicesMegaMenu";
 import { SERVICES_BY_DOMAIN } from "@/content/services";
 import { domainAccent } from "@/lib/accent";
 
-// "Services" is rendered by the mega-menu; the rest are plain links.
+// "Services" is rendered by the mega-menu; the rest are plain links. Firm-shaped
+// IA (§3.5) — Industries and Insights sit alongside the firm pages, not a
+// growth-funnel of "Solutions / Posture / Explore".
 const NAV = [
+  { href: "/industries", label: "Industries" },
   { href: "/solutions", label: "Solutions" },
-  { href: "/posture", label: "Posture check", accent: true },
-  { href: "/explore", label: "Explore" },
   { href: "/approach", label: "Approach" },
   { href: "/insights", label: "Insights" },
   { href: "/about", label: "About" },
@@ -22,7 +22,8 @@ const NAV = [
 
 function Wordmark() {
   return (
-    <Link href="/" className="group inline-flex items-baseline gap-2" aria-label="Waypoint — home">
+    <Link href="/" className="group inline-flex items-center gap-2" aria-label="Waypoint — home">
+      <WaypointMark className="text-pine" title="" />
       <span className="font-display text-h3 leading-none text-ink">Waypoint</span>
     </Link>
   );
@@ -51,12 +52,7 @@ export function SiteHeader() {
                   active ? "text-ink" : "text-slate hover:text-ink",
                 )}
               >
-                <span className="inline-flex items-center gap-1.5">
-                  {item.accent && (
-                    <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-pine" />
-                  )}
-                  {item.label}
-                </span>
+                <span className="inline-flex items-center gap-1.5">{item.label}</span>
                 {active && (
                   <span className="absolute -bottom-0.5 left-0 h-px w-full bg-brass" aria-hidden="true" />
                 )}
@@ -68,7 +64,6 @@ export function SiteHeader() {
         <div className="hidden items-center gap-4 md:flex">
           {/* Client portal is built but hidden from public nav until the first
               client is onboarded — the code and routes remain at /portal. */}
-          <ThemeToggle />
           <Button href="/contact" size="sm">
             Book an assessment
           </Button>
@@ -76,7 +71,6 @@ export function SiteHeader() {
 
         {/* Mobile controls */}
         <div className="flex items-center gap-1 md:hidden">
-          <ThemeToggle />
           <button
             type="button"
             className="inline-flex items-center justify-center p-2"

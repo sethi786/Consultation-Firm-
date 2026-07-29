@@ -34,10 +34,10 @@ const INITIAL: Control[] = [
 const TOTAL = INITIAL.reduce((a, c) => a + c.weight, 0);
 
 function tone(score: number) {
-  if (score < 40) return { label: "High exposure", bar: "bg-rose", text: "text-rose-ink", chip: "bg-rose-soft text-rose-ink" };
-  if (score < 70) return { label: "Moderate exposure", bar: "bg-amber", text: "text-amber-ink", chip: "bg-amber-soft text-amber-ink" };
-  if (score < 90) return { label: "Good posture", bar: "bg-sky", text: "text-sky-ink", chip: "bg-sky-soft text-sky-ink" };
-  return { label: "Strong posture", bar: "bg-mint", text: "text-mint-ink", chip: "bg-mint-soft text-mint-ink" };
+  if (score < 40) return { label: "High exposure", bar: "bg-sev-crit", text: "text-sev-crit", chip: "bg-sev-crit-tint text-sev-crit" };
+  if (score < 70) return { label: "Moderate exposure", bar: "bg-sev-high", text: "text-sev-high", chip: "bg-sev-high-tint text-sev-high" };
+  if (score < 90) return { label: "Good posture", bar: "bg-sev-low", text: "text-sev-low", chip: "bg-sev-low-tint text-sev-low" };
+  return { label: "Strong posture", bar: "bg-status-remediated", text: "text-status-remediated", chip: "bg-status-remediated-tint text-status-remediated" };
 }
 
 export function PostureCalculator() {
@@ -72,15 +72,15 @@ export function PostureCalculator() {
                 aria-checked={c.on}
                 onClick={() => toggle(c.id)}
                 className={cn(
-                  "flex w-full items-center gap-4 rounded-2xl border px-4 py-3 text-left transition-colors",
-                  c.on ? "border-mint bg-mint-soft" : "border-rule bg-paper hover:border-slate",
+                  "flex w-full items-center gap-4 rounded-lg border px-4 py-3 text-left transition-colors",
+                  c.on ? "border-status-remediated bg-status-remediated-tint" : "border-rule bg-paper hover:border-slate",
                 )}
               >
                 <span
                   aria-hidden="true"
                   className={cn(
                     "relative h-6 w-10 shrink-0 rounded-full transition-colors",
-                    c.on ? "bg-mint" : "bg-rule",
+                    c.on ? "bg-status-remediated" : "bg-rule",
                   )}
                 >
                   <span
@@ -104,7 +104,7 @@ export function PostureCalculator() {
       <div className="md:col-span-2">
         <div className="sticky top-24 rounded-2xl bg-paper p-6">
           <p className="font-mono text-mono-xs uppercase text-slate">Live posture score</p>
-          <p className="mt-2 font-display text-[3.5rem] leading-none text-ink">
+          <p className="mt-2 font-display text-h1 leading-none text-ink">
             {score}
             <span className="text-h3 text-slate">/100</span>
           </p>
@@ -127,7 +127,7 @@ export function PostureCalculator() {
 
           <Link
             href="/contact?service=cloud-security"
-            className="mt-6 block rounded-full bg-pine px-6 py-3 text-center font-body text-small font-medium text-white transition-colors hover:bg-pine-lift"
+            className="mt-6 block rounded bg-pine px-6 py-3 text-center font-body text-small font-medium text-white transition-colors hover:bg-pine-lift"
           >
             Book an assessment →
           </Link>

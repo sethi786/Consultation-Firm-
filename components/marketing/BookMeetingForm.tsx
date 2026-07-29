@@ -155,7 +155,7 @@ export function BookMeetingForm({ initialService }: { initialService?: string })
         <button
           type="submit"
           disabled={!selected || pending}
-          className="rounded-full bg-pine px-6 py-3 font-body text-small font-medium text-white transition-colors enabled:hover:bg-pine-lift disabled:opacity-40"
+          className="rounded bg-pine px-6 py-3 font-body text-small font-medium text-white transition-colors enabled:hover:bg-pine-lift disabled:opacity-40"
         >
           {pending ? "Requesting…" : "Request this meeting"}
         </button>

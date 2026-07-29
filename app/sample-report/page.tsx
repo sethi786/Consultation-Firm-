@@ -62,7 +62,7 @@ export default function SampleReportPage() {
           <Link href="/" className="font-mono text-mono-xs uppercase text-slate hover:text-ink">← Waypoint</Link>
           <a
             href="/waypoint-sample-findings-report.pdf"
-            className="rounded-full bg-pine px-4 py-2 font-body text-small font-medium text-white transition-colors hover:bg-pine-lift"
+            className="rounded bg-pine px-4 py-2 font-body text-small font-medium text-white transition-colors hover:bg-pine-lift"
           >
             Download PDF
           </a>
@@ -180,7 +180,7 @@ export default function SampleReportPage() {
         </footer>
 
         <div className="no-print mt-10">
-          <Link href="/contact" className="rounded-full bg-pine px-6 py-3 font-body text-small font-medium text-white transition-colors hover:bg-pine-lift">
+          <Link href="/contact" className="rounded bg-pine px-6 py-3 font-body text-small font-medium text-white transition-colors hover:bg-pine-lift">
             Get this for your environment — book an assessment
           </Link>
         </div>

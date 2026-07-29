@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Container, Eyebrow, Table, THead, TBody, TR, TH, TD } from "@/components/ui";
+import { CONTACT } from "@/lib/site";
+
+/** Authored date for the current revision of these pages (honest, not now()). */
+const LAST_UPDATED = "29 July 2026";
 
 type Section = { heading: string; body: string[] };
 
@@ -185,6 +189,9 @@ export default async function LegalPage({
       <Eyebrow className="mb-5">Legal</Eyebrow>
       <h1 className="text-display text-ink">{page.title}</h1>
       <p className="mt-4 text-lede text-slate">{page.intro}</p>
+      <p className="mt-6 font-mono text-mono-xs uppercase tracking-mono text-slate/70">
+        Last updated {LAST_UPDATED}
+      </p>
 
       <div className="mt-10">
         {slug === "security" ? (
@@ -209,6 +216,30 @@ export default async function LegalPage({
         <p className="mt-12 border-t border-rule pt-6 text-caption text-slate">
           This page summarises our current practices in plain language. The binding
           terms for any engagement are those in the agreement we sign with you.
+        </p>
+      )}
+
+      {(CONTACT.legalEntity || CONTACT.email) && (
+        <p className="mt-6 text-caption text-slate">
+          {CONTACT.legalEntity && (
+            <>
+              {CONTACT.legalEntity}
+              {CONTACT.registrationNo ? ` (No. ${CONTACT.registrationNo})` : ""}
+              {CONTACT.jurisdiction ? `, ${CONTACT.jurisdiction}` : ""}.{" "}
+            </>
+          )}
+          {CONTACT.email && (
+            <>
+              Privacy enquiries:{" "}
+              <a
+                href={`mailto:${CONTACT.email}`}
+                className="text-pine underline decoration-pine/40 underline-offset-4 hover:decoration-pine"
+              >
+                {CONTACT.email}
+              </a>
+              .
+            </>
+          )}
         </p>
       )}
     </Container>

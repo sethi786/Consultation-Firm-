@@ -77,7 +77,7 @@ export default function ExplorePage() {
               <a
                 key={d.id}
                 href={`#${d.id}`}
-                className="rounded-full border border-white/25 px-4 py-2 font-body text-small text-white/90 transition-colors hover:border-white/60 hover:bg-surface/10"
+                className="rounded border border-white/25 px-4 py-2 font-body text-small text-white/90 transition-colors hover:border-white/60 hover:bg-surface/10"
               >
                 {d.title}
               </a>

@@ -50,17 +50,17 @@ export function AttackPathVisualizer() {
       <div
         className={cn(
           "mb-8 flex flex-wrap items-center justify-between gap-3 rounded-2xl px-5 py-4",
-          breached ? "bg-rose-soft" : "bg-mint-soft",
+          breached ? "bg-sev-crit-tint" : "bg-status-remediated-tint",
         )}
       >
-        <p className={cn("font-body text-body", breached ? "text-rose-ink" : "text-mint-ink")}>
+        <p className={cn("font-body text-body", breached ? "text-sev-crit" : "text-status-remediated")}>
           {breached ? (
             <>Attacker reaches <strong>your data</strong> — full breach.</>
           ) : (
             <>Contained at <strong>{STAGES[reachedIndex]}</strong>. Lateral movement stopped.</>
           )}
         </p>
-        <span className={cn("font-mono text-mono-xs uppercase", breached ? "text-rose-ink" : "text-mint-ink")}>
+        <span className={cn("font-mono text-mono-xs uppercase", breached ? "text-sev-crit" : "text-status-remediated")}>
           {gates.filter((g) => g.on).length} / {gates.length} gates closed
         </span>
       </div>
@@ -78,25 +78,25 @@ export function AttackPathVisualizer() {
                 className={cn(
                   "flex flex-col items-center justify-center rounded-2xl border-2 px-4 py-4 text-center transition-colors md:flex-1",
                   isContainment
-                    ? "border-mint bg-mint-soft"
+                    ? "border-status-remediated bg-status-remediated-tint"
                     : reached
-                      ? "border-rose bg-rose-soft"
+                      ? "border-sev-crit bg-sev-crit-tint"
                       : "border-rule bg-paper",
                 )}
               >
                 <span
                   className={cn(
                     "font-mono text-mono-xs uppercase",
-                    isContainment ? "text-mint-ink" : reached ? "text-rose-ink" : "text-slate",
+                    isContainment ? "text-status-remediated" : reached ? "text-sev-crit" : "text-slate",
                   )}
                 >
                   {isTarget ? "◆ " : ""}{stage}
                 </span>
                 {reached && !isContainment && (
-                  <span className="mt-1 font-mono text-mono-xs uppercase text-rose-ink">breached</span>
+                  <span className="mt-1 font-mono text-mono-xs uppercase text-sev-crit">breached</span>
                 )}
                 {isContainment && (
-                  <span className="mt-1 font-mono text-mono-xs uppercase text-mint-ink">held</span>
+                  <span className="mt-1 font-mono text-mono-xs uppercase text-status-remediated">held</span>
                 )}
               </div>
 
@@ -120,13 +120,13 @@ export function AttackPathVisualizer() {
                     aria-label={`${gates[i]!.label} — ${gates[i]!.on ? "on" : "off"}`}
                     onClick={() => toggle(gates[i]!.id)}
                     className={cn(
-                      "rounded-full border px-3 py-1.5 font-mono text-mono-xs uppercase transition-colors",
+                      "rounded border px-3 py-1.5 font-mono text-mono-xs uppercase transition-colors",
                       gates[i]!.on
-                        ? "border-mint bg-mint text-white"
+                        ? "border-pine bg-pine text-white"
                         : "border-rule bg-paper text-slate hover:border-slate",
                     )}
                   >
-                    {gates[i]!.on ? "🔒 " : "○ "}{gates[i]!.label}
+                    {gates[i]!.on ? "ON · " : "OFF · "}{gates[i]!.label}
                   </button>
                 </div>
               )}
@@ -138,7 +138,7 @@ export function AttackPathVisualizer() {
       <div className="mt-8 flex flex-wrap items-center gap-4">
         <Link
           href="/contact?service=zero-trust"
-          className="rounded-full bg-pine px-6 py-3 font-body text-small font-medium text-white transition-colors hover:bg-pine-lift"
+          className="rounded bg-pine px-6 py-3 font-body text-small font-medium text-white transition-colors hover:bg-pine-lift"
         >
           Get a zero-trust roadmap →
         </Link>

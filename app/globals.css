@@ -60,12 +60,16 @@
   --color-fuchsia-ink: #a21caf;
   --color-night: #0f1220; /* deep ground for high-contrast blocks */
 
-  /* Playful radii + a soft pop shadow for lifted color cards */
-  --radius-xl: 16px;
-  --radius-2xl: 28px;
-  --radius-3xl: 40px;
-  --shadow-pop: 0 24px 50px -16px rgba(18, 24, 26, 0.28);
-  --shadow-pop-sm: 0 12px 26px -12px rgba(18, 24, 26, 0.24);
+  /* Radii — institutional restraint (§3.5). Cards are lightly rounded, not
+     playful. `--radius-2xl/3xl` are kept as token names (many utilities resolve
+     to them) but tuned down so nothing reads as a soft SaaS card. */
+  --radius-xl: 6px;
+  --radius-2xl: 8px;
+  --radius-3xl: 10px;
+  /* "Pop" shadows are retired to a barely-there hairline elevation, so any
+     lingering `shadow-pop*` utility resolves to a calm, document-like lift. */
+  --shadow-pop: 0 1px 2px rgba(18, 24, 26, 0.05), 0 8px 24px rgba(18, 24, 26, 0.06);
+  --shadow-pop-sm: 0 1px 2px rgba(18, 24, 26, 0.05);
 
   /* Card / panel surface — flips to a dark panel in the dark theme so `bg-surface`
      recolors automatically where we'd otherwise hardcode white. */
@@ -208,8 +212,8 @@
 }
 
 /* Dark theme ------------------------------------------------------- *
- * Opt-in via [data-theme="dark"] (the marketing default; the portal forces it
- * on its own subtree). Overriding the semantic tokens recolours every
+ * Opt-in via [data-theme="dark"]. The marketing site is light-only (§3.2); the
+ * portal forces this on its own subtree. Overriding the semantic tokens recolours every
  * token-based utility — bg-paper, text-ink, bg-surface, the accent -soft/-ink
  * values — with no per-component dark: variants. The vivid accents themselves
  * stay saturated; they read even better on the near-black ground.
@@ -300,10 +304,10 @@
   .attack-flow {
     background-image: repeating-linear-gradient(
       90deg,
-      var(--color-rose) 0,
-      var(--color-rose) 8px,
-      color-mix(in srgb, var(--color-rose) 55%, white) 8px,
-      color-mix(in srgb, var(--color-rose) 55%, white) 16px
+      var(--color-sev-crit) 0,
+      var(--color-sev-crit) 8px,
+      color-mix(in srgb, var(--color-sev-crit) 55%, white) 8px,
+      color-mix(in srgb, var(--color-sev-crit) 55%, white) 16px
     );
     background-size: 24px 100%;
     animation: attack-flow 600ms linear infinite;
@@ -346,73 +350,6 @@
   }
   .anim-delay-3 {
     animation-delay: 280ms;
-  }
-
-  /* ── Innovative-but-professional motion (owner override of §3.6) ───────────
-     Purposeful, restrained motion — no particle theatre, no scroll-jacking.
-     Everything here is disabled by the global reduced-motion killswitch. */
-
-  /* Hero: a slow pine "aurora" that drifts behind the headline. */
-  @keyframes aurora-drift {
-    0%   { transform: translate3d(-3%, -2%, 0) scale(1); }
-    50%  { transform: translate3d(3%, 2%, 0) scale(1.1); }
-    100% { transform: translate3d(-3%, -2%, 0) scale(1); }
-  }
-  .aurora {
-    animation: aurora-drift 20s ease-in-out infinite;
-    will-change: transform;
-  }
-
-  /* Hero: a soft glow that follows the pointer (--mx/--my set in JS). */
-  .spotlight {
-    background: radial-gradient(
-      260px 260px at var(--mx, 50%) var(--my, 8%),
-      color-mix(in oklab, var(--color-pine) 18%, transparent),
-      transparent 70%
-    );
-    opacity: 0;
-    transition: opacity 400ms var(--ease-doc);
-  }
-  .spotlight[data-active="true"] {
-    opacity: 1;
-  }
-
-  /* Framework ticker: a slow, seamless marquee that pauses on hover. */
-  @keyframes marquee-scroll {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-  }
-  .marquee-track {
-    animation: marquee-scroll 40s linear infinite;
-    width: max-content;
-  }
-  .marquee:hover .marquee-track,
-  .marquee:focus-within .marquee-track {
-    animation-play-state: paused;
-  }
-  .marquee-mask {
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
-    mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
-  }
-
-  /* Premium sheen sweep across a card on hover. */
-  .sheen::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(
-      105deg,
-      transparent 32%,
-      color-mix(in oklab, var(--color-pine) 12%, transparent) 46%,
-      transparent 60%
-    );
-    transform: translateX(-130%);
-    transition: transform 900ms var(--ease-doc);
-    pointer-events: none;
-  }
-  .sheen:hover::after {
-    transform: translateX(130%);
   }
 
   /* Process timeline: connector line draws left→right when scrolled in. */

@@ -90,28 +90,28 @@ function band(pct: number): Band {
     return {
       name: "Exposed",
       blurb: "There are gaps an attacker would find first. A focused assessment turns this into a prioritised plan fast.",
-      ring: "text-rose",
-      chip: "bg-rose-soft text-rose-ink",
+      ring: "text-sev-crit",
+      chip: "bg-sev-crit-tint text-sev-crit",
     };
   if (pct < 65)
     return {
       name: "Developing",
       blurb: "Good instincts, uneven coverage. The value now is sequencing — fixing what actually reduces risk first.",
-      ring: "text-amber",
-      chip: "bg-amber-soft text-amber-ink",
+      ring: "text-sev-high",
+      chip: "bg-sev-high-tint text-sev-high",
     };
   if (pct < 88)
     return {
       name: "Managed",
       blurb: "A solid program. An assessment sharpens the edges and proves it with evidence you can show a board.",
-      ring: "text-sky",
-      chip: "bg-sky-soft text-sky-ink",
+      ring: "text-sev-low",
+      chip: "bg-sev-low-tint text-sev-low",
     };
   return {
     name: "Resilient",
     blurb: "Strong posture. We'd validate it under adversarial testing and help you keep the bar high as you scale.",
-    ring: "text-mint",
-    chip: "bg-mint-soft text-mint-ink",
+    ring: "text-status-remediated",
+    chip: "bg-status-remediated-tint text-status-remediated",
   };
 }
 
@@ -166,7 +166,7 @@ export function MaturityAssessment() {
               />
             </svg>
             <div className="-rotate-0">
-              <p className="font-display text-[3.5rem] leading-none text-ink">{pct}</p>
+              <p className="font-display text-h1 leading-none text-ink">{pct}</p>
               <span className={cn("mt-2 inline-block rounded-full px-3 py-1 font-mono text-mono-xs uppercase", b.chip)}>
                 {b.name}
               </span>
@@ -191,7 +191,7 @@ export function MaturityAssessment() {
         <div className="mt-8 flex flex-wrap items-center gap-4">
           <Link
             href="/contact"
-            className="rounded-full bg-pine px-6 py-3 font-body text-small font-medium text-white transition-colors hover:bg-pine-lift"
+            className="rounded bg-pine px-6 py-3 font-body text-small font-medium text-white transition-colors hover:bg-pine-lift"
           >
             Book an assessment →
           </Link>
