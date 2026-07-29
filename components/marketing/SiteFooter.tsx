@@ -1,14 +1,10 @@
 import Link from "next/link";
-import { WaypointMark } from "@/components/ui";
-import { SERVICE_LIST } from "@/content/services";
+import { WaypointMark, DomainIcon } from "@/components/ui";
+import { SERVICES_BY_DOMAIN } from "@/content/services";
 import { INDUSTRIES } from "@/content/industries";
 import { CONTACT } from "@/lib/site";
 
 const COLUMNS: { heading: string; links: { href: string; label: string }[] }[] = [
-  {
-    heading: "Services",
-    links: SERVICE_LIST.map((s) => ({ href: `/services/${s.slug}`, label: s.name })),
-  },
   {
     heading: "Industries",
     links: INDUSTRIES.map((i) => ({ href: `/industries/${i.slug}`, label: i.name })),
@@ -39,7 +35,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-rule">
       <div className="mx-auto max-w-page px-6 py-16 md:px-8">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-5">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-4">
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2">
               <WaypointMark className="text-pine" title="" />
@@ -82,6 +78,39 @@ export function SiteFooter() {
             </nav>
           ))}
         </div>
+
+        {/* Services — grouped by the 12 categories, compact multi-column (was a
+            single 49-link column ~3000px tall). All service links preserved. */}
+        <nav aria-label="Services" className="mt-14 border-t border-rule pt-10">
+          <div className="mb-6 flex items-baseline justify-between gap-3">
+            <h2 className="font-mono text-mono-xs uppercase tracking-mono text-slate">Services</h2>
+            <Link href="/services" className="font-mono text-mono-xs uppercase tracking-mono text-pine hover:text-pine-lift">
+              All services →
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 gap-x-8 gap-y-7 sm:grid-cols-3 lg:grid-cols-4">
+            {SERVICES_BY_DOMAIN.map((group) => (
+              <div key={group.domain}>
+                <h3 className="mb-2.5 flex items-center gap-2 font-mono text-mono-xs uppercase tracking-mono text-ink">
+                  <DomainIcon domain={group.domain} className="h-3.5 w-3.5 text-pine" />
+                  {group.domain}
+                </h3>
+                <ul className="flex flex-col gap-1.5">
+                  {group.services.map((s) => (
+                    <li key={s.slug}>
+                      <Link
+                        href={`/services/${s.slug}`}
+                        className="text-caption text-ink/70 hover:text-ink"
+                      >
+                        {s.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </nav>
 
         {/* Colophon */}
         <div className="mt-14 flex flex-col gap-3 border-t border-rule pt-6 md:flex-row md:items-center md:justify-between">

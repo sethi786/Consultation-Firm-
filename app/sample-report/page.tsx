@@ -57,7 +57,7 @@ export default function SampleReportPage() {
   return (
     <div data-theme="light" className="min-h-dvh bg-paper text-ink">
       {/* Screen-only toolbar */}
-      <div className="no-print sticky top-0 z-10 border-b border-rule bg-paper/90 backdrop-blur-sm">
+      <div className="no-print sticky top-0 z-10 border-b border-rule bg-paper">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-3">
           <Link href="/" className="font-mono text-mono-xs uppercase text-slate hover:text-ink">← Waypoint</Link>
           <a

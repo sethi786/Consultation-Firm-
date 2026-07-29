@@ -4,6 +4,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
+import { DomainIcon } from "@/components/ui";
 import { SERVICES_BY_DOMAIN } from "@/content/services";
 import { domainAccent } from "@/lib/accent";
 
@@ -19,6 +20,7 @@ export function ServicesMegaMenu() {
   const pathname = usePathname();
   const wrapRef = useRef<HTMLDivElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pointerType = useRef<string>("mouse");
 
   // Close on route change.
   useEffect(() => {
@@ -57,15 +59,32 @@ export function ServicesMegaMenu() {
     <div
       ref={wrapRef}
       className="relative"
-      onMouseEnter={openNow}
-      onMouseLeave={closeSoon}
+      // Hover-open only for an actual mouse; touch/pen fall through to the click
+      // handler so they toggle instead of opening-then-toggling-shut.
+      onPointerEnter={(e) => {
+        if (e.pointerType === "mouse") openNow();
+      }}
+      onPointerLeave={(e) => {
+        if (e.pointerType === "mouse") closeSoon();
+      }}
+      onBlur={(e) => {
+        if (!wrapRef.current?.contains(e.relatedTarget as Node)) closeSoon();
+      }}
     >
       <button
         type="button"
         aria-expanded={open}
         aria-controls={panelId}
         aria-haspopup="true"
-        onClick={() => setOpen((o) => !o)}
+        onPointerDown={(e) => {
+          pointerType.current = e.pointerType;
+        }}
+        onClick={(e) => {
+          // Keyboard (detail 0) and touch toggle; a mouse click keeps it open
+          // because hover already opened it (mouseleave handles closing).
+          if (e.detail === 0 || pointerType.current === "touch") setOpen((o) => !o);
+          else setOpen(true);
+        }}
         className={cn(
           "relative flex items-center gap-1 py-1 font-body text-small transition-colors",
           active || open ? "text-ink" : "text-slate hover:text-ink",
@@ -90,7 +109,7 @@ export function ServicesMegaMenu() {
           aria-label="Services"
           onMouseEnter={openNow}
           onMouseLeave={closeSoon}
-          className="fixed inset-x-0 top-16 z-40 border-b border-rule bg-paper/95 shadow-pop backdrop-blur-md motion-safe:animate-[rise-in_180ms_var(--ease-doc)_both]"
+          className="fixed inset-x-0 top-16 z-50 border-b border-rule bg-paper shadow-1 motion-safe:animate-[rise-in_180ms_var(--ease-doc)_both]"
         >
           <div className="mx-auto max-w-page px-6 py-8 md:px-8">
             <div className="grid grid-cols-2 gap-x-8 gap-y-7 md:grid-cols-3 lg:grid-cols-4">
@@ -99,7 +118,7 @@ export function ServicesMegaMenu() {
                 return (
                   <div key={group.domain}>
                     <p className={cn("mb-3 inline-flex items-center gap-2 font-mono text-mono-xs uppercase tracking-mono", a.text)}>
-                      <span className={cn("h-1.5 w-1.5 rounded-full", a.dot)} />
+                      <DomainIcon domain={group.domain} className="h-4 w-4 text-pine" />
                       {group.domain}
                     </p>
                     <ul className="flex flex-col gap-0.5">
