@@ -1,24 +1,8 @@
 import Link from "next/link";
 import { WaypointMark, DomainIcon } from "@/components/ui";
-import {
-  RuixenGradientFooter,
-  type GradientStop,
-} from "@/components/ui/ruixen-gradient-footer";
 import { SERVICES_BY_DOMAIN } from "@/content/services";
 import { INDUSTRIES } from "@/content/industries";
 import { CONTACT } from "@/lib/site";
-
-/** The beacon spectrum as footer-glow stops, floor (0) → top (1): deep pine
- *  ember rising through teal and sky to a pale light, fading out violet. */
-const WAYPOINT_STOPS: GradientStop[] = [
-  { offset: 0, color: "#12241f" },
-  { offset: 0.2, color: "#1b3a31" },
-  { offset: 0.38, color: "#0d9488" },
-  { offset: 0.56, color: "#0ea5e9" },
-  { offset: 0.72, color: "#e1ecfe" },
-  { offset: 0.86, color: "#7c3aed" },
-  { offset: 1, color: "#c026d300" },
-];
 
 const COLUMNS: { heading: string; links: { href: string; label: string }[] }[] = [
   {
@@ -50,14 +34,7 @@ const COLUMNS: { heading: string; links: { href: string; label: string }[] }[] =
 
 export function SiteFooter() {
   return (
-    <RuixenGradientFooter
-      className="border-t border-rule"
-      stops={WAYPOINT_STOPS}
-      gradientHeight="36vh"
-      minReveal={0.05}
-      blur={26}
-      bars={11}
-    >
+    <footer className="border-t border-rule">
       <div className="mx-auto max-w-page px-6 py-16 md:px-8">
         <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-4">
           <div className="col-span-2 md:col-span-1">
@@ -148,6 +125,6 @@ export function SiteFooter() {
           </p>
         </div>
       </div>
-    </RuixenGradientFooter>
+    </footer>
   );
 }
