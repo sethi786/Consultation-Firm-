@@ -16,7 +16,7 @@ export default function Error({
 }) {
   return (
     <Container className="py-24 md:py-32">
-      <p className="font-mono text-mono-xs uppercase tracking-mono text-slate/70">Error</p>
+      <p className="font-mono text-mono-xs uppercase tracking-mono text-slate">Error</p>
       <h1 className="mt-4 max-w-2xl text-h1 text-ink text-balance">This page didn&apos;t load.</h1>
       <p className="mt-5 max-w-measure text-body text-slate">
         Something on our side interrupted it. Try again — and if it keeps happening,

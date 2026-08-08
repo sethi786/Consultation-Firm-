@@ -96,7 +96,7 @@ export default function HomePage() {
                 ].map(([n, label]) => (
                   <div key={label as string}>
                     <dt className="sr-only">{label}</dt>
-                    <dd className="font-display text-h2 text-ink">
+                    <dd className="font-display text-h2 tabular-nums text-ink">
                       <CountUp value={n as number} />
                     </dd>
                     <dd className="font-mono text-mono-xs uppercase tracking-mono text-slate">

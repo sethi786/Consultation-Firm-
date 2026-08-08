@@ -93,7 +93,7 @@ export function HeroVisual() {
         <ul className="divide-y divide-rule/70 px-5">
           {ROWS.map((r) => (
             <li key={r.id} className="flex items-center gap-3 py-3.5">
-              <span className="font-mono text-mono-xs text-slate/80">{r.id}</span>
+              <span className="font-mono text-mono-xs text-slate">{r.id}</span>
               <span className="min-w-0 flex-1 truncate text-caption text-ink">{r.title}</span>
               <span
                 className={`rounded-full px-2 py-0.5 font-mono text-mono-xs uppercase ${r.chip}`}

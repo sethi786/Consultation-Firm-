@@ -52,7 +52,7 @@ export default function AboutPage() {
             {CONTACT.jurisdiction ? `, incorporated in ${CONTACT.jurisdiction}` : ""}.
           </p>
         )}
-        <p className="mt-8 font-mono text-mono-xs uppercase text-slate/70">
+        <p className="mt-8 font-mono text-mono-xs uppercase text-slate">
           {SERVICE_LIST.length} services · {DOMAINS.length} practice areas · mapped to NIST CSF 2.0 · ISO 27001 · CIS
         </p>
       </Container>

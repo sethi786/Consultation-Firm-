@@ -189,7 +189,7 @@ export default async function LegalPage({
       <Eyebrow className="mb-5">Legal</Eyebrow>
       <h1 className="text-display text-ink">{page.title}</h1>
       <p className="mt-4 text-lede text-slate">{page.intro}</p>
-      <p className="mt-6 font-mono text-mono-xs uppercase tracking-mono text-slate/70">
+      <p className="mt-6 font-mono text-mono-xs uppercase tracking-mono text-slate">
         Last updated {LAST_UPDATED}
       </p>
 

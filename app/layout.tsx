@@ -30,6 +30,10 @@ const plexMono = IBM_Plex_Mono({
 // stamp the request nonce onto its bootstrap scripts. Opt the whole app in.
 export const dynamic = "force-dynamic";
 
+export const viewport = {
+  themeColor: "#f4f5f2",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {

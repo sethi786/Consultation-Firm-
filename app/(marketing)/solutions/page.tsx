@@ -67,7 +67,7 @@ export default function SolutionsPage() {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-5 font-mono text-mono-xs uppercase text-slate/70">
+                <p className="mt-5 font-mono text-mono-xs uppercase text-slate">
                   Engagement tier: {m.tier}
                 </p>
               </div>

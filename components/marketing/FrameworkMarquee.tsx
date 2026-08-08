@@ -25,7 +25,7 @@ export function FrameworkMarquee() {
   return (
     <section className="border-y border-rule bg-paper-sunk/40 py-8">
       <Container>
-        <p className="mb-5 text-center font-mono text-mono-xs uppercase tracking-mono text-slate/70">
+        <p className="mb-5 text-center font-mono text-mono-xs uppercase tracking-mono text-slate">
           Mapped to the standards your auditors and board already know
         </p>
         <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">

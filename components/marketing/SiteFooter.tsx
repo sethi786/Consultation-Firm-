@@ -110,17 +110,17 @@ export function SiteFooter() {
           <div className="flex flex-col gap-1">
             <p className="font-mono text-mono-xs uppercase text-slate">
               © {new Date().getFullYear()} {CONTACT.legalEntity || "Waypoint"}. All rights reserved.
-              {CONTACT.foundingYear && <span className="text-slate/70"> · Established {CONTACT.foundingYear}</span>}
+              {CONTACT.foundingYear && <span className="text-slate"> · Established {CONTACT.foundingYear}</span>}
             </p>
             {(CONTACT.registrationNo || CONTACT.jurisdiction) && (
-              <p className="font-mono text-mono-xs uppercase text-slate/70">
+              <p className="font-mono text-mono-xs uppercase text-slate">
                 {[CONTACT.jurisdiction, CONTACT.registrationNo && `No. ${CONTACT.registrationNo}`]
                   .filter(Boolean)
                   .join(" · ")}
               </p>
             )}
           </div>
-          <p className="font-mono text-mono-xs uppercase text-slate/70">
+          <p className="font-mono text-mono-xs uppercase text-slate">
             Cookieless · No trackers · Self-hosted fonts
           </p>
         </div>

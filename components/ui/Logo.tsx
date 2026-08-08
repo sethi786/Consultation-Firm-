@@ -8,16 +8,20 @@ import { cn } from "@/lib/cn";
  */
 export function WaypointMark({
   className,
-  title = "Waypoint",
+  title = "",
 }: {
   className?: string;
+  /** Accessible name. Empty (the default) renders the mark as decorative —
+   *  correct wherever it sits beside the visible "Waypoint" wordmark. */
   title?: string;
 }) {
+  const a11y = title
+    ? ({ role: "img", "aria-label": title } as const)
+    : ({ "aria-hidden": true } as const);
   return (
     <svg
       viewBox="0 0 24 24"
-      role="img"
-      aria-label={title}
+      {...a11y}
       className={cn("h-[1.05em] w-[1.05em]", className)}
       fill="currentColor"
     >

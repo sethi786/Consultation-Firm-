@@ -65,7 +65,7 @@ export default async function CaseStudyPage({
                   <span aria-hidden="true" className="text-brass-lift">→</span>
                   <span className="text-h2">{o.after}</span>
                 </dd>
-                <dd className="font-mono text-mono-xs uppercase text-slate/70">in {o.timeframe}</dd>
+                <dd className="font-mono text-mono-xs uppercase text-slate">in {o.timeframe}</dd>
               </div>
             ))}
           </dl>

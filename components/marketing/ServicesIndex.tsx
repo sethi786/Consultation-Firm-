@@ -57,7 +57,7 @@ export function ServicesIndex({ index = 2 }: { index?: number }) {
                         </span>
                       </div>
                       <p className="mt-3 text-small text-slate">{s.blurb}</p>
-                      <p className="mt-4 border-t border-rule pt-3 font-mono text-mono-xs uppercase text-slate/80">
+                      <p className="mt-4 border-t border-rule pt-3 font-mono text-mono-xs uppercase text-slate">
                         “{s.question}”
                       </p>
                     </Link>

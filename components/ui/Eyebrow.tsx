@@ -27,7 +27,7 @@ export function Eyebrow({ index, reference, className, children }: EyebrowProps)
       )}
       {typeof index === "number" && <span className="text-rule">{"  —  "}</span>}
       <span className="text-slate">{children}</span>
-      {reference && <span className="text-slate/70">{"  ·  "}{reference}</span>}
+      {reference && <span className="text-slate">{"  ·  "}{reference}</span>}
     </p>
   );
 }

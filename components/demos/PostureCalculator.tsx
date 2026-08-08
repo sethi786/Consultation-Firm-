@@ -85,7 +85,7 @@ export function PostureCalculator() {
                 >
                   <span
                     className={cn(
-                      "absolute top-0.5 h-5 w-5 rounded-full bg-surface shadow-sm transition-all",
+                      "absolute top-0.5 h-5 w-5 rounded-full bg-surface shadow-sm transition-[left] duration-200 ease-doc",
                       c.on ? "left-[1.125rem]" : "left-0.5",
                     )}
                   />
@@ -113,7 +113,7 @@ export function PostureCalculator() {
           </span>
           <div className="mt-4 h-3 w-full overflow-hidden rounded-full bg-rule">
             <div
-              className={cn("h-full rounded-full motion-safe:transition-all motion-safe:duration-500 motion-safe:ease-doc", t.bar)}
+              className={cn("h-full rounded-full motion-safe:transition-[width] motion-safe:duration-500 motion-safe:ease-doc", t.bar)}
               style={{ width: `${score}%` }}
             />
           </div>
@@ -131,7 +131,7 @@ export function PostureCalculator() {
           >
             Book an assessment →
           </Link>
-          <p className="mt-3 font-mono text-mono-xs uppercase text-slate/70">
+          <p className="mt-3 font-mono text-mono-xs uppercase text-slate">
             Indicative · client-side only
           </p>
         </div>

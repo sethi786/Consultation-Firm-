@@ -20,7 +20,7 @@
   --color-paper: #f4f5f2;
   --color-paper-sunk: #eceee8; /* subtle sunken fill for register/thead */
   --color-brass: #b08d45;
-  --color-brass-lift: #8f7231; /* accessible brass for text on paper (AA) */
+  --color-brass-lift: #755e20; /* accessible brass for small text on paper/tints (AA ≥4.5) */
 
   /* Vivid accents — the "bright color-block" system. Each service domain owns a
      hue; the strong value is for solid blocks (white text), the -soft value is a
@@ -33,16 +33,16 @@
   --color-indigo-ink: #4038c9;
   --color-sky: #0ea5e9;
   --color-sky-soft: #daf0fb;
-  --color-sky-ink: #0b7fb4;
+  --color-sky-ink: #0a6b96;
   --color-violet: #7c3aed;
   --color-violet-soft: #ece0fc;
   --color-violet-ink: #6d28d9;
   --color-mint: #10b981;
   --color-mint-soft: #d5f3e8;
-  --color-mint-ink: #0a875f;
+  --color-mint-ink: #08704f;
   --color-amber: #f59e0b;
   --color-amber-soft: #fdeecc;
-  --color-amber-ink: #b0730a;
+  --color-amber-ink: #8a5a07;
   --color-rose: #f43f5e;
   --color-rose-soft: #fde0e5;
   --color-rose-ink: #d32744;
@@ -77,9 +77,9 @@
   /* Severity — only ever inside data chips, never decoration */
   --color-sev-crit: #8c2f1b;
   --color-sev-crit-tint: #f2e2dd;
-  --color-sev-high: #a8632a;
+  --color-sev-high: #8a4f1d; /* darkened for AA on its tint */
   --color-sev-high-tint: #f1e6da;
-  --color-sev-med: #7a6a2e;
+  --color-sev-med: #665724; /* darkened for AA on its tint */
   --color-sev-med-tint: #eeead9;
   --color-sev-low: #4a6357;
   --color-sev-low-tint: #e2e8e4;
@@ -177,6 +177,16 @@
     font-weight: 460;
   }
 
+  /* Snappier taps on touch devices; no double-tap-zoom delay on controls. */
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  [role="button"] {
+    touch-action: manipulation;
+  }
+
   /* Visible keyboard focus — brass ring, never outline:none (§8) */
   :focus-visible {
     outline: 2px solid var(--color-brass);
@@ -263,14 +273,14 @@
 /* Utilities -------------------------------------------------------- */
 
 @layer utilities {
-  /* Register row cascade — 40ms stagger, gated by reduced-motion (§3.6) */
+  /* Register row cascade — 40ms stagger, gated by reduced-motion (§3.6).
+     TRANSFORM-ONLY (no opacity): content is always painted, can never be
+     caught invisible by a stalled animation, and stays AA under audit. */
   @keyframes register-row-in {
     from {
-      opacity: 0;
-      transform: translateY(4px);
+      transform: translateY(5px);
     }
     to {
-      opacity: 1;
       transform: translateY(0);
     }
   }

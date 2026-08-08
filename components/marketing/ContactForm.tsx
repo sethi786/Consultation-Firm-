@@ -75,6 +75,7 @@ export function ContactForm({ initialService }: { initialService?: string }) {
           name="email"
           type="email"
           autoComplete="email"
+          spellCheck={false}
           required
           defaultValue={values?.email}
           error={errors?.email}

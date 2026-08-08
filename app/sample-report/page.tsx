@@ -142,7 +142,7 @@ export default function SampleReportPage() {
                 {FINDINGS.map((f) => (
                   <tr key={f.id} className="border-b border-rule/70 align-top">
                     <td className="py-3 pr-3 font-mono text-mono-xs text-slate">{f.id}</td>
-                    <td className="py-3 pr-3 text-small text-ink">{f.title}<span className="block font-mono text-mono-xs uppercase text-slate/70">{f.asset}</span></td>
+                    <td className="py-3 pr-3 text-small text-ink">{f.title}<span className="block font-mono text-mono-xs uppercase text-slate">{f.asset}</span></td>
                     <td className="py-3 pr-3"><span className={`inline-flex rounded-full px-2 py-0.5 font-mono text-mono-xs uppercase ring-1 ring-inset ${SEV[f.sev]}`}>{f.sev}</span></td>
                     <td className="py-3 pr-3 font-mono text-mono-xs text-slate">{f.ref}</td>
                     <td className="py-3 font-mono text-mono-xs uppercase text-slate">{f.status}</td>

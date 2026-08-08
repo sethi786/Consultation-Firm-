@@ -203,7 +203,7 @@ export function MaturityAssessment() {
             Retake
           </button>
         </div>
-        <p className="mt-4 font-mono text-mono-xs uppercase text-slate/70">
+        <p className="mt-4 font-mono text-mono-xs uppercase text-slate">
           Indicative only · nothing leaves your browser
         </p>
       </div>

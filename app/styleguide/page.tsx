@@ -114,7 +114,7 @@ export default function StyleGuidePage() {
                   <span className="font-mono text-mono-xs uppercase text-slate">
                     {t.name}
                   </span>
-                  <span className="font-mono text-mono-xs text-slate/70">{t.note}</span>
+                  <span className="font-mono text-mono-xs text-slate">{t.note}</span>
                 </div>
                 <p className={`${t.cls} min-w-0 truncate`}>
                   Evidence, not theatre

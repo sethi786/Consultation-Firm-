@@ -37,7 +37,7 @@ export default function ControlsPage() {
       <Container as="section" className="pb-14 md:pb-20">
         <div className="rounded-2xl border border-rule bg-surface p-4 shadow-pop-sm md:p-8">
           <ControlRegister />
-          <p className="mt-4 border-t border-rule pt-4 font-mono text-mono-xs uppercase tracking-mono text-slate/80">
+          <p className="mt-4 border-t border-rule pt-4 font-mono text-mono-xs uppercase tracking-mono text-slate">
             <CountUp value={CONTROLS.length} /> controls · <CountUp value={SERVICE_LIST.length} /> services · verified against the published frameworks
           </p>
         </div>

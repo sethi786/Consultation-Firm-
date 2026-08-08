@@ -71,7 +71,7 @@ export function BookMeetingForm({ initialService }: { initialService?: string })
         </label>
         <label className="block text-small">
           <span className="font-mono text-mono-xs uppercase text-slate">Work email</span>
-          <input name="email" type="email" required autoComplete="email" className={inputClass} />
+          <input name="email" type="email" required autoComplete="email" spellCheck={false} className={inputClass} />
         </label>
         <label className="block text-small">
           <span className="font-mono text-mono-xs uppercase text-slate">Organisation</span>
@@ -119,7 +119,7 @@ export function BookMeetingForm({ initialService }: { initialService?: string })
           ))}
         </div>
         <input type="hidden" name="preferredSlot" value={selected ?? ""} />
-        <p className="mt-2 font-mono text-mono-xs uppercase text-slate/70">Times in your timezone · we confirm the exact time</p>
+        <p className="mt-2 font-mono text-mono-xs uppercase text-slate">Times in your timezone · we confirm the exact time</p>
       </div>
 
       {/* Duration */}
@@ -159,7 +159,7 @@ export function BookMeetingForm({ initialService }: { initialService?: string })
         >
           {pending ? "Requesting…" : "Request this meeting"}
         </button>
-        {!selected && <span className="font-mono text-mono-xs uppercase text-slate/70">Pick a slot to continue</span>}
+        {!selected && <span className="font-mono text-mono-xs uppercase text-slate">Pick a slot to continue</span>}
       </div>
     </form>
   );

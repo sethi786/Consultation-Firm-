@@ -171,7 +171,7 @@ export function FindingsDemo() {
         >
           Get your own register →
         </Link>
-        <span className="font-mono text-mono-xs uppercase text-slate/70">Demo data · click a row to expand</span>
+        <span className="font-mono text-mono-xs uppercase text-slate">Demo data · click a row to expand</span>
       </div>
     </div>
   );

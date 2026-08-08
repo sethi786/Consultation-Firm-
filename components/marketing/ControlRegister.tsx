@@ -127,7 +127,7 @@ export function ControlRegister({
           <span className="text-rule">{"  —  "}</span>
           Control register
         </h2>
-        <p className="font-mono text-mono-xs uppercase text-slate/80">
+        <p className="font-mono text-mono-xs uppercase text-slate">
           NIST CSF 2.0 · ISO 27001:2022 · CIS v8
         </p>
       </div>
@@ -140,7 +140,7 @@ export function ControlRegister({
             {activeName ? `${activeName} — ` : "All services — "}
             <span className="text-ink">{visible.length}</span> controls
           </p>
-          <p className="font-mono text-mono-xs uppercase tracking-mono text-slate/80">
+          <p className="font-mono text-mono-xs uppercase tracking-mono text-slate">
             avg current <span className="text-ink">{avgCurrent.toFixed(1)}</span>
             <span className="text-brass-lift">{"  →  "}</span>
             target <span className="text-ink">{avgTarget.toFixed(1)}</span>
@@ -184,7 +184,7 @@ export function ControlRegister({
             onClick={clearPin}
             onMouseEnter={() => setHovered(null)}
             className={cn(
-              "hidden text-left font-mono text-mono-xs uppercase transition-colors md:block",
+              "hidden py-1.5 text-left font-mono text-mono-xs uppercase transition-colors md:block",
               active === null ? "text-ink" : "text-slate hover:text-ink",
             )}
           >
@@ -204,7 +204,7 @@ export function ControlRegister({
                 onBlur={() => setHovered(null)}
                 onClick={() => setPinned((p) => (p === s.slug ? null : s.slug))}
                 className={cn(
-                  "group flex items-center gap-2 rounded px-2 py-1 text-left font-mono text-mono-xs uppercase transition-colors md:-mx-2",
+                  "group flex items-center gap-2 rounded px-2 py-1.5 text-left font-mono text-mono-xs uppercase transition-colors md:-mx-2",
                   isActive
                     ? "text-ink"
                     : "text-slate hover:text-ink",
@@ -226,7 +226,7 @@ export function ControlRegister({
             <button
               type="button"
               onClick={clearPin}
-              className="mt-1 text-left font-mono text-mono-xs uppercase text-brass-lift underline decoration-brass/40 underline-offset-2 hover:decoration-brass"
+              className="mt-1 py-1.5 text-left font-mono text-mono-xs uppercase text-brass-lift underline decoration-brass/40 underline-offset-2 hover:decoration-brass"
             >
               Clear ✕
             </button>

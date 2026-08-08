@@ -52,7 +52,7 @@ export function ServicesOverview({ index = 4 }: { index?: number }) {
                   >
                     <DomainIcon domain={group.domain} className={`h-5 w-5 ${a.softText}`} />
                   </span>
-                  <span className="font-mono text-mono-xs uppercase text-slate/70">
+                  <span className="font-mono text-mono-xs uppercase text-slate">
                     {group.services.length} services
                   </span>
                 </div>
