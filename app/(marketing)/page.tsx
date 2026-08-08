@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container, Eyebrow, CountUp, Reveal, Button } from "@/components/ui";
 import { FrameworkMarquee } from "@/components/marketing/FrameworkMarquee";
+import { HeroVisual } from "@/components/marketing/HeroVisual";
 import { ServicesOverview } from "@/components/marketing/ServicesOverview";
 import { ApproachStrip } from "@/components/marketing/ApproachStrip";
 import { EvidenceBand } from "@/components/marketing/EvidenceBand";
@@ -65,51 +66,60 @@ export default function HomePage() {
           />
         </div>
 
-        <Container className="relative pt-16 pb-10 text-center md:pt-24 md:pb-12">
-          <p className="anim-rise mx-auto inline-flex items-center gap-2 rounded-full border border-rule bg-surface/80 px-4 py-1.5 font-mono text-mono-xs uppercase tracking-mono text-slate">
-            <span aria-hidden="true" className="spectrum-bar h-1.5 w-6 rounded-full" />
-            Evidence-led security consulting
-          </p>
-          <h1 className="anim-hero-title mx-auto mt-7 max-w-4xl text-display text-ink text-balance">
-            We tell you what&apos;s actually exposed —{" "}
-            <span className="spectrum-text">and prove it&apos;s fixed.</span>
-          </h1>
-          <p className="anim-rise anim-delay-1 mx-auto mt-7 max-w-2xl text-lede text-slate text-balance">
-            A security consultancy for 200–5,000-seat organisations. We map your
-            controls to NIST CSF 2.0, ISO 27001:2022 and CIS v8, close the gaps that
-            matter, and hand you the evidence.
-          </p>
-          <div className="anim-rise anim-delay-2 mt-9 flex flex-wrap items-center justify-center gap-4">
-            <Button href="/contact">Book an assessment</Button>
-            <Button href="/posture" variant="secondary">
-              Take the 2-minute posture check
-            </Button>
-          </div>
-          <dl className="anim-rise anim-delay-3 mx-auto mt-12 grid w-fit grid-cols-3 gap-x-10 gap-y-1 md:gap-x-16">
-            {[
-              [SERVICE_LIST.length, "Services"],
-              [12, "Practice areas"],
-              [CONTROLS.length, "Verified controls"],
-            ].map(([n, label]) => (
-              <div key={label as string}>
-                <dt className="sr-only">{label}</dt>
-                <dd className="font-display text-h2 text-ink">
-                  <CountUp value={n as number} />
-                </dd>
-                <dd className="font-mono text-mono-xs uppercase tracking-mono text-slate">
-                  {label}
-                </dd>
+        <Container className="relative pt-14 pb-14 md:pt-20 md:pb-20">
+          <div className="grid grid-cols-1 items-center gap-x-12 gap-y-14 lg:grid-cols-2">
+            {/* Statement */}
+            <div>
+              <p className="anim-rise inline-flex items-center gap-2 rounded-full border border-rule bg-surface/80 px-4 py-1.5 font-mono text-mono-xs uppercase tracking-mono text-slate">
+                <span aria-hidden="true" className="spectrum-bar h-1.5 w-6 rounded-full" />
+                Evidence-led security consulting
+              </p>
+              <h1 className="anim-hero-title mt-6 max-w-xl text-display text-ink text-balance">
+                Know what&apos;s exposed.{" "}
+                <span className="spectrum-text">Prove it&apos;s fixed.</span>
+              </h1>
+              <p className="anim-rise anim-delay-1 mt-6 max-w-lg text-lede text-slate">
+                Security consulting and 24/7 managed detection for 200–5,000-seat
+                organisations — mapped to the frameworks your auditors already trust.
+              </p>
+              <div className="anim-rise anim-delay-2 mt-8 flex flex-wrap items-center gap-4">
+                <Button href="/contact">Book an assessment</Button>
+                <Button href="/posture" variant="secondary">
+                  Check your posture
+                </Button>
               </div>
-            ))}
-          </dl>
-          <p className="anim-rise anim-delay-3 mt-5">
-            <Link
-              href="/controls"
-              className="font-mono text-mono-xs uppercase tracking-mono text-slate underline decoration-rule underline-offset-4 transition-colors hover:text-ink hover:decoration-slate"
-            >
-              See the full control register →
-            </Link>
-          </p>
+              <dl className="anim-rise anim-delay-3 mt-10 grid w-fit grid-cols-3 gap-x-8 gap-y-1 md:gap-x-12">
+                {[
+                  [SERVICE_LIST.length, "Services"],
+                  [12, "Practice areas"],
+                  [CONTROLS.length, "Verified controls"],
+                ].map(([n, label]) => (
+                  <div key={label as string}>
+                    <dt className="sr-only">{label}</dt>
+                    <dd className="font-display text-h2 text-ink">
+                      <CountUp value={n as number} />
+                    </dd>
+                    <dd className="font-mono text-mono-xs uppercase tracking-mono text-slate">
+                      {label}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="anim-rise anim-delay-3 mt-4">
+                <Link
+                  href="/controls"
+                  className="font-mono text-mono-xs uppercase tracking-mono text-slate underline decoration-rule underline-offset-4 transition-colors hover:text-ink hover:decoration-slate"
+                >
+                  See the full control register →
+                </Link>
+              </p>
+            </div>
+
+            {/* Product visual */}
+            <div className="anim-rise anim-delay-2 px-2 sm:px-6 lg:px-0">
+              <HeroVisual />
+            </div>
+          </div>
         </Container>
 
         {/* Signature spectrum rule closes the hero. The full 176-row control

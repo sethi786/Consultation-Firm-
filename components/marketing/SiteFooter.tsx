@@ -80,37 +80,29 @@ export function SiteFooter() {
           ))}
         </div>
 
-        {/* Services — grouped by the 12 categories, compact multi-column (was a
-            single 49-link column ~3000px tall). All service links preserved. */}
-        <nav aria-label="Services" className="mt-14 border-t border-rule pt-10">
-          <div className="mb-6 flex items-baseline justify-between gap-3">
+        {/* Services — the 12 practice areas only (big-firm footers list
+            capabilities, not every SKU; the full catalogue lives on /services
+            and in the mega-menu). */}
+        <nav aria-label="Services" className="mt-14 border-t border-rule pt-8">
+          <div className="mb-5 flex items-baseline justify-between gap-3">
             <h2 className="font-mono text-mono-xs uppercase tracking-mono text-slate">Services</h2>
             <Link href="/services" className="font-mono text-mono-xs uppercase tracking-mono text-pine hover:text-pine-lift">
-              All services →
+              All {SERVICES_BY_DOMAIN.reduce((n, g) => n + g.services.length, 0)} services →
             </Link>
           </div>
-          <div className="grid grid-cols-2 gap-x-8 gap-y-7 sm:grid-cols-3 lg:grid-cols-4">
+          <ul className="grid grid-cols-2 gap-x-8 gap-y-2.5 sm:grid-cols-3 lg:grid-cols-4">
             {SERVICES_BY_DOMAIN.map((group) => (
-              <div key={group.domain}>
-                <h3 className="mb-2.5 flex items-center gap-2 font-mono text-mono-xs uppercase tracking-mono text-ink">
+              <li key={group.domain}>
+                <Link
+                  href="/services"
+                  className="inline-flex items-center gap-2 text-caption text-ink/75 hover:text-ink"
+                >
                   <DomainIcon domain={group.domain} className="h-3.5 w-3.5 text-pine" />
                   {group.domain}
-                </h3>
-                <ul className="flex flex-col gap-1.5">
-                  {group.services.map((s) => (
-                    <li key={s.slug}>
-                      <Link
-                        href={`/services/${s.slug}`}
-                        className="text-caption text-ink/70 hover:text-ink"
-                      >
-                        {s.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </nav>
 
         {/* Colophon */}

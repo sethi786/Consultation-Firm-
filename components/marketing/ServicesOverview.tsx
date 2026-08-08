@@ -1,14 +1,28 @@
 import Link from "next/link";
 import { Container, Eyebrow, Reveal, DomainIcon } from "@/components/ui";
-import { SERVICES_BY_DOMAIN, SERVICE_LIST, DOMAINS } from "@/content/services";
+import { SERVICES_BY_DOMAIN, SERVICE_LIST, DOMAINS, type Domain } from "@/content/services";
 import { domainAccent } from "@/lib/accent";
 
 /**
- * Homepage services section — a compact, scannable category directory
- * (Softchoice-style), not the full 41-card catalogue. Each category lists its
- * services as links; the rich per-service cards live on /services. Keeps the
- * homepage calm while still showing the full breadth of the estate.
+ * Homepage services section — twelve clean category tiles (big-firm IA:
+ * Accenture/Softchoice show capabilities, not the whole SKU list). The 49
+ * individual services live one click away in the mega-menu and /services.
  */
+const DOMAIN_BLURB: Record<Domain, string> = {
+  "AI & Data": "Secure the AI you ship and the data behind it.",
+  "AI Operations": "AI-powered SOC, triage and service desk.",
+  "Cloud & Infrastructure": "Azure & AWS posture, landing zones, segmentation.",
+  "Identity & Access": "Entra ID, least privilege and zero trust.",
+  "Endpoint & Application": "Devices, AppSec and vulnerability management.",
+  "Detection & Response": "24/7 managed SOC, SIEM and incident response.",
+  "Governance, Risk & Compliance": "SOC 2, ISO 27001, vendor risk and BCDR.",
+  "Advisory & Assurance": "vCISO, pen testing and security architecture.",
+  "Modern Workplace": "Microsoft 365, devices and adoption, managed.",
+  "Data Center & Infrastructure": "Modernisation, hybrid cloud and backup.",
+  "Networking": "SD-WAN, wireless and enterprise LAN.",
+  "IT Asset Management": "Licensing, procurement and lifecycle.",
+};
+
 export function ServicesOverview({ index = 4 }: { index?: number }) {
   return (
     <Container as="section" className="py-12 md:py-28">
@@ -18,8 +32,7 @@ export function ServicesOverview({ index = 4 }: { index?: number }) {
           Everything you need, organised the way you think about your estate.
         </h2>
         <p className="mt-4 text-body text-slate">
-          {SERVICE_LIST.length} services across {DOMAINS.length} categories — from AI and
-          cloud security to managed detection, identity and compliance.
+          {SERVICE_LIST.length} services across {DOMAINS.length} practice areas.
         </p>
       </div>
 
@@ -27,44 +40,34 @@ export function ServicesOverview({ index = 4 }: { index?: number }) {
         {SERVICES_BY_DOMAIN.map((group, gi) => {
           const a = domainAccent(group.domain);
           return (
-          <Reveal
-            key={group.domain}
-            delay={(gi % 3) * 90}
-            className="card-lift relative flex flex-col overflow-hidden rounded-2xl border border-rule bg-surface p-7"
-          >
-            <div className="flex items-center justify-between gap-3 border-b border-rule pb-4">
-              <h3 className="inline-flex items-center gap-3 font-mono text-mono-xs uppercase tracking-mono text-ink">
+            <Reveal key={group.domain} delay={(gi % 3) * 90} className="h-full">
+              <Link
+                href="/services"
+                className="card-lift group flex h-full flex-col rounded-2xl border border-rule bg-surface p-6"
+              >
+                <div className="flex items-center justify-between">
+                  <span
+                    aria-hidden="true"
+                    className={`inline-flex h-11 w-11 items-center justify-center rounded-xl ${a.softBg}`}
+                  >
+                    <DomainIcon domain={group.domain} className={`h-5 w-5 ${a.softText}`} />
+                  </span>
+                  <span className="font-mono text-mono-xs uppercase text-slate/70">
+                    {group.services.length} services
+                  </span>
+                </div>
+                <h3 className="mt-4 font-display text-h3 leading-tight text-ink">
+                  {group.domain}
+                </h3>
+                <p className="mt-2 flex-1 text-small text-slate">{DOMAIN_BLURB[group.domain]}</p>
                 <span
                   aria-hidden="true"
-                  className={`inline-flex h-10 w-10 items-center justify-center rounded-xl ${a.softBg}`}
+                  className={`mt-4 font-mono text-mono-xs uppercase tracking-mono transition-transform duration-150 ease-doc group-hover:translate-x-1 ${a.text}`}
                 >
-                  <DomainIcon domain={group.domain} className={`h-5 w-5 ${a.softText}`} />
+                  Explore →
                 </span>
-                {group.domain}
-              </h3>
-              <span className="font-mono text-mono-xs text-slate/70">
-                {group.services.length}
-              </span>
-            </div>
-            <ul className="mt-4 flex flex-col gap-2.5">
-              {group.services.map((s) => (
-                <li key={s.slug}>
-                  <Link
-                    href={`/services/${s.slug}`}
-                    className="group inline-flex items-baseline gap-2 text-small text-ink transition-colors hover:text-pine"
-                  >
-                    <span
-                      aria-hidden="true"
-                      className="font-mono text-mono-xs text-slate/50 transition-colors group-hover:text-pine"
-                    >
-                      →
-                    </span>
-                    {s.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
+              </Link>
+            </Reveal>
           );
         })}
       </div>
