@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/managed-services", priority: 0.8 },
     { path: "/explore", priority: 0.8 },
     { path: "/posture", priority: 0.8 },
+    { path: "/controls", priority: 0.6 },
     { path: "/book", priority: 0.8 },
     { path: "/approach", priority: 0.7 },
     { path: "/build-vs-partner", priority: 0.6 },

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Container, Eyebrow, CountUp, Reveal, Button } from "@/components/ui";
-import { ControlRegister } from "@/components/marketing/ControlRegister";
 import { FrameworkMarquee } from "@/components/marketing/FrameworkMarquee";
 import { ServicesOverview } from "@/components/marketing/ServicesOverview";
 import { ApproachStrip } from "@/components/marketing/ApproachStrip";
@@ -103,26 +102,21 @@ export default function HomePage() {
               </div>
             ))}
           </dl>
+          <p className="anim-rise anim-delay-3 mt-5">
+            <Link
+              href="/controls"
+              className="font-mono text-mono-xs uppercase tracking-mono text-slate underline decoration-rule underline-offset-4 transition-colors hover:text-ink hover:decoration-slate"
+            >
+              See the full control register →
+            </Link>
+          </p>
         </Container>
 
-        {/* Signature spectrum rule */}
+        {/* Signature spectrum rule closes the hero. The full 176-row control
+            register lives on /controls — a click away for diligence-minded
+            buyers, off the front page so the homepage reads like a firm, not a
+            spreadsheet (Accenture/Deloitte-style IA). */}
         <div aria-hidden="true" className="spectrum-bar h-[3px] w-full" />
-
-        {/* The register — the credibility anchor, in a lifted card. */}
-        <Container className="relative py-12 md:py-16">
-          <div className="rounded-2xl border border-rule bg-surface p-4 shadow-pop-sm md:p-8">
-            <div className="mb-5 flex flex-wrap items-baseline justify-between gap-2 border-b border-rule pb-4">
-              <h2 className="text-h3 text-ink">Every service, mapped to the controls it moves.</h2>
-              <p className="font-mono text-mono-xs uppercase tracking-mono text-slate/80">
-                NIST CSF 2.0 · ISO 27001:2022 · CIS v8
-              </p>
-            </div>
-            <ControlRegister scrollable />
-            <p className="mt-4 border-t border-rule pt-4 font-mono text-mono-xs uppercase tracking-mono text-slate/80">
-              <CountUp value={CONTROLS.length} /> controls · <CountUp value={SERVICE_LIST.length} /> services · verified against the published frameworks
-            </p>
-          </div>
-        </Container>
       </section>
 
       {/* Capability row — the standards a buyer's auditors already know */}

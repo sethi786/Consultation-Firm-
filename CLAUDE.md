@@ -63,7 +63,10 @@ Security**, a managed security services provider and security consultancy.
 > the hero is an animated gradient field, and a pine→teal→sky→violet "spectrum"
 > gradient is the signature element (`.spectrum-bar`/`.spectrum-text`). Scroll
 > reveals beyond §3.6's two motions are sanctioned (transform-only, reduced-motion
-> gated). Still binding: the §3.1 banned motifs, no fabricated logos/metrics, copy
+> gated). The full control register (§3.4) moved OFF the homepage to its own
+> `/controls` page (big-firm IA — the front page stays high-level; service pages
+> keep their small filtered slice; the hero links to the register). Still binding:
+> the §3.1 banned motifs, no fabricated logos/metrics, copy
 > rules (§5), light marketing surface (the pine `ContactCTA` band is the one dark
 > moment), accessibility, and NEVER `backdrop-filter` on sticky/fixed elements
 > (compositor bug — it blanked production once). Where this note conflicts with
