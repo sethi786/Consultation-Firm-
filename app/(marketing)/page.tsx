@@ -37,42 +37,80 @@ const DEMO_CARDS = [
 export default function HomePage() {
   return (
     <>
-      {/* Hero — the Control Register IS the hero (§3.4): an evidence-led statement,
-          left-aligned on the grid with a margin annotation, not a headline over a
-          gradient. Calm, documentary. */}
-      <section className="border-b border-rule">
-        <Container className="pt-12 pb-10 md:pt-16 md:pb-12">
-          <div className="grid grid-cols-1 gap-x-10 gap-y-8 md:grid-cols-12">
-            <div className="md:col-span-3">
-              <p className="font-mono text-mono-xs uppercase tracking-mono text-slate">
-                § 01 — Waypoint
-              </p>
-              <p className="mt-3 max-w-xs font-mono text-mono-xs uppercase leading-relaxed tracking-mono text-slate/70">
-                Evidence-led security consulting &amp; managed detection
-              </p>
-            </div>
-            <div className="md:col-span-9">
-              <h1 className="anim-hero-title max-w-4xl text-h1 text-ink text-balance">
-                We tell you what&apos;s actually exposed — and prove it&apos;s fixed.
-              </h1>
-              <p className="anim-rise anim-delay-1 mt-6 max-w-measure text-lede text-slate">
-                A security consultancy for 200–5,000-seat organisations. We map your
-                controls to NIST CSF 2.0, ISO 27001:2022 and CIS v8, close the gaps that
-                matter, and hand you the evidence.
-              </p>
-              <div className="anim-rise anim-delay-2 mt-8 flex flex-wrap items-center gap-4">
-                <Button href="/contact">Book an assessment</Button>
-                <Button href="/posture" variant="ghost">
-                  Take the 2-minute posture check
-                </Button>
-              </div>
-            </div>
+      {/* Hero — beacon-spectrum re-theme: an animated gradient field behind a
+          bold centered statement, wiz-register energy on our own palette. All
+          motion is transform-only and reduced-motion gated; no backdrop-filter. */}
+      <section className="relative overflow-hidden border-b border-rule">
+        {/* Ambient spectrum blobs */}
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <div
+            className="blob-a absolute -top-[30%] left-[8%] h-[70%] w-[46%] rounded-full opacity-60 blur-3xl"
+            style={{
+              background:
+                "radial-gradient(closest-side, color-mix(in oklab, var(--color-teal) 26%, transparent), transparent)",
+            }}
+          />
+          <div
+            className="blob-b absolute -top-[20%] right-[4%] h-[75%] w-[44%] rounded-full opacity-60 blur-3xl"
+            style={{
+              background:
+                "radial-gradient(closest-side, color-mix(in oklab, var(--color-violet) 22%, transparent), transparent)",
+            }}
+          />
+          <div
+            className="absolute bottom-[-10%] left-[35%] h-[50%] w-[38%] rounded-full opacity-50 blur-3xl"
+            style={{
+              background:
+                "radial-gradient(closest-side, color-mix(in oklab, var(--color-sky) 20%, transparent), transparent)",
+            }}
+          />
+        </div>
+
+        <Container className="relative pt-16 pb-10 text-center md:pt-24 md:pb-12">
+          <p className="anim-rise mx-auto inline-flex items-center gap-2 rounded-full border border-rule bg-surface/80 px-4 py-1.5 font-mono text-mono-xs uppercase tracking-mono text-slate">
+            <span aria-hidden="true" className="spectrum-bar h-1.5 w-6 rounded-full" />
+            Evidence-led security consulting
+          </p>
+          <h1 className="anim-hero-title mx-auto mt-7 max-w-4xl text-display text-ink text-balance">
+            We tell you what&apos;s actually exposed —{" "}
+            <span className="spectrum-text">and prove it&apos;s fixed.</span>
+          </h1>
+          <p className="anim-rise anim-delay-1 mx-auto mt-7 max-w-2xl text-lede text-slate text-balance">
+            A security consultancy for 200–5,000-seat organisations. We map your
+            controls to NIST CSF 2.0, ISO 27001:2022 and CIS v8, close the gaps that
+            matter, and hand you the evidence.
+          </p>
+          <div className="anim-rise anim-delay-2 mt-9 flex flex-wrap items-center justify-center gap-4">
+            <Button href="/contact">Book an assessment</Button>
+            <Button href="/posture" variant="secondary">
+              Take the 2-minute posture check
+            </Button>
           </div>
+          <dl className="anim-rise anim-delay-3 mx-auto mt-12 grid w-fit grid-cols-3 gap-x-10 gap-y-1 md:gap-x-16">
+            {[
+              [SERVICE_LIST.length, "Services"],
+              [12, "Practice areas"],
+              [CONTROLS.length, "Verified controls"],
+            ].map(([n, label]) => (
+              <div key={label as string}>
+                <dt className="sr-only">{label}</dt>
+                <dd className="font-display text-h2 text-ink">
+                  <CountUp value={n as number} />
+                </dd>
+                <dd className="font-mono text-mono-xs uppercase tracking-mono text-slate">
+                  {label}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </Container>
 
-        {/* The register itself — above the fold, the credibility anchor. */}
-        <Container className="pb-12 md:pb-16">
-          <div className="rounded-lg border border-rule bg-surface p-4 md:p-7">
+        {/* Signature spectrum rule */}
+        <div aria-hidden="true" className="spectrum-bar h-[3px] w-full" />
+
+        {/* The register — the credibility anchor, in a lifted card. */}
+        <Container className="relative py-12 md:py-16">
+          <div className="rounded-2xl border border-rule bg-surface p-4 shadow-pop-sm md:p-8">
             <div className="mb-5 flex flex-wrap items-baseline justify-between gap-2 border-b border-rule pb-4">
               <h2 className="text-h3 text-ink">Every service, mapped to the controls it moves.</h2>
               <p className="font-mono text-mono-xs uppercase tracking-mono text-slate/80">
@@ -101,23 +139,21 @@ export default function HomePage() {
             Four hands-on tools, right in your browser. Nothing to install, nothing leaves the page.
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-rule bg-rule sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           {DEMO_CARDS.map((c, i) => (
-            <Reveal key={c.href} delay={i * 90} className="h-full bg-surface">
+            <Reveal key={c.href} delay={i * 90} className="h-full">
               <Link
                 href={c.href}
-                className="group flex h-full flex-col justify-between p-7 transition-colors duration-150 ease-doc hover:bg-paper-sunk/50 md:p-9"
+                className="card-lift group flex h-full flex-col justify-between rounded-2xl border border-rule bg-surface p-7 hover:border-pine md:p-9"
               >
                 <div>
-                  <span className="font-mono text-mono-xs uppercase tracking-mono text-slate/70">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className="mt-4 font-display text-h3 leading-tight text-ink">{c.title}</h3>
+                  <span aria-hidden="true" className="spectrum-bar block h-1 w-10 rounded-full" />
+                  <h3 className="mt-5 font-display text-h3 leading-tight text-ink">{c.title}</h3>
                   <p className="mt-3 max-w-md text-body text-slate">{c.desc}</p>
                 </div>
                 <span
                   aria-hidden="true"
-                  className="mt-8 inline-block font-mono text-mono-xs uppercase tracking-mono text-pine transition-transform duration-150 ease-doc group-hover:translate-x-0.5"
+                  className="mt-8 inline-block font-mono text-mono-xs uppercase tracking-mono text-pine transition-transform duration-150 ease-doc group-hover:translate-x-1"
                 >
                   Try it →
                 </span>

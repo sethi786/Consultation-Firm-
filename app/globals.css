@@ -60,16 +60,14 @@
   --color-fuchsia-ink: #a21caf;
   --color-night: #0f1220; /* deep ground for high-contrast blocks */
 
-  /* Radii — institutional restraint (§3.5). Cards are lightly rounded, not
-     playful. `--radius-2xl/3xl` are kept as token names (many utilities resolve
-     to them) but tuned down so nothing reads as a soft SaaS card. */
-  --radius-xl: 6px;
-  --radius-2xl: 8px;
-  --radius-3xl: 10px;
-  /* "Pop" shadows are retired to a barely-there hairline elevation, so any
-     lingering `shadow-pop*` utility resolves to a calm, document-like lift. */
-  --shadow-pop: 0 1px 2px rgba(18, 24, 26, 0.05), 0 8px 24px rgba(18, 24, 26, 0.06);
-  --shadow-pop-sm: 0 1px 2px rgba(18, 24, 26, 0.05);
+  /* Radii — the "beacon spectrum" re-theme (owner override of §3.5): modern
+     rounded cards in the wiz.com register, still shy of pill-shaped. */
+  --radius-xl: 14px;
+  --radius-2xl: 20px;
+  --radius-3xl: 24px;
+  /* Soft, large card elevation for hover lift. */
+  --shadow-pop: 0 2px 6px rgba(18, 24, 26, 0.06), 0 24px 48px -16px rgba(18, 24, 26, 0.18);
+  --shadow-pop-sm: 0 1px 3px rgba(18, 24, 26, 0.06), 0 12px 28px -12px rgba(18, 24, 26, 0.14);
 
   /* Card / panel surface — flips to a dark panel in the dark theme so `bg-surface`
      recolors automatically where we'd otherwise hardcode white. */
@@ -350,6 +348,63 @@
   }
   .anim-delay-3 {
     animation-delay: 280ms;
+  }
+
+  /* ── Beacon spectrum (owner-approved re-theme) ────────────────────────────
+     The signature gradient: the firm's pine deepening through teal and sky to
+     violet — one spectrum, used as a thin arc rule, a text accent, and the
+     hero's ambient light. Element-level effects only: NEVER backdrop-filter,
+     and never on sticky/fixed elements (compositor bug — see git history). */
+
+  .spectrum-bar {
+    background: linear-gradient(
+      90deg,
+      var(--color-pine) 0%,
+      var(--color-teal) 34%,
+      var(--color-sky) 62%,
+      var(--color-violet) 88%,
+      var(--color-fuchsia) 100%
+    );
+  }
+
+  .spectrum-text {
+    background: linear-gradient(
+      90deg,
+      var(--color-pine) 0%,
+      var(--color-teal) 45%,
+      var(--color-sky) 75%,
+      var(--color-violet) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Hero ambient blobs: element-level blur on absolute, non-sticky layers.
+     Transform-only drift, stilled by the reduced-motion killswitch. */
+  @keyframes blob-drift-a {
+    0%   { transform: translate3d(-4%, -2%, 0) scale(1); }
+    50%  { transform: translate3d(4%, 3%, 0) scale(1.08); }
+    100% { transform: translate3d(-4%, -2%, 0) scale(1); }
+  }
+  @keyframes blob-drift-b {
+    0%   { transform: translate3d(3%, 2%, 0) scale(1.05); }
+    50%  { transform: translate3d(-4%, -3%, 0) scale(1); }
+    100% { transform: translate3d(3%, 2%, 0) scale(1.05); }
+  }
+  .blob-a { animation: blob-drift-a 18s ease-in-out infinite; will-change: transform; }
+  .blob-b { animation: blob-drift-b 22s ease-in-out infinite; will-change: transform; }
+
+  /* Card hover lift for the re-theme (transform + shadow only). */
+  .card-lift {
+    transition:
+      transform 300ms var(--ease-doc),
+      box-shadow 300ms var(--ease-doc),
+      border-color 300ms var(--ease-doc);
+  }
+  .card-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-pop-sm);
   }
 
   /* Process timeline: connector line draws left→right when scrolled in. */

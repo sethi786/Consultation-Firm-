@@ -25,8 +25,8 @@ export function ServicesIndex({ index = 2 }: { index?: number }) {
             <div key={group.domain} className="grid grid-cols-1 gap-x-10 gap-y-6 md:grid-cols-12">
               <div className="self-start md:col-span-3 md:sticky md:top-28">
                 <Reveal>
-                  <span className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-rule bg-surface">
-                    <DomainIcon domain={group.domain} className="h-5 w-5 text-pine" />
+                  <span className={`mb-3 inline-flex h-11 w-11 items-center justify-center rounded-xl ${a.softBg}`}>
+                    <DomainIcon domain={group.domain} className={`h-5 w-5 ${a.softText}`} />
                   </span>
                   <h3 className={`flex items-center gap-2 font-mono text-mono-xs uppercase tracking-mono ${a.text}`}>
                     {group.domain}
@@ -42,7 +42,7 @@ export function ServicesIndex({ index = 2 }: { index?: number }) {
                   <Reveal key={s.slug} delay={(gi === 0 ? si : 0) * 60}>
                     <Link
                       href={`/services/${s.slug}`}
-                      className={`group flex h-full flex-col overflow-hidden rounded-lg border border-rule bg-surface p-6 transition-colors duration-150 ease-doc ${a.borderHover}`}
+                      className={`card-lift group flex h-full flex-col overflow-hidden rounded-2xl border border-rule bg-surface p-6 ${a.borderHover}`}
                     >
                       <span aria-hidden="true" className={`mb-4 block h-1 w-10 rounded-full ${a.dot}`} />
                       <div className="flex items-baseline justify-between gap-3">

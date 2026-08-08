@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { Container, Eyebrow, Reveal } from "@/components/ui";
+import { Container, Eyebrow, Reveal, DomainIcon } from "@/components/ui";
 import { SERVICES_BY_DOMAIN, SERVICE_LIST, DOMAINS } from "@/content/services";
+import { domainAccent } from "@/lib/accent";
 
 /**
  * Homepage services section — a compact, scannable category directory
@@ -22,16 +23,23 @@ export function ServicesOverview({ index = 4 }: { index?: number }) {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {SERVICES_BY_DOMAIN.map((group, gi) => (
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {SERVICES_BY_DOMAIN.map((group, gi) => {
+          const a = domainAccent(group.domain);
+          return (
           <Reveal
             key={group.domain}
             delay={(gi % 3) * 90}
-            className="relative flex flex-col overflow-hidden rounded-lg border border-rule bg-surface p-7 transition-colors duration-150 ease-doc hover:border-pine"
+            className="card-lift relative flex flex-col overflow-hidden rounded-2xl border border-rule bg-surface p-7"
           >
-            <div className="flex items-baseline justify-between gap-3 border-b border-rule pb-4">
-              <h3 className="inline-flex items-center gap-2 font-mono text-mono-xs uppercase tracking-mono text-slate">
-                <span aria-hidden="true" className="h-2 w-2 rounded-full bg-slate" />
+            <div className="flex items-center justify-between gap-3 border-b border-rule pb-4">
+              <h3 className="inline-flex items-center gap-3 font-mono text-mono-xs uppercase tracking-mono text-ink">
+                <span
+                  aria-hidden="true"
+                  className={`inline-flex h-10 w-10 items-center justify-center rounded-xl ${a.softBg}`}
+                >
+                  <DomainIcon domain={group.domain} className={`h-5 w-5 ${a.softText}`} />
+                </span>
                 {group.domain}
               </h3>
               <span className="font-mono text-mono-xs text-slate/70">
@@ -57,7 +65,8 @@ export function ServicesOverview({ index = 4 }: { index?: number }) {
               ))}
             </ul>
           </Reveal>
-        ))}
+          );
+        })}
       </div>
 
       <div className="mt-10 text-center">

@@ -19,6 +19,8 @@ export function ContactCTA({
   const href = service ? `/contact?service=${service}` : "/contact";
   return (
     <section className="relative overflow-hidden bg-pine text-paper">
+      {/* Signature spectrum rule along the band's top edge. */}
+      <div aria-hidden="true" className="spectrum-bar absolute inset-x-0 top-0 h-[3px]" />
       {/* Subtle brass depth glow — same treatment as the /explore hero. */}
       <div
         aria-hidden="true"

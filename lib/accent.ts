@@ -1,19 +1,17 @@
 import type { Domain } from "@/content/services";
 
 /**
- * Accent system — neutralised.
+ * Accent system — the "beacon spectrum" (owner-approved wiz-style re-theme).
  *
- * The site used to colour-code each of the eleven service domains with its own
- * hue. That read as "busy" to buyers, so the palette is now near-monochrome:
- * ink / slate / rule on paper, with **pine (green)** as the single, sparing
- * accent. Every domain resolves to the same NEUTRAL bundle below, so the
- * mega-menu, services index, solutions matrix and domain pills all inherit the
- * calmer look from one place — no per-page edits, and no rainbow.
+ * Each service domain owns a hue drawn from the vivid token set in
+ * app/globals.css (§3.2 "bright color-block" system). The strong value is a
+ * solid block with white text; `-soft` is a tinted panel for icon tiles and
+ * chips; `-ink` is the AA-accessible text value on paper. Used for the icon
+ * tile on every service card, domain headings, and hover accents — colour
+ * with a job, not decoration.
  *
  * Class strings are written out in full (never interpolated at the token level)
  * so Tailwind's JIT keeps them — including the hover:/group-hover: variants.
- * `solid` = strong block with white text; `softBg`/`softText` = tinted panel;
- * `text` = AA-accessible label on paper; `border`/`dot` for accents.
  */
 export type Accent =
   | "coral" | "sky" | "violet" | "mint" | "indigo" | "amber" | "rose"
@@ -30,47 +28,134 @@ export interface AccentClasses {
   dot: string;
 }
 
-/** The one bundle every accent resolves to. Neutral by default; pine on hover. */
-const NEUTRAL: AccentClasses = {
-  solid: "bg-pine text-white",
-  softBg: "bg-paper-sunk",
-  softText: "text-slate",
-  text: "text-slate",
-  border: "border-rule",
-  borderHover: "hover:border-pine",
-  textGroupHover: "group-hover:text-pine",
-  dot: "bg-slate",
-};
-
 export const ACCENTS: Record<Accent, AccentClasses> = {
-  coral: NEUTRAL,
-  sky: NEUTRAL,
-  violet: NEUTRAL,
-  mint: NEUTRAL,
-  indigo: NEUTRAL,
-  amber: NEUTRAL,
-  rose: NEUTRAL,
-  teal: NEUTRAL,
-  orange: NEUTRAL,
-  lime: NEUTRAL,
-  fuchsia: NEUTRAL,
+  coral: {
+    solid: "bg-coral text-white",
+    softBg: "bg-coral-soft",
+    softText: "text-coral-ink",
+    text: "text-coral-ink",
+    border: "border-coral",
+    borderHover: "hover:border-coral",
+    textGroupHover: "group-hover:text-coral-ink",
+    dot: "bg-coral",
+  },
+  sky: {
+    solid: "bg-sky text-white",
+    softBg: "bg-sky-soft",
+    softText: "text-sky-ink",
+    text: "text-sky-ink",
+    border: "border-sky",
+    borderHover: "hover:border-sky",
+    textGroupHover: "group-hover:text-sky-ink",
+    dot: "bg-sky",
+  },
+  violet: {
+    solid: "bg-violet text-white",
+    softBg: "bg-violet-soft",
+    softText: "text-violet-ink",
+    text: "text-violet-ink",
+    border: "border-violet",
+    borderHover: "hover:border-violet",
+    textGroupHover: "group-hover:text-violet-ink",
+    dot: "bg-violet",
+  },
+  mint: {
+    solid: "bg-mint text-white",
+    softBg: "bg-mint-soft",
+    softText: "text-mint-ink",
+    text: "text-mint-ink",
+    border: "border-mint",
+    borderHover: "hover:border-mint",
+    textGroupHover: "group-hover:text-mint-ink",
+    dot: "bg-mint",
+  },
+  indigo: {
+    solid: "bg-indigo text-white",
+    softBg: "bg-indigo-soft",
+    softText: "text-indigo-ink",
+    text: "text-indigo-ink",
+    border: "border-indigo",
+    borderHover: "hover:border-indigo",
+    textGroupHover: "group-hover:text-indigo-ink",
+    dot: "bg-indigo",
+  },
+  amber: {
+    solid: "bg-amber text-white",
+    softBg: "bg-amber-soft",
+    softText: "text-amber-ink",
+    text: "text-amber-ink",
+    border: "border-amber",
+    borderHover: "hover:border-amber",
+    textGroupHover: "group-hover:text-amber-ink",
+    dot: "bg-amber",
+  },
+  rose: {
+    solid: "bg-rose text-white",
+    softBg: "bg-rose-soft",
+    softText: "text-rose-ink",
+    text: "text-rose-ink",
+    border: "border-rose",
+    borderHover: "hover:border-rose",
+    textGroupHover: "group-hover:text-rose-ink",
+    dot: "bg-rose",
+  },
+  teal: {
+    solid: "bg-teal text-white",
+    softBg: "bg-teal-soft",
+    softText: "text-teal-ink",
+    text: "text-teal-ink",
+    border: "border-teal",
+    borderHover: "hover:border-teal",
+    textGroupHover: "group-hover:text-teal-ink",
+    dot: "bg-teal",
+  },
+  orange: {
+    solid: "bg-orange text-white",
+    softBg: "bg-orange-soft",
+    softText: "text-orange-ink",
+    text: "text-orange-ink",
+    border: "border-orange",
+    borderHover: "hover:border-orange",
+    textGroupHover: "group-hover:text-orange-ink",
+    dot: "bg-orange",
+  },
+  lime: {
+    solid: "bg-lime text-white",
+    softBg: "bg-lime-soft",
+    softText: "text-lime-ink",
+    text: "text-lime-ink",
+    border: "border-lime",
+    borderHover: "hover:border-lime",
+    textGroupHover: "group-hover:text-lime-ink",
+    dot: "bg-lime",
+  },
+  fuchsia: {
+    solid: "bg-fuchsia text-white",
+    softBg: "bg-fuchsia-soft",
+    softText: "text-fuchsia-ink",
+    text: "text-fuchsia-ink",
+    border: "border-fuchsia",
+    borderHover: "hover:border-fuchsia",
+    textGroupHover: "group-hover:text-fuchsia-ink",
+    dot: "bg-fuchsia",
+  },
 };
 
-/** Category → accent. All map to the single neutral bundle now; the mapping is
- *  kept so callers (and a future re-theme) still address domains by name. */
+/** Category → accent. Neighbouring domains get distinct hues so grids read
+ *  as a spectrum, not stripes of the same colour. */
 export const DOMAIN_ACCENT: Record<Domain, Accent> = {
   "AI & Data": "coral",
   "AI Operations": "indigo",
   "Cloud & Infrastructure": "sky",
   "Identity & Access": "violet",
   "Endpoint & Application": "mint",
-  "Detection & Response": "indigo",
+  "Detection & Response": "rose",
   "Governance, Risk & Compliance": "amber",
-  "Advisory & Assurance": "rose",
-  "Modern Workplace": "teal",
-  "Data Center & Infrastructure": "orange",
-  "Networking": "lime",
-  "IT Asset Management": "fuchsia",
+  "Advisory & Assurance": "teal",
+  "Modern Workplace": "orange",
+  "Data Center & Infrastructure": "lime",
+  "Networking": "fuchsia",
+  "IT Asset Management": "indigo",
 };
 
 export function domainAccent(domain: Domain): AccentClasses {

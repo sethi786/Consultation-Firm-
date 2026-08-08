@@ -122,7 +122,7 @@ export function ServicesMegaMenu() {
                 return (
                   <div key={group.domain}>
                     <p className={cn("mb-3 inline-flex items-center gap-2 font-mono text-mono-xs uppercase tracking-mono", a.text)}>
-                      <DomainIcon domain={group.domain} className="h-4 w-4 text-pine" />
+                      <DomainIcon domain={group.domain} className="h-4 w-4" />
                       {group.domain}
                     </p>
                     <ul className="flex flex-col gap-0.5">

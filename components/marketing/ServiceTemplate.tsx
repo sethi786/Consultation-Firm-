@@ -5,6 +5,7 @@ import { ServiceControls } from "./ServiceControls";
 import { ContactCTA } from "./ContactCTA";
 import { SERVICE_LIST } from "@/content/services";
 import type { ServiceDetail } from "@/content/services/types";
+import { domainAccent } from "@/lib/accent";
 
 // Honest, tier-appropriate pricing labels — consulting is scoped, not shelf-priced.
 const PRICING_LABEL: Record<string, string> = {
@@ -43,9 +44,14 @@ export function ServiceTemplate({ service }: { service: ServiceDetail }) {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
           <div className="lg:col-span-7">
             {summary?.domain && (
-              <span className="mb-4 inline-flex items-center gap-2">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-rule bg-surface">
-                  <DomainIcon domain={summary.domain} className="h-5 w-5 text-pine" />
+              <span className="mb-4 inline-flex items-center gap-2.5">
+                <span
+                  className={`inline-flex h-10 w-10 items-center justify-center rounded-xl ${domainAccent(summary.domain).softBg}`}
+                >
+                  <DomainIcon
+                    domain={summary.domain}
+                    className={`h-5 w-5 ${domainAccent(summary.domain).softText}`}
+                  />
                 </span>
                 <span className="font-mono text-mono-xs uppercase tracking-mono text-slate">
                   {summary.domain}
