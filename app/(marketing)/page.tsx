@@ -5,6 +5,7 @@ import { FrameworkMarquee } from "@/components/marketing/FrameworkMarquee";
 import { HeroVisual } from "@/components/marketing/HeroVisual";
 import { CinematicSection, CinematicGroup, CinematicItem } from "@/components/marketing/Cinematic";
 import { CinematicScene } from "@/components/marketing/CinematicScene";
+import { UseCases } from "@/components/marketing/UseCases";
 import { ServicesOverview } from "@/components/marketing/ServicesOverview";
 import { ApproachStrip } from "@/components/marketing/ApproachStrip";
 import { EvidenceBand } from "@/components/marketing/EvidenceBand";
@@ -106,10 +107,13 @@ export default function HomePage() {
       {/* Full-bleed cinematic brand scene — the waypoint story */}
       <CinematicScene />
 
+      {/* Problem-led entry points */}
+      <UseCases index={2} />
+
       {/* Live demos — invite exploration */}
       <Container as="section" className="py-20 md:py-32">
         <CinematicSection className="mb-12 max-w-measure">
-          <Eyebrow index={2}>Try it live</Eyebrow>
+          <Eyebrow index={3}>Try it live</Eyebrow>
           <h2 className="mt-3 text-h2 text-ink text-balance">
             See how we think — before you talk to us.
           </h2>
@@ -139,16 +143,16 @@ export default function HomePage() {
       </Container>
 
       <CinematicSection>
-        <ServicesOverview index={3} />
+        <ServicesOverview index={4} />
       </CinematicSection>
       <CinematicSection>
-        <ApproachStrip index={4} />
+        <ApproachStrip index={5} />
       </CinematicSection>
       <CinematicSection>
-        <EvidenceBand index={5} />
+        <EvidenceBand index={6} />
       </CinematicSection>
       <CinematicSection>
-        <InsightsTeaser index={6} />
+        <InsightsTeaser index={7} />
       </CinematicSection>
 
       <ContactCTA />
