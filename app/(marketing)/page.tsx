@@ -4,6 +4,7 @@ import { Container, Eyebrow, Button } from "@/components/ui";
 import { FrameworkMarquee } from "@/components/marketing/FrameworkMarquee";
 import { HeroVisual } from "@/components/marketing/HeroVisual";
 import { CinematicSection, CinematicGroup, CinematicItem } from "@/components/marketing/Cinematic";
+import { CinematicScene } from "@/components/marketing/CinematicScene";
 import { ServicesOverview } from "@/components/marketing/ServicesOverview";
 import { ApproachStrip } from "@/components/marketing/ApproachStrip";
 import { EvidenceBand } from "@/components/marketing/EvidenceBand";
@@ -101,6 +102,9 @@ export default function HomePage() {
 
       {/* Capability row — the standards a buyer's auditors already know */}
       <FrameworkMarquee />
+
+      {/* Full-bleed cinematic brand scene — the waypoint story */}
+      <CinematicScene />
 
       {/* Live demos — invite exploration */}
       <Container as="section" className="py-20 md:py-32">
