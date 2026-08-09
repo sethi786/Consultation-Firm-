@@ -1,15 +1,14 @@
 import Link from "next/link";
-import { Container, Eyebrow, CountUp, Reveal, Button } from "@/components/ui";
+import { Container, Eyebrow, Button } from "@/components/ui";
+// (Reveal retired on this page in favour of the framer-motion cinematic wrappers.)
 import { FrameworkMarquee } from "@/components/marketing/FrameworkMarquee";
 import { HeroVisual } from "@/components/marketing/HeroVisual";
+import { CinematicSection, CinematicGroup, CinematicItem } from "@/components/marketing/Cinematic";
 import { ServicesOverview } from "@/components/marketing/ServicesOverview";
 import { ApproachStrip } from "@/components/marketing/ApproachStrip";
 import { EvidenceBand } from "@/components/marketing/EvidenceBand";
 import { InsightsTeaser } from "@/components/marketing/InsightsTeaser";
-import { CredibilityBand } from "@/components/marketing/CredibilityBand";
 import { ContactCTA } from "@/components/marketing/ContactCTA";
-import { SERVICE_LIST } from "@/content/services";
-import { CONTROLS } from "@/content/controls";
 
 const DEMO_CARDS = [
   {
@@ -66,56 +65,27 @@ export default function HomePage() {
           />
         </div>
 
-        <Container className="relative pt-14 pb-14 md:pt-20 md:pb-20">
-          <div className="grid grid-cols-1 items-center gap-x-12 gap-y-14 lg:grid-cols-2">
-            {/* Statement */}
+        <Container className="relative pt-20 pb-20 md:pt-32 md:pb-32">
+          <div className="grid grid-cols-1 items-center gap-x-16 gap-y-16 lg:grid-cols-2">
+            {/* Statement — nothing but the essentials, given room to breathe. */}
             <div>
-              <p className="anim-rise inline-flex items-center gap-2 rounded-full border border-rule bg-surface/80 px-4 py-1.5 font-mono text-mono-xs uppercase tracking-mono text-slate">
-                <span aria-hidden="true" className="spectrum-bar h-1.5 w-6 rounded-full" />
-                Evidence-led security consulting
-              </p>
-              <h1 className="anim-hero-title mt-6 max-w-xl text-display text-ink text-balance">
+              <h1 className="anim-hero-title max-w-xl text-display text-ink text-balance">
                 Know what&apos;s exposed.{" "}
                 <span className="spectrum-text">Prove it&apos;s fixed.</span>
               </h1>
-              <p className="anim-rise anim-delay-1 mt-6 max-w-lg text-lede text-slate">
-                Security consulting and 24/7 managed detection for 200–5,000-seat
-                organisations — mapped to the frameworks your auditors already trust.
+              <p className="anim-rise anim-delay-1 mt-7 max-w-md text-lede text-slate">
+                Security consulting and 24/7 managed detection, mapped to the
+                frameworks your auditors already trust.
               </p>
-              <div className="anim-rise anim-delay-2 mt-8 flex flex-wrap items-center gap-4">
+              <div className="anim-rise anim-delay-2 mt-10 flex flex-wrap items-center gap-4">
                 <Button href="/contact">Book an assessment</Button>
-                <Button href="/posture" variant="secondary">
+                <Button href="/posture" variant="ghost">
                   Check your posture
                 </Button>
               </div>
-              <dl className="anim-rise anim-delay-3 mt-10 grid w-fit grid-cols-3 gap-x-8 gap-y-1 md:gap-x-12">
-                {[
-                  [SERVICE_LIST.length, "Services"],
-                  [12, "Practice areas"],
-                  [CONTROLS.length, "Verified controls"],
-                ].map(([n, label]) => (
-                  <div key={label as string}>
-                    <dt className="sr-only">{label}</dt>
-                    <dd className="font-display text-h2 tabular-nums text-ink">
-                      <CountUp value={n as number} />
-                    </dd>
-                    <dd className="font-mono text-mono-xs uppercase tracking-mono text-slate">
-                      {label}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-              <p className="anim-rise anim-delay-3 mt-4">
-                <Link
-                  href="/controls"
-                  className="font-mono text-mono-xs uppercase tracking-mono text-slate underline decoration-rule underline-offset-4 transition-colors hover:text-ink hover:decoration-slate"
-                >
-                  See the full control register →
-                </Link>
-              </p>
             </div>
 
-            {/* Product visual */}
+            {/* One floating product card */}
             <div className="anim-rise anim-delay-2 px-2 sm:px-6 lg:px-0">
               <HeroVisual />
             </div>
@@ -133,19 +103,16 @@ export default function HomePage() {
       <FrameworkMarquee />
 
       {/* Live demos — invite exploration */}
-      <Container as="section" className="py-14 md:py-24">
-        <div className="mb-10 max-w-measure">
+      <Container as="section" className="py-20 md:py-32">
+        <CinematicSection className="mb-12 max-w-measure">
           <Eyebrow index={2}>Try it live</Eyebrow>
           <h2 className="mt-3 text-h2 text-ink text-balance">
             See how we think — before you talk to us.
           </h2>
-          <p className="mt-4 text-body text-slate">
-            Four hands-on tools, right in your browser. Nothing to install, nothing leaves the page.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-          {DEMO_CARDS.map((c, i) => (
-            <Reveal key={c.href} delay={i * 90} className="h-full">
+        </CinematicSection>
+        <CinematicGroup className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          {DEMO_CARDS.map((c) => (
+            <CinematicItem key={c.href} className="h-full">
               <Link
                 href={c.href}
                 className="card-lift group flex h-full flex-col justify-between rounded-2xl border border-rule bg-surface p-7 hover:border-pine md:p-9"
@@ -162,16 +129,23 @@ export default function HomePage() {
                   Try it →
                 </span>
               </Link>
-            </Reveal>
+            </CinematicItem>
           ))}
-        </div>
+        </CinematicGroup>
       </Container>
 
-      <ServicesOverview index={3} />
-      <ApproachStrip index={4} />
-      <EvidenceBand index={5} />
-      <InsightsTeaser index={6} />
-      <CredibilityBand index={7} />
+      <CinematicSection>
+        <ServicesOverview index={3} />
+      </CinematicSection>
+      <CinematicSection>
+        <ApproachStrip index={4} />
+      </CinematicSection>
+      <CinematicSection>
+        <EvidenceBand index={5} />
+      </CinematicSection>
+      <CinematicSection>
+        <InsightsTeaser index={6} />
+      </CinematicSection>
 
       <ContactCTA />
     </>

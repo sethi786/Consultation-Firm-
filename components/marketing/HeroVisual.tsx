@@ -36,21 +36,6 @@ const ROWS: { id: string; title: string; sev: string; chip: string; status: stri
   },
 ];
 
-function MiniMeter({ current, target }: { current: number; target: number }) {
-  return (
-    <span className="inline-flex items-center gap-[3px]" aria-hidden="true">
-      {[1, 2, 3, 4, 5].map((n) => (
-        <span
-          key={n}
-          className={`h-3 w-[6px] rounded-[2px] ${
-            n <= current ? "bg-pine" : n === target ? "border border-brass bg-transparent" : "bg-rule"
-          }`}
-        />
-      ))}
-    </span>
-  );
-}
-
 export function HeroVisual() {
   return (
     <div aria-hidden="true" className="relative mx-auto w-full max-w-[540px] select-none">
@@ -63,21 +48,7 @@ export function HeroVisual() {
         }}
       />
 
-      {/* Back card — maturity summary */}
-      <div className="blob-b absolute -right-3 -top-8 w-64 rotate-2 rounded-2xl border border-rule bg-surface p-4 shadow-pop-sm">
-        <p className="font-mono text-mono-xs uppercase tracking-mono text-slate">Maturity — identity</p>
-        <div className="mt-2 flex items-center justify-between">
-          <MiniMeter current={2} target={4} />
-          <span className="font-mono text-mono-xs uppercase text-slate">
-            2.0 <span className="text-brass-lift">→</span> 4.0
-          </span>
-        </div>
-        <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-rule">
-          <div className="spectrum-bar h-full w-3/5 rounded-full" />
-        </div>
-      </div>
-
-      {/* Front card — findings register */}
+      {/* The one card — findings register */}
       <div className="blob-a relative rounded-2xl border border-rule bg-surface shadow-pop">
         <div className="flex items-center justify-between border-b border-rule px-5 py-3.5">
           <span className="inline-flex items-center gap-2">
@@ -116,15 +87,6 @@ export function HeroVisual() {
         </div>
       </div>
 
-      {/* Floating framework chip */}
-      <div className="blob-b absolute -bottom-6 -left-3 rounded-xl border border-rule bg-surface px-3.5 py-2.5 shadow-pop-sm">
-        <span className="flex items-center gap-2">
-          <span className="spectrum-bar h-1.5 w-5 rounded-full" />
-          <span className="font-mono text-mono-xs uppercase tracking-mono text-ink">
-            Evidence, not theatre
-          </span>
-        </span>
-      </div>
     </div>
   );
 }
