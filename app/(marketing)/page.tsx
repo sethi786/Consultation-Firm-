@@ -6,6 +6,7 @@ import { HeroVisual } from "@/components/marketing/HeroVisual";
 import { CinematicSection, CinematicGroup, CinematicItem } from "@/components/marketing/Cinematic";
 import { CinematicScene } from "@/components/marketing/CinematicScene";
 import { UseCases } from "@/components/marketing/UseCases";
+import { NavGrid, HorizonBand } from "@/components/marketing/FuturistArt";
 import { ServicesOverview } from "@/components/marketing/ServicesOverview";
 import { ApproachStrip } from "@/components/marketing/ApproachStrip";
 import { EvidenceBand } from "@/components/marketing/EvidenceBand";
@@ -65,6 +66,8 @@ export default function HomePage() {
                 "radial-gradient(closest-side, color-mix(in oklab, var(--color-sky) 20%, transparent), transparent)",
             }}
           />
+          {/* Futurist floor plane — a navigation grid receding to the horizon */}
+          <NavGrid className="absolute inset-x-0 bottom-0 h-[55%] w-full" />
         </div>
 
         <Container className="relative pt-20 pb-20 md:pt-32 md:pb-32">
@@ -154,6 +157,9 @@ export default function HomePage() {
       <CinematicSection>
         <InsightsTeaser index={7} />
       </CinematicSection>
+
+      {/* The big picture — full-bleed wireframe terrain panorama */}
+      <HorizonBand />
 
       <ContactCTA />
     </>
